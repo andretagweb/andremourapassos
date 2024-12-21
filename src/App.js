@@ -4,14 +4,18 @@ import About from './components/About';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import SoundCloud from './components/SoundCloud';
+
+import './App.css';
 
 function App() {
   return (
     <>
-      <Header />
+    
       <Hero />
       <About />
       <Portfolio />
+      <SoundCloud />
       <Contact />
       <Footer />
     </>

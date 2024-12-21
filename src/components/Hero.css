@@ -1,0 +1,135 @@
+.App-hero {
+    align-items: left;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.App-hero .hero-title {
+    text-shadow: black;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+.hero-piano {
+    height: 50%;
+    width: 100%;
+}
+
+.hero-key {
+    height: 100%;
+}
+
+
+
+.hero-key.black {
+    width: 60%;
+    height: 200px;
+    background-color: #000;
+    margin-top: -180px;
+    margin-left: -50px;
+    margin-bottom: -80px;
+    z-index: 1;
+    border: 10px solid #000;
+    position: relative;
+    border-radius: 0 0 3px 3px;
+    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0) inset,
+        -19px 0px 2px 8px rgba(0, 0, 0, 0.8) inset,
+        0 2px 4px rgba(0, 0, 0, 1);
+    background: linear-gradient(to right, #131313 0%, #0c0c0c 100%)
+}
+
+.hero-key.black:active {
+    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0) inset,
+        -19px 0px 4px 12px rgba(0, 0, 0, 1) inset,
+        0 1px 2px rgba(0, 0, 0, 1);
+    background: linear-gradient(to right, #131313 0%, #000 100%)
+}
+
+:root {
+    --opacity-level: 0.05;
+    /* Controle global de opacidade */
+}
+
+.hero-key.white {
+    background-color: #fff;
+    background:
+        linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level)));
+    width: 100%;
+    border-top: 5px solid #777777;
+    height: 400px;
+    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0) inset,
+        0px 0 2px 0px rgba(231, 231, 231, 0.8) inset,
+        0 0 0 rgb(255, 255, 255, 251);
+
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.hero-key.white:active {
+    box-shadow: -1px -1px 2px rgba(187, 167, 167, 0) inset,
+        0px -100px 2px 0px rgba(218, 217, 217, 0.8) inset,
+        0 0 0 rgb(189, 188, 188);
+
+}
+
+.hero-key.white:not(.black):nth-of-type(1) {
+    align-items: left;
+    background-position: 50% 70%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*.hero-key.white:not(.black):nth-of-type(1) .key-image {
+    background-image: 
+    linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))), 
+    url('../assets/strange.png');
+}*/
+
+.hero-key.white:not(.black):nth-of-type(2) {
+    align-items: left;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-key.white:not(.black):nth-of-type(3) {
+    align-items: left;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-key.white:nth-of-type(4) {
+    /* Aqui não foi definido background, mas podemos aplicar se for necessário */
+}
+
+.hero-key.white:nth-of-type(5) {
+    align-items: left;
+    background-position: 70% 40%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-key.white:nth-of-type(6) {
+    align-items: left;
+    background-position: 70% 10%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-key.white:nth-of-type(8) {
+    align-items: left;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        url('../assets/cocktail22.png');
+    background-position: 70% 60%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
