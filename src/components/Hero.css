@@ -22,32 +22,6 @@
     height: 100%;
 }
 
-
-
-.hero-key.black {
-    width: 60%;
-    height: 200px;
-    background-color: #000;
-    margin-top: -180px;
-    margin-left: -50px;
-    margin-bottom: -80px;
-    z-index: 1;
-    border: 10px solid #000;
-    position: relative;
-    border-radius: 0 0 3px 3px;
-    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0) inset,
-        -19px 0px 2px 8px rgba(0, 0, 0, 0.8) inset,
-        0 2px 4px rgba(0, 0, 0, 1);
-    background: linear-gradient(to right, #131313 0%, #0c0c0c 100%)
-}
-
-.hero-key.black:active {
-    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0) inset,
-        -19px 0px 4px 12px rgba(0, 0, 0, 1) inset,
-        0 1px 2px rgba(0, 0, 0, 1);
-    background: linear-gradient(to right, #131313 0%, #000 100%)
-}
-
 :root {
     --opacity-level: 0.05;
     /* Controle global de opacidade */
@@ -55,15 +29,13 @@
 
 .hero-key.white {
     background-color: #fff;
-    background:
-        linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level)));
+    background: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgb(189 189 189 / 59%));
     width: 100%;
     border-top: 5px solid #777777;
     height: 400px;
     box-shadow: -1px -1px 2px rgba(255, 255, 255, 0) inset,
         0px 0 2px 0px rgba(231, 231, 231, 0.8) inset,
         0 0 0 rgb(255, 255, 255, 251);
-
     -webkit-border-top-right-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;
     -moz-border-radius-topright: 5px;
@@ -74,8 +46,9 @@
 
 .hero-key.white:active {
     box-shadow: -1px -1px 2px rgba(187, 167, 167, 0) inset,
-        0px -100px 2px 0px rgba(218, 217, 217, 0.8) inset,
+        0px 0 2px 0px rgba(218, 217, 217, 0.8) inset,
         0 0 0 rgb(189, 188, 188);
+    background: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(131, 131, 131, 0.59));
 
 }
 
@@ -133,4 +106,28 @@
     background-position: 70% 60%;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.hero-key.black {
+    width: 60%;
+    height: 200px;
+    background-color: #000;
+    margin-top: -145px;
+    margin-left: -50px;
+    margin-bottom: -60px;
+    z-index: 1;
+    border: 10px solid #000;
+    position: relative;
+    border-radius: 0 0 3px 3px;
+    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0) inset,
+        -19px 0px 2px 8px rgba(0, 0, 0, 0.8) inset,
+        0 2px 4px rgba(0, 0, 0, 1);
+    background: linear-gradient(to right, #131313 0%, #0c0c0c 100%)
+}
+
+.hero-key.black:active {
+    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0) inset,
+        -19px 0px 4px 12px rgba(0, 0, 0, 1) inset,
+        0 1px 2px rgba(0, 0, 0, 1);
+    background: linear-gradient(to right, #131313 0%, #000 100%)
 }
