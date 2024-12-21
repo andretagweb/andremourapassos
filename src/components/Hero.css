@@ -110,6 +110,7 @@
     /* Aqui não foi definido background, mas podemos aplicar se for necessário */
 }
 
+
 .hero-key.white:nth-of-type(5) {
     align-items: left;
     background-position: 70% 40%;
