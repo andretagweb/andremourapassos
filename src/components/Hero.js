@@ -1,3 +1,8 @@
+import About from './Hero/About';
+import Portfolio from './Hero/Portfolio';
+import Contact from './Hero/Contact';
+import SoundCloud from './Hero/SoundCloud';
+
 import './Hero.css';
 
 function Hero() {
@@ -29,12 +34,20 @@ function Hero() {
             <p className="text-lg mb-8 text-white">Compondo emoções através da música.</p>
           </div>
         </div>
-        <div className="hero-key white"></div>
-        <div className="hero-key white"></div>
+        <div className="hero-key white">
+          <About />
+        </div>
+        <div className="hero-key white">
+          <Portfolio/>
+        </div>
         <div className="hero-key black"></div>
-        <div className="hero-key white"></div>
+        <div className="hero-key white">
+        <SoundCloud />
+        </div>
         <div className="hero-key black"></div>
-        <div className="hero-key white"></div>
+        <div className="hero-key white">
+        <Contact />
+        </div>
         <div className="hero-key black"></div>
 
         <div className="hero-key white"></div>
