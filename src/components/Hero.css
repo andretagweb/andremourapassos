@@ -4,66 +4,83 @@
     --opacity-level-hover: 0.05;
 }
 
-/* === Estilos Globais === */
-.App-hero {
-    align-items: left;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.App-hero .hero-title {
-    text-shadow: black;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
 /* === Contêineres do Piano === */
 .hero-piano {
     height: 50%;
     width: 100%;
 }
 
-.hero-key {
-    height: 100%;
+.side-key {
+
+}
+
+.keys {
+
+}
+
+.key-redline {
+    background: linear-gradient(270deg, #4f0303, #ff0808);
+    box-shadow: 1px 1px 11px rgb(0 0 0);
+    border-radius: 2px;
 }
 
 /* === Teclas Brancas (Base) === */
 .hero-key.key-white {
+    position: relative;
     background-color: #fff;
-    background: linear-gradient(
+    background: linear-gradient(90deg,
         rgba(255, 255, 255, var(--opacity-level)),
         rgba(189, 189, 189, 59%)
     );
-    width: 100%;
     border-top: 2px solid #777777;
     border-bottom: 6px solid #777777;
     border-right: 5px solid #777777;
-    height: 400px;
     box-shadow: 
         -1px -1px 2px rgba(255, 255, 255, 0) inset,
         0px 0 2px 0px rgba(231, 231, 231, 0.8) inset,
         0 0 0 rgb(255, 255, 255, 251);
     border-radius: 15px;
-    transition: opacity 0.7s ease;
 }
+
+.hero-key.key-white .key-image {
+    transition: opacity 0.7s ease;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    width: 100%;
+}
+
+
+.hero-key.key-white .hover-text {
+    position: absolute; /* Posiciona o texto dentro da tecla */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para o centro exato */
+    color: #000; /* Cor do texto */
+    padding: 10px;
+    border-radius: 8px; /* Bordas arredondadas */
+    text-align: center;
+    opacity: 0; /* Oculta por padrão */
+    pointer-events: none; /* Impede interação */
+    transition: opacity 0.5s ease; /* Transição suave */
+    width: 100%;
+}
+
+.hero-key.key-white:hover .hover-text {
+    opacity: 1; /* Torna visível no hover */
+}
+
 
 .hero-key.key-white:active {
     box-shadow: 
         -1px -1px 2px rgba(187, 167, 167, 0) inset,
         0px 0 2px 0px rgba(218, 217, 217, 0.8) inset,
         0 0 0 rgb(189, 188, 188);
-    background: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(131, 131, 131, 0.59));
+    background: linear-gradient(90deg, rgba(255, 255, 255, var(--opacity-level)), rgb(131 131 131 / 66%));
 }
 
-.hero-key.key-white:not(.key-black) {
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
-.hero-key.key-white:not(.key-black):hover {
+.hero-key.key-white .key-image:hover {
     opacity: var(--opacity-level-hover);
 }
 
@@ -73,10 +90,11 @@
     height: 200px;
     background-color: #000;
     margin-top: -145px;
-    margin-left: -50px;
     margin-bottom: -60px;
     z-index: 1;
-    border: 10px solid #000;
+    border-top: 10px solid #000;
+    border-right: 10px solid #000;
+    border-bottom: 10px solid #000;
     position: relative;
     border-radius: 0 0 3px 3px;
     box-shadow: 
@@ -95,62 +113,44 @@
 }
 
 /* === Estilos Específicos das Teclas Brancas === */
-.hero-key.key-white:not(.key-black):nth-of-type(1) {
+.hero-key.key-white#bloodscocktail .key-image {
     background-position: 80% 35%;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         url('../assets/images/bloodscocktail_upscaled.png');
 }
 
-.hero-key.key-white:not(.key-black):nth-of-type(3) {
+.hero-key.key-white#cocktailn2 .key-image  {
     background-position: 30% 35%;
     background-size: 120%;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         url('../assets/images/cocktail2.png');
 }
 
-.hero-key.key-white:not(.key-black):nth-of-type(4) {
+.hero-key.key-white#cocktailn1 .key-image  {
     background-position: center;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         url('../assets/images/cocktail1.jpeg');
 }
 
-.hero-key.key-white:not(.key-black):nth-of-type(5) {
-    background-position: center;
-    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
-        url('../assets/images/cocktail1.jpeg');
-}
-
-.hero-key.key-white:not(.key-black):nth-of-type(6) {
-    background-position: 70% 40%;
-    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
-        url('../assets/images/cocktail2.png');
-}
-
-.hero-key.key-white:not(.key-black):nth-of-type(7) {
+.hero-key.key-white#strange .key-image  {
     background-position: 70% 10%;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         url('../assets/images/strange.png');
 }
 
-.hero-key.key-white:not(.key-black):nth-of-type(8) {
+.hero-key.key-white#strange2 .key-image  {
     background-position: 70% 60%;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         url('../assets/images/strange.png');
 }
 
-.hero-key.key-white:not(.key-black):nth-of-type(10) {
+.hero-key.key-white#suburban .key-image  {
     background-position: 80% 10%;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         url('../assets/images/suburbanride.png');
 }
 
-.hero-key.key-white:not(.key-black):nth-of-type(11) {
-    background-position: 70% 60%;
-    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
-        url('../assets/images/ttmm.png');
-}
-
-.hero-key.key-white:not(.key-black):nth-of-type(12) {
+.hero-key.key-white#ttmm .key-image  {
     background-position: 80% 40%;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         url('../assets/images/ttmm.png');
