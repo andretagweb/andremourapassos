@@ -1,4 +1,4 @@
-/* Player.css */
+/* Player Container Geral */
 .player-container {
   position: fixed; /* Fixa o player na parte inferior */
   bottom: 0; /* Alinha ao rodapé */
@@ -27,6 +27,50 @@
   text-overflow: ellipsis; /* Adiciona "..." se o texto for muito longo */
   flex: 1; /* Permite que o título ocupe espaço proporcional */
   text-align: left; /* Alinha o título à esquerda */
+}
+
+/* Estilos para resoluções menores */
+.mobile-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(135deg, #2b2b2b, #1e1e1e);
+  border-top: 4px solid #000;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Estilos para resoluções xl */
+.xl-player {
+  background: linear-gradient(135deg, #2b2b2b, #1e1e1e);
+  border: 4px solid #000;
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+  width: 250px;
+  padding: 20px;
+  margin: 50px auto;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  color: #f4f4f4;
+  display: flex; /* Organiza os elementos de forma flexível */
+  flex-direction: column; /* Empilha os elementos verticalmente */
+  gap: 20px; /* Espaçamento entre os elementos */
+  align-items: center; /* Centraliza os elementos horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+}
+
+.xl-player h2 {
+  font-size: 18px;
+  margin: 0;
+  color: #f4f4f4;
+  white-space: nowrap; /* Evita quebra de linha */
+  overflow: hidden; /* Oculta texto longo */
+  text-overflow: ellipsis; /* Adiciona "..." para texto longo */
 }
 
 /* Controles de áudio */

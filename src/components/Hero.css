@@ -155,3 +155,9 @@
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         url('../assets/images/ttmm.png');
 }
+
+.hero-key.key-white#cocktail22 .key-image  {
+    background-position: 80% 40%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        url('../assets/images/cocktail22.png');
+}
