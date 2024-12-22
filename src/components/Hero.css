@@ -1,3 +1,10 @@
+/* === Variáveis Globais === */
+:root {
+    --opacity-level: 0.25;
+    --opacity-level-hover: 0.05;
+}
+
+/* === Estilos Globais === */
 .App-hero {
     align-items: left;
     background-position: center;
@@ -13,6 +20,7 @@
     color: #61dafb;
 }
 
+/* === Contêineres do Piano === */
 .hero-piano {
     height: 50%;
     width: 100%;
@@ -22,111 +30,44 @@
     height: 100%;
 }
 
-:root {
-    --opacity-level: 0.05;
-    /* Controle global de opacidade */
-}
-
+/* === Teclas Brancas (Base) === */
 .hero-key.key-white {
     background-color: #fff;
-    background: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(189 189 189 / 59%, var(--opacity-level)));
+    background: linear-gradient(
+        rgba(255, 255, 255, var(--opacity-level)),
+        rgba(189, 189, 189, 59%)
+    );
     width: 100%;
     border-top: 2px solid #777777;
     border-bottom: 6px solid #777777;
     border-right: 5px solid #777777;
     height: 400px;
-    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0) inset,
+    box-shadow: 
+        -1px -1px 2px rgba(255, 255, 255, 0) inset,
         0px 0 2px 0px rgba(231, 231, 231, 0.8) inset,
         0 0 0 rgb(255, 255, 255, 251);
-    -webkit-border-top-right-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    -moz-border-radius-topright: 5px;
-    -moz-border-radius-bottomright: 5px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 15px;
+    transition: opacity 0.7s ease;
 }
 
 .hero-key.key-white:active {
-    box-shadow: -1px -1px 2px rgba(187, 167, 167, 0) inset,
+    box-shadow: 
+        -1px -1px 2px rgba(187, 167, 167, 0) inset,
         0px 0 2px 0px rgba(218, 217, 217, 0.8) inset,
         0 0 0 rgb(189, 188, 188);
     background: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(131, 131, 131, 0.59));
-
 }
 
 .hero-key.key-white:not(.key-black) {
-
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .hero-key.key-white:not(.key-black):hover {
-    opacity: 0.7; /* Reduz a opacidade */
-    transition: opacity 0.3s ease; /* Transição suave */
+    opacity: var(--opacity-level-hover);
 }
 
-.hero-key.key-white:not(.key-black):nth-of-type(1) {
-    align-items: left;
-    background-position: 50% 70%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image:
-    linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
-    url('../assets/images/cocktail1.jpeg');
-}
-
-.hero-key.key-white:not(.key-black):nth-of-type(2) {
-    align-items: left;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image:
-    linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
-    url('../assets/images/cocktail2.png');
-}
-
-.hero-key.key-white:not(.key-black):nth-of-type(3) {
-    align-items: left;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image:
-    linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
-    url('../assets/images/strange.png');
-}
-
-.hero-key.key-white:nth-of-type(4) {
-}
-
-
-.hero-key.key-white:not(.key-black):nth-of-type(5) {
-    align-items: left;
-    background-position: 70% 40%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image:
-    linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
-    url('../assets/images/cocktail22.png');
-}
-
-.hero-key.key-white:not(.key-black):nth-of-type(6) {
-    align-items: left;
-    background-position: 70% 10%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image:
-    linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
-    url('../assets/images/suburbanride.png');
-}
-
-.hero-key.key-white:not(.key-black):nth-of-type(8) {
-    align-items: left;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
-        url('../assets/images/ttmm.png');
-    background-position: 70% 60%;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
+/* === Teclas Pretas (Base) === */
 .hero-key.key-black {
     width: 60%;
     height: 200px;
@@ -138,15 +79,79 @@
     border: 10px solid #000;
     position: relative;
     border-radius: 0 0 3px 3px;
-    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0) inset,
+    box-shadow: 
+        -1px -1px 2px rgba(255, 255, 255, 0) inset,
         -19px 0px 2px 8px rgba(0, 0, 0, 0.8) inset,
         0 2px 4px rgba(0, 0, 0, 1);
-    background: linear-gradient(to right, #131313 0%, #0c0c0c 100%)
+    background: linear-gradient(to right, #2b2b2b 0%, #0c0c0c 100%);
 }
 
 .hero-key.key-black:active {
-    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0) inset,
+    box-shadow: 
+        -1px -1px 2px rgba(255, 255, 255, 0) inset,
         -19px 0px 4px 12px rgba(0, 0, 0, 1) inset,
         0 1px 2px rgba(0, 0, 0, 1);
-    background: linear-gradient(to right, #131313 0%, #000 100%)
+    background: linear-gradient(to right, #131313 0%, #000 100%);
+}
+
+/* === Estilos Específicos das Teclas Brancas === */
+.hero-key.key-white:not(.key-black):nth-of-type(1) {
+    background-position: 80% 35%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        url('../assets/images/bloodscocktail_upscaled.png');
+}
+
+.hero-key.key-white:not(.key-black):nth-of-type(3) {
+    background-position: 30% 35%;
+    background-size: 120%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        url('../assets/images/cocktail2.png');
+}
+
+.hero-key.key-white:not(.key-black):nth-of-type(4) {
+    background-position: center;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        url('../assets/images/cocktail1.jpeg');
+}
+
+.hero-key.key-white:not(.key-black):nth-of-type(5) {
+    background-position: center;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        url('../assets/images/cocktail1.jpeg');
+}
+
+.hero-key.key-white:not(.key-black):nth-of-type(6) {
+    background-position: 70% 40%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        url('../assets/images/cocktail2.png');
+}
+
+.hero-key.key-white:not(.key-black):nth-of-type(7) {
+    background-position: 70% 10%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        url('../assets/images/strange.png');
+}
+
+.hero-key.key-white:not(.key-black):nth-of-type(8) {
+    background-position: 70% 60%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        url('../assets/images/strange.png');
+}
+
+.hero-key.key-white:not(.key-black):nth-of-type(10) {
+    background-position: 80% 10%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        url('../assets/images/suburbanride.png');
+}
+
+.hero-key.key-white:not(.key-black):nth-of-type(11) {
+    background-position: 70% 60%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        url('../assets/images/ttmm.png');
+}
+
+.hero-key.key-white:not(.key-black):nth-of-type(12) {
+    background-position: 80% 40%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        url('../assets/images/ttmm.png');
 }
