@@ -1,6 +1,7 @@
 import Menu from './Menu';
 import Contact from './Hero/Contact';
 import Player from './Hero/Player';
+import Keys from './Hero/Keys';
 
 import './Hero.css';
 
@@ -11,53 +12,11 @@ function Hero() {
         <div className="side-key hidden xl:block bg-dark w-1/6 p-6 sticky top-0 h-screen">
           <Menu styleClass="flex flex-col space-y-4" />
         </div>
-        <div className="keys flex w-full xl:w-5/6">
+        <div className="keyboard flex w-full xl:w-5/6">
           <div className="key-redline flex-[1] bg-red-500 shadow-md">
           </div>
           <div className="keys-group flex-[80]">
-            <div id="bloodscocktail" className="hero-key key-white">
-              <div className="key-image"></div>
-              <div className="hover-text">
-                
-              </div>
-            </div>
-            <div className="hero-key key-black">
-              <div className="relative text-white text-center w-full top-1/2 transform -translate-y-1/2">
-                <h2 className="hero-title text-4xl drop-shadow-sm font-bold mb-6 text-white limelight-regular">André Moura Passos</h2>
-                <h3 className="hero-title text-2xl drop-shadow-sm font-bold mb-6 text-white">Pianista e Compositor</h3>
-              </div>
-            </div>
-            <div id="cocktailn2" className="hero-key key-white">
-              <div className="key-image"></div>
-              <div className="hover-text">Texto sobre Cocktail Nº2</div>
-            </div>
-            <div className="hero-key key-black">
-              <div className="absolute text-center w-full top-1/2 transform -translate-y-1/2">
-              </div>
-            </div>
-            <div id="cocktailn1" className="hero-key key-white">
-              <div className="key-image"></div>
-              <div className="hover-text">Texto sobre Cocktail Nº1</div>
-            </div>
-            <div className="hero-key key-black"></div>
-            <div id="strange" className="hero-key key-white">
-              <div className="key-image"></div>
-              <div className="hover-text">Texto sobre Strange</div>
-            </div>
-            <div id="suburban" className="hero-key key-white">
-              <div className="key-image"></div>
-              <div className="hover-text">Texto sobre Strange 2</div>
-            </div>
-            <div className="hero-key key-black"></div>
-            <div id="ttmm" className="hero-key key-white">
-              <div className="key-image"></div>
-              <div className="hover-text">Texto sobre Suburban Ride</div>
-            </div>
-            <div className="hero-key key-black"></div>
-            <div id="cocktail22" className="hero-key key-white">
-              <div className="key-image"></div>
-              <div className="hover-text">Texto sobre TTMM</div>
-            </div>
+            <Keys />
             <Contact />
           </div>
         </div>

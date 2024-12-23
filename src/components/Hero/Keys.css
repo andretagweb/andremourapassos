@@ -1,0 +1,11 @@
+.hero-key .hover-text {
+    left: 65%;
+    transform: translateY(-50%);
+    width: 30%;
+}
+
+#cocktailn2 .hover-text {
+    left: 65%;
+    transform: translateY(-50%);
+    width: 30%;
+}

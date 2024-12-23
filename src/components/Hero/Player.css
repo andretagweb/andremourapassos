@@ -53,7 +53,7 @@
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
   width: 250px;
   padding: 20px;
-  margin: 50px auto;
+  margin: 50px 1%;
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
   color: #f4f4f4;
@@ -120,6 +120,10 @@
   margin: 0 10px; /* Margem para separação */
   overflow: hidden;
   flex: 2; /* Permite que a barra de progresso ocupe mais espaço */
+}
+
+.xl-player .progress-bar{
+  flex: none;
 }
 
 .progress {
