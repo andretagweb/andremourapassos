@@ -46,42 +46,53 @@
 }
 
 .hero-key.key-white .key-image {
+    will-change: opacity; /* Sinaliza ao navegador para priorizar alterações de opacidade */
     transition: opacity 0.7s ease;
     background-repeat: no-repeat;
     background-size: cover;
+    pointer-events: auto; /* Permite interação */
     height: 400px;
     width: 100%;
 }
 
-
 .hero-key.key-white .hover-text {
     position: absolute;
-    /* Posiciona o texto dentro da tecla */
     top: 50%;
-    /* Centraliza verticalmente */
     transform: translate(-50%, -50%);
-    /* Ajusta para o centro exato */
     color: #000;
-    /* Cor do texto */
-    padding: 10px;
-    border-radius: 8px;
-    /* Bordas arredondadas */
+    padding: 20px;
+    border-radius: 12px;
     text-align: center;
     opacity: 0;
-    /* Oculta por padrão */
     pointer-events: none;
-    /* Impede interação */
     transition: opacity 0.5s ease;
-    /* Transição suave */
-    left: 65%;
+    left: 55%; /* Centraliza horizontalmente no contêiner */
     transform: translateY(-50%);
     width: 30%;
+    will-change: opacity; /* Otimização */
 }
 
-.hero-key.key-white:hover .hover-text {
-    opacity: 1;
-    /* Torna visível no hover */
+/* Ícone de Play */
+.hero-key.key-white .hover-play::before {
+    content: '';
+    position: absolute;
+    top: 50%; /* Centraliza no eixo vertical */
+    left: 90%; /* Centraliza no eixo horizontal */
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
+    width: 0; /* Mantém o triângulo ajustável pelas bordas */
+    height: 0; /* Nenhuma altura adicional é necessária */
+    border-left: 200px solid #656261; /* Ajuste para o tamanho do triângulo */
+    border-top: 100px solid transparent; /* Controla o topo do triângulo */
+    border-bottom: 100px solid transparent; /* Controla a base do triângulo */
+    z-index: -1; /* Mantém o triângulo atrás do conteúdo */
 }
+
+/* Exibe o hover-text no hover */
+.hero-key.key-white:hover .hover-text {
+    opacity: 1; /* Torna visível no hover */
+}
+
 
 
 .hero-key.key-white:active {
@@ -93,7 +104,8 @@
 }
 
 
-.hero-key.key-white .key-image:hover {
+.hero-key.key-white .key-image:hover,
+.hero-key.key-white button:hover ~ .key-image {
     opacity: var(--opacity-level-hover);
 }
 

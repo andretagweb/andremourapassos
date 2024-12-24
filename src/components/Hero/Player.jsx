@@ -1,37 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useImperativeHandle, forwardRef } from 'react';
 import './Player.css';
 
-const Player = ({ isWideScreen: isWideScreenProp }) => {
+const Player = forwardRef((props, ref) => {
   const innerWidth = 1440
   const [playlist, setPlaylist] = useState([]);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [isWideScreen, setIsWideScreen] = useState(
-    isWideScreenProp !== undefined ? isWideScreenProp : window.innerWidth >= innerWidth
+     window.innerWidth >= innerWidth
   );
-  const audioRef = React.useRef(null);
+  const audioRef = useRef(null);
 
   useEffect(() => {
     fetch('http://localhost:3001/api/playlist')
       .then(response => response.json())
       .then(data => setPlaylist(data));
 
-      if (isWideScreenProp === undefined) {
-        const handleResize = () => {
-          setIsWideScreen(window.innerWidth >= innerWidth);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-      }
-  }, [isWideScreenProp]);
+      const handleResize = () => {
+        setIsWideScreen(window.innerWidth >= innerWidth);
+      };
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.5; // Define o volume inicial como 0.5
     }
   }, [playlist]);
-  
+
+  // Tornar a função disponível para o componente pai
+  useImperativeHandle(ref, () => ({
+    handlePlayPause,
+  }));  
 
   const handleTimeUpdate = () => {
     if (audioRef.current) {
@@ -87,6 +89,7 @@ const Player = ({ isWideScreen: isWideScreenProp }) => {
         { once: true }
       );
       setProgress(0);
+
     }
   };
 
@@ -140,6 +143,6 @@ const Player = ({ isWideScreen: isWideScreenProp }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Player;

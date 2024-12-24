@@ -15,3 +15,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button {
+  pointer-events: auto; /* Garante que o botão aceita cliques */
+  position: relative;
+  z-index: 10; /* Coloca o botão acima de outros elementos */
+}
