@@ -2,7 +2,7 @@
 :root {
     --opacity-level: 0.15;
     --opacity-level-hover: 0.05;
-    --opacity-level-iconograma: 0.7;
+    --opacity-level-iconograma: 0.1;
 
     --img-perfiliconograma: url('../assets/images/iconograma4white.png');
     --img-bloodscocktail: url('../assets/images/bloodscocktail_upscaled.png');
@@ -141,7 +141,6 @@
 .hero-key.key-white#perfiliconograma .key-image {
     background-image: linear-gradient(rgba(255, 255, 255, var( --opacity-level-iconograma)), rgba(255, 255, 255, var( --opacity-level-iconograma))),
         var(--img-perfiliconograma);
-        background-size: auto 180%;
         background-position: right;
         background-repeat: no-repeat;
     }
