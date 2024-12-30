@@ -60,8 +60,6 @@ function Keys({ onPlayPause }) {
       Clique aqui para tocar a playlist "Cocktail Nº1".
     </div>
   </div>
-  <div className="hero-key key-black"></div>
-
   <div id="strange" className="hero-key key-white" onClick={() => {
       onPlayPause('Strange Way To Know Me');
     }}>

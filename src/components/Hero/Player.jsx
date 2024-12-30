@@ -4,7 +4,7 @@ import './Player.css';
 const Player = forwardRef((props, ref) => {
   const innerWidth = 1440;
   const [playlist, setPlaylist] = useState(['Bloods Cocktail']);
-  const [currentPlaylistName, setCurrentPlaylistName] = useState('escolha uma playlist');
+  const [currentPlaylistName, setCurrentPlaylistName] = useState('');
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);

@@ -24,7 +24,6 @@ function Menu({ styleClass }) {
                     <span className="inline-block xl:hidden md:inline-block">|</span>
                     <div className="hidden md:hidden xl:block border-t border-gray-500 w-full my-2"></div>
                 </li>
-                <li><a href="#about" className="hover:underline">Sobre</a></li>
                 <li><a href="#contact" className="hover:underline">Contato</a></li>
             </ul>
         </nav>
