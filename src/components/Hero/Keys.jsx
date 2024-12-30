@@ -8,15 +8,19 @@ function Keys({ onPlayPause }) {
     <div className="key-image flex-grow"></div>
     <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
       <span>
-        <p>Sou músico, pianista, tecladista e compositor.
-          <br /> Também curto escrever — poesias, textos, ideias.</p>
+        <p>Prazer, sou tecladista e compositor.
+          <br /> Gosto de criar melodias, harmonias, arranjos</p>
+          <p> E também gosto de escrever letras — e poesias, textos.</p>
         <br />
-        <p>Mas espera,
+        <p>Mas acontece que
           <br /> eu não vivo de nada disso não,
-          <br /> nas horas "não de folga" sou programador,
-          <br /> e eu também faço sites <br /> e também fiz esse aqui
-          <br /> ...mas é mais pra divulgar minha arte do que qualquer outra coisa.</p>
-        <p>Bem-vindo!</p>
+        </p>
+        <p>
+          <br /> nas horas "não de folga" eu sou programador,
+          <br /> e daí eu faço sites <br /> e daí eu fiz esse aqui!
+        </p>
+        <br />
+        <p>Sejam bem-vindos!</p>
       </span>
     </div>
   </div>
@@ -25,13 +29,13 @@ function Keys({ onPlayPause }) {
   <div className="hero-key key-black">
     <div className="relative text-white text-center w-full top-1/2 transform -translate-y-1/2">
       <h2 className="hero-title text-4xl drop-shadow-sm font-bold mb-6 text-white limelight-regular">André Moura Passos</h2>
-      <h3 className="hero-title text-2xl drop-shadow-sm font-bold mb-6 text-white">Pianista e Compositor</h3>
+      <h3 className="hero-title text-xl drop-shadow-sm font-bold mb-6 text-white">Tecladista e Compositor</h3>
     </div>
   </div>
 
   {/* Sequência de teclas alternadas */}
   <div id="bloodscocktail" className="hero-key key-white" onClick={() => {
-      onPlayPause('Bloods Cocktail');
+      onPlayPause('Cocktail Nº1');
     }}>
     <div className="key-image"></div>
     <div className="hover-text hover-play text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
@@ -52,12 +56,14 @@ function Keys({ onPlayPause }) {
   </div>
   <div className="hero-key key-black"></div>
 
-  <div id="cocktailn1" className="hero-key key-white" onClick={() => {
-      onPlayPause('Cocktail Nº1');
+  <div id="singles" className="hero-key key-white" onClick={() => {
+      onPlayPause('Singles');
     }}>
     <div className="key-image"></div>
-    <div className="hover-text hover-play text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-      Clique aqui para tocar a playlist "Cocktail Nº1".
+    <div className="hover-text hover-play text w-1/3 absolute top-1/2 left-[60%]
+     transform -translate-y-1/2 p-5 rounded-lg text-center 
+     opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+      Clique aqui para tocar a playlist dos singles.
     </div>
   </div>
   <div id="strange" className="hero-key key-white" onClick={() => {

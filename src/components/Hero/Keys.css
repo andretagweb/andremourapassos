@@ -1,11 +1,77 @@
+:root {
+    --img-perfiliconograma: url('../../assets/images/iconograma4white.png');
+    --img-bloodscocktail: url('../../assets/images/bloodscocktail_upscaled.png');
+    --img-cocktailn2: url('../../assets/images/cocktail2.png');
+    --img-cocktailn1: url('../../assets/images/cocktail1.jpeg');
+    --img-singles: url('../../assets/images/singles.png');
+    --img-strange: url('../../assets/images/strange.png');
+    --img-suburban: url('../../assets/images/suburbanride.png');
+    --img-ttmm: url('../../assets/images/ttmm.png');
+    --img-cocktail22: url('../../assets/images/cocktail22.png');
+}
+
 .hero-key .hover-text {
     left: 65%;
     transform: translateY(-50%);
-    width: 30%;
 }
 
 #cocktailn2 .hover-text {
     left: 65%;
     transform: translateY(-50%);
-    width: 30%;
+}
+
+.hero-key.key-white#perfiliconograma .key-image {
+    background-image: linear-gradient(rgba(255, 255, 255, var( --opacity-level-iconograma)), rgba(255, 255, 255, var( --opacity-level-iconograma))),
+        var(--img-perfiliconograma);
+        background-position: right;
+        background-repeat: no-repeat;
+    }
+
+.hero-key.key-white#bloodscocktail .key-image {
+    background-position: 80% 35%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        var(--img-bloodscocktail);
+}
+
+.hero-key.key-white#cocktailn2 .key-image {
+    background-position: 30% 35%;
+    background-size: 120%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        var(--img-cocktailn2);
+}
+
+.hero-key.key-white#cocktailn1 .key-image {
+    background-position: center;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        var(--img-cocktailn1);
+}
+
+.hero-key.key-white#singles .key-image {
+    background-position: 80% 35%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        var(--img-singles);
+}
+
+.hero-key.key-white#strange .key-image {
+    background-position: 70% 10%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        var(--img-strange);
+}
+
+.hero-key.key-white#suburban .key-image {
+    background-position: 80% 10%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        var(--img-suburban);
+}
+
+.hero-key.key-white#ttmm .key-image {
+    background-position: 80% 40%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        var(--img-ttmm);
+}
+
+.hero-key.key-white#cocktail22 .key-image {
+    background-position: 80% 40%;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
+        var(--img-cocktail22);
 }
