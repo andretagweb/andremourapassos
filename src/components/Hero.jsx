@@ -12,9 +12,12 @@ function Hero() {
   const playerRef = useRef(null); // Referência para o Player
 
   // Função para controlar o player via Keys.jsx
-  const handlePlayPauseFromKeys = () => {
+  const handlePlayPauseFromKeys = (playlist) => {
+    if(!playlist) {
+      playlist = 'Bloods Cocktail'
+    }
     if (playerRef.current) {
-      playerRef.current.handlePlayPause(); // Chama a função do Player
+      playerRef.current.handlePlayPause(playlist); // Chama a função do Player
     }
     
   };

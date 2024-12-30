@@ -117,7 +117,7 @@
   border-radius: 5px;
   height: 8px;
   width: 100%; /* Ajusta a largura da barra */
-  margin: 0 10px; /* Margem para separação */
+  margin: 15px 10px; /* Margem para separação */
   overflow: hidden;
   flex: 2; /* Permite que a barra de progresso ocupe mais espaço */
 }

@@ -55,29 +55,14 @@
     width: 100%;
 }
 
-.hero-key.key-white .hover-text {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    color: #000;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-    left: 55%; /* Centraliza horizontalmente no contêiner */
-    transform: translateY(-50%);
-    width: 30%;
-    will-change: opacity; /* Otimização */
-}
+
 
 /* Ícone de Play */
 .hero-key.key-white .hover-play::before {
     content: '';
     position: absolute;
     top: 50%; /* Centraliza no eixo vertical */
-    left: 90%; /* Centraliza no eixo horizontal */
+    left: 50%; /* Centraliza no eixo horizontal */
     transform: translate(-50%, -50%);
     opacity: 0.3;
     width: 0; /* Mantém o triângulo ajustável pelas bordas */

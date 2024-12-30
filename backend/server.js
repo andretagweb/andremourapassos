@@ -27,11 +27,36 @@ const playlist = files.map((file, index) => {
     title: formattedTitle,
     artist: 'Artista Desconhecido',
     url: `http://localhost:3001/assets/mp3/${file}`,
-  };
-});
-
+    };
+  });
 
   // Retorna a playlist como JSON
+  res.json(playlist);
+});
+
+app.get('/api/playlist/:playlistName', (req, res) => {
+  const { playlistName } = req.params;
+  const mp3FolderPath = path.join(__dirname, 'assets/mp3', playlistName);
+
+  if (!fs.existsSync(mp3FolderPath)) {
+    return res.status(404).json({ error: 'Playlist não encontrada' });
+  }
+
+  const files = fs.readdirSync(mp3FolderPath).filter(file => file.endsWith('.mp3'));
+
+  const playlist = files.map(file => {
+    const formattedTitle = file
+      .replace(/^\d+-/, '')
+      .replace(/-/g, ' ')
+      .replace(/\.mp3$/, '');
+
+    return {
+      title: formattedTitle,
+      artist: 'Artista Desconhecido',
+      url: `http://localhost:3001/assets/mp3/${playlistName}/${file}`,
+    };
+  });
+
   res.json(playlist);
 });
 
