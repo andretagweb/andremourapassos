@@ -146,6 +146,16 @@ const Player = forwardRef((props, ref) => {
     setProgress(0);
   };
 
+  const handleProgressBarClick = (event) => {
+    if (audioRef.current && audioRef.current.duration) {
+      const rect = event.target.getBoundingClientRect(); // Obtém o tamanho e posição da barra
+      const clickX = event.clientX - rect.left; // Posição do clique em relação à barra
+      const newTime = (clickX / rect.width) * audioRef.current.duration; // Calcula o novo tempo
+      audioRef.current.currentTime = newTime; // Atualiza o tempo atual
+      setProgress((newTime / audioRef.current.duration) * 100); // Atualiza a barra de progresso visualmente
+    }
+  };
+
   const decreaseVolume = () => {
     if (audioRef.current) {
       const newVolume = Math.max(0, audioRef.current.volume - 0.1);
@@ -189,6 +199,7 @@ const Player = forwardRef((props, ref) => {
         ref={audioRef}
         src={playlist[currentTrackIndex]?.url}
         onTimeUpdate={handleTimeUpdate}
+        onEnded={handleNextTrack}
       ></audio>
       <div className="controls xl:block xl:w-full  md:flex md:w-1/2">
       <div className="audio-controls">
@@ -203,7 +214,7 @@ const Player = forwardRef((props, ref) => {
         </div>
       </div>
       
-        <div className="progress-bar">
+        <div className="progress-bar"  onClick={handleProgressBarClick}>
           <div className="progress" style={{ width: `${progress}%` }}></div>
         </div>
         <div className="knobs">

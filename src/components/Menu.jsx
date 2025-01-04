@@ -2,7 +2,7 @@ function Menu({ styleClass }) {
     return (
         <nav className="main-menu">
             <ul className={`special-elite-regular text-gray-medium lg:text-ms md:text-sm sm:text-xs ${styleClass}`}>
-                <li><a href="#strange" className="hover:underline">Singles</a></li>
+                <li><a href="#singles" className="hover:underline">Singles</a></li>
                 <li>
                     <span className="inline-block xl:hidden md:inline-block">|</span>
                     <div className="hidden md:hidden xl:block border-t border-gray-500 w-full my-2"></div>

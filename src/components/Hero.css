@@ -113,3 +113,7 @@
     background: linear-gradient(to right, #131313 0%, #000 100%);
     color: white;
 }
+
+.hero-key.key-white:not(:has(+ .hero-key.key-black)) {
+    border-bottom: 1px solid #777777;
+}
