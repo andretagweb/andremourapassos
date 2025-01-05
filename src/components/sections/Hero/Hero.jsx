@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 
 import Menu from '../../common/Menu'
 import Contact from './Contact';
-import Player from './Player';
+import Player from '../Player/Index';
 import Keys from './Keys';
 
 import './Hero.css';

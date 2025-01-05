@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useImperativeHandle, forwardRef } from 'react';
-import './Player.css';
+import './Index.css';
 
 const Player = forwardRef((props, ref) => {
   const innerWidth = 1440;
