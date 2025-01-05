@@ -10,7 +10,7 @@ function Keys({ onPlayPause }) {
           <span>
             <p>Prazer, sou tecladista e compositor.
               <br /> Gosto de criar melodias, harmonias, arranjos</p>
-            <p> E também gosto de escrever letras <br/> — e poesias e textos.</p>
+            <p> E também gosto de escrever letras <br /> — e poesias e textos.</p>
             <br />
             <p>Mas acontece que
               <br /> eu não vivo de nada disso não,
@@ -45,7 +45,9 @@ function Keys({ onPlayPause }) {
           <p className="text-md text-gray-800">O primeiro EP, Cocktail Nº1, foi lançado em abril de 2023 e deu início ao projeto. Esse trabalho combina minhas principais influências em uma mistura de rock, pop e piano.</p>
         </div>
       </div>
-      <div className="hero-key key-black"></div>
+      <div className="hero-key key-black relative">
+        <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">Cocktail Nº1</div>
+      </div>
 
       <div id="cocktailn2" className="hero-key key-white" onClick={() => {
         onPlayPause('Cocktail Nº2');
@@ -55,8 +57,10 @@ function Keys({ onPlayPause }) {
           <p className="text-md text-gray-800">O segundo EP, Cocktail Nº2, foi lançado em dezembro de 2023, ampliando o caminho iniciado no primeiro trabalho. </p><br /><p>Com seis faixas, o EP apresenta novas ideias e sonoridades, marcando a evolução do projeto e consolidando sua identidade musical.</p>
         </div>
       </div>
-      <div className="hero-key key-black"></div>
-
+      <div className="hero-key key-black relative">
+        <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">Cocktail Nº2</div>
+      </div>
+      
       <div id="singles" className="hero-key key-white" onClick={() => {
         onPlayPause('Singles');
       }}>
@@ -76,8 +80,9 @@ function Keys({ onPlayPause }) {
           <p>Os dois últimos fazem parte do EP Cocktail Nº2, enquanto Sometimes Rock é um trabalho inédito que estará em um álbum a ser lançado em um futuro próximo</p>
         </div>
       </div>
-      <div className="hero-key key-black"></div>
-
+      <div className="hero-key key-black relative">
+        <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold  italic">Singles</div>
+      </div>
 
 
       <div id="ttmm" className="hero-key key-white" onClick={() => {
