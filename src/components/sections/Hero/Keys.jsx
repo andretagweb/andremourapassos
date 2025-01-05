@@ -4,7 +4,7 @@ function Keys({ onPlayPause }) {
   return (
     <div className="keys">
       {/* Perfil e introdução */}
-      <div id="perfiliconograma" className="hero-key key-white flex items-center">
+      <div id="perfiliconograma" className="hero-key key-natural key-white flex items-center">
         <div className="key-image flex-grow"></div>
         <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
           <span>
@@ -26,7 +26,7 @@ function Keys({ onPlayPause }) {
       </div>
 
       {/* Título principal */}
-      <div className="hero-key key-black">
+      <div className="hero-key key-accidental key-black">
         <div className="relative text-white text-center w-full top-1/2 transform -translate-y-1/2">
           <h2 className="hero-title text-4xl drop-shadow-sm font-bold mb-6 text-white limelight-regular">André Moura Passos</h2>
           <h3 className="hero-title text-xl drop-shadow-sm font-bold mb-6 text-white">Tecladista e Compositor</h3>
@@ -34,7 +34,7 @@ function Keys({ onPlayPause }) {
       </div>
 
       {/* Sequência de teclas alternadas */}
-      <div id="bloodscocktail" className="hero-key key-white" onClick={() => {
+      <div id="bloodscocktail" className="hero-key key-natural key-white" onClick={() => {
         onPlayPause('Cocktail Nº1');
       }}>
         <div className="key-image"></div>
@@ -45,11 +45,11 @@ function Keys({ onPlayPause }) {
           <p className="text-md text-gray-800">O primeiro EP, Cocktail Nº1, foi lançado em abril de 2023 e deu início ao projeto. Esse trabalho combina minhas principais influências em uma mistura de rock, pop e piano.</p>
         </div>
       </div>
-      <div className="hero-key key-black relative">
+      <div className="hero-key key-accidental key-black relative">
         <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">Cocktail Nº1</div>
       </div>
 
-      <div id="cocktailn2" className="hero-key key-white" onClick={() => {
+      <div id="cocktailn2" className="hero-key key-natural key-white" onClick={() => {
         onPlayPause('Cocktail Nº2');
       }}>
         <div className="key-image"></div>
@@ -57,11 +57,11 @@ function Keys({ onPlayPause }) {
           <p className="text-md text-gray-800">O segundo EP, Cocktail Nº2, foi lançado em dezembro de 2023, ampliando o caminho iniciado no primeiro trabalho. </p><br /><p>Com seis faixas, o EP apresenta novas ideias e sonoridades, marcando a evolução do projeto e consolidando sua identidade musical.</p>
         </div>
       </div>
-      <div className="hero-key key-black relative">
+      <div className="hero-key key-accidental key-black relative">
         <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">Cocktail Nº2</div>
       </div>
       
-      <div id="singles" className="hero-key key-white" onClick={() => {
+      <div id="singles" className="hero-key key-natural key-white" onClick={() => {
         onPlayPause('Singles');
       }}>
         <div className="key-image"></div>
@@ -74,18 +74,18 @@ function Keys({ onPlayPause }) {
         </div>
       </div>
 
-      <div id="strange" className="hero-key key-white">
+      <div id="strange" className="hero-key key-natural key-white">
         <div className="key-image"></div>
         <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
           <p>Os dois últimos fazem parte do EP Cocktail Nº2, enquanto Sometimes Rock é um trabalho inédito que estará em um álbum a ser lançado em um futuro próximo</p>
         </div>
       </div>
-      <div className="hero-key key-black relative">
+      <div className="hero-key key-accidental key-black relative">
         <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold  italic">Singles</div>
       </div>
 
 
-      <div id="ttmm" className="hero-key key-white" onClick={() => {
+      <div id="ttmm" className="hero-key key-natural key-white" onClick={() => {
         onPlayPause('TTMM');
       }}>
         <div className="key-image"></div>
@@ -96,9 +96,9 @@ function Keys({ onPlayPause }) {
         </div>
       </div>
 
-      <div className="hero-key key-black"></div>
+      <div className="hero-key key-accidental key-black"></div>
 
-      <div id="suburban" className="hero-key key-white">
+      <div id="suburban" className="hero-key key-natural key-white">
         <div className="key-image"></div>
         <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
           <p>Campbell observou que histórias de diversas culturas seguem uma estrutura similar: o herói é chamado para uma aventura, enfrenta desafios, passa por transformações e retorna com novos aprendizados. Essa narrativa reflete experiências humanas universais de superação e crescimento.</p>
@@ -107,6 +107,34 @@ function Keys({ onPlayPause }) {
         </div>
       </div>
 
+
+      <div className="hero-key key-natural key-black">
+        <div className="key-image"></div>
+        <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+          <p>Poesias</p>
+          <br />
+        </div>
+      </div>
+
+      <div className="hero-key key-accidental key-white"></div>
+
+      <div className="hero-key key-natural key-black">
+        <div className="key-image"></div>
+        <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+          <p>Poesias</p>
+          <br />
+        </div>
+      </div>
+
+      <div className="hero-key key-accidental key-white"></div>
+
+      <div className="hero-key key-natural key-black">
+        <div className="key-image"></div>
+        <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+          <p>Poesias</p>
+          <br />
+        </div>
+      </div>
 
     </div>
 
