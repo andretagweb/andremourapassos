@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 
-import Menu from './Menu';
-import Contact from './Hero/Contact';
-import Player from './Hero/Player';
-import Keys from './Hero/Keys';
+import Menu from '../../common/Menu'
+import Contact from './Contact';
+import Player from './Player';
+import Keys from './Keys';
 
 import './Hero.css';
 

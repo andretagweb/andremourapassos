@@ -1,13 +1,13 @@
 :root {
-    --img-perfiliconograma: url('../../assets/images/iconograma4white.png');
-    --img-bloodscocktail: url('../../assets/images/bloodscocktail_upscaled.png');
-    --img-cocktailn2: url('../../assets/images/cocktail2.png');
-    --img-cocktailn1: url('../../assets/images/cocktail1.jpeg');
-    --img-singles: url('../../assets/images/singles.png');
-    --img-strange: url('../../assets/images/strange.png');
-    --img-suburban: url('../../assets/images/suburbanride.png');
-    --img-ttmm: url('../../assets/images/ttmm.png');
-    --img-cocktail22: url('../../assets/images/cocktail22.png');
+    --img-perfiliconograma: url('../../../assets/images/hero/iconograma4white.png');
+    --img-bloodscocktail: url('../../../assets/images/hero/bloodscocktail_upscaled.png');
+    --img-cocktailn2: url('../../../assets/images/hero/cocktail2.png');
+    --img-cocktailn1: url('../../../assets/images/hero/cocktail1.jpeg');
+    --img-singles: url('../../../assets/images/hero/singles.png');
+    --img-strange: url('../../../assets/images/hero/strange.png');
+    --img-suburban: url('../../../assets/images/hero/suburbanride.png');
+    --img-ttmm: url('../../../assets/images/hero/ttmm.png');
+    --img-cocktail22: url('../../../assets/images/hero/cocktail22.png');
 }
 
 .hero-key .hover-text {
