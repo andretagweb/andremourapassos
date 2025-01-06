@@ -3,6 +3,8 @@
     position: relative;
     width: 100%;
     overflow: hidden; /* Oculta conteúdo que ultrapassa os limites */
+    pointer-events: auto; /* Permite interações */
+    z-index: 10; /* Certifique-se de que está acima do hero-key */
   }
   
   /* Carrossel de vídeos */
@@ -28,20 +30,32 @@
   /* Estilos de cada thumbnail */
   .thumbnail {
     min-width: 200px; /* Define a largura mínima */
-    height: 120px; /* Define a altura fixa */
+    height: auto; /* Ajusta a altura dinamicamente */
     flex-shrink: 0; /* Impede que os itens encolham */
-    border-radius: 8px; /* Bordas arredondadas */
-    overflow: hidden; /* Oculta conteúdo que ultrapassa os limites */
-    background-color: #ccc; /* Cor de fundo padrão */
-    cursor: pointer;
+    cursor: pointer; /* Mostra o cursor de clique */
+    text-align: center; /* Centraliza o texto */
+    pointer-events: auto; /* Permite interações */
+    position: relative; /* Garante que está acima do hero-key */
+    z-index: 20; /* Prioriza cliques no thumbnail */
   }
   
-  /* Imagem dentro de cada thumbnail */
   .thumbnail img {
     width: 100%; /* Preenche toda a largura do contêiner */
-    height: 100%; /* Preenche toda a altura do contêiner */
+    height: 120px; /* Define uma altura fixa para as imagens */
     object-fit: cover; /* Garante que a imagem seja ajustada corretamente */
-    border-radius: 8px;
+    border-radius: 8px; /* Bordas arredondadas */
+    margin-bottom: 0.5rem; /* Espaço entre a imagem e o título */
+  }
+  
+  /* Título do vídeo */
+  .thumbnail p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adiciona reticências caso o texto seja muito longo */
+    white-space: nowrap;
   }
   
   /* Botões de navegação */
@@ -52,8 +66,8 @@
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);
-    z-index: 10; /* Certifica-se de que os botões fiquem acima do conteúdo */
-    pointer-events: none; /* Permite interação apenas nos botões */
+    z-index: 10; /* Certifique-se de que os botões fiquem acima do conteúdo */
+    pointer-events: auto; /* Permite interação nos botões */
   }
   
   .prev-button, .next-button {
@@ -67,7 +81,6 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    pointer-events: auto; /* Habilita a interação */
   }
   
   .prev-button:hover, .next-button:hover {
@@ -75,8 +88,8 @@
   }
   
   /* Modal para exibição de vídeos */
-  .modal {
-    position: absolute;
+.modal {
+    position: fixed; /* Garante que o modal fique fixo na tela */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -86,16 +99,18 @@
     max-width: 90%;
     max-height: 90%;
     overflow: auto;
+    z-index: 9999; /* Coloca o modal acima de todos os elementos */
   }
   
   /* Overlay para o modal */
   .overlay {
-    position: fixed;
+    position: fixed; /* Cobre toda a tela */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.75); /* Fundo escuro semi-transparente */
+    z-index: 9998; /* Certifique-se de que o overlay esteja abaixo do modal */
   }
   
   /* Botão de fechar o modal */
@@ -107,5 +122,7 @@
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
+    z-index: 10000; /* Certifique-se de que o botão esteja acima de tudo */
   }
+  
   
