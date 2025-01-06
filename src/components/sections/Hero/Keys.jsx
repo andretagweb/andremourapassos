@@ -1,6 +1,33 @@
 import './Keys.css'
+import VideoCarousel from "./VideoCarousel";
 
 function Keys({ playPlaylist }) {
+
+  const videos = [
+    {
+      id: "8nlH2Y1vqkg",
+      title: "A Little To Be Happy",
+    },
+    {
+      id: "eqN9ms6mxuY",
+      title: "Both",
+    },
+    {
+      id: "NGJQh9Ze9dE",
+      title: "The Same",
+    },
+    {
+      id: "RjywlJD6nRo",
+      title: "You Give No Time",
+    },
+    {
+      id: "oh-BPTLkMAQ",
+      title: "Strange Way To Know Me",
+    },
+  ];
+  
+  
+
   return (
     <div className="keys">
       {/* Perfil e introdução */}
@@ -60,7 +87,7 @@ function Keys({ playPlaylist }) {
       <div className="hero-key key-accidental key-black relative">
         <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">Cocktail Nº2</div>
       </div>
-      
+
       <div id="singles" className="hero-key key-natural key-white" onClick={() => {
         playPlaylist('Singles');
       }}>
@@ -111,12 +138,14 @@ function Keys({ playPlaylist }) {
       <div className="hero-key key-natural key-black">
         <div className="key-image"></div>
         <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-          <p>Poesias</p>
+          <VideoCarousel videos={videos} />
           <br />
         </div>
       </div>
 
-      <div className="hero-key key-accidental key-white"></div>
+      <div className="hero-key key-accidental key-white">
+        <div className="hover-text absolute bottom-2 right-2 text-black opacity-0 text-xl font-semibold italic">Vídeos</div>
+      </div>
 
       <div className="hero-key key-natural key-black">
         <div className="key-image"></div>

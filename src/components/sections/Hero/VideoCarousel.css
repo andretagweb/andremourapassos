@@ -1,0 +1,111 @@
+/* Contêiner principal do carrossel */
+.video-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Oculta conteúdo que ultrapassa os limites */
+  }
+  
+  /* Carrossel de vídeos */
+  .video-carousel {
+    display: flex; /* Organiza os itens em linha */
+    flex-direction: row; /* Certifica-se de que os itens fiquem lado a lado */
+    overflow-x: auto; /* Ativa a rolagem horizontal */
+    gap: 1rem; /* Espaço entre os vídeos */
+    padding: 1rem;
+    scroll-behavior: smooth; /* Suaviza o comportamento da rolagem */
+  }
+  
+  /* Esconde a barra de rolagem */
+  .video-carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Edge */
+  }
+  
+  .video-carousel {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  /* Estilos de cada thumbnail */
+  .thumbnail {
+    min-width: 200px; /* Define a largura mínima */
+    height: 120px; /* Define a altura fixa */
+    flex-shrink: 0; /* Impede que os itens encolham */
+    border-radius: 8px; /* Bordas arredondadas */
+    overflow: hidden; /* Oculta conteúdo que ultrapassa os limites */
+    background-color: #ccc; /* Cor de fundo padrão */
+    cursor: pointer;
+  }
+  
+  /* Imagem dentro de cada thumbnail */
+  .thumbnail img {
+    width: 100%; /* Preenche toda a largura do contêiner */
+    height: 100%; /* Preenche toda a altura do contêiner */
+    object-fit: cover; /* Garante que a imagem seja ajustada corretamente */
+    border-radius: 8px;
+  }
+  
+  /* Botões de navegação */
+  .navigation-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10; /* Certifica-se de que os botões fiquem acima do conteúdo */
+    pointer-events: none; /* Permite interação apenas nos botões */
+  }
+  
+  .prev-button, .next-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto; /* Habilita a interação */
+  }
+  
+  .prev-button:hover, .next-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Modal para exibição de vídeos */
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+  }
+  
+  /* Overlay para o modal */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  
+  /* Botão de fechar o modal */
+  .close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
