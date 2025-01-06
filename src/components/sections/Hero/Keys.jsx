@@ -1,6 +1,6 @@
 import './Keys.css'
 
-function Keys({ onPlayPause }) {
+function Keys({ playPlaylist }) {
   return (
     <div className="keys">
       {/* Perfil e introdução */}
@@ -35,7 +35,7 @@ function Keys({ onPlayPause }) {
 
       {/* Sequência de teclas alternadas */}
       <div id="bloodscocktail" className="hero-key key-natural key-white" onClick={() => {
-        onPlayPause('Cocktail Nº1');
+        playPlaylist('Cocktail Nº1');
       }}>
         <div className="key-image"></div>
         <div className="hover-text hover-play text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
@@ -50,7 +50,7 @@ function Keys({ onPlayPause }) {
       </div>
 
       <div id="cocktailn2" className="hero-key key-natural key-white" onClick={() => {
-        onPlayPause('Cocktail Nº2');
+        playPlaylist('Cocktail Nº2');
       }}>
         <div className="key-image"></div>
         <div className="hover-text hover-play text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
@@ -62,7 +62,7 @@ function Keys({ onPlayPause }) {
       </div>
       
       <div id="singles" className="hero-key key-natural key-white" onClick={() => {
-        onPlayPause('Singles');
+        playPlaylist('Singles');
       }}>
         <div className="key-image"></div>
         <div className="hover-text hover-play text w-1/3 absolute top-1/2 left-[60%]
@@ -86,7 +86,7 @@ function Keys({ onPlayPause }) {
 
 
       <div id="ttmm" className="hero-key key-natural key-white" onClick={() => {
-        onPlayPause('TTMM');
+        playPlaylist('TTMM');
       }}>
         <div className="key-image"></div>
         <div className="hover-text hover-play text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
@@ -135,10 +135,7 @@ function Keys({ onPlayPause }) {
           <br />
         </div>
       </div>
-
     </div>
-
-
   );
 }
 

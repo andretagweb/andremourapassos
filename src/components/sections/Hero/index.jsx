@@ -12,7 +12,7 @@ function Hero() {
   const playerRef = useRef(null); // Referência para o Player
 
   // Função para controlar o player via Keys.jsx
-  const handlePlayPauseFromKeys = (playlist) => {
+  const playPlaylist = (playlist) => {
     if(!playlist) {
       playlist = 'Bloods Cocktail'
     }
@@ -32,7 +32,7 @@ function Hero() {
           <div className="key-redline flex-[1] bg-red-500 shadow-md">
           </div>
           <div className="keys-group flex-[80]">
-            <Keys onPlayPause={handlePlayPauseFromKeys} />
+            <Keys playPlaylist={playPlaylist} />
             <Contact />
           </div>
         </div>
