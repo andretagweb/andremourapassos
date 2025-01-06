@@ -33,21 +33,23 @@ function Keys({ playPlaylist }) {
       {/* Perfil e introdução */}
       <div id="perfiliconograma" className="hero-key key-natural key-white flex items-center">
         <div className="key-image flex-grow"></div>
-        <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+        <div className="hover-text text text-base w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
           <span>
             <p>Prazer, sou tecladista e compositor.
               <br /> Gosto de criar melodias, harmonias, arranjos</p>
             <p> E também gosto de escrever letras <br /> — e poesias e textos.</p>
             <br />
-            <p>Mas acontece que
+            <p className='text-xs'> Mas acontece que
               <br /> eu não vivo de nada disso não,
             </p>
-            <p>
+            <p className='text-sm'>
               <br /> é que nas horas "não de folga" <br /> eu sou programador,
-              <br /> e daí eu faço sites <br /> e daí eu fiz este aqui!
+            </p>
+            <p className='text-base'>
+              <br /> e daí eu faço sites, e daí eu fiz este aqui!
             </p>
             <br />
-            <p>Sejam bem-vindos!</p>
+            <p className='text-xl text-gray-medium'>Sejam bem-vindos!</p>
           </span>
         </div>
       </div>
