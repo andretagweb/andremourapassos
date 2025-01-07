@@ -6,7 +6,6 @@ const VideoCarousel = ({ videos }) => {
 
     const handleThumbnailClick = (videoId) => {
         const videoUrl = `https://www.youtube.com/embed/${videoId}`;
-        console.log('video clicado')
         setSelectedVideo(videoUrl);
     };
 
@@ -23,16 +22,16 @@ const VideoCarousel = ({ videos }) => {
     return (
         <div className="video-carousel-container relative w-full">
             {/* Botões de Navegação */}
-            <div className="navigation-buttons flex justify-between absolute inset-0">
+            <div className="navigation-buttons">
                 <button
                     onClick={() => scrollCarousel(-200)}
-                    className="prev-button bg-gray-800 text-white rounded-full p-2 m-2"
+                    className="prev-button"
                 >
                     ◀
                 </button>
                 <button
                     onClick={() => scrollCarousel(200)}
-                    className="next-button bg-gray-800 text-white rounded-full p-2 m-2"
+                    className="next-button"
                 >
                     ▶
                 </button>

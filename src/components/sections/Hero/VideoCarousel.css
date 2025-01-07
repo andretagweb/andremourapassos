@@ -58,19 +58,20 @@
     white-space: nowrap;
   }
   
-  /* Botões de navegação */
-  .navigation-buttons {
+ /* Botões de navegação */
+.navigation-buttons {
     position: absolute;
     top: 50%;
     width: 100%;
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);
-    z-index: 10; /* Certifique-se de que os botões fiquem acima do conteúdo */
-    pointer-events: auto; /* Permite interação nos botões */
+    z-index: 9999; /* Certifique-se de que os botões fiquem acima de outros elementos */
+    pointer-events: none; /* Desabilita interação fora dos botões */
   }
   
-  .prev-button, .next-button {
+  .prev-button,
+  .next-button {
     width: 40px;
     height: 40px;
     display: flex;
@@ -81,11 +82,15 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
+    pointer-events: auto; /* Permite interação nos botões */
+    z-index: 10000; /* Certifique-se de que o botão está acima de tudo */
   }
   
-  .prev-button:hover, .next-button:hover {
+  .prev-button:hover,
+  .next-button:hover {
     background-color: rgba(0, 0, 0, 0.8);
   }
+  
   
   /* Modal para exibição de vídeos */
 .modal {
