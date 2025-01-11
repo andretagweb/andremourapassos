@@ -9,8 +9,12 @@ function Keys({ playPlaylist }) {
       title: "A Little To Be Happy",
     },
     {
-      id: "eqN9ms6mxuY",
-      title: "Both",
+      id: "zcZhTssMr84",
+      title: "So Close And So Far Away",
+    },
+    {
+      id: "U66faaJw0jw",
+      title: "Solo Through the Portal",
     },
     {
       id: "NGJQh9Ze9dE",
@@ -24,9 +28,43 @@ function Keys({ playPlaylist }) {
       id: "oh-BPTLkMAQ",
       title: "Strange Way To Know Me",
     },
+    {
+      id: "IV8tNKWW0pw",
+      title: "Half Liar",
+    },
+    {
+      id: "bxcVte4ufA0",
+      title: "Renew the Rising",
+    },
+    {
+      id: "jSphWYMGMo0",
+      title: "Tasty Melody #21",
+    },
+    {
+      id: "BpdLDzotYnw",
+      title: "Tasty Melody",
+    },
+    {
+      id: "VPeunTpwITs",
+      title: "Ordeal",
+    },
+    {
+      id: "zapqWMJi14E",
+      title: "Half Liar",
+    },
+    {
+      id: "-PUYX6IB51Q",
+      title: "Everyday World",
+    },
+    {
+      id: "eqN9ms6mxuY",
+      title: "Both",
+    },
+    {
+      id: "W558z0tjqW0",
+      title: "Return with the Cocktail",
+    },
   ];
-  
-  
 
   return (
     <div className="keys">
@@ -49,7 +87,8 @@ function Keys({ playPlaylist }) {
               <br /> e daí eu faço sites, e daí eu fiz este aqui!
             </p>
             <br />
-            <p className='text-xl text-gray-medium'>Sejam bem-vindos!</p>
+            <p className="text-md font-bold opacity-1 transition-opacity duration-[20000ms]">
+            Sejam bem-vindos!</p>
           </span>
         </div>
       </div>
@@ -58,7 +97,7 @@ function Keys({ playPlaylist }) {
       <div className="hero-key key-accidental key-black">
         <div className="relative text-white text-center w-full top-1/2 transform -translate-y-1/2">
           <h2 className="hero-title text-4xl drop-shadow-sm font-bold mb-6 text-white limelight-regular">André Moura Passos</h2>
-          <h3 className="hero-title text-xl drop-shadow-sm font-bold mb-6 text-white">Tecladista e Compositor</h3>
+          <h3 className="hero-title text-xl drop-shadow-sm font-bold mb-6 text-white">Tecladista, <span className='text-gray-medium font-light'>Web Master,</span> Compositor</h3>
         </div>
       </div>
 
@@ -110,7 +149,7 @@ function Keys({ playPlaylist }) {
         </div>
       </div>
       <div className="hero-key key-accidental key-black relative">
-        <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold  italic">Singles</div>
+        <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">Singles</div>
       </div>
 
 
@@ -125,7 +164,9 @@ function Keys({ playPlaylist }) {
         </div>
       </div>
 
-      <div className="hero-key key-accidental key-black"></div>
+      <div className="hero-key key-accidental key-black">
+        <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">Tasty Theme for Mono Myths</div>
+      </div>
 
       <div id="suburban" className="hero-key key-natural key-white">
         <div className="key-image"></div>
@@ -136,10 +177,9 @@ function Keys({ playPlaylist }) {
         </div>
       </div>
 
-
       <div className="hero-key key-natural key-black">
         <div className="key-image"></div>
-        <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+        <div className="key-videos hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
           <VideoCarousel videos={videos} />
           <br />
         </div>

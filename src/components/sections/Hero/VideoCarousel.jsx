@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+import ReactDOM from "react-dom";
 import './VideoCarousel.css';
 
 const VideoCarousel = ({ videos }) => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
-  const carouselRef = useRef(null); // Para acessar o carrossel diretamente
+  const carouselRef = useRef(null);
 
   const handleThumbnailClick = (videoId) => {
     const videoUrl = `https://www.youtube.com/embed/${videoId}`;
@@ -29,7 +30,7 @@ const VideoCarousel = ({ videos }) => {
   };
 
   useEffect(() => {
-    updateButtonStates(); // Atualiza os estados na inicialização
+    updateButtonStates();
   }, []);
 
   return (
@@ -55,8 +56,8 @@ const VideoCarousel = ({ videos }) => {
       {/* Carrossel de Vídeos */}
       <div
         className="video-carousel flex overflow-x-auto scrollbar-hide space-x-4"
-        ref={carouselRef} // Referência ao carrossel
-        onScroll={updateButtonStates} // Atualiza estados ao rolar manualmente
+        ref={carouselRef}
+        onScroll={updateButtonStates}
       >
         {videos.map((video, index) => (
           <div
@@ -69,35 +70,34 @@ const VideoCarousel = ({ videos }) => {
               alt={`Thumbnail ${index}`}
               className="rounded-lg"
             />
-            <p>{video.title}</p> {/* Exibe o título do vídeo */}
+            <p>{video.title}</p>
           </div>
         ))}
       </div>
 
       {/* Popup de Vídeo */}
-      {selectedVideo && (
-        <div>
-          {/* Overlay */}
-          <div className="overlay" onClick={closePopup}></div>
-          {/* Modal */}
-          <div className="modal">
-            <button
-              className="close-button"
-              onClick={closePopup}
-            >
-              X
-            </button>
-            <iframe
-              src={`${selectedVideo}?autoplay=1`}
-              title="YouTube Video"
-              className="w-[600px] h-[340px]"
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      )}
+      {selectedVideo &&
+        ReactDOM.createPortal(
+          <div>
+            {/* Overlay */}
+            <div className="overlay" onClick={closePopup}></div>
+            {/* Modal */}
+            <div className="modal">
+              <button className="close-button" onClick={closePopup}>
+                X
+              </button>
+              <iframe
+                src={`${selectedVideo}?autoplay=1`}
+                title="YouTube Video"
+                className="w-[600px] h-[340px]"
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>,
+          document.body // Adiciona o modal diretamente ao body
+        )}
     </div>
   );
 };

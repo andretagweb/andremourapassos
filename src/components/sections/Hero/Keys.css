@@ -19,6 +19,10 @@
     --color-hoverPlay: #656261;
 }
 
+.hover-text {
+    z-index: 2;
+}
+
 .key-natural .hover-text {
     left: 65%;
     transform: translateY(-50%);
@@ -26,12 +30,8 @@
 
 .key-accidental .hover-text {
     left: auto;
-    margin-right: 30px;
-}
-
-#cocktailn2 .hover-text {
-    left: 65%;
-    transform: translateY(-50%);
+    margin-right: 35px;
+    margin-bottom: 10px;
 }
 
 .key-natural {
@@ -91,8 +91,7 @@
 }
 
 .key-natural:hover + .key-accidental .hover-text  {
-    transition: opacity 4s ease-in-out;
-
+    transition: opacity 3s ease-in-out;
 }
 
 .key-natural.key-white:active {
@@ -170,7 +169,13 @@
         var(--img-perfiliconograma);
         background-position: right;
         background-repeat: no-repeat;
-    }
+}
+
+.key-videos.hover-text{
+    left: 10%;
+    width: 80%;
+    top: 40%;
+}
 
 .key-natural#bloodscocktail .key-image {
     background-position: 80% 35%;
