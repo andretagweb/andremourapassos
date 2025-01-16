@@ -2,69 +2,78 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const { graphqlHTTP } = require('express-graphql');
+const { buildSchema } = require('graphql');
 
 const app = express();
 
-// Permitir requisições de outros domínios
 app.use(cors());
 
-// Rota para listar os arquivos da pasta `mp3`
-app.get('/api/playlist', (req, res) => {
-  const mp3FolderPath = path.join(__dirname, 'assets/mp3'); // Pasta onde estão os arquivos
-
-  // Lê os arquivos da pasta
-  const files = fs.readdirSync(mp3FolderPath).filter(file => file.endsWith('.mp3'));
-
-  // Cria uma lista de músicas
-const playlist = files.map((file, index) => {
-  // Remove números, hifens e a extensão .mp3
-  const formattedTitle = file
-    .replace(/^\d+-/, '') // Remove números e o primeiro hífen
-    .replace(/-/g, ' ')  // Substitui os hifens restantes por espaços
-    .replace(/\.mp3$/, ''); // Remove a extensão .mp3
-
-  return {
-    title: formattedTitle,
-    artist: 'Artista Desconhecido',
-    url: `http://localhost:3001/assets/mp3/${file}`,
-    };
-  });
-
-  // Retorna a playlist como JSON
-  res.json(playlist);
-});
-
-app.get('/api/playlist/:playlistName', (req, res) => {
-  const { playlistName } = req.params;
-  const mp3FolderPath = path.join(__dirname, 'assets/mp3', playlistName);
-
-  if (!fs.existsSync(mp3FolderPath)) {
-    return res.status(404).json({ error: 'Playlist não encontrada' });
+const generatePlaylist = (folderPath, baseUrl) => {
+  if (!fs.existsSync(folderPath)) {
+    return null;
   }
 
-  const files = fs.readdirSync(mp3FolderPath).filter(file => file.endsWith('.mp3'));
+  try {
+    const files = fs.readdirSync(folderPath).filter(file => file.endsWith('.mp3'));
 
-  const playlist = files.map(file => {
-    const formattedTitle = file
-      .replace(/^\d+-/, '')
-      .replace(/-/g, ' ')
-      .replace(/\.mp3$/, '');
+    return files.map(file => {
+      const formattedTitle = file
+        .replace(/^[0-9]+-/, '')
+        .replace(/-/g, ' ')
+        .replace(/\.mp3$/, '');
 
-    return {
-      title: formattedTitle,
-      artist: 'Artista Desconhecido',
-      url: `http://localhost:3001/assets/mp3/${playlistName}/${file}`,
-    };
-  });
+      return {
+        title: formattedTitle,
+        artist: 'Artista Desconhecido',
+        url: `${baseUrl}/${file}`,
+      };
+    });
+  } catch (error) {
+    console.error(`Erro ao gerar playlist: ${error.message}`);
+    return null;
+  }
+};
 
-  res.json(playlist);
-});
+const PORT = 3001;
 
-// Servir os arquivos estáticos na pasta `assets/mp3`
+const schema = buildSchema(`
+  type Track {
+    title: String
+    artist: String
+    url: String
+  }
+
+  type Query {
+    playlist(playlistName: String): [Track]
+  }
+`);
+
+const root = {
+  playlist: ({ playlistName }) => {
+    const folderPath = playlistName
+      ? path.join(__dirname, 'assets/mp3', playlistName)
+      : path.join(__dirname, 'assets/mp3');
+
+    const baseUrl = playlistName
+      ? `http://localhost:${PORT}/assets/mp3/${playlistName}`
+      : `http://localhost:${PORT}/assets/mp3`;
+
+    return generatePlaylist(folderPath, baseUrl) || [];
+  },
+};
+
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+  })
+);
+
 app.use('/assets/mp3', express.static(path.join(__dirname, 'assets/mp3')));
 
-// Inicia o servidor
-const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Servidor GraphQL rodando na porta ${PORT}`);
 });

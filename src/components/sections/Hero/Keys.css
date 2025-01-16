@@ -35,6 +35,8 @@
 }
 
 .key-natural {
+    height: 400px;
+    width: 100%;
     position: relative;
     border-top: 2px solid var(--color-keyBorders);
     border-bottom: 6px solid var(--color-keyBorders);
@@ -61,7 +63,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     pointer-events: auto; /* Permite interação */
-    height: 400px;
+    height: 100%;
     width: 100%;
     cursor: pointer;
 }
@@ -224,4 +226,16 @@
     background-position: 80% 40%;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         var(--img-cocktail22);
+}
+
+
+@media (max-width: 640px) {
+    .key-natural {
+        height: 180px;
+    }
+    .key-accidental {
+        width: 80%;
+        height: 116px;
+        margin-top: -63px;
+    }
 }

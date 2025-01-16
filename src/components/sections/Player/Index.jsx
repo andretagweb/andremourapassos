@@ -67,23 +67,33 @@ const Player = forwardRef((props, ref) => {
     // Caso contrário, carregar nova playlist
     console.log(`Carregando músicas da playlist: ${playlistName}`);
 
-    fetch(`http://localhost:3001/api/playlist/${playlistName}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Playlist não encontrada no servidor.');
-        }
-        return response.json();
-      })
+
+    const query = `
+  query GetPlaylist($playlistName: String) {
+    playlist(playlistName: $playlistName) {
+      title
+      artist
+      url
+    }
+  }
+`;
+
+    fetch('http://localhost:3001/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query, variables: { playlistName } }),
+    })
+      .then(response => response.json())
       .then(data => {
-        setPlaylist(data);
+        const playlist = data.data.playlist;
+        setPlaylist(playlist);
         setCurrentTrackIndex(0);
 
         if (audioRef.current) {
-          audioRef.current.pause(); // Pausa qualquer reprodução anterior
-          audioRef.current.src = data[0]?.url || '';
-          audioRef.current.load(); // Garante que o áudio esteja carregado antes de tentar reproduzir
+          audioRef.current.pause();
+          audioRef.current.src = playlist[0]?.url || '';
+          audioRef.current.load();
 
-          // Apenas reproduzir após o evento "loadeddata"
           audioRef.current.addEventListener(
             'loadeddata',
             () => {
@@ -98,9 +108,10 @@ const Player = forwardRef((props, ref) => {
           );
         }
 
-        setCurrentPlaylistName(playlistName); // Atualiza o nome da playlist atual
+        setCurrentPlaylistName(playlistName);
       })
       .catch(err => console.error('Erro ao carregar playlist:', err));
+
   };
 
 
@@ -180,7 +191,6 @@ const Player = forwardRef((props, ref) => {
       <div
         className={`flex ${isWideScreen ? 'flex-col items-center justify-center' : 'flex-row items-center justify-start space-x-4'}`}
       >
-        {console.log(playlist.length)}
         {playlist.length === 0 ? (
           // Aviso quando não há playlist ou música tocando
           <p className="text-gray-medium text-center text-sm">
@@ -202,19 +212,19 @@ const Player = forwardRef((props, ref) => {
         onEnded={handleNextTrack}
       ></audio>
       <div className="controls xl:block xl:w-full  md:flex md:w-1/2">
-      <div className="audio-controls">
-        <div className="button" onClick={handlePrevTrack}>
-          <span>&#x23EE;</span>
+        <div className="audio-controls">
+          <div className="button" onClick={handlePrevTrack}>
+            <span>&#x23EE;</span>
+          </div>
+          <div className="button" onClick={() => handlePlayPause(currentPlaylistName)}>
+            <span>{isPlaying ? '||' : String.fromCharCode(9654)}</span>
+          </div>
+          <div className="button" onClick={handleNextTrack}>
+            <span>&#x23ED;</span>
+          </div>
         </div>
-        <div className="button" onClick={() => handlePlayPause(currentPlaylistName)}>
-          <span>{isPlaying ? '||' : String.fromCharCode(9654)}</span>
-        </div>
-        <div className="button" onClick={handleNextTrack}>
-          <span>&#x23ED;</span>
-        </div>
-      </div>
-      
-        <div className="progress-bar"  onClick={handleProgressBarClick}>
+
+        <div className="progress-bar" onClick={handleProgressBarClick}>
           <div className="progress" style={{ width: `${progress}%` }}></div>
         </div>
         <div className="knobs">
