@@ -33,11 +33,10 @@ function Keys({ playPlaylist }) {
 
       {/* Título principal */}
       <div className="hero-key key-accidental key-black">
-        <div className="relative text-white text-center w-full top-1/2 transform -translate-y-1/2">
-          <h2 className="hero-title sm:text-2xl md:text-3xl lg:text-4xl drop-shadow-sm font-bold lg:mb-6 text-white limelight-regular">André Moura Passos</h2>
-          <h3 className="text-xs md:text-lg lg:text-1xl drop-shadow-sm font-bold lg:mb-6 text-white">
-  Tecladista, <span className="text-gray-medium font-light">Web Master,</span> Compositor
-</h3>
+        <div className="principal-title relative text-white w-full top-1/2 transform -translate-y-1/2 pl-4 lg:pl-0 lg:text-center">
+          <h1 className="hero-title sm:text-2xl md:text-3xl lg:text-4xl drop-shadow-sm font-bold lg:mb-6 text-white limelight-regular">André Moura Passos</h1>
+          <h2 className="text-xs md:text-lg lg:text-1xl drop-shadow-sm font-bold lg:mb-6 text-white">
+            Tecladista, <span className="text-gray-medium font-light">Web Master,</span> Compositor</h2>
         </div>
       </div>
 

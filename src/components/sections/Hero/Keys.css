@@ -23,6 +23,10 @@
     z-index: 2;
 }
 
+.principal-title{
+    
+}
+
 .key-natural .hover-text {
     left: 65%;
     transform: translateY(-50%);
@@ -229,13 +233,20 @@
 }
 
 
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
     .key-natural {
-        height: 180px;
+        height: 150px;
     }
     .key-accidental {
         width: 80%;
-        height: 116px;
-        margin-top: -63px;
+        height: 100px;
+        margin-top: -50px;
+    }
+
+    .key-accidental.key-black{
+        border-top: 2px solid #000;
+        border-right: 2px solid #000;
+        border-bottom: 2px solid #000;
+        background: linear-gradient(to right, #353434 0%, #0c0c0c 100%);
     }
 }
