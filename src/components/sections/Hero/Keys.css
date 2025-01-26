@@ -233,14 +233,14 @@
 }
 
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .key-natural {
-        height: 150px;
+        height: 200px;
     }
     .key-accidental {
         width: 80%;
-        height: 100px;
-        margin-top: -50px;
+        height: 130px;
+        margin-top: -73px;
     }
 
     .key-accidental.key-black{

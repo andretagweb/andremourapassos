@@ -2,19 +2,19 @@ import React, { useEffect, useState, useRef, useImperativeHandle, forwardRef } f
 import './index.css';
 
 const Player = forwardRef((props, ref) => {
-  const innerWidth = 1440;
+  const wideLimit = 1440;
   const [playlist, setPlaylist] = useState(['Bloods Cocktail']);
   const [currentPlaylistName, setCurrentPlaylistName] = useState('');
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= innerWidth);
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= wideLimit);
   const audioRef = useRef(null);
 
   // Gerenciar largura da tela
   useEffect(() => {
     const handleResize = () => {
-      setIsWideScreen(window.innerWidth >= innerWidth);
+      setIsWideScreen(window.innerWidth >= wideLimit);
     };
 
     window.addEventListener('resize', handleResize);
@@ -186,10 +186,10 @@ const Player = forwardRef((props, ref) => {
   if (playlist.length === 0) return <p>Carregando playlist...</p>;
 
   return (
-    <div className={`player-container ${isWideScreen ? 'xl-player' : 'mobile-player'}`}>
+    <div className={`player-container lg:flex ${isWideScreen ? 'xl-player' : 'mobile-player'}`}>
 
       <div
-        className={`flex ${isWideScreen ? 'flex-col items-center justify-center' : 'flex-row items-center justify-start space-x-4'}`}
+        className={`details pb-2 lg:pb-0 flex xl:flex-col items-center xl:justify-center flex-row justify-start space-x-4`}
       >
         {playlist.length === 0 ? (
           // Aviso quando não há playlist ou música tocando
@@ -211,7 +211,7 @@ const Player = forwardRef((props, ref) => {
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleNextTrack}
       ></audio>
-      <div className="controls xl:block xl:w-full  md:flex md:w-1/2">
+      <div className="controls flex md:w-1/2 xl:block xl:w-full">
         <div className="audio-controls">
           <div className="button" onClick={handlePrevTrack}>
             <span>&#x23EE;</span>

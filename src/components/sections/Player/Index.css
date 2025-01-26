@@ -1,9 +1,8 @@
-/* Player Container Geral */
 .player-container {
-  position: fixed; /* Fixa o player na parte inferior */
-  bottom: 0; /* Alinha ao rodapé */
-  left: 0; /* Alinha à esquerda */
-  width: 100%; /* Largura total */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   background: linear-gradient(135deg, #2b2b2b, #1e1e1e);
   border-top: 4px solid #000;
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
@@ -11,42 +10,28 @@
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
   color: #f4f4f4;
-  z-index: 1000; /* Garante que esteja acima de outros elementos */
-  display: flex; /* Alinha os filhos lado a lado */
-  align-items: center;
-  justify-content: space-between; /* Distribui os elementos */
-}
-
-/* Título da música */
-.player-container h2 {
-  font-size: 16px;
-  margin: 0;
-  color: #f4f4f4;
-  white-space: nowrap; /* Evita quebra de linha */
-  overflow: hidden;
-  text-overflow: ellipsis; /* Adiciona "..." se o texto for muito longo */
-  flex: 1; /* Permite que o título ocupe espaço proporcional */
-  text-align: left; /* Alinha o título à esquerda */
-}
-
-/* Estilos para resoluções menores */
-.mobile-player {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  max-width: 100vw;
-  background: linear-gradient(135deg, #2b2b2b, #1e1e1e);
-  border-top: 4px solid #000;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
-  padding: 10px 20px;
   z-index: 1000;
-  display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Estilos para resoluções xl */
+
+.player-container h2 {
+  font-size: 16px;
+  margin: 0;
+  color: #f4f4f4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  text-align: left;
+}
+
+.mobile-player {
+  width: 100vw;
+  max-width: 100vw;
+}
+
 .xl-player {
   background: linear-gradient(135deg, #2b2b2b, #1e1e1e);
   border: 4px solid #000;
@@ -58,61 +43,53 @@
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
   color: #f4f4f4;
-  display: flex; /* Organiza os elementos de forma flexível */
-  flex-direction: column; /* Empilha os elementos verticalmente */
-  gap: 20px; /* Espaçamento entre os elementos */
-  align-items: center; /* Centraliza os elementos horizontalmente */
-  justify-content: center; /* Centraliza verticalmente */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 .xl-player h2 {
   font-size: 18px;
   margin: 0;
   color: #f4f4f4;
-  white-space: nowrap; /* Evita quebra de linha */
-  overflow: hidden; /* Oculta texto longo */
-  text-overflow: ellipsis; /* Adiciona "..." para texto longo */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Controles de áudio */
 .audio-controls {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
-  flex: 1; /* Permite que os controles ocupem espaço proporcional */
+  flex: 1;
 }
 
-/* Botões */
 .button {
-  width: 40px; /* Tamanho ajustado */
+  width: 40px;
   height: 40px;
-  border-radius: 50%; /* Mantém o formato redondo */
-  border: 2px solid #888; /* Borda metálica */
-  background: radial-gradient(circle, #555, #333 70%, #000); /* Efeito de profundidade no botão */
-  box-shadow: 
-      inset 1px 1px 2px rgba(255, 255, 255, 0.3), /* Iluminação superior */
-      inset -1px -1px 2px rgba(0, 0, 0, 0.5), /* Sombra interna */
-      2px 2px 5px rgba(0, 0, 0, 0.6); /* Sombra externa */
+  border-radius: 50%;
+  border: 2px solid #888;
+  background: radial-gradient(circle, #555, #333 70%, #000);
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(0, 0, 0, 0.5), 2px 2px 5px rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  font-size: 10px; /* Para texto ou indicadores no botão */
-  color: #ddd; /* Texto claro */
+  font-size: 10px;
+  color: #ddd;
   font-family: Arial, sans-serif;
   font-weight: bold;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
-/* Efeito ao pressionar */
 .button:active {
-  transform: scale(0.9); /* Reduz levemente o tamanho */
-  box-shadow: 
-      inset 2px 2px 4px rgba(0, 0, 0, 0.8), /* Aumenta a sombra interna */
-      1px 1px 2px rgba(255, 255, 255, 0.2); /* Iluminação mais suave */
+  transform: scale(0.9);
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.8), 1px 1px 2px rgba(255, 255, 255, 0.2);
 }
 
 .button:hover {
@@ -124,29 +101,27 @@
   color: #f4f4f4;
 }
 
-/* Barra de progresso */
 .progress-bar {
   background: #555;
   border-radius: 5px;
   height: 8px;
-  width: 100%; /* Ajusta a largura da barra */
-  margin: 15px 10px; /* Margem para separação */
+  width: 100%;
+  margin: 15px 10px;
   overflow: hidden;
-  flex: 2; /* Permite que a barra de progresso ocupe mais espaço */
+  flex: 2;
 }
 
-.xl-player .progress-bar{
+.xl-player .progress-bar {
   flex: none;
 }
 
 .progress {
   background: linear-gradient(to right, #ff0000, #ff8800);
   height: 100%;
-  width: 0%; /* Inicialmente vazio */
+  width: 0%;
   transition: width 0.1s linear;
 }
 
-/* Controles adicionais (botões rotativos ou knobs) */
 .knobs {
   display: flex;
   justify-content: center;
