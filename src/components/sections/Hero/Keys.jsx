@@ -56,7 +56,7 @@ function Keys({ playPlaylist }) {
       <div className='close-modal'>
           <button
             onClick={() => hideModal()}
-            className="block sm:block md:hidden absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl font-bold cursor-pointer"
+            className="button block sm:block md:hidden absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl font-bold cursor-pointer"
             aria-label="Fechar Modal"
           >
             ✕
