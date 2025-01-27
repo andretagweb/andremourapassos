@@ -250,13 +250,29 @@
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
+        padding-top: 55%;
+        bottom: 100px;
+        width: 100%;
         transition: opacity 2s ease;
         background-color: rgba(0, 0, 0, 0.75); /* Fundo escuro semi-transparente */
         z-index: 9998; /* Certifique-se de que o overlay esteja abaixo do modal */
         pointer-events: auto; /* Permite interações no overlay */
     }
 
+    .close-modal {
+        display: none;
+        z-index: 9999;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        top: 50px;
+        cursor: pointer;
+    }
+
+    .close-modal button {
+        padding: 10px;
+    }
+    
     .key-natural {
         height: 200px;
     }
@@ -275,6 +291,7 @@
     }
 
     .hover-text {
+        padding: 20px;
         z-index: 2;
         background-color: white;
         width: 100%;

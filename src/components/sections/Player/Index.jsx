@@ -190,10 +190,19 @@ const Player = forwardRef((props, ref) => {
         ) : (
           // Exibição normal da playlist e música atual
           <>
-            <h3 className="text-gray-medium text-sm">{currentPlaylistName}</h3>
-            <h2 className="text-lg font-bold">{playlist[currentTrackIndex]?.title}</h2>
+            {currentPlaylistName ? (
+              <>
+                <h3 className="text-gray-medium text-sm">{currentPlaylistName}</h3>
+                <h2 className="text-lg font-bold">{playlist[currentTrackIndex]?.title}</h2>
+              </>
+            ) : (
+              <span className="text-gray-medium text-xs">
+                Clique em um dos slides para tocar uma playlist.
+              </span>
+            )}
           </>
         )}
+
       </div>
 
       <audio

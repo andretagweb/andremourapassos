@@ -3,39 +3,73 @@ import YoutubeVideos from './Videos/YoutubeVideos.json'
 import VideoCarousel from "./Videos/VideoCarousel";
 import useIsMobile from '../../hooks/useIsMobile';
 
-
 function Keys({ playPlaylist }) {
-
-  // Função para controlar o player via Keys.jsx
-
-  const isMobile = useIsMobile(); // Verifica se está no mobile
-
-  function showModel(modal) {
-    console.log(modal)
+  const isMobile = useIsMobile();
+  function showModal(modal) {
     if (isMobile && modal) {
-      // Seleciona o elemento baseado no modelo
+      const closeModalElement = document.querySelector(`.close-modal`);
+      closeModalElement.style.display = 'block';
+      console.log('showModal')
+      const modalAllElements = document.querySelectorAll(`.key-modal`);
+      const hoverTextAllElements = document.querySelectorAll(`.hover-text`);
+      // Iterar sobre os elementos para aplicar o estilo
+      modalAllElements.forEach((modal) => {
+        modal.style.display = 'none';
+      });
+
+      hoverTextAllElements.forEach((hoverText) => {
+        hoverText.style.display = 'none'; // Use '0' para esconder elementos com `opacity`
+      });
       const modalElement = document.querySelector(`#${modal} .key-modal`);
       const hoverTextElement = document.querySelector(`#${modal} .key-modal .hover-text`);
-      // Aplica o display: block se o elemento existir
       if (modalElement && hoverTextElement) {
         modalElement.style.display = 'block';
         modalElement.style.opacity = 1;
+        hoverTextElement.style.display = 'block';
         hoverTextElement.style.opacity = 1;
       }
     }
   };
 
+  function hideModal() {
+
+    if (isMobile) {
+      const modalAllElements = document.querySelectorAll(`.key-modal`);
+      const hoverTextAllElements = document.querySelectorAll(`.hover-text`);
+      const closeModalElement = document.querySelector(`.close-modal`);
+      closeModalElement.style.display = 'none';
+      // Iterar sobre os elementos para aplicar o estilo
+      modalAllElements.forEach((modal) => {
+        modal.style.display = 'none';
+      });
+
+      hoverTextAllElements.forEach((hoverText) => {
+        hoverText.style.display = 'none'; // Use '0' para esconder elementos com `opacity`
+      });
+    }
+  }
 
   return (
     <div className="keys">
       {/* Perfil e introdução */}
+      
+      <div className='close-modal'>
+          <button
+            onClick={() => hideModal()}
+            className="block sm:block md:hidden absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl font-bold cursor-pointer"
+            aria-label="Fechar Modal"
+          >
+            ✕
+          </button>
+      </div>
       <div id="perfiliconograma" className="hero-key key-natural key-white flex items-center"
         onClick={() => {
-          showModel('perfiliconograma')
+          showModal('perfiliconograma')
         }}>
         <div className="key-image flex-grow"></div>
         <div className="key-modal">
-          <div className="hover-text w-[45%] left-[55%] text">
+          <div className="hover-text w-[45%] left-[55%] text ">
+            
             <p>Prazer, sou <strong>tecladista</strong> e <strong>compositor</strong>.
               <br /> Gosto de criar melodias, harmonias, arranjos</p>
             <p> E também gosto de escrever letras <br /> — e poesias e textos.</p>
@@ -68,7 +102,7 @@ function Keys({ playPlaylist }) {
       {/* Sequência de teclas alternadas */}
       <div id="bloodscocktail" className="hero-key key-natural key-white" onClick={() => {
         playPlaylist('Cocktail Nº1');
-        showModel('bloodscocktail')
+        showModal('bloodscocktail')
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
@@ -86,6 +120,7 @@ function Keys({ playPlaylist }) {
 
       <div id="cocktailn2" className="hero-key key-natural key-white" onClick={() => {
         playPlaylist('Cocktail Nº2');
+
       }}>
         <div className="key-image"></div>
 
