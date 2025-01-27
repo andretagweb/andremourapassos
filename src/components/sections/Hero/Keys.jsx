@@ -1,16 +1,41 @@
 import './Keys.css'
 import YoutubeVideos from './Videos/YoutubeVideos.json'
 import VideoCarousel from "./Videos/VideoCarousel";
+import useIsMobile from '../../hooks/useIsMobile';
+
 
 function Keys({ playPlaylist }) {
+
+  // Função para controlar o player via Keys.jsx
+
+  const isMobile = useIsMobile(); // Verifica se está no mobile
+
+  function showModel(modal) {
+    console.log(modal)
+    if (isMobile && modal) {
+      // Seleciona o elemento baseado no modelo
+      const modalElement = document.querySelector(`#${modal} .key-modal`);
+      const hoverTextElement = document.querySelector(`#${modal} .key-modal .hover-text`);
+      // Aplica o display: block se o elemento existir
+      if (modalElement && hoverTextElement) {
+        modalElement.style.display = 'block';
+        modalElement.style.opacity = 1;
+        hoverTextElement.style.opacity = 1;
+      }
+    }
+  };
+
 
   return (
     <div className="keys">
       {/* Perfil e introdução */}
-      <div id="perfiliconograma" className="hero-key key-natural key-white flex items-center">
+      <div id="perfiliconograma" className="hero-key key-natural key-white flex items-center"
+        onClick={() => {
+          showModel('perfiliconograma')
+        }}>
         <div className="key-image flex-grow"></div>
-        <div className="hover-text text text-base w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-          <span>
+        <div className="key-modal">
+          <div className="hover-text w-[45%] left-[55%] text">
             <p>Prazer, sou <strong>tecladista</strong> e <strong>compositor</strong>.
               <br /> Gosto de criar melodias, harmonias, arranjos</p>
             <p> E também gosto de escrever letras <br /> — e poesias e textos.</p>
@@ -26,8 +51,8 @@ function Keys({ playPlaylist }) {
             </p>
             <br />
             <p className="text-md font-bold opacity-1 transition-opacity duration-[20000ms]">
-            Sejam bem-vindos!</p>
-          </span>
+              Sejam bem-vindos!</p>
+          </div>
         </div>
       </div>
 
@@ -43,13 +68,16 @@ function Keys({ playPlaylist }) {
       {/* Sequência de teclas alternadas */}
       <div id="bloodscocktail" className="hero-key key-natural key-white" onClick={() => {
         playPlaylist('Cocktail Nº1');
+        showModel('bloodscocktail')
       }}>
         <div className="key-image"></div>
-        <div className="hover-text hover-play text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-          <p className="text-md font-semibold text-gray-800">
-            Same Bloods Cocktail é meu projeto musical onde exploro diferentes estilos, misturando rock, música instrumental e influências de artistas como Iron Maiden, Queen e Pink Floyd. Até agora, lancei dois EPs com 11 músicas.</p>
-          <br />
-          <p className="text-md text-gray-800">O primeiro EP, Cocktail Nº1, foi lançado em abril de 2023 e deu início ao projeto. Esse trabalho combina minhas principais influências em uma mistura de rock, pop e piano.</p>
+        <div className="key-modal">
+          <div className="hover-text  hover-play left-[65%]  text ">
+            <p className="text-md font-semibold text-gray-800">
+              Same Bloods Cocktail é meu projeto musical onde exploro diferentes estilos, misturando rock, música instrumental e influências de artistas como Iron Maiden, Queen e Pink Floyd. Até agora, lancei dois EPs com 11 músicas.</p>
+            <br />
+            <p className="text-md text-gray-800">O primeiro EP, Cocktail Nº1, foi lançado em abril de 2023 e deu início ao projeto. Esse trabalho combina minhas principais influências em uma mistura de rock, pop e piano.</p>
+          </div>
         </div>
       </div>
       <div className="hero-key key-accidental key-black relative">
@@ -60,8 +88,11 @@ function Keys({ playPlaylist }) {
         playPlaylist('Cocktail Nº2');
       }}>
         <div className="key-image"></div>
-        <div className="hover-text hover-play text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-          <p className="text-md text-gray-800">O segundo EP, Cocktail Nº2, foi lançado em dezembro de 2023, ampliando o caminho iniciado no primeiro trabalho. </p><br /><p>Com seis faixas, o EP apresenta novas ideias e sonoridades, marcando a evolução do projeto e consolidando sua identidade musical.</p>
+
+        <div className="key-modal">
+          <div className="hover-text hover-play w-1/3 left-[65%] text">
+            <p className="text-md text-gray-800">O segundo EP, Cocktail Nº2, foi lançado em dezembro de 2023, ampliando o caminho iniciado no primeiro trabalho. </p><br /><p>Com seis faixas, o EP apresenta novas ideias e sonoridades, marcando a evolução do projeto e consolidando sua identidade musical.</p>
+          </div>
         </div>
       </div>
       <div className="hero-key key-accidental key-black relative">
@@ -72,19 +103,22 @@ function Keys({ playPlaylist }) {
         playPlaylist('Singles');
       }}>
         <div className="key-image"></div>
-        <div className="hover-text hover-play text w-1/3 absolute top-1/2 left-[60%]
-     transform -translate-y-1/2 p-5 rounded-lg text-center 
-     opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-          <p className="text-md  font-semibold  text-gray-800">Além dos EPs, lancei três singles: </p>
-          <br />
-          <p> Sometimes Rock, Strange Way To Know Me e Suburban Ride</p>
+        <div className="key-modal">
+          <div className="hover-text hover-play text left-[60%]">
+            <p className="text-md  font-semibold  text-gray-800">Além dos EPs, lancei três singles: </p>
+            <br />
+            <p> Sometimes Rock, Strange Way To Know Me e Suburban Ride</p>
+          </div>
         </div>
+
       </div>
 
       <div id="strange" className="hero-key key-natural key-white">
         <div className="key-image"></div>
-        <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-          <p>Os dois últimos fazem parte do EP Cocktail Nº2, enquanto Sometimes Rock é um trabalho inédito que estará em um álbum a ser lançado em um futuro próximo</p>
+        <div className="key-modal">
+          <div className="hover-text hover-play w-1/3 left-[60%] text">
+            <p>Os dois últimos fazem parte do EP Cocktail Nº2, enquanto Sometimes Rock é um trabalho inédito que estará em um álbum a ser lançado em um futuro próximo</p>
+          </div>
         </div>
       </div>
       <div className="hero-key key-accidental key-black relative">

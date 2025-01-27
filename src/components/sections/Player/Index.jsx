@@ -1,25 +1,16 @@
 import React, { useEffect, useState, useRef, useImperativeHandle, forwardRef } from 'react';
 import './index.css';
+import useIsWide from '../../hooks/useIsWide'; // Ajuste o caminho conforme necessário
 
 const Player = forwardRef((props, ref) => {
   const wideLimit = 1440;
+  const isWideScreen = useIsWide(wideLimit); // Usando o hook para verificar se a tela é wide
   const [playlist, setPlaylist] = useState(['Bloods Cocktail']);
   const [currentPlaylistName, setCurrentPlaylistName] = useState('');
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= wideLimit);
   const audioRef = useRef(null);
-
-  // Gerenciar largura da tela
-  useEffect(() => {
-    const handleResize = () => {
-      setIsWideScreen(window.innerWidth >= wideLimit);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   // Inicializar volume do player quando a playlist muda
   useEffect(() => {

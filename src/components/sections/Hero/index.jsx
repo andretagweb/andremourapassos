@@ -19,7 +19,6 @@ function Hero() {
     if (playerRef.current) {
       playerRef.current.handlePlayPause(playlist); // Chama a função do Player
     }
-    
   };
 
   return (

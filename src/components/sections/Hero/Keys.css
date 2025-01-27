@@ -19,25 +19,6 @@
     --color-hoverPlay: #656261;
 }
 
-.hover-text {
-    z-index: 2;
-}
-
-.principal-title{
-    
-}
-
-.key-natural .hover-text {
-    left: 65%;
-    transform: translateY(-50%);
-}
-
-.key-accidental .hover-text {
-    left: auto;
-    margin-right: 35px;
-    margin-bottom: 10px;
-}
-
 .key-natural {
     height: 400px;
     width: 100%;
@@ -62,11 +43,13 @@
 }
 
 .key-natural .key-image {
-    will-change: opacity; /* Sinaliza ao navegador para priorizar alterações de opacidade */
+    will-change: opacity;
+    /* Sinaliza ao navegador para priorizar alterações de opacidade */
     transition: opacity 0.7s ease;
     background-repeat: no-repeat;
     background-size: cover;
-    pointer-events: auto; /* Permite interação */
+    pointer-events: auto;
+    /* Permite interação */
     height: 100%;
     width: 100%;
     cursor: pointer;
@@ -77,27 +60,16 @@
 .key-natural .hover-play::before {
     content: '';
     position: absolute;
-    top: 50%; /* Centraliza no eixo vertical */
-    left: 50%; /* Centraliza no eixo horizontal */
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0.3;
-    width: 0; /* Mantém o triângulo ajustável pelas bordas */
-    height: 0; /* Nenhuma altura adicional é necessária */
-    border-left: 200px solid var(--color-hoverPlay); /* Ajuste para o tamanho do triângulo */
-    border-top: 100px solid transparent; /* Controla o topo do triângulo */
-    border-bottom: 100px solid transparent; /* Controla a base do triângulo */
-    z-index: -1; /* Mantém o triângulo atrás do conteúdo */
-}
-
-/* Exibe o hover-text no hover */
-.key-natural:hover .hover-text,
-.key-natural:hover + .key-accidental .hover-text {
-    opacity: 1; /* Torna visível no hover */
-    pointer-events: auto; /* Permite interação, se necessário */
-}
-
-.key-natural:hover + .key-accidental .hover-text  {
-    transition: opacity 3s ease-in-out;
+    width: 0;
+    height: 0;
+    border-left: 200px solid var(--color-hoverPlay);
+    border-top: 100px solid transparent;
+    border-bottom: 100px solid transparent;
+    z-index: -1;
 }
 
 .key-natural.key-white:active {
@@ -108,12 +80,6 @@
     background: linear-gradient(90deg, rgba(255, 255, 255, var(--opacity-level)), rgb(131 131 131 / 66%));
 }
 
-
-.key-natural:hover .key-image,
-.key-natural button:hover ~ .key-image {
-    opacity: var(--opacity-level-hover);
-}
-
 .key-black {
     background-color: var(--color-keyBlack);
     box-shadow:
@@ -122,7 +88,8 @@
         0 2px 4px rgba(0, 0, 0, 1);
 }
 
-.key-natural.key-black:active, .key-accidental.key-black:active {
+.key-natural.key-black:active,
+.key-accidental.key-black:active {
     box-shadow: -1px -1px 2px rgba(236, 234, 234, 0) inset, -19px 0px 4px 12px rgba(0, 0, 0, 1) inset, 0 1px 2px rgba(0, 0, 0, 1);
     background: linear-gradient(to right, var(--color-keyBlack) 0%, #000 100%);
     color: white;
@@ -138,7 +105,7 @@
     z-index: 1;
 }
 
-.key-accidental.key-white{
+.key-accidental.key-white {
     border-top: 10px solid var(--color-keyBorders);
     border-right: 10px solid var(--color-keyBorders);
     border-bottom: 10px solid var(--color-keyBorders);
@@ -150,20 +117,16 @@
     border-top: 10px solid var(--color-keyBorders);
     border-right: 10px solid var(--color-keyBorders);
     border-bottom: 10px solid var(--color-keyBorders);
-    background: linear-gradient(to right, var(--color-keyWhite) 50%,   var(--color-keyWhite-shadows) 100%);
+    background: linear-gradient(to right, var(--color-keyWhite) 50%, var(--color-keyWhite-shadows) 100%);
     box-shadow: -1px -1px 2px var(--color-keyWhite-shadows) inset, -19px 0px 4px 12px var(--color-keyWhite-shadows) inset, 0 1px 2px var(--color-keyBorders);
     color: white;
 }
 
-.key-accidental.key-black{
+.key-accidental.key-black {
     border-top: 10px solid #000;
     border-right: 10px solid #000;
     border-bottom: 10px solid #000;
     background: linear-gradient(to right, #353434 0%, #0c0c0c 100%);
-}
-
-.key-black:hover .hover-text{
-    color: white;
 }
 
 .key-white:not(:has(+ .key-black)) {
@@ -171,17 +134,13 @@
 }
 
 .key-natural#perfiliconograma .key-image {
-    background-image: linear-gradient(rgba(255, 255, 255, var( --opacity-level-iconograma)), rgba(255, 255, 255, var( --opacity-level-iconograma))),
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level-iconograma)), rgba(255, 255, 255, var(--opacity-level-iconograma))),
         var(--img-perfiliconograma);
-        background-position: right;
-        background-repeat: no-repeat;
+    background-position: right;
+    background-repeat: no-repeat;
 }
 
-.key-videos.hover-text{
-    left: 10%;
-    width: 80%;
-    top: 40%;
-}
+
 
 .key-natural#bloodscocktail .key-image {
     background-position: 80% 35%;
@@ -232,21 +191,111 @@
         var(--img-cocktail22);
 }
 
+.key-modal {
+    @apply w-full absolute p-5 top-[45%] transform rounded-lg pointer-events-none duration-500 ease-in-out;
+    z-index: 2;
+}
+
+.hover-text {
+    @apply absolute opacity-0 text-base text-black text-center transition-opacity;
+    z-index: 2;
+}
+
+
+.key-natural .hover-text {
+    transform: translateY(-50%);
+}
+
+.key-accidental .hover-text {
+    left: auto;
+    margin-right: 35px;
+    margin-bottom: 10px;
+}
+
+.key-videos.hover-text {
+    left: 10%;
+    width: 80%;
+    top: 40%;
+}
+
+@media (min-width: 768px) {
+
+    .key-natural:hover .hover-text,
+    .key-natural:hover+.key-accidental .hover-text {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .key-natural:hover+.key-accidental .hover-text {
+        transition: opacity 3s ease-in-out;
+    }
+
+    .key-natural:hover .key-image,
+    .key-natural button:hover~.key-image {
+        opacity: var(--opacity-level-hover);
+    }
+
+    .key-black:hover .hover-text {
+        color: white;
+    }
+}
+
 
 @media (max-width: 768px) {
+
+    .key-modal {
+        display: none;
+        opacity: 0;
+        position: fixed; /* Cobre toda a tela */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: opacity 2s ease;
+        background-color: rgba(0, 0, 0, 0.75); /* Fundo escuro semi-transparente */
+        z-index: 9998; /* Certifique-se de que o overlay esteja abaixo do modal */
+        pointer-events: auto; /* Permite interações no overlay */
+    }
+
     .key-natural {
         height: 200px;
     }
+
     .key-accidental {
         width: 80%;
         height: 130px;
         margin-top: -73px;
     }
 
-    .key-accidental.key-black{
+    .key-accidental.key-black {
         border-top: 2px solid #000;
         border-right: 2px solid #000;
         border-bottom: 2px solid #000;
         background: linear-gradient(to right, #353434 0%, #0c0c0c 100%);
     }
+
+    .hover-text {
+        z-index: 2;
+        background-color: white;
+        width: 100%;
+        position: fixed;
+    }
+
+    .key-natural .hover-text {
+        left: 0;
+        transform: translateY(-50%);
+    }
+
+    .key-accidental .hover-text {
+        left: auto;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    .key-videos.hover-text {
+        left: 10%;
+        width: 80%;
+        top: 40%;
+    }
+
 }
