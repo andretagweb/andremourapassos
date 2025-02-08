@@ -5,19 +5,29 @@ import Contact from './Contact';
 import Player from '../Player';
 import Keys from './Keys';
 
+import useIsMobile from '../../hooks/useIsMobile';
+
 import './index.css';
 
 function Hero() {
 
   const playerRef = useRef(null); // Referência para o Player
+  const isMobile = useIsMobile();
 
-  // Função para controlar o player via Keys.jsx
-  const playPlaylist = (playlist) => {
-    if(!playlist) {
-      playlist = 'Bloods Cocktail'
+   // Função para controlar o player via Keys.jsx
+   const playPlaylist = (playlist) => {
+    if (!playlist) {
+      playlist = 'Bloods Cocktail';
     }
+
     if (playerRef.current) {
-      playerRef.current.handlePlayPause(playlist); // Chama a função do Player
+
+      console.log(isMobile)
+      if (isMobile) {
+        playerRef.current.loadPlaylist(playlist, false); // Se for mobile, apenas carrega a playlist
+      } else {
+        playerRef.current.handlePlayPause(playlist); // Se não for, toca ou pausa
+      }
     }
   };
 

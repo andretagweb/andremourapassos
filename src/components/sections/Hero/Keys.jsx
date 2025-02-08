@@ -4,12 +4,13 @@ import VideoCarousel from "./Videos/VideoCarousel";
 import useIsMobile from '../../hooks/useIsMobile';
 
 function Keys({ playPlaylist }) {
+  
   const isMobile = useIsMobile();
+
   function showModal(modal) {
     if (isMobile && modal) {
       const closeModalElement = document.querySelector(`.close-modal`);
       closeModalElement.style.display = 'block';
-      console.log('showModal')
       const modalAllElements = document.querySelectorAll(`.key-modal`);
       const hoverTextAllElements = document.querySelectorAll(`.hover-text`);
       // Iterar sobre os elementos para aplicar o estilo
@@ -53,7 +54,7 @@ function Keys({ playPlaylist }) {
     <div className="keys">
       {/* Perfil e introdução */}
       
-      <div className='close-modal'>
+      <div className='close-modal hidden'>
           <button
             onClick={() => hideModal()}
             className="button block sm:block md:hidden absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl font-bold cursor-pointer"
@@ -94,7 +95,7 @@ function Keys({ playPlaylist }) {
       <div className="hero-key key-accidental key-black">
         <div className="principal-title relative text-white w-full top-1/2 transform -translate-y-1/2 pl-4 lg:pl-0 lg:text-center">
           <h1 className="hero-title text-lg sm:text-3xl md:text-3xl lg:text-4xl drop-shadow-sm font-bold lg:mb-6 text-white limelight-regular">André Moura Passos</h1>
-          <h2 className="text-sm md:text-md lg:text-1xl drop-shadow-sm font-bold lg:mb-6 text-white">
+          <h2 className="text-md md:text-md lg:text-xl drop-shadow-sm font-bold lg:mb-6 text-white">
             Tecladista, <span className="text-gray-medium font-light">Web Master,</span> Compositor</h2>
         </div>
       </div>
@@ -120,7 +121,7 @@ function Keys({ playPlaylist }) {
 
       <div id="cocktailn2" className="hero-key key-natural key-white" onClick={() => {
         playPlaylist('Cocktail Nº2');
-
+        showModal('cocktailn2')
       }}>
         <div className="key-image"></div>
 

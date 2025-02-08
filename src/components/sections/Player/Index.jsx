@@ -21,7 +21,7 @@ const Player = forwardRef((props, ref) => {
 
   // Tornar a função disponível para o componente pai
   useImperativeHandle(ref, () => ({
-    handlePlayPause,
+    handlePlayPause, loadPlaylist
   }));
 
   const handleTimeUpdate = () => {
@@ -34,41 +34,24 @@ const Player = forwardRef((props, ref) => {
     }
   };
 
-  const handlePlayPause = (playlistName) => {
+  const loadPlaylist = (playlistName, isToPlay) => {
     if (!playlistName) {
       console.error('Nenhum nome de playlist fornecido.');
       return;
     }
-
-    // Se a playlist atual já está carregada, apenas alternar entre play e pause
-    if (playlistName === currentPlaylistName && playlist.length > 0) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play().catch(err => {
-          if (err.name !== 'AbortError') {
-            console.error('Erro ao reproduzir:', err);
-          }
-        });
-      }
-      setIsPlaying(!isPlaying);
-      return;
-    }
-
-    // Caso contrário, carregar nova playlist
+  
     console.log(`Carregando músicas da playlist: ${playlistName}`);
-
-
+  
     const query = `
-  query GetPlaylist($playlistName: String) {
-    playlist(playlistName: $playlistName) {
-      title
-      artist
-      url
-    }
-  }
-`;
-
+      query GetPlaylist($playlistName: String) {
+        playlist(playlistName: $playlistName) {
+          title
+          artist
+          url
+        }
+      }
+    `;
+  
     fetch('http://localhost:3001/graphql', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -79,30 +62,60 @@ const Player = forwardRef((props, ref) => {
         const playlist = data.data.playlist;
         setPlaylist(playlist);
         setCurrentTrackIndex(0);
-
+  
         if (audioRef.current) {
           audioRef.current.pause();
           audioRef.current.src = playlist[0]?.url || '';
           audioRef.current.load();
+          if (isToPlay) {
+              playCurrentPlaylist()
+          } else {
+            setIsPlaying(false);
 
-          audioRef.current.addEventListener(
-            'loadeddata',
-            () => {
-              audioRef.current.play().catch(err => {
-                if (err.name !== 'AbortError') {
-                  console.error('Erro ao reproduzir:', err);
-                }
-              });
-              setIsPlaying(true);
-            },
-            { once: true }
-          );
+          }
         }
-
+  
         setCurrentPlaylistName(playlistName);
       })
       .catch(err => console.error('Erro ao carregar playlist:', err));
+  };
 
+  const playCurrentPlaylist = () => {
+    audioRef.current.addEventListener(
+      'loadeddata',
+      () => {
+        audioRef.current.play().catch(err => {
+          if (err.name !== 'AbortError') {
+            console.error('Erro ao reproduzir:', err);
+          }
+        });
+        setIsPlaying(true);
+      },
+      { once: true }
+    );
+  };
+  
+  const togglePlayPause = () => {
+    if (!audioRef.current) return;
+  
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play().catch(err => {
+        if (err.name !== 'AbortError') {
+          console.error('Erro ao reproduzir:', err);
+        }
+      });
+    }
+    setIsPlaying(!isPlaying);
+  };
+  
+  const handlePlayPause = (playlistName) => {
+    if (playlistName === currentPlaylistName && playlist.length > 0) {
+      togglePlayPause();
+    } else {
+      loadPlaylist(playlistName, true);
+    }
   };
 
 
