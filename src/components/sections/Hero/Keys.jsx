@@ -107,11 +107,11 @@ function Keys({ playPlaylist }) {
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
-          <div className="hover-text  hover-play left-[65%]  text ">
-            <p className="text-md font-semibold text-gray-800">
-              Same Bloods Cocktail é meu projeto musical onde exploro diferentes estilos, misturando rock, música instrumental e influências de artistas como Iron Maiden, Queen e Pink Floyd. Até agora, lancei dois EPs com 11 músicas.</p>
+          <div className="hover-text  hover-play left-[60%]  text ">
+            <p className="text-md text-gray-800">
+             <strong>Same Bloods Cocktail</strong> é meu projeto musical  <br/> onde exploro diferentes estilos, <br/> misturando rock, música instrumental <br/> e influências de artistas como Iron Maiden, Queen e Pink Floyd.</p>
             <br />
-            <p className="text-md text-gray-800">O primeiro EP, Cocktail Nº1, foi lançado em abril de 2023 e deu início ao projeto. Esse trabalho combina minhas principais influências em uma mistura de rock, pop e piano.</p>
+            <p className="text-md font-semibold  text-gray-800">O primeiro EP, Cocktail Nº1, <br/> foi lançado em abril de 2023 e deu início ao projeto. <br/> Esse trabalho combina minhas principais influências <br/> em uma mistura de rock, pop e piano.</p>
           </div>
         </div>
       </div>
@@ -201,7 +201,7 @@ function Keys({ playPlaylist }) {
       <div className="hero-key key-natural key-black">
         <div className="key-image"></div>
         <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-          <p>Poesias</p>
+          <p>Textos</p>
           <br />
         </div>
       </div>

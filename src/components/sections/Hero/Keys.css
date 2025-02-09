@@ -1,5 +1,8 @@
 :root {
-    --img-perfiliconograma: url('../../../assets/images/hero/iconograma4white.png');
+    --opacity-level: 0.15;
+    --opacity-level-hover: 0.05;
+
+    --img-perfiliconograma: url('../../../assets/images/hero/background2.png');
     --img-bloodscocktail: url('../../../assets/images/hero/bloodscocktail_upscaled.png');
     --img-cocktailn2: url('../../../assets/images/hero/cocktail2.png');
     --img-cocktailn1: url('../../../assets/images/hero/cocktail1.jpeg');
@@ -134,13 +137,14 @@
 }
 
 .key-natural#perfiliconograma .key-image {
-    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level-iconograma)), rgba(255, 255, 255, var(--opacity-level-iconograma))),
+    --opacity-level-iconograma: 0.13;
+    background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level-iconograma)), 
+        rgba(255, 255, 255, var(--opacity-level-iconograma))),
         var(--img-perfiliconograma);
-    background-position: right;
     background-repeat: no-repeat;
+    background-position: 80% 66%;
+    background-size: cover;
 }
-
-
 
 .key-natural#bloodscocktail .key-image {
     background-position: 80% 35%;
@@ -235,7 +239,7 @@
         opacity: var(--opacity-level-hover);
     }
 
-    .key-black:hover .hover-text {
+    .key-black .hover-text {
         color: white;
     }
 }

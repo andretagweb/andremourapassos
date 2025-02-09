@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useImperativeHandle, forwardRef } from 'react';
 import './index.css';
 import useIsWide from '../../hooks/useIsWide'; // Ajuste o caminho conforme necessário
+import { fetchPlaylist } from '../../../services/playlistService';
 
 const Player = forwardRef((props, ref) => {
   const wideLimit = 1440;
@@ -34,50 +35,35 @@ const Player = forwardRef((props, ref) => {
     }
   };
 
-  const loadPlaylist = (playlistName, isToPlay) => {
+  const loadPlaylist = async (playlistName, isToPlay) => {
     if (!playlistName) {
       console.error('Nenhum nome de playlist fornecido.');
       return;
     }
-  
+
     console.log(`Carregando músicas da playlist: ${playlistName}`);
+
+    try {
+      const playlist = await fetchPlaylist(playlistName);
+      setPlaylist(playlist);
+      setCurrentTrackIndex(0);
   
-    const query = `
-      query GetPlaylist($playlistName: String) {
-        playlist(playlistName: $playlistName) {
-          title
-          artist
-          url
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = playlist[0]?.url || '';
+        audioRef.current.load();
+  
+        if (isToPlay) {
+          playCurrentPlaylist();
+        } else {
+          setIsPlaying(false);
         }
       }
-    `;
   
-    fetch('http://localhost:3001/graphql', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query, variables: { playlistName } }),
-    })
-      .then(response => response.json())
-      .then(data => {
-        const playlist = data.data.playlist;
-        setPlaylist(playlist);
-        setCurrentTrackIndex(0);
-  
-        if (audioRef.current) {
-          audioRef.current.pause();
-          audioRef.current.src = playlist[0]?.url || '';
-          audioRef.current.load();
-          if (isToPlay) {
-              playCurrentPlaylist()
-          } else {
-            setIsPlaying(false);
-
-          }
-        }
-  
-        setCurrentPlaylistName(playlistName);
-      })
-      .catch(err => console.error('Erro ao carregar playlist:', err));
+      setCurrentPlaylistName(playlistName);
+    } catch (error) {
+      console.error('Erro ao carregar playlist:', error);
+    }
   };
 
   const playCurrentPlaylist = () => {
@@ -94,10 +80,10 @@ const Player = forwardRef((props, ref) => {
       { once: true }
     );
   };
-  
+
   const togglePlayPause = () => {
     if (!audioRef.current) return;
-  
+
     if (isPlaying) {
       audioRef.current.pause();
     } else {
@@ -109,7 +95,7 @@ const Player = forwardRef((props, ref) => {
     }
     setIsPlaying(!isPlaying);
   };
-  
+
   const handlePlayPause = (playlistName) => {
     if (playlistName === currentPlaylistName && playlist.length > 0) {
       togglePlayPause();
