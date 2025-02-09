@@ -1,54 +1,11 @@
 import './index.css'
 import YoutubeVideos from '../Videos/YoutubeVideos.json'
 import VideoCarousel from "../Videos";
-import useIsMobile from '../../../../shared/hooks/useIsMobile';
+import useModal from "../../../../shared/hooks/useModal"; 
 
 function Keys({ playPlaylist }) {
   
-  const isMobile = useIsMobile();
-
-  function showModal(modal) {
-    if (isMobile && modal) {
-      const closeModalElement = document.querySelector(`.close-modal`);
-      closeModalElement.style.display = 'block';
-      const modalAllElements = document.querySelectorAll(`.key-modal`);
-      const hoverTextAllElements = document.querySelectorAll(`.hover-text`);
-      // Iterar sobre os elementos para aplicar o estilo
-      modalAllElements.forEach((modal) => {
-        modal.style.display = 'none';
-      });
-
-      hoverTextAllElements.forEach((hoverText) => {
-        hoverText.style.display = 'none'; // Use '0' para esconder elementos com `opacity`
-      });
-      const modalElement = document.querySelector(`#${modal} .key-modal`);
-      const hoverTextElement = document.querySelector(`#${modal} .key-modal .hover-text`);
-      if (modalElement && hoverTextElement) {
-        modalElement.style.display = 'block';
-        modalElement.style.opacity = 1;
-        hoverTextElement.style.display = 'block';
-        hoverTextElement.style.opacity = 1;
-      }
-    }
-  };
-
-  function hideModal() {
-
-    if (isMobile) {
-      const modalAllElements = document.querySelectorAll(`.key-modal`);
-      const hoverTextAllElements = document.querySelectorAll(`.hover-text`);
-      const closeModalElement = document.querySelector(`.close-modal`);
-      closeModalElement.style.display = 'none';
-      // Iterar sobre os elementos para aplicar o estilo
-      modalAllElements.forEach((modal) => {
-        modal.style.display = 'none';
-      });
-
-      hoverTextAllElements.forEach((hoverText) => {
-        hoverText.style.display = 'none'; // Use '0' para esconder elementos com `opacity`
-      });
-    }
-  }
+  const { showModal, hideModal } = useModal();
 
   return (
     <div className="keys">
@@ -126,7 +83,7 @@ function Keys({ playPlaylist }) {
         <div className="key-image"></div>
 
         <div className="key-modal">
-          <div className="hover-text hover-play w-1/3 left-[65%] text">
+          <div className="hover-text hover-play left-[65%] text">
             <p className="text-md text-gray-800">O segundo EP, Cocktail Nº2, foi lançado em dezembro de 2023, ampliando o caminho iniciado no primeiro trabalho. </p><br /><p>Com seis faixas, o EP apresenta novas ideias e sonoridades, marcando a evolução do projeto e consolidando sua identidade musical.</p>
           </div>
         </div>
