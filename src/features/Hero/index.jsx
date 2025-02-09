@@ -33,7 +33,7 @@ function Hero() {
   };
 
   return (
-    <section className="App-hero bg-white text-black flex mb-12 bellota-text-regular">
+    <section className="App-hero bg-white text-black flex bellota-text-regular">
       <div className="hero-piano flex w-full h-1/3 relative h-screen align-left border-4">
         <div className="side-key hidden xl:block bg-dark w-1/6 p-6 sticky top-0 h-screen">
           <Menu styleClass="flex flex-col space-y-4" />
