@@ -15,16 +15,15 @@
     gap: 1rem; /* Espaço entre os vídeos */
     padding: 1rem;
     scroll-behavior: smooth; /* Suaviza o comportamento da rolagem */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+    width: 90%;
+    margin: 0 auto;
   }
   
   /* Esconde a barra de rolagem */
   .video-carousel::-webkit-scrollbar {
     display: none; /* Chrome, Safari e Edge */
-  }
-  
-  .video-carousel {
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    scrollbar-width: none; /* Firefox */
   }
   
   /* Estilos de cada thumbnail */
@@ -59,8 +58,7 @@
   
  /* Botões de navegação */
 .navigation-buttons {
-    position: absolute;
-    top: 50%;
+    top: 42%;
     width: 100%;
     display: flex;
     justify-content: space-between;

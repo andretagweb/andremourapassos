@@ -208,6 +208,13 @@
 
 .key-natural .hover-text {
     transform: translateY(-50%);
+    min-width: 300px;
+    max-width: 450px;
+    left: 65%;
+}
+
+.key-natural .key-videos.hover-text {
+    max-width: 100%;
 }
 
 .key-accidental .hover-text {

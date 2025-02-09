@@ -26,7 +26,7 @@ function Keys({ playPlaylist }) {
         }}>
         <div className="key-image flex-grow"></div>
         <div className="key-modal">
-          <div className="hover-text w-[45%] left-[55%] text ">
+          <div className="hover-text text ">
             
             <p>Prazer, sou <strong>tecladista</strong> e <strong>compositor</strong>.
               <br /> Gosto de criar melodias, harmonias, arranjos</p>
@@ -64,7 +64,7 @@ function Keys({ playPlaylist }) {
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
-          <div className="hover-text  hover-play left-[60%]  text ">
+          <div className="hover-text  hover-play  text ">
             <p className="text-md text-gray-800">
              <strong>Same Bloods Cocktail</strong> é meu projeto musical  <br/> onde exploro diferentes estilos, <br/> misturando rock, música instrumental <br/> e influências de artistas como Iron Maiden, Queen e Pink Floyd.</p>
             <br />
@@ -83,7 +83,7 @@ function Keys({ playPlaylist }) {
         <div className="key-image"></div>
 
         <div className="key-modal">
-          <div className="hover-text hover-play left-[65%] text">
+          <div className="hover-text hover-play text">
             <p className="text-md text-gray-800">O segundo EP, Cocktail Nº2, foi lançado em dezembro de 2023, ampliando o caminho iniciado no primeiro trabalho. </p><br /><p>Com seis faixas, o EP apresenta novas ideias e sonoridades, marcando a evolução do projeto e consolidando sua identidade musical.</p>
           </div>
         </div>
@@ -94,10 +94,11 @@ function Keys({ playPlaylist }) {
 
       <div id="singles" className="hero-key key-natural key-white" onClick={() => {
         playPlaylist('Singles');
+        showModal('singles')
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
-          <div className="hover-text hover-play text left-[60%]">
+          <div className="hover-text hover-play text">
             <p className="text-md  font-semibold  text-gray-800">Além dos EPs, lancei três singles: </p>
             <br />
             <p> Sometimes Rock, Strange Way To Know Me e Suburban Ride</p>
@@ -106,10 +107,12 @@ function Keys({ playPlaylist }) {
 
       </div>
 
-      <div id="strange" className="hero-key key-natural key-white">
+      <div id="strange" className="hero-key key-natural key-white" onClick={() => {
+        showModal('strange')
+      }}>
         <div className="key-image"></div>
         <div className="key-modal">
-          <div className="hover-text hover-play w-1/3 left-[60%] text">
+          <div className="hover-text hover-play text">
             <p>Os dois últimos fazem parte do EP Cocktail Nº2, enquanto Sometimes Rock é um trabalho inédito que estará em um álbum a ser lançado em um futuro próximo</p>
           </div>
         </div>
@@ -121,12 +124,15 @@ function Keys({ playPlaylist }) {
 
       <div id="ttmm" className="hero-key key-natural key-white" onClick={() => {
         playPlaylist('TTMM');
+        showModal('ttmm')
       }}>
         <div className="key-image"></div>
-        <div className="hover-text hover-play text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-          <p className="text-md  font-semibold  text-gray-800">"Tasty Themes for Mono Myths" é um álbum instrumental inspirado no Monomito, também conhecido como Jornada do Herói, um conceito desenvolvido pelo mitólogo americano Joseph Campbell.</p>
-          <br />
-          <p>Campbell observou que histórias de diversas culturas seguem uma estrutura similar: o herói é chamado para uma aventura, enfrenta desafios, passa por transformações e retorna com novos aprendizados. Essa narrativa reflete experiências humanas universais de superação e crescimento.</p>
+        <div className="key-modal">
+          <div className="hover-text hover-play text absolute top-1/2 transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+            <p className="text-md  font-semibold  text-gray-800">"Tasty Themes for Mono Myths é um álbum instrumental inspirado na Jornada do Herói, conceito de Joseph Campbell. Ele observou que histórias de diversas culturas seguem uma estrutura comum, onde um herói parte em aventura, enfrenta desafios, se transforma e retorna com novos aprendizados.</p>
+            <br />
+            <p>Cada faixa do álbum representa uma etapa dessa jornada, explorando os desafios e transformações que fazem parte do crescimento humano. A música busca transmitir as emoções e mudanças vividas pelo herói ao longo de sua trajetória.</p>
+          </div>
         </div>
       </div>
 
@@ -134,28 +140,40 @@ function Keys({ playPlaylist }) {
         <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">Tasty Themes for Mono Myths</div>
       </div>
 
-      <div id="suburban" className="hero-key key-natural key-white">
+      <div id="suburban" className="hero-key key-natural key-white" onClick={() => {
+        showModal('suburban')
+      }}>
         <div className="key-image"></div>
-        <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-          <p>Campbell observou que histórias de diversas culturas seguem uma estrutura similar: o herói é chamado para uma aventura, enfrenta desafios, passa por transformações e retorna com novos aprendizados. Essa narrativa reflete experiências humanas universais de superação e crescimento.</p>
-          <br />
-          <p>Cada faixa do álbum faz referência a uma etapa da Jornada do Herói. Assim, o álbum explora os desafios e transformações que enfrentamos em nossas jornadas pessoais, além de buscar inspirar a criação de novas histórias nesse formato.</p>
+        <div className="key-modal">
+          <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+            <p>Além de refletir experiências universais de superação, o álbum pretende inspirar novas histórias dentro desse formato. Sua sonoridade captura momentos de tensão, descoberta, triunfo e retorno, criando uma experiência envolvente.</p>
+            <br />
+            <p>Dessa forma, Tasty Themes for Mono Myths não apenas traduz a Jornada do Herói em música, mas também incentiva ouvintes a refletirem sobre suas próprias jornadas e desafios pessoais.</p>
+          </div>
         </div>
       </div>
 
-      <div className="hero-key key-natural key-black">
+      <div id="videos" className="hero-key key-natural key-black" onClick={() => {
+        showModal('videos')
+      }}>
         <div className="key-image"></div>
-        <div className="key-videos hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-          <VideoCarousel videos={YoutubeVideos} />
-          <br />
+        <div className="key-modal">
+          <div className="key-videos hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+            <VideoCarousel videos={YoutubeVideos} />
+            <br />
+          </div>
         </div>
       </div>
 
       <div className="hero-key key-accidental key-white">
-        <div className="hover-text absolute bottom-2 right-2 text-black opacity-0 text-xl font-semibold italic">Vídeos</div>
+        <div className="key-modal">
+          <div className="hover-text absolute bottom-2 right-2 text-black opacity-0 text-xl font-semibold italic">Vídeos</div>
+        </div>
       </div>
 
-      <div className="hero-key key-natural key-black">
+      <div id="textos" className="hero-key key-natural key-black"  onClick={() => {
+        showModal('textos')
+      }}>
         <div className="key-image"></div>
         <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
           <p>Textos</p>

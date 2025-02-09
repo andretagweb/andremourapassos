@@ -36,7 +36,7 @@ const VideoCarousel = ({ videos }) => {
   return (
     <div className="video-carousel-container relative w-full">
       {/* Botões de Navegação */}
-      <div className="navigation-buttons flex justify-between absolute inset-0">
+      <div className="navigation-buttons flex justify-between absolute">
         <button
           onClick={() => scrollCarousel(-200)}
           className={`prev-button ${isAtStart ? "disabled" : ""}`}
