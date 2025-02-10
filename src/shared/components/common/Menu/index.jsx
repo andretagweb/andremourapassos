@@ -56,10 +56,10 @@ function Menu({ styleClass }) {
             {/* Lista de itens do menu gerada dinamicamente */}
             <ul
                 ref={menuRef}
-                className={`flex items-center justify-start lg:justify-center flex-nowrap overflow-x-auto  space-x-4 no-scrollbar pt-2 ml-14 mr-14`}
+                className={`flex items-baseline justify-start lg:justify-center flex-nowrap overflow-x-auto  space-x-4 no-scrollbar pt-2 ml-14 mr-14`}
             >
                 {menuItems.map((item, index) => (
-                    <li key={index} className="flex items-center">
+                    <li key={index} className="flex">
                         {item.href ? (
                             <a href={item.href} className="hover:underline leading-none whitespace-nowrap">
                                 {item.label}
@@ -70,17 +70,17 @@ function Menu({ styleClass }) {
                     </li>
 
                 ))}
-                <li className="flex items-center">
+                <li className="flex">
                     <button onClick={() => i18n.changeLanguage("en")} className="lang-btn">
                         <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" alt="English" className="lang-flag" />
                     </button>
                 </li>
-                <li className="flex items-center">
+                <li className="flex">
                     <button onClick={() => i18n.changeLanguage("pt")} className="lang-btn">
                         <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" alt="Português" className="lang-flag" />
                     </button>
                 </li>
-                <li className="flex items-center">
+                <li className="flex">
                     <button onClick={() => i18n.changeLanguage("es")} className="lang-btn">
                         <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" alt="Español" className="lang-flag" />
                     </button>
