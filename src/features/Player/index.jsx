@@ -1,4 +1,7 @@
 import React, { useEffect, useState, useRef, useImperativeHandle, forwardRef } from 'react';
+
+import { useTranslation } from "react-i18next";
+
 import { fetchPlaylist } from './services/playlistService';
 
 import useIsWide from '../../shared/hooks/useIsWide'; // Ajuste o caminho conforme necessário
@@ -14,6 +17,8 @@ const Player = forwardRef((props, ref) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const audioRef = useRef(null);
+
+  const { t } = useTranslation("player");
 
   // Inicializar volume do player quando a playlist muda
   useEffect(() => {
@@ -179,66 +184,66 @@ const Player = forwardRef((props, ref) => {
 
   return (
     <div className={`player-container md:flex ${isWideScreen ? 'xl-player' : 'mobile-player'}`}>
-
-      <div
-        className={`details pb-2 lg:pb-0 flex xl:flex-col items-center xl:justify-center flex-row justify-start space-x-4`}
-      >
-        {playlist.length === 0 ? (
-          // Aviso quando não há playlist ou música tocando
-          <p className="text-gray-medium text-center text-sm">
-            Clique em um dos slides acima para escolher uma playlist.
-          </p>
-        ) : (
-          // Exibição normal da playlist e música atual
+  <div
+    className={`details pb-2 lg:pb-0 flex xl:flex-col items-center xl:justify-center flex-row justify-start space-x-4`}
+  >
+    {playlist.length === 0 ? (
+      // Aviso quando não há playlist ou música tocando
+      <p className="text-gray-medium text-center text-sm">
+        {t("no_playlist")}
+      </p>
+    ) : (
+      // Exibição normal da playlist e música atual
+      <>
+        {currentPlaylistName ? (
           <>
-            {currentPlaylistName ? (
-              <>
-                <h3 className="text-gray-medium text-sm">{currentPlaylistName}</h3>
-                <h2 className="text-lg font-bold">{playlist[currentTrackIndex]?.title}</h2>
-              </>
-            ) : (
-              <span className="text-gray-medium text-xs">
-                Clique em um dos slides para tocar uma playlist.
-              </span>
-            )}
+            <h3 className="text-gray-medium text-sm">{currentPlaylistName}</h3>
+            <h2 className="text-lg font-bold">{playlist[currentTrackIndex]?.title}</h2>
           </>
+        ) : (
+          <span className="text-gray-medium text-xs">
+            {t("click_to_play")}
+          </span>
         )}
+      </>
+    )}
+  </div>
 
+  <audio
+    ref={audioRef}
+    src={playlist[currentTrackIndex]?.url}
+    onTimeUpdate={handleTimeUpdate}
+    onEnded={handleNextTrack}
+  ></audio>
+
+  <div className="controls flex md:w-1/2 xl:block xl:w-full">
+    <div className="audio-controls">
+      <div className="button" onClick={handlePrevTrack}>
+        <span>&#x23EE;</span>
       </div>
-
-      <audio
-        ref={audioRef}
-        src={playlist[currentTrackIndex]?.url}
-        onTimeUpdate={handleTimeUpdate}
-        onEnded={handleNextTrack}
-      ></audio>
-      <div className="controls flex md:w-1/2 xl:block xl:w-full">
-        <div className="audio-controls">
-          <div className="button" onClick={handlePrevTrack}>
-            <span>&#x23EE;</span>
-          </div>
-          <div className="button" onClick={() => handlePlayPause(currentPlaylistName)}>
-            <span>{isPlaying ? '||' : String.fromCharCode(9654)}</span>
-          </div>
-          <div className="button" onClick={handleNextTrack}>
-            <span>&#x23ED;</span>
-          </div>
-        </div>
-
-        <div className="progress-bar" onClick={handleProgressBarClick}>
-          <div className="progress" style={{ width: `${progress}%` }}></div>
-        </div>
-        <div className="knobs">
-          <div className="button knob" onClick={decreaseVolume}>
-            <span>&#x1F509;</span>
-          </div>
-          <div className="button knob" onClick={increaseVolume}>
-            <span>&#x1F50A;</span>
-          </div>
-        </div>
+      <div className="button" onClick={() => handlePlayPause(currentPlaylistName)}>
+        <span>{isPlaying ? '||' : String.fromCharCode(9654)}</span>
       </div>
-
+      <div className="button" onClick={handleNextTrack}>
+        <span>&#x23ED;</span>
+      </div>
     </div>
+
+    <div className="progress-bar" onClick={handleProgressBarClick}>
+      <div className="progress" style={{ width: `${progress}%` }}></div>
+    </div>
+
+    <div className="knobs">
+      <div className="button knob" onClick={decreaseVolume}>
+        <span>&#x1F509;</span>
+      </div>
+      <div className="button knob" onClick={increaseVolume}>
+        <span>&#x1F50A;</span>
+      </div>
+    </div>
+  </div>
+</div>
+
   );
 });
 
