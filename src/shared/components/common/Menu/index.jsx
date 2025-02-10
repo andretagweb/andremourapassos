@@ -1,8 +1,12 @@
 import { useRef } from "react";
 import './index.css';
 
+import { useTranslation } from "react-i18next";
+import "../../../locales/i18n"
+
 function Menu({ styleClass }) {
     const menuRef = useRef(null);
+    const { t, i18n } = useTranslation();
 
     // Array de itens do menu
     const menuItems = [
@@ -17,6 +21,7 @@ function Menu({ styleClass }) {
         { href: "#poems", label: "Poesias" },
         { href: "", label: "|" },
         { href: "#contact", label: "Contato" },
+        { href: "", label: "|" }
     ];
 
     // Função para rolar horizontalmente
@@ -65,6 +70,21 @@ function Menu({ styleClass }) {
                     </li>
 
                 ))}
+                <li className="flex items-center">
+                    <button onClick={() => i18n.changeLanguage("en")} className="lang-btn">
+                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" alt="English" className="lang-flag" />
+                    </button>
+                </li>
+                <li className="flex items-center">
+                    <button onClick={() => i18n.changeLanguage("pt")} className="lang-btn">
+                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" alt="Português" className="lang-flag" />
+                    </button>
+                </li>
+                <li className="flex items-center">
+                    <button onClick={() => i18n.changeLanguage("es")} className="lang-btn">
+                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" alt="Español" className="lang-flag" />
+                    </button>
+                </li>
             </ul>
 
             {/* Botão para rolar à direita (apenas visível no mobile) */}
