@@ -2,19 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import './index.css';
 
-const Carousel = ({ videos }) => {
-  const [selectedVideo, setSelectedVideo] = useState(null);
+const Carousel = ({ items, renderItem }) => {
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
   const carouselRef = useRef(null);
-
-  const handleThumbnailClick = (videoId) => {
-    setSelectedVideo(`https://www.youtube.com/embed/${videoId}`);
-  };
-
-  const closePopup = () => {
-    setSelectedVideo(null);
-  };
 
   const scrollCarousel = (offset) => {
     if (carouselRef.current) {
@@ -31,12 +22,11 @@ const Carousel = ({ videos }) => {
   };
 
   useEffect(() => {
-    // Aguarda a renderização completa para evitar valores zerados
     const checkVisibility = () => {
       if (carouselRef.current && carouselRef.current.scrollWidth > 0) {
         updateButtonStates();
       } else {
-        setTimeout(checkVisibility, 50); // Tenta novamente após 50ms se o elemento ainda não estiver renderizado corretamente
+        setTimeout(checkVisibility, 50);
       }
     };
 
@@ -46,7 +36,7 @@ const Carousel = ({ videos }) => {
   }, []);
 
   return (
-    <div className="video-carousel-container relative w-full">
+    <div className="carousel-container relative w-full">
       {/* Botões de Navegação */}
       <div className="navigation-buttons flex justify-between absolute w-full top-1/2 transform -translate-y-1/2 px-2">
         <button
@@ -65,47 +55,18 @@ const Carousel = ({ videos }) => {
         </button>
       </div>
 
-      {/* Carrossel de Vídeos */}
+      {/* Carrossel */}
       <div
-        className="video-carousel flex overflow-x-auto scrollbar-hide space-x-4"
+        className="carousel flex overflow-x-auto scrollbar-hide space-x-4"
         ref={carouselRef}
         onScroll={updateButtonStates}
       >
-        {videos.map((video, index) => (
-          <div
-            key={index}
-            className="thumbnail cursor-pointer"
-            onClick={() => handleThumbnailClick(video.id)}
-          >
-            <img
-              src={`https://img.youtube.com/vi/${video.id}/0.jpg`}
-              alt={`Thumbnail ${index}`}
-              className="rounded-lg"
-            />
-            <p>{video.title}</p>
+        {items.map((item, index) => (
+          <div key={index} className="carousel-item">
+            {renderItem(item)}
           </div>
         ))}
       </div>
-
-      {/* Popup de Vídeo */}
-      {selectedVideo &&
-        ReactDOM.createPortal(
-          <div>
-            <div className="overlay" onClick={closePopup}></div>
-            <div className="modal">
-              <button className="close-button" onClick={closePopup}>X</button>
-              <iframe
-                src={`${selectedVideo}?autoplay=1`}
-                title="YouTube Video"
-                className="w-[600px] h-[340px]"
-                frameBorder="0"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>,
-          document.body
-        )}
     </div>
   );
 };

@@ -2,9 +2,13 @@ import './index.css'
 
 import { useTranslation } from "react-i18next";
 
-import YoutubeVideos from '../Videos/YoutubeVideos.json'
-import Carousel from "../Videos";
 import useModal from "../../../../shared/hooks/useModal";
+
+import YoutubeVideos from '../Carousel/YoutubeVideos.json'
+import Carousel from "../Carousel";
+import VideoItem from "../Carousel/VideoItem";
+import TextItem from "../Carousel/TextItem";
+import allTexts from "../Carousel/Texts/allTexts";
 
 function Keys({ playPlaylist }) {
 
@@ -179,7 +183,10 @@ function Keys({ playPlaylist }) {
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-videos hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-            <Carousel videos={YoutubeVideos} />
+            <Carousel
+              items={YoutubeVideos}
+              renderItem={(video) => <VideoItem video={video} />}
+            />
             <br />
           </div>
         </div>
@@ -196,14 +203,22 @@ function Keys({ playPlaylist }) {
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
-          <div className="hover-text text absolute transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-            <p>{t("texts_title")}</p>
+          <div className="key-videos hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+            <Carousel
+              items={allTexts}
+              renderItem={(text) => <TextItem text={text} />}
+            />
             <br />
           </div>
         </div>
       </div>
 
-      <div className="hero-key key-accidental key-white"></div>
+      <div className="hero-key key-accidental key-white">
+        <div className="hover-text absolute bottom-2 right-2 text-black opacity-0 text-xl font-semibold italic">
+          {t("texts_title")}
+        </div>
+      </div>
+
 
       <div className="hero-key key-natural key-black">
         <div className="key-image"></div>
