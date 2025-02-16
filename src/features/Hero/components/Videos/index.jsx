@@ -2,15 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import './index.css';
 
-const VideoCarousel = ({ videos }) => {
+const Carousel = ({ videos }) => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
   const carouselRef = useRef(null);
 
   const handleThumbnailClick = (videoId) => {
-    const videoUrl = `https://www.youtube.com/embed/${videoId}`;
-    setSelectedVideo(videoUrl);
+    setSelectedVideo(`https://www.youtube.com/embed/${videoId}`);
   };
 
   const closePopup = () => {
@@ -18,35 +17,48 @@ const VideoCarousel = ({ videos }) => {
   };
 
   const scrollCarousel = (offset) => {
-    const carousel = carouselRef.current;
-    carousel.scrollLeft += offset;
-    updateButtonStates();
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: offset, behavior: "smooth" });
+    }
   };
 
   const updateButtonStates = () => {
-    const carousel = carouselRef.current;
-    setIsAtStart(carousel.scrollLeft === 0);
-    setIsAtEnd(carousel.scrollWidth - carousel.clientWidth === carousel.scrollLeft);
+    if (carouselRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+      setIsAtStart(scrollLeft <= 5);
+      setIsAtEnd(scrollLeft + clientWidth >= scrollWidth - 5);
+    }
   };
 
   useEffect(() => {
-    updateButtonStates();
+    // Aguarda a renderização completa para evitar valores zerados
+    const checkVisibility = () => {
+      if (carouselRef.current && carouselRef.current.scrollWidth > 0) {
+        updateButtonStates();
+      } else {
+        setTimeout(checkVisibility, 50); // Tenta novamente após 50ms se o elemento ainda não estiver renderizado corretamente
+      }
+    };
+
+    checkVisibility();
+    window.addEventListener("resize", updateButtonStates);
+    return () => window.removeEventListener("resize", updateButtonStates);
   }, []);
 
   return (
     <div className="video-carousel-container relative w-full">
       {/* Botões de Navegação */}
-      <div className="navigation-buttons flex justify-between absolute">
+      <div className="navigation-buttons flex justify-between absolute w-full top-1/2 transform -translate-y-1/2 px-2">
         <button
           onClick={() => scrollCarousel(-200)}
-          className={`prev-button ${isAtStart ? "disabled" : ""}`}
+          className={`prev-button ${isAtStart ? "opacity-50 cursor-not-allowed" : ""}`}
           disabled={isAtStart}
         >
           ◀
         </button>
         <button
           onClick={() => scrollCarousel(200)}
-          className={`next-button ${isAtEnd ? "disabled" : ""}`}
+          className={`next-button ${isAtEnd ? "opacity-50 cursor-not-allowed" : ""}`}
           disabled={isAtEnd}
         >
           ▶
@@ -62,7 +74,7 @@ const VideoCarousel = ({ videos }) => {
         {videos.map((video, index) => (
           <div
             key={index}
-            className="thumbnail"
+            className="thumbnail cursor-pointer"
             onClick={() => handleThumbnailClick(video.id)}
           >
             <img
@@ -79,13 +91,9 @@ const VideoCarousel = ({ videos }) => {
       {selectedVideo &&
         ReactDOM.createPortal(
           <div>
-            {/* Overlay */}
             <div className="overlay" onClick={closePopup}></div>
-            {/* Modal */}
             <div className="modal">
-              <button className="close-button" onClick={closePopup}>
-                X
-              </button>
+              <button className="close-button" onClick={closePopup}>X</button>
               <iframe
                 src={`${selectedVideo}?autoplay=1`}
                 title="YouTube Video"
@@ -96,10 +104,10 @@ const VideoCarousel = ({ videos }) => {
               ></iframe>
             </div>
           </div>,
-          document.body // Adiciona o modal diretamente ao body
+          document.body
         )}
     </div>
   );
 };
 
-export default VideoCarousel;
+export default Carousel;

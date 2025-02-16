@@ -4,7 +4,7 @@ import './index.css';
 import { useTranslation } from "react-i18next";
 import "../../../locales/i18n"
 
-function Menu({ styleClass }) {
+function Menu() {
     const menuRef = useRef(null);
     const { t, i18n } = useTranslation("menu");
 
@@ -21,6 +21,7 @@ function Menu({ styleClass }) {
         { href: "#poems", label: t("poems") },
         { isDivider: true },
         { href: "#contact", label: t("contact") },
+        { isDivider: true },
     ];
 
     // Função para rolar horizontalmente
@@ -55,17 +56,17 @@ function Menu({ styleClass }) {
             {/* Lista de itens do menu */}
             <ul
                 ref={menuRef}
-                className={`flex xl:flex-col items-baseline justify-start lg:justify-center flex-nowrap overflow-x-auto space-x-4 xl:space-x-0 xl:space-y-4 no-scrollbar pt-2 ml-14 mr-14 xl:ml-0 xl:mr-0`}
+                className={`flex xl:flex-col justify-start lg:justify-center flex-nowrap overflow-x-auto space-x-4 xl:space-x-0 xl:space-y-4 no-scrollbar pt-2 ml-14 mr-14 xl:ml-0 xl:mr-0`}
             >
                 {menuItems.map((item, index) => (
                     item.isDivider ? (
-                        <li key={index} className="flex items-center xl:w-full">
+                        <li key={index} className="flex xl:w-full">
                             <span className="xl:hidden">|</span> {/* Exibe | em telas menores que xl */}
                             <hr className="hidden xl:block border-t border-gray-400 w-full h-[1px]" /> {/* Exibe <hr> apenas em xl */}
                         </li>
                     ) : (
-                        <li key={index} className="flex ">
-                            <a href={item.href} className="hover:underline leading-none whitespace-nowrap xl:text-sm">
+                        <li key={index} className="flex">
+                            <a href={item.href} className="hover:underline whitespace-nowrap xl:text-sm">
                                 {item.label}
                             </a>
                         </li>
@@ -73,7 +74,7 @@ function Menu({ styleClass }) {
                 ))}
                 
                 {/* Botões de mudança de idioma */}
-                <li className="flex">
+                <li className="flex items-baseline xl:w-full">
                     <button
                         onClick={() => i18n.changeLanguage("pt")}
                         className={`lang-btn ${i18n.language === "pt" ? "active-lang" : ""}`}
@@ -82,7 +83,7 @@ function Menu({ styleClass }) {
                     </button>
                 </li>
                 
-                <li className="flex">
+                <li className="flex items-baseline xl:w-full">
                     <button
                         onClick={() => i18n.changeLanguage("en")}
                         className={`lang-btn ${i18n.language === "en" ? "active-lang" : ""}`}
@@ -91,7 +92,7 @@ function Menu({ styleClass }) {
                     </button>
                 </li>
                 
-                <li className="flex">
+                <li className="flex items-baseline xl:w-full">
                     <button
                         onClick={() => i18n.changeLanguage("es")}
                         className={`lang-btn ${i18n.language === "es" ? "active-lang" : ""}`}
