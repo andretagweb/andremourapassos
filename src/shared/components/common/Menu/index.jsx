@@ -6,21 +6,21 @@ import "../../../locales/i18n"
 
 function Menu({ styleClass }) {
     const menuRef = useRef(null);
-    const { t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation("menu");
 
     // Array de itens do menu
     const menuItems = [
-        { href: "#singles", label: "Singles" },
+        { href: "#singles", label: t("singles") },
         { href: "", label: "|" },
-        { href: "#cocktailn1", label: "Cocktail N1" },
-        { href: "#cocktailn2", label: "Cocktail N2" },
+        { href: "#cocktailn1", label: t("cocktail_n1") },
+        { href: "#cocktailn2", label: t("cocktail_n2") },
         { href: "", label: "|" },
-        { href: "#ttmm", label: "Tasty Themes for Mono Myths" },
+        { href: "#ttmm", label: t("ttmm") },
         { href: "", label: "|" },
-        { href: "#lyrics", label: "Letras" },
-        { href: "#poems", label: "Poesias" },
+        { href: "#lyrics", label: t("lyrics") },
+        { href: "#poems", label: t("poems") },
         { href: "", label: "|" },
-        { href: "#contact", label: "Contato" },
+        { href: "#contact", label: t("contact") },
         { href: "", label: "|" }
     ];
 
@@ -71,20 +71,32 @@ function Menu({ styleClass }) {
 
                 ))}
                 <li className="flex">
-                    <button onClick={() => i18n.changeLanguage("en")} className="lang-btn">
-                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" alt="English" className="lang-flag" />
-                    </button>
-                </li>
-                <li className="flex">
-                    <button onClick={() => i18n.changeLanguage("pt")} className="lang-btn">
+                    <button
+                        onClick={() => i18n.changeLanguage("pt")}
+                        className={`lang-btn ${i18n.language === "pt" ? "active-lang" : ""}`}
+                    >
                         <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" alt="Português" className="lang-flag" />
                     </button>
                 </li>
+                
                 <li className="flex">
-                    <button onClick={() => i18n.changeLanguage("es")} className="lang-btn">
+                    <button
+                        onClick={() => i18n.changeLanguage("en")}
+                        className={`lang-btn ${i18n.language === "en" ? "active-lang" : ""}`}
+                    >
+                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" alt="English" className="lang-flag" />
+                    </button>
+                </li>
+                
+                <li className="flex">
+                    <button
+                        onClick={() => i18n.changeLanguage("es")}
+                        className={`lang-btn ${i18n.language === "es" ? "active-lang" : ""}`}
+                    >
                         <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" alt="Español" className="lang-flag" />
                     </button>
                 </li>
+
             </ul>
 
             {/* Botão para rolar à direita (apenas visível no mobile) */}
