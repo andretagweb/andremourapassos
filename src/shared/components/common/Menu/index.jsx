@@ -2,7 +2,9 @@ import { useRef } from "react";
 import './index.css';
 
 import { useTranslation } from "react-i18next";
-import "../../../locales/i18n"
+import "../../../locales/i18n";
+
+import socialMedia from "../Social";
 
 function Menu() {
     const menuRef = useRef(null);
@@ -23,6 +25,7 @@ function Menu() {
         { href: "#contact", label: t("contact") },
         { isDivider: true },
     ];
+
 
     // Função para rolar horizontalmente
     const scrollMenu = (direction) => {
@@ -56,43 +59,61 @@ function Menu() {
             {/* Lista de itens do menu */}
             <ul
                 ref={menuRef}
-                className={`flex xl:flex-col justify-start lg:justify-center flex-nowrap overflow-x-auto space-x-4 xl:space-x-0 xl:space-y-4 no-scrollbar pt-2 ml-14 mr-14 xl:ml-0 xl:mr-0`}
+                className={`flex xl:flex-col justify-start lg:justify-center flex-nowrap overflow-x-auto space-x-4 xl:space-x-0 xl:space-y-4 no-scrollbar pt-2 ml-14 mr-14 xl:ml-0 xl:mr-0 xl:items-start items-center text-center`}
             >
                 {menuItems.map((item, index) => (
                     item.isDivider ? (
-                        <li key={index} className="flex xl:w-full">
+                        <li key={index} className="flex xl:items-start items-center xl:w-full">
                             <span className="xl:hidden">|</span> {/* Exibe | em telas menores que xl */}
                             <hr className="hidden xl:block border-t border-gray-400 w-full h-[1px]" /> {/* Exibe <hr> apenas em xl */}
                         </li>
                     ) : (
-                        <li key={index} className="flex">
+                        <li key={index} className="flex xl:items-start items-center">
                             <a href={item.href} className="hover:underline whitespace-nowrap xl:text-sm">
                                 {item.label}
                             </a>
                         </li>
                     )
                 ))}
-                
-                {/* Botões de mudança de idioma */}
-                <li className="flex items-baseline xl:w-full">
+
+                {/* Nova seção para mídias sociais */}
+                <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center">
+                    {socialMedia.map((media, index) => (
+                        <a
+                            key={index}
+                            href={media.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="social-icon flex xl:items-start items-center"
+                        >
+                            <img src={media.svg} alt={media.label} className="w-6 h-6 lang-flag" />
+                        </a>
+                    ))}
+                </li>
+
+                {/* Divisor entre mídias sociais e bandeiras */}
+                <li className="flex xl:items-start items-center xl:w-full">
+                    <span className="xl:hidden">|</span> {/* Exibe | em telas menores que xl */}
+
+                    <hr className="hidden xl:block border-t border-gray-400 w-full h-[1px]" /> {/* Exibe <hr> apenas em xl */}
+                </li>
+
+                {/* Agrupando os botões de idioma horizontalmente */}
+                <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center">
                     <button
                         onClick={() => i18n.changeLanguage("pt")}
                         className={`lang-btn ${i18n.language === "pt" ? "active-lang" : ""}`}
                     >
                         <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" alt="Português" className="lang-flag" />
                     </button>
-                </li>
-                
-                <li className="flex items-baseline xl:w-full">
+
                     <button
                         onClick={() => i18n.changeLanguage("en")}
                         className={`lang-btn ${i18n.language === "en" ? "active-lang" : ""}`}
                     >
                         <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" alt="English" className="lang-flag" />
                     </button>
-                </li>
-                
-                <li className="flex items-baseline xl:w-full">
+
                     <button
                         onClick={() => i18n.changeLanguage("es")}
                         className={`lang-btn ${i18n.language === "es" ? "active-lang" : ""}`}
@@ -100,8 +121,8 @@ function Menu() {
                         <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" alt="Español" className="lang-flag" />
                     </button>
                 </li>
-
             </ul>
+
 
             {/* Botão para rolar à direita (apenas visível no mobile) */}
             <div className="absolute lg:hidden right-0 top-1/3 m-1 -translate-y-1/2 transform">
