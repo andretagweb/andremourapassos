@@ -33,12 +33,14 @@ function Hero() {
   return (
     <section className="App-hero bg-white text-black flex bellota-text-regular">
       <div className="hero-piano flex w-full h-1/3 relative align-left border-4">
-        <div className="side-key hidden xl:block bg-dark w-1/6 p-6 sticky top-0 text-white special-elite-regular">
+        {/* Sidebar fixa na esquerda */}
+        <div className="side-key hidden xl:block bg-dark w-1/6 p-6 fixed left-0 top-0 h-full text-white special-elite-regular">
           <Menu />
         </div>
-        <div className="keyboard flex w-full xl:w-5/6">
-          <div className="key-redline flex-[1] bg-red-500 shadow-md">
-          </div>
+        
+        {/* Conteúdo principal, empurrado para evitar sobreposição */}
+        <div className="keyboard flex w-full xl:w-5/6 xl:ml-[16.67%]">
+          <div className="key-redline flex-[1] bg-red-500 shadow-md"></div>
           <div className="keys-group flex-[80]">
             <Keys playPlaylist={playPlaylist} />
             <Contact />
