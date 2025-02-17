@@ -91,7 +91,7 @@ function Keys({ playPlaylist }) {
 
       <div className="hero-key key-accidental key-black relative">
         <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">
-          {t("cocktail1_title")}
+          <h3>{t("cocktail1_title")}</h3>
         </div>
       </div>
 
@@ -109,7 +109,7 @@ function Keys({ playPlaylist }) {
 
       <div className="hero-key key-accidental key-black relative">
         <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">
-          {t("cocktail2_title")}
+          <h3>{t("cocktail2_title")}</h3>
         </div>
       </div>
 
@@ -141,7 +141,7 @@ function Keys({ playPlaylist }) {
 
       <div className="hero-key key-accidental key-black relative">
         <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">
-          {t("singles_title")}
+          <h3>{t("singles_title")}</h3>
         </div>
       </div>
 
@@ -161,7 +161,9 @@ function Keys({ playPlaylist }) {
 
 
       <div className="hero-key key-accidental key-black">
-        <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">Tasty Themes for Mono Myths</div>
+        <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">
+          <h3>Tasty Themes for Mono Myths</h3>
+          </div>
       </div>
 
       <div id="suburban" className="hero-key key-natural key-white" onClick={() => {
@@ -194,7 +196,7 @@ function Keys({ playPlaylist }) {
 
       <div className="hero-key key-accidental key-white">
         <div className="hover-text absolute bottom-2 right-2 text-black opacity-0 text-xl font-semibold italic">
-          {t("videos_title")}
+          <h3>{t("videos_title")}</h3>
         </div>
       </div>
 
@@ -215,7 +217,7 @@ function Keys({ playPlaylist }) {
 
       <div className="hero-key key-accidental key-white">
         <div className="hover-text absolute bottom-2 right-2 text-black opacity-0 text-xl font-semibold italic">
-          {t("texts_title")}
+          <h3>{t("texts_title")}</h3>
         </div>
       </div>
 

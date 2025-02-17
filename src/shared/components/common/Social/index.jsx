@@ -10,7 +10,6 @@ const socialMedia = [
         icon: "📷", // Alternativa para Instagram caso precise de emoji
         svg: instagram,
         label: "Instagram"
-        
     },
     { 
         href: "https://www.facebook.com/profile.php?id=100091738507321", 
