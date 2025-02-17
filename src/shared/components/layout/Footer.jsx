@@ -2,7 +2,7 @@ import socialMedia from "../common/Social";
 
 function Footer() {
   return (
-    <footer className="bg-dark text-white pt-4 pb-20">
+    <footer className="bg-dark text-white pt-4 pb-20 special-elite-regular">
       <div className="container mx-auto px-6 lg:px-12 text-center">
 
         {/* Links principais */}

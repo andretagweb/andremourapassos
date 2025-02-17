@@ -1,79 +1,36 @@
-const express = require('express');
-const cors = require('cors');
-const fs = require('fs');
-const path = require('path');
-const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const { graphqlHTTP } = require("express-graphql");
+
+const schema = require("./graphql/schema");
+const resolvers = require("./graphql/resolvers");
+
+const emailRoutes = require("./routes/emailRoutes");
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
+app.use(express.json());
 
-const generatePlaylist = (folderPath, baseUrl) => {
-  if (!fs.existsSync(folderPath)) {
-    return null;
-  }
+// API REST para envio de e-mails
+app.use("/api", emailRoutes);
 
-  try {
-    const files = fs.readdirSync(folderPath).filter(file => file.endsWith('.mp3'));
-
-    return files.map(file => {
-      const formattedTitle = file
-        .replace(/^[0-9]+-/, '')
-        .replace(/-/g, ' ')
-        .replace(/\.mp3$/, '');
-
-      return {
-        title: formattedTitle,
-        artist: 'Artista Desconhecido',
-        url: `${baseUrl}/${file}`,
-      };
-    });
-  } catch (error) {
-    console.error(`Erro ao gerar playlist: ${error.message}`);
-    return null;
-  }
-};
-
-const PORT = 3001;
-
-const schema = buildSchema(`
-  type Track {
-    title: String
-    artist: String
-    url: String
-  }
-
-  type Query {
-    playlist(playlistName: String): [Track]
-  }
-`);
-
-const root = {
-  playlist: ({ playlistName }) => {
-    const folderPath = playlistName
-      ? path.join(__dirname, 'assets/mp3', playlistName)
-      : path.join(__dirname, 'assets/mp3');
-
-    const baseUrl = playlistName
-      ? `http://localhost:${PORT}/assets/mp3/${playlistName}`
-      : `http://localhost:${PORT}/assets/mp3`;
-
-    return generatePlaylist(folderPath, baseUrl) || [];
-  },
-};
-
+// GraphQL API para playlists
 app.use(
-  '/graphql',
+  "/graphql",
   graphqlHTTP({
-    schema: schema,
-    rootValue: root,
+    schema,
+    rootValue: resolvers,
     graphiql: true,
   })
 );
 
-app.use('/assets/mp3', express.static(path.join(__dirname, 'assets/mp3')));
+// Servir arquivos MP3
+app.use("/assets/mp3", express.static(path.join(__dirname, "assets/mp3")));
 
 app.listen(PORT, () => {
-  console.log(`Servidor GraphQL rodando na porta ${PORT}`);
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
