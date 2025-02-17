@@ -59,17 +59,17 @@ function Menu() {
             {/* Lista de itens do menu */}
             <ul
                 ref={menuRef}
-                className={`flex xl:flex-col justify-start lg:justify-center flex-nowrap overflow-x-auto space-x-4 xl:space-x-0 xl:space-y-4 no-scrollbar pt-2 ml-14 mr-14 xl:ml-0 xl:mr-0 xl:items-start items-center text-center`}
+                className={`flex xl:flex-col justify-start lg:justify-center flex-nowrap overflow-x-auto space-x-4 xl:space-x-0 xl:space-y-4 no-scrollbar  ml-14 mr-14 xl:ml-0 xl:mr-0 xl:items-start items-center text-center`}
             >
                 {menuItems.map((item, index) => (
                     item.isDivider ? (
-                        <li key={index} className="flex xl:items-start items-center xl:w-full">
-                            <span className="xl:hidden">|</span> {/* Exibe | em telas menores que xl */}
+                        <li key={index} className="flex xl:w-full">
+                            <span className="xl:hidden h-4">|</span> {/* Exibe | em telas menores que xl */}
                             <hr className="hidden xl:block border-t border-gray-400 w-full h-[1px]" /> {/* Exibe <hr> apenas em xl */}
                         </li>
                     ) : (
-                        <li key={index} className="flex xl:items-start items-center">
-                            <a href={item.href} className="hover:underline whitespace-nowrap xl:text-sm">
+                        <li key={index} className="flex flex-col justify-end h-full items-end">
+                            <a href={item.href} className="hover:underline whitespace-nowrap self-end h-4 xl:text-sm">
                                 {item.label}
                             </a>
                         </li>
@@ -84,16 +84,19 @@ function Menu() {
                             href={media.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="social-icon flex xl:items-start items-center"
+                            className="social-icon flex xl:items-start items-center text-white hover:text-gray-400 transition duration-300"
                         >
-                            <img src={media.svg} alt={media.label} className="w-6 h-6 lang-flag" />
+                            <div className="h-8 flex items-center justify-center"> {/* Define o tamanho fixo dos ícones */}
+                                {media.icon}
+                            </div>
                         </a>
                     ))}
                 </li>
 
+
                 {/* Divisor entre mídias sociais e bandeiras */}
                 <li className="flex xl:items-start items-center xl:w-full">
-                    <span className="xl:hidden">|</span> {/* Exibe | em telas menores que xl */}
+                    <span className="xl:hidden h-4">|</span> {/* Exibe | em telas menores que xl */}
 
                     <hr className="hidden xl:block border-t border-gray-400 w-full h-[1px]" /> {/* Exibe <hr> apenas em xl */}
                 </li>
