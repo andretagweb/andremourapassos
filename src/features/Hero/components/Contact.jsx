@@ -23,7 +23,7 @@ function Contact() {
 
   return (
     <section id="contact" className="text-white bg-gray-dark py-12 special-elite-regular">
-      <div className="container mx-auto">
+      <div className="mx-auto xsm:mx-4">
         <h3 className="text-3xl font-bold text-center mb-6">Contato</h3>
         <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
           <div className="mb-4">
