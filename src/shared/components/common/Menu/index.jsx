@@ -69,7 +69,7 @@ function Menu() {
                         </li>
                     ) : (
                         <li key={index} className="flex flex-col justify-end h-full items-end">
-                            <a href={item.href} className="hover:underline whitespace-nowrap self-end h-4 xl:text-sm">
+                            <a href={item.href} className="text-gray-medium hover:underline whitespace-nowrap self-end h-4 xl:text-sm">
                                 {item.label}
                             </a>
                         </li>
