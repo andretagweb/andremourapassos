@@ -10,7 +10,26 @@ const emailRoutes = require("../routes/emailRoutes");
 
 const app = express();
 
-app.use(cors());
+// ✅ 🔥 Corrigindo CORS corretamente para permitir Netlify
+const allowedOrigins = [
+  "https://andremourapassos.netlify.app", // Frontend em produção
+  "http://localhost:3000" // Para testes locais
+];
+
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+  }
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+  next();
+});
+
 app.use(express.json());
 
 // API REST para envio de e-mails
@@ -29,5 +48,5 @@ app.use(
 // Servir arquivos MP3
 app.use("/assets/mp3", express.static(path.join(__dirname, "../assets/mp3")));
 
-// Exportar a função de manipulação para o Vercel
+// 🔥 Exportar a função para rodar no Vercel
 module.exports = app;
