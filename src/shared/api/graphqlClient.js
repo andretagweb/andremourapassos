@@ -1,4 +1,4 @@
-const GRAPHQL_ENDPOINT = 'http://localhost:3001/graphql';
+const GRAPHQL_ENDPOINT =  'http://localhost:3001/graphql';
 
 /**
  * Executa uma consulta GraphQL genérica
