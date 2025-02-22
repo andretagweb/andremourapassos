@@ -133,7 +133,7 @@ function Keys({ playPlaylist }) {
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
-          <div className="hover-text hover-play text">
+          <div className="hover-text text">
             <p>{t("strange_1")}, {t("strange_2")}</p>
           </div>
         </div>

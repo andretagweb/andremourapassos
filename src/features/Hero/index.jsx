@@ -32,9 +32,9 @@ function Hero() {
 
   return (
     <section className="App-hero bg-white text-black flex bellota-text-regular">
-      <div className="hero-piano flex w-full h-1/3 relative align-left border-4">
+      <div className="hero-piano flex w-full h-1/3  bg-dark relative align-left border-4">
         {/* Sidebar fixa na esquerda */}
-        <div className="side-key hidden xl:block bg-dark w-1/6 p-6 fixed left-0 top-0 h-full text-white special-elite-regular">
+        <div className="side-key hidden xl:block  w-1/6 p-6 fixed left-0 top-0 h-full text-white special-elite-regular">
           <Menu />
         </div>
         
