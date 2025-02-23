@@ -201,7 +201,7 @@ function Keys({ playPlaylist }) {
       </div>
 
       <div id="poems" className="hero-key key-natural key-black" onClick={() => {
-        showModal('textos');
+        showModal('poems');
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
@@ -222,11 +222,14 @@ function Keys({ playPlaylist }) {
       </div>
 
 
-      <div className="hero-key key-natural key-black">
+      <div id="soon" className="hero-key key-natural key-black" onClick={() => {
+        showModal('soon');
+      }}>
         <div className="key-image"></div>
-        <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-          <p>{t("soon")}</p>
-          <br />
+        <div className="key-modal">
+          <div className="key-videos hover-text text-white text w-1/3 absolute left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+            <p>{t("soon")}</p>
+          </div>
         </div>
       </div>
     </div>
