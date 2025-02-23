@@ -10,32 +10,28 @@ const emailRoutes = require("../routes/emailRoutes");
 
 const app = express();
 
-// ✅ 🔥 Corrigindo CORS corretamente para permitir Netlify
-const allowedOrigins = [
-  "https://andremourapassos.netlify.app", // Frontend em produção
-  "http://localhost:3000" // Para testes locais
-];
-
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-  }
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-  next();
-});
-
+// 🔥 Mantendo CORS sem alterar estrutura
+app.use(cors());
 app.use(express.json());
 
-// API REST para envio de e-mails
+// 🔥 Log para Debug no Vercel
+console.log("🛠️ SERVIDOR INICIADO");
+console.log("📌 process.env.VERCEL:", process.env.VERCEL);
+console.log("📌 process.env.NODE_ENV:", process.env.NODE_ENV);
+
+// ✅ 🔥 Rota de Debug para Teste
+app.get("/debug", (req, res) => {
+  console.log("🔥 REQUISIÇÃO AO /debug");
+  res.json({
+    VERCEL: process.env.VERCEL || "Não definida",
+    NODE_ENV: process.env.NODE_ENV || "Não definida",
+    isLocal: process.env.VERCEL !== "1"
+  });
+});
+
+// 🔥 Mantendo Rotas como Estavam
 app.use("/api", emailRoutes);
 
-// GraphQL API para playlists
 app.use(
   "/graphql",
   graphqlHTTP({
@@ -45,8 +41,8 @@ app.use(
   })
 );
 
-// Servir arquivos MP3
+// Servindo arquivos MP3 (sem alterações)
 app.use("/assets/mp3", express.static(path.join(__dirname, "../assets/mp3")));
 
-// 🔥 Exportar a função para rodar no Vercel
+// 🔥 Exportar sem alterar estrutura
 module.exports = app;

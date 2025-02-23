@@ -20,14 +20,22 @@ const generatePlaylist = (folderPath, baseUrl) => {
   }
 };
 
-exports.getPlaylist = (playlistName, PORT) => {
+exports.getPlaylist = (playlistName, PORT) => {  
+  // 🔥 Log para Debug no Vercel
+  console.log("🛠️ GRAPHQL SERVIDOR INICIADO");
+  console.log("📌 process.env.VERCEL:", process.env.VERCEL);
+  console.log("📌 process.env.NODE_ENV:", process.env.NODE_ENV);
+
   const folderPath = playlistName
     ? path.join(__dirname, "../assets/mp3", playlistName)
     : path.join(__dirname, "../assets/mp3");
 
-  const baseUrl = playlistName
-    ? `http://localhost:${PORT}/assets/mp3/${playlistName}`
-    : `http://localhost:${PORT}/assets/mp3`;
+  // 🔥 Define a URL correta com base no ambiente
+  const isLocal = process.env.VERCEL !== "1"; // Vercel define VERCEL=1 automaticamente
+
+  const baseUrl = isLocal
+    ? `http://localhost:${PORT}/assets/mp3/${playlistName || ""}`
+    : `https://andremourapassos-8v379qqgl-andretagwebs-projects.vercel.app/assets/mp3/${playlistName || ""}`;
 
   return generatePlaylist(folderPath, baseUrl) || [];
 };
