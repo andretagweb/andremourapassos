@@ -6,14 +6,14 @@ function Footer() {
       <div className="mx-auto pb-10 lg:pb-0 px-2 lg:px-12 text-center">
 
         {/* Links principais */}
-        <nav className="mb-4">
+        {/*<nav className="mb-4">
           <ul className="flex justify-center space-x-6 text-sm md:text-base">
             <li><a href="#about" className="hover:underline">Sobre</a></li>
             <li><a href="#services" className="hover:underline">Serviços</a></li>
             <li><a href="#terms" className="hover:underline">Termos de Uso</a></li>
             <li><a href="#contact" className="hover:underline">Contato</a></li>
           </ul>
-        </nav>
+        </nav>*/}
 
         {/* Ícones Sociais */}
         <div className="flex justify-center space-x-4 mb-4">

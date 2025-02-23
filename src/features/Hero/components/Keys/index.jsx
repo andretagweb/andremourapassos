@@ -57,7 +57,7 @@ function Keys({ playPlaylist }) {
           <h1 className="hero-title text-lg sm:text-3xl md:text-3xl lg:text-4xl drop-shadow-sm font-bold lg:mb-6 text-white limelight-regular">
             {t("main_title")}
           </h1>
-          <h2 className="text-md md:text-md lg:text-xl drop-shadow-sm font-bold lg:mb-6 text-white">
+          <h2 className="text-sm md:text-md lg:text-xl drop-shadow-sm font-bold lg:mb-6 text-white">
             {t("subtitle_1")}, <span className="text-gray-medium font-light">{t("subtitle_2")},</span> {t("subtitle_3")}
           </h2>
         </div>
@@ -200,7 +200,7 @@ function Keys({ playPlaylist }) {
         </div>
       </div>
 
-      <div id="textos" className="hero-key key-natural key-black" onClick={() => {
+      <div id="poems" className="hero-key key-natural key-black" onClick={() => {
         showModal('textos');
       }}>
         <div className="key-image"></div>
@@ -225,7 +225,7 @@ function Keys({ playPlaylist }) {
       <div className="hero-key key-natural key-black">
         <div className="key-image"></div>
         <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
-          <p>{t("poetry_title")}</p>
+          <p>{t("soon")}</p>
           <br />
         </div>
       </div>

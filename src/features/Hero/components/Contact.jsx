@@ -64,7 +64,7 @@ function Contact() {
               required
             />
           </div>
-          <button className="bg-primary text-black py-2 px-4 rounded hover:bg-blue-800">Enviar</button>
+          <button className="bg-primary text-white py-2 px-4 rounded hover:bg-blue-800">Enviar</button>
           {status && <p className="mt-2 text-center">{status}</p>}
         </form>
       </div>

@@ -14,12 +14,12 @@ function Menu() {
     const menuItems = [
         { href: "#singles", label: t("singles") },
         { isDivider: true },
-        { href: "#cocktailn1", label: t("cocktail_n1") },
+        { href: "#bloodscocktail", label: t("cocktail_n1") },
         { href: "#cocktailn2", label: t("cocktail_n2") },
         { isDivider: true },
         { href: "#ttmm", label: t("ttmm") },
         { isDivider: true },
-        { href: "#lyrics", label: t("lyrics") },
+        { href: "#videos", label: t("videos") },
         { href: "#poems", label: t("poems") },
         { isDivider: true },
         { href: "#contact", label: t("contact") },
@@ -77,7 +77,7 @@ function Menu() {
                 ))}
 
                 {/* Nova seção para mídias sociais */}
-                <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center">
+                <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center sm:flex xsm:hidden">
                     {socialMedia.map((media, index) => (
                         <a
                             key={index}
@@ -95,7 +95,7 @@ function Menu() {
 
 
                 {/* Divisor entre mídias sociais e bandeiras */}
-                <li className="flex xl:items-start items-center xl:w-full">
+                <li className="flex xl:items-start items-center xl:w-full  sm:flex xsm:hidden">
                     <span className="xl:hidden h-4">|</span> {/* Exibe | em telas menores que xl */}
 
                     <hr className="hidden xl:block border-t border-gray-400 w-full h-[1px]" /> {/* Exibe <hr> apenas em xl */}
