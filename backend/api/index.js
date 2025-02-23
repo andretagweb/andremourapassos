@@ -14,11 +14,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🔥 Log para Debug no Vercel
-console.log("🛠️ SERVIDOR INICIADO");
-console.log("📌 process.env.VERCEL:", process.env.VERCEL);
-console.log("📌 process.env.NODE_ENV:", process.env.NODE_ENV);
-
 // ✅ 🔥 Rota de Debug para Teste
 app.get("/debug", (req, res) => {
   console.log("🔥 REQUISIÇÃO AO /debug");

@@ -4,6 +4,12 @@ function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState(null);
 
+  // 🔥 Define a URL correta com base no ambiente
+  const API_BASE_URL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:3001"
+      : "https://andremourapassos.vercel.app";
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -11,7 +17,7 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:3001/api/send-email", {
+    const response = await fetch(`${API_BASE_URL}/api/send-email`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
