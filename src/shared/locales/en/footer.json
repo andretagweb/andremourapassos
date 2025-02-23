@@ -1,3 +1,7 @@
 {
-    
+    "name": "Name",
+    "e-mail": "E-Mail",
+    "message": "Message",
+    "send": "Send",
+    "copyright": "All rights reserved"
 }

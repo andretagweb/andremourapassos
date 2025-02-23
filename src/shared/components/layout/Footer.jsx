@@ -1,6 +1,9 @@
 import socialMedia from "../common/Social";
+import { useTranslation } from "react-i18next";
 
 function Footer() {
+  const { t } = useTranslation("footer");
+
   return (
     <footer className="bg-dark text-white pt-4 pb-20 xl:pb-6 special-elite-regular">
       <div className="mx-auto pb-10 lg:pb-0 px-2 lg:px-12 text-center">
@@ -33,7 +36,7 @@ function Footer() {
 
         {/* Copyright */}
         <p className="text-xs md:text-sm opacity-75 text-gray-medium">
-          &copy; {new Date().getFullYear()} André Moura Passos - Todos os direitos reservados.
+          &copy; {new Date().getFullYear()} André Moura Passos - {t("copyright")}
         </p>
       </div>
     </footer>

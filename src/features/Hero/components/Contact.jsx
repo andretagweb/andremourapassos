@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState(null);
+  const { t } = useTranslation("footer");
 
   // 🔥 Define a URL correta com base no ambiente
   const API_BASE_URL =
@@ -33,7 +35,7 @@ function Contact() {
         <h3 className="text-3xl font-bold text-center mb-6">Contato</h3>
         <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block mb-2">Nome</label>
+            <label className="block mb-2">{t("name")}</label>
             <input
               type="text"
               name="name"
@@ -44,7 +46,7 @@ function Contact() {
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-2">E-mail</label>
+            <label className="block mb-2">{t("e-mail")}</label>
             <input
               type="email"
               name="email"
@@ -55,7 +57,7 @@ function Contact() {
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-2">Mensagem</label>
+            <label className="block mb-2">{t("message")}</label>
             <textarea
               name="message"
               value={formData.message}
@@ -64,7 +66,7 @@ function Contact() {
               required
             />
           </div>
-          <button className="bg-primary text-white py-2 px-4 rounded hover:bg-blue-800">Enviar</button>
+          <button className="bg-primary text-white py-2 px-4 rounded hover:bg-blue-800">{t("send")}</button>
           {status && <p className="mt-2 text-center">{status}</p>}
         </form>
       </div>
