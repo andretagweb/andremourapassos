@@ -40,7 +40,7 @@ function Menu() {
             {/* Botão para rolar à esquerda (apenas visível no mobile) */}
             <div className="absolute lg:hidden left-0 top-1/3 m-1 -translate-y-1/2 transform">
                 <button
-                    className="button bg-gray-300 p-2 rounded-full shadow-md"
+                    className="button bg-gray-300 p-1 w-8 h-8  rounded-full shadow-md"
                     onClick={() => scrollMenu("left")}
                     aria-label="Scroll left"
                 >
@@ -130,7 +130,7 @@ function Menu() {
             {/* Botão para rolar à direita (apenas visível no mobile) */}
             <div className="absolute lg:hidden right-0 top-1/3 m-1 -translate-y-1/2 transform">
                 <button
-                    className="button bg-gray-300 p-2 rounded-full shadow-md"
+                    className="button bg-gray-300 p-1 w-8 h-8 rounded-full shadow-md"
                     onClick={() => scrollMenu("right")}
                     aria-label="Scroll right"
                 >
