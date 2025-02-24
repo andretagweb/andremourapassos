@@ -59,17 +59,17 @@ function Menu() {
             {/* Lista de itens do menu */}
             <ul
                 ref={menuRef}
-                className={`flex xl:flex-col justify-start lg:justify-center flex-nowrap overflow-x-auto space-x-4 xsm:space-x-2 xl:space-x-0 xl:space-y-4 no-scrollbar  ml-14 mr-14 xl:ml-0 xl:mr-0 xl:items-start items-center text-center`}
+                className={`flex xl:flex-col justify-start lg:justify-center flex-nowrap overflow-x-auto space-x-4 sm:space-x-4 xsm:space-x-2 xl:space-x-0 xl:space-y-4 no-scrollbar  ml-14 mr-14 xl:ml-0 xl:mr-0 xl:items-start items-center text-center`}
             >
                 {menuItems.map((item, index) => (
                     item.isDivider ? (
                         <li key={index} className="flex xl:w-full justify-start align-top">
-                            <span className="xl:hidden text-gray-light hover:underline whitespace-nowrap self-end h-4 xsm:text-[12px] ">|</span> {/* Exibe | em telas menores que xl */}
+                            <span className="xl:hidden text-gray-light hover:underline whitespace-nowrap self-end h-4 xsm:text-[12px] sm:text-[16px]">|</span> {/* Exibe | em telas menores que xl */}
                             <hr className="hidden xl:block border-t border-gray-400 w-full h-[1px]" /> {/* Exibe <hr> apenas em xl */}
                         </li>
                     ) : (
                         <li key={index} className="flex flex-col justify-end h-full items-end">
-                            <a href={item.href} className="text-gray-light hover:underline whitespace-nowrap self-end h-4 xsm:text-[12px] xl:text-sm">
+                            <a href={item.href} className="text-gray-light hover:underline whitespace-nowrap self-end h-4 xsm:text-[12px] sm:text-[16px] xl:text-sm">
                                 {item.label}
                             </a>
                         </li>
