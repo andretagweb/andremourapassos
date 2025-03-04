@@ -114,7 +114,7 @@ function Menu() {
                         onClick={() => i18n.changeLanguage("en")}
                         className={`lang-btn ${i18n.language === "en" ? "active-lang" : ""}`}
                     >
-                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" alt="English" className="lang-flag" />
+                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg" alt="English" className="lang-flag" />
                     </button>
 
                     <button
