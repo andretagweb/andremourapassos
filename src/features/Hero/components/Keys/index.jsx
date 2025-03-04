@@ -74,14 +74,14 @@ function Keys({ playPlaylist }) {
         <div className="key-modal">
           <div className="key-image"></div>
           <div className="hover-text hover-play text">
-            <p className="text-md text-gray-800">
+            <p className="text-gray-800">
               <strong>{t("same_bloods_title")}</strong> {t("same_bloods_1")}<br />
               {t("same_bloods_2")}<br />
               {t("same_bloods_3")}<br />
               {t("same_bloods_4")}
             </p>
             <br />
-            <p className="text-md font-semibold text-gray-800">
+            <p className="font-semibold text-gray-800">
               {t("cocktail1_1")}<br />
               {t("cocktail1_2")}<br />
               {t("cocktail1_3")}<br />
@@ -104,9 +104,8 @@ function Keys({ playPlaylist }) {
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-image"></div>
-
           <div className="hover-text hover-play text">
-            <p className="text-md text-gray-800">{t("cocktail2_1")}<br />{t("cocktail2_2")}</p>
+            <p className="text-gray-800">{t("cocktail2_1")}</p><br/><p>{t("cocktail2_2")}</p>
           </div>
         </div>
       </div>
@@ -126,7 +125,7 @@ function Keys({ playPlaylist }) {
           <div className="key-image"></div>
 
           <div className="hover-text hover-play text">
-            <p className="text-md font-semibold text-gray-800">{t("singles_intro")}</p>
+            <p className="font-semibold text-gray-800">{t("singles_intro")}</p>
             <br />
             <p>{t("singles_list")}</p>
           </div>
@@ -162,7 +161,7 @@ function Keys({ playPlaylist }) {
           <div className="key-image"></div>
 
           <div className="hover-text hover-play text">
-            <p className="text-md font-semibold text-gray-800">{t("ttmm_1")}</p>
+            <p className="font-semibold text-gray-800">{t("ttmm_1")}</p>
             <br />
             <p>{t("ttmm_2")}</p>
           </div>

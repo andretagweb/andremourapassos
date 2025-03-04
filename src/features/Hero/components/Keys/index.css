@@ -171,7 +171,7 @@
 }
 
 #cocktailn2 .key-modal .key-image {
-    height: 550px;
+    height: 400px;
 }
 
 .key-natural#cocktailn1 .key-image {
@@ -191,7 +191,7 @@
 }
 
 #singles .key-modal .key-image {
-    height: 500px;
+    height: 450px;
     background-size: 130%;
     background-position: 80% 0% !important;
 }
@@ -204,7 +204,7 @@
 
 #strange .key-modal .key-image {
     background-size: 150%;
-    height: 500px;
+    height: 450px;
 }
 
 .key-natural#suburban .key-image {
@@ -214,8 +214,8 @@
 }
 
 .key-natural#suburban .key-modal .key-image {
-    height: 500px;
-    background-size: contain;
+    height: 380px;
+    background-size: cover;
     background-position: 70% 10%;
 }
 
@@ -226,8 +226,9 @@
 }
 
 #ttmm .key-modal .key-image {
-    background-size: contain;
-    height: 550px;
+    background-size: cover;
+    background-position: 0 -77px !important;
+    height: 342px;
 }
 
 .key-natural#cocktail22 .key-image {
@@ -334,6 +335,11 @@
         display: block;
     }
 
+    .key-modal .hover-text {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
     .hover-text {
         padding: 20px;
         z-index: 2;
@@ -356,8 +362,6 @@
         gap: 15px;
         /* Espaçamento entre elementos */
     }
-
-
 
     .close-modal {
         display: none;
