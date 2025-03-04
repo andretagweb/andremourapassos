@@ -20,6 +20,7 @@
     --color-keyWhite-gradients: #d9d6d6;
 
     --color-hoverPlay: #656261;
+    --color-hoverPlay-mobile: #ff4203;
 }
 
 .key-natural {
@@ -59,7 +60,6 @@
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
-
 
 /* Ícone de Play */
 .key-natural .hover-play::before {
@@ -145,13 +145,22 @@
         var(--img-perfiliconograma);
     background-repeat: no-repeat;
     background-position: 80% 66%;
-    background-size: cover;
+}
+
+#perfiliconograma .key-modal .key-image {
+    height: 350px;
 }
 
 .key-natural#bloodscocktail .key-image {
     background-position: 80% 35%;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         var(--img-bloodscocktail);
+}
+
+#bloodscocktail .key-modal .key-image {
+    height: 401px;
+    background-position: 99% 42% !important;
+    background-size: cover;
 }
 
 .key-natural#cocktailn2 .key-image {
@@ -161,10 +170,18 @@
         var(--img-cocktailn2);
 }
 
+#cocktailn2 .key-modal .key-image {
+    height: 550px;
+}
+
 .key-natural#cocktailn1 .key-image {
     background-position: center;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         var(--img-cocktailn1);
+}
+
+#cocktailn1 .key-modal .key-image {
+    height: 250px;
 }
 
 .key-natural#singles .key-image {
@@ -173,10 +190,21 @@
         var(--img-singles);
 }
 
+#singles .key-modal .key-image {
+    height: 500px;
+    background-size: 130%;
+    background-position: 80% 0% !important;
+}
+
 .key-natural#strange .key-image {
     background-position: 70% 10%;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         var(--img-strange);
+}
+
+#strange .key-modal .key-image {
+    background-size: 150%;
+    height: 500px;
 }
 
 .key-natural#suburban .key-image {
@@ -185,16 +213,37 @@
         var(--img-suburban);
 }
 
+.key-natural#suburban .key-modal .key-image {
+    height: 500px;
+    background-size: contain;
+    background-position: 70% 10%;
+}
+
 .key-natural#ttmm .key-image {
     background-position: 80% 40%;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         var(--img-ttmm);
 }
 
+#ttmm .key-modal .key-image {
+    background-size: contain;
+    height: 550px;
+}
+
 .key-natural#cocktail22 .key-image {
     background-position: 80% 40%;
     background-image: linear-gradient(rgba(255, 255, 255, var(--opacity-level)), rgba(255, 255, 255, var(--opacity-level))),
         var(--img-cocktail22);
+}
+
+#cocktail22 .key-modal .key-image {
+    height: 450px;
+    background-size: contain;
+}
+
+.hero-key .key-modal .key-image{
+    background-size: contain;
+    background-position: 0% 0% !important;
 }
 
 .key-modal {
@@ -263,7 +312,6 @@
         top: 0;
         left: 0;
         right: 0;
-        padding-top: 55%;
         bottom: 100px;
         width: 100%;
         transition: opacity 2s ease;
@@ -296,7 +344,6 @@
         position: fixed;
         top: 0;
         width: 100%;
-        top: 50px;
         cursor: pointer;
     }
     
@@ -332,6 +379,17 @@
         left: 10%;
         width: 80%;
         top: 40%;
+    }
+
+    .key-natural .hover-play::before {
+        border-left: 60px solid var(--color-hoverPlay-mobile);
+        border-top: 30px solid transparent;
+        border-bottom: 30px solid transparent;
+        position: fixed;
+        right: 0;
+        left: 90%;
+        top: 50%;
+        bottom: 8%;
     }
 
 }

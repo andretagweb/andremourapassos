@@ -32,8 +32,9 @@ function Keys({ playPlaylist }) {
         onClick={() => {
           showModal('perfiliconograma')
         }}>
-        <div className="key-image flex-grow"></div>
+        <div className="key-image"></div>
         <div className="key-modal">
+          <div className="key-image"></div>
           <div className="hover-text text">
             <p>
               {t("intro_1")} <strong>{t("intro_2")}</strong> e <strong>{t("intro_3")}</strong>.
@@ -71,6 +72,7 @@ function Keys({ playPlaylist }) {
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
+          <div className="key-image"></div>
           <div className="hover-text hover-play text">
             <p className="text-md text-gray-800">
               <strong>{t("same_bloods_title")}</strong> {t("same_bloods_1")}<br />
@@ -101,6 +103,8 @@ function Keys({ playPlaylist }) {
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
+          <div className="key-image"></div>
+
           <div className="hover-text hover-play text">
             <p className="text-md text-gray-800">{t("cocktail2_1")}<br />{t("cocktail2_2")}</p>
           </div>
@@ -119,6 +123,8 @@ function Keys({ playPlaylist }) {
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
+          <div className="key-image"></div>
+
           <div className="hover-text hover-play text">
             <p className="text-md font-semibold text-gray-800">{t("singles_intro")}</p>
             <br />
@@ -133,6 +139,8 @@ function Keys({ playPlaylist }) {
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
+          <div className="key-image"></div>
+
           <div className="hover-text text">
             <p>{t("strange_1")}, {t("strange_2")}</p>
           </div>
@@ -151,7 +159,9 @@ function Keys({ playPlaylist }) {
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
-          <div className="hover-text hover-play text absolute top-1/2 transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+          <div className="key-image"></div>
+
+          <div className="hover-text hover-play text">
             <p className="text-md font-semibold text-gray-800">{t("ttmm_1")}</p>
             <br />
             <p>{t("ttmm_2")}</p>
@@ -163,7 +173,7 @@ function Keys({ playPlaylist }) {
       <div className="hero-key key-accidental key-black">
         <div className="hover-text absolute bottom-2 right-2 text-gray-light opacity-0 text-xl font-semibold italic">
           <h3>Tasty Themes for Mono Myths</h3>
-          </div>
+        </div>
       </div>
 
       <div id="suburban" className="hero-key key-natural key-white" onClick={() => {
@@ -171,7 +181,8 @@ function Keys({ playPlaylist }) {
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
-          <div className="hover-text text w-1/3 absolute top-1/2 left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
+          <div className="key-image"></div>
+          <div className="hover-text hover-play text">
             <p>{t("suburban_1")}</p>
             <br />
             <p>{t("suburban_2")}</p>
@@ -184,6 +195,8 @@ function Keys({ playPlaylist }) {
       }}>
         <div className="key-image"></div>
         <div className="key-modal">
+          <div className="key-image"></div>
+
           <div className="key-videos hover-text text w-1/3 absolute left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
             <Carousel
               items={YoutubeVideos}
