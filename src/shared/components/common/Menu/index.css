@@ -52,11 +52,20 @@
     filter: grayscale(0%);
 }
 
+.navigation-arrow {
+    display: none;
+}
 
 @media (max-width: 640px) {
     .lang-flag {
         min-width: 18px;
         min-height: 23px;
         border-radius: 3px;
+    }
+}
+
+@media (max-width: 1350px) {
+    .navigation-arrow {
+        display: block;
     }
 }

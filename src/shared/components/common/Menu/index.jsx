@@ -38,7 +38,7 @@ function Menu() {
     return (
         <nav className="main-menu relative w-full">
             {/* Botão para rolar à esquerda (apenas visível no mobile) */}
-            <div className="absolute lg:hidden left-0 top-1/3 m-1 -translate-y-1/2 transform">
+            <div className="navigation-arrow absolute left-0 top-1/3 m-1 -translate-y-1/2 transform">
                 <button
                     className="button bg-gray-300 p-1 w-8 h-8  rounded-full shadow-md"
                     onClick={() => scrollMenu("left")}
@@ -128,7 +128,7 @@ function Menu() {
 
 
             {/* Botão para rolar à direita (apenas visível no mobile) */}
-            <div className="absolute lg:hidden right-0 top-1/3 m-1 -translate-y-1/2 transform">
+            <div className="navigation-arrow absolute right-0 top-1/3 m-1 -translate-y-1/2 transform">
                 <button
                     className="button bg-gray-300 p-1 w-8 h-8 rounded-full shadow-md"
                     onClick={() => scrollMenu("right")}
