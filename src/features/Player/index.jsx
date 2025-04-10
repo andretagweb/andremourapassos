@@ -10,7 +10,7 @@ import './styles/index.css';
 
 const Player = forwardRef((props, ref) => {
   const { t } = useTranslation("player");
-  
+
   const wideLimit = 1440;
   const isWideScreen = useIsWide(wideLimit); // Usando o hook para verificar se a tela é wide
   const [playlist, setPlaylist] = useState(['Bloods Cocktail']);
@@ -18,9 +18,14 @@ const Player = forwardRef((props, ref) => {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [statusMessage, setStatusMessage] = useState(t("no_playlist"));
+  const [statusMessage, setStatusMessage] = useState('');
   const audioRef = useRef(null);
 
+
+  // Atualiza o texto toda vez que o idioma mudar
+  useEffect(() => {
+    setStatusMessage(t("no_playlist"));
+  }, [i18n.language, t]);
 
   // Inicializar volume do player quando a playlist muda
   useEffect(() => {
@@ -46,7 +51,7 @@ const Player = forwardRef((props, ref) => {
 
   const loadPlaylist = async (playlistName, isToPlay) => {
     setStatusMessage(`${t("loading_playlist")} ${playlistName}`);
-    console.log(`${t("loading_playlist")} ${playlistName}`);    
+    console.log(`${t("loading_playlist")} ${playlistName}`);
 
     if (!playlistName) {
       console.error('Nenhum nome de playlist fornecido.');
@@ -186,7 +191,7 @@ const Player = forwardRef((props, ref) => {
   if (playlist.length === 0) return <p>Carregando playlist...</p>;
 
   return (
-    <div className={`player-container md:flex ${isWideScreen ? 'xl-player' : 'mobile-player'} ${currentPlaylistName ? 'player-playing' : ''}` }>
+    <div className={`player-container md:flex ${isWideScreen ? 'xl-player' : 'mobile-player'} ${currentPlaylistName ? 'player-playing' : ''}`}>
       <div
         className={`details pb-2 lg:pb-0 flex xl:flex-col items-center xl:justify-center flex-row justify-start xl:space-x-0 space-x-4`}
       >
