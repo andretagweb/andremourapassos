@@ -15,6 +15,9 @@
   justify-content: space-between;
 }
 
+.player-container.player-playing {
+  padding: 5px 20px;
+}
 
 .player-container h2 {
   font-size: 16px;

@@ -186,7 +186,7 @@ const Player = forwardRef((props, ref) => {
   if (playlist.length === 0) return <p>Carregando playlist...</p>;
 
   return (
-    <div className={`player-container md:flex ${isWideScreen ? 'xl-player' : 'mobile-player'}`}>
+    <div className={`player-container md:flex ${isWideScreen ? 'xl-player' : 'mobile-player'} ${currentPlaylistName ? 'player-playing' : ''}` }>
       <div
         className={`details pb-2 lg:pb-0 flex xl:flex-col items-center xl:justify-center flex-row justify-start xl:space-x-0 space-x-4`}
       >
