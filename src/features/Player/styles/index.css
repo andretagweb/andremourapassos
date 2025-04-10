@@ -15,9 +15,6 @@
   justify-content: space-between;
 }
 
-.player-container.mobile-player.player-playing {
-  padding: 5px 20px;
-}
 
 .player-container h2 {
   font-size: 16px;
@@ -143,5 +140,10 @@
 @media (max-width: 768px) {
   .player-container{
     min-height: 100px;
+  }
+
+  
+  .player-container.player-playing {
+    padding: 5px 20px;
   }
 }
