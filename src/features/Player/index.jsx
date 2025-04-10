@@ -9,6 +9,8 @@ import useIsWide from '../../shared/hooks/useIsWide'; // Ajuste o caminho confor
 import './styles/index.css';
 
 const Player = forwardRef((props, ref) => {
+  const { t } = useTranslation("player");
+  
   const wideLimit = 1440;
   const isWideScreen = useIsWide(wideLimit); // Usando o hook para verificar se a tela é wide
   const [playlist, setPlaylist] = useState(['Bloods Cocktail']);
@@ -16,9 +18,9 @@ const Player = forwardRef((props, ref) => {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [statusMessage, setStatusMessage] = useState(t("no_playlist"));
   const audioRef = useRef(null);
 
-  const { t } = useTranslation("player");
 
   // Inicializar volume do player quando a playlist muda
   useEffect(() => {
@@ -43,30 +45,31 @@ const Player = forwardRef((props, ref) => {
   };
 
   const loadPlaylist = async (playlistName, isToPlay) => {
+    setStatusMessage(`${t("loading_playlist")} ${playlistName}`);
+    console.log(`${t("loading_playlist")} ${playlistName}`);    
+
     if (!playlistName) {
       console.error('Nenhum nome de playlist fornecido.');
       return;
     }
 
-    console.log(`Carregando músicas da playlist: ${playlistName}`);
-
     try {
       const playlist = await fetchPlaylist(playlistName);
       setPlaylist(playlist);
       setCurrentTrackIndex(0);
-  
+
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.src = playlist[0]?.url || '';
         audioRef.current.load();
-  
+
         if (isToPlay) {
           playCurrentPlaylist();
         } else {
           setIsPlaying(false);
         }
       }
-  
+
       setCurrentPlaylistName(playlistName);
     } catch (error) {
       console.error('Erro ao carregar playlist:', error);
@@ -184,65 +187,65 @@ const Player = forwardRef((props, ref) => {
 
   return (
     <div className={`player-container md:flex ${isWideScreen ? 'xl-player' : 'mobile-player'}`}>
-  <div
-    className={`details pb-2 lg:pb-0 flex xl:flex-col items-center xl:justify-center flex-row justify-start xl:space-x-0 space-x-4`}
-  >
-    {playlist.length === 0 ? (
-      // Aviso quando não há playlist ou música tocando
-      <p className="text-gray-medium text-center text-sm">
-        {t("no_playlist")}
-      </p>
-    ) : (
-      // Exibição normal da playlist e música atual
-      <>
-        {currentPlaylistName ? (
-          <>
-            <h3 className="text-gray-medium text-sm">{currentPlaylistName}</h3>
-            <h2 className="text-lg font-bold">{playlist[currentTrackIndex]?.title}</h2>
-          </>
+      <div
+        className={`details pb-2 lg:pb-0 flex xl:flex-col items-center xl:justify-center flex-row justify-start xl:space-x-0 space-x-4`}
+      >
+        {playlist.length === 0 ? (
+          // Aviso quando não há playlist ou música tocando
+          <p className="text-gray-medium text-center text-sm">
+            {statusMessage}
+          </p>
         ) : (
-          <span className="text-gray-medium text-xs">
-            {t("click_to_play")}
-          </span>
+          // Exibição normal da playlist e música atual
+          <>
+            {currentPlaylistName ? (
+              <>
+                <h3 className="text-gray-medium text-sm">{currentPlaylistName}</h3>
+                <h2 className="text-lg font-bold">{playlist[currentTrackIndex]?.title}</h2>
+              </>
+            ) : (
+              <span className="text-gray-medium text-xs">
+                {statusMessage}
+              </span>
+            )}
+          </>
         )}
-      </>
-    )}
-  </div>
-
-  <audio
-    ref={audioRef}
-    src={playlist[currentTrackIndex]?.url}
-    onTimeUpdate={handleTimeUpdate}
-    onEnded={handleNextTrack}
-  ></audio>
-
-  <div className="controls flex md:w-1/2 xl:block xl:w-full">
-    <div className="audio-controls">
-      <div className="button" onClick={handlePrevTrack}>
-        <span>&#x23EE;</span>
       </div>
-      <div className="button" onClick={() => handlePlayPause(currentPlaylistName)}>
-        <span>{isPlaying ? '||' : String.fromCharCode(9654)}</span>
-      </div>
-      <div className="button" onClick={handleNextTrack}>
-        <span>&#x23ED;</span>
+
+      <audio
+        ref={audioRef}
+        src={playlist[currentTrackIndex]?.url}
+        onTimeUpdate={handleTimeUpdate}
+        onEnded={handleNextTrack}
+      ></audio>
+
+      <div className="controls flex md:w-1/2 xl:block xl:w-full">
+        <div className="audio-controls">
+          <div className="button" onClick={handlePrevTrack}>
+            <span>&#x23EE;</span>
+          </div>
+          <div className="button" onClick={() => handlePlayPause(currentPlaylistName)}>
+            <span>{isPlaying ? '||' : String.fromCharCode(9654)}</span>
+          </div>
+          <div className="button" onClick={handleNextTrack}>
+            <span>&#x23ED;</span>
+          </div>
+        </div>
+
+        <div className="progress-bar" onClick={handleProgressBarClick}>
+          <div className="progress" style={{ width: `${progress}%` }}></div>
+        </div>
+
+        <div className="knobs">
+          <div className="button knob" onClick={decreaseVolume}>
+            <span>&#x1F509;</span>
+          </div>
+          <div className="button knob" onClick={increaseVolume}>
+            <span>&#x1F50A;</span>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div className="progress-bar" onClick={handleProgressBarClick}>
-      <div className="progress" style={{ width: `${progress}%` }}></div>
-    </div>
-
-    <div className="knobs">
-      <div className="button knob" onClick={decreaseVolume}>
-        <span>&#x1F509;</span>
-      </div>
-      <div className="button knob" onClick={increaseVolume}>
-        <span>&#x1F50A;</span>
-      </div>
-    </div>
-  </div>
-</div>
 
   );
 });
