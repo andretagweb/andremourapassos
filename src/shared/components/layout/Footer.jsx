@@ -35,7 +35,7 @@ function Footer() {
         </div>
 
         {/* Copyright */}
-        <p className="text-xs md:text-sm opacity-75 text-gray-medium">
+        <p className="text-xs md:text-sm opacity-75 text-gray-300">
           &copy; {new Date().getFullYear()} André Moura Passos - {t("copyright")}
         </p>
       </div>
