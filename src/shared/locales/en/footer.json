@@ -4,5 +4,7 @@
     "e-mail": "E-Mail",
     "message": "Message",
     "send": "Send",
-    "copyright": "All rights reserved"
+    "copyright": "All rights reserved",
+    "email_sent": "Email sent",
+    "email_failed": "Failed to send"
 }

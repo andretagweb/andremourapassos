@@ -26,7 +26,7 @@ function Contact() {
     });
 
     const data = await response.json();
-    setStatus(data.success ? "E-mail enviado!" : "Erro ao enviar.");
+    setStatus(data.success ? t("email_sent") : t("email_failed"));
   };
 
   return (
