@@ -9,7 +9,7 @@ import useIsWide from '../../shared/hooks/useIsWide'; // Ajuste o caminho confor
 import './styles/index.css';
 
 const Player = forwardRef((props, ref) => {
-  const { t } = useTranslation("player");
+  const { t, i18n } = useTranslation("player"); // <-- Pega o i18n também
 
   const wideLimit = 1440;
   const isWideScreen = useIsWide(wideLimit); // Usando o hook para verificar se a tela é wide
