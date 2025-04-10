@@ -90,15 +90,36 @@ function Menu() {
                 {/* Bandeiras de idioma */}
                 <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center">
                     <button onClick={() => i18n.changeLanguage("pt")} className={`lang-btn ${i18n.language === "pt" ? "active-lang" : ""}`}>
-                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" alt="Português" className="lang-flag" width="24" height="16" />
+                        <img
+                            src="http://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg"
+                            alt="Português"
+                            className="lang-flag"
+                            width="24"
+                            height="16"
+                            loading="lazy"
+                        />
                     </button>
 
                     <button onClick={() => i18n.changeLanguage("en")} className={`lang-btn ${i18n.language === "en" ? "active-lang" : ""}`}>
-                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg" alt="English" className="lang-flag" width="24" height="16" />
+                        <img
+                            src="http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg"
+                            alt="English"
+                            className="lang-flag"
+                            width="24"
+                            height="16"
+                            loading="lazy"
+                        />
                     </button>
 
                     <button onClick={() => i18n.changeLanguage("es")} className={`lang-btn ${i18n.language === "es" ? "active-lang" : ""}`}>
-                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" alt="Español" className="lang-flag" width="24" height="16" />
+                        <img
+                            src="http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg"
+                            alt="Español"
+                            className="lang-flag"
+                            width="24"
+                            height="16"
+                            loading="lazy"
+                        />
                     </button>
                 </li>
             </ul>
