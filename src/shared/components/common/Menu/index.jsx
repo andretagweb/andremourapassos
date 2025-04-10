@@ -96,7 +96,6 @@ function Menu() {
                             className="lang-flag"
                             width="24"
                             height="16"
-                            loading="lazy"
                         />
                     </button>
 
@@ -107,7 +106,6 @@ function Menu() {
                             className="lang-flag"
                             width="24"
                             height="16"
-                            loading="lazy"
                         />
                     </button>
 
@@ -118,10 +116,10 @@ function Menu() {
                             className="lang-flag"
                             width="24"
                             height="16"
-                            loading="lazy"
                         />
                     </button>
                 </li>
+
             </ul>
 
             {/* Botão para rolar à direita */}
