@@ -181,7 +181,7 @@ function Keys({ playPlaylist }) {
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-image"></div>
-          <div className="hover-text hover-play text">
+          <div className="hover-text text">
             <p>{t("suburban_1")}</p>
             <br />
             <p>{t("suburban_2")}</p>

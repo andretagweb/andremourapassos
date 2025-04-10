@@ -141,8 +141,6 @@
   .player-container{
     min-height: 100px;
   }
-
-  
   .player-container.player-playing {
     padding: 5px 20px;
   }
