@@ -15,7 +15,7 @@
   justify-content: space-between;
 }
 
-.player-container.player-playing {
+.player-container.mobile-player.player-playing {
   padding: 5px 20px;
 }
 
