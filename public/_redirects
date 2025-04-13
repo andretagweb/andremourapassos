@@ -1,2 +1,5 @@
-https://andremourapassos.com.br/*  https://andremourapassos.com/:splat  301!
-/*    /index.html   200
+https://andremourapassos.com.br/*     https://andremourapassos.com/:splat  301!
+https://www.andremourapassos.com/*    https://andremourapassos.com/:splat  301!
+http://andremourapassos.com/*         https://andremourapassos.com/:splat  301!
+http://www.andremourapassos.com/*     https://andremourapassos.com/:splat  301!
+/*                                   /index.html  200
