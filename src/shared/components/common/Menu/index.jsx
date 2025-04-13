@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import './index.css';
 
+import { useNavigate } from "react-router-dom";
+
 import { useTranslation } from "react-i18next";
 import "../../../locales/i18n";
 
@@ -9,6 +11,7 @@ import socialMedia from "../Social";
 function Menu() {
     const menuRef = useRef(null);
     const { t, i18n } = useTranslation("menu");
+    const navigate = useNavigate();
 
     const menuItems = [
         { href: "#singles", label: t("singles") },
@@ -90,34 +93,16 @@ function Menu() {
 
                 {/* Bandeiras de idioma */}
                 <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center">
-                    <button onClick={() => i18n.changeLanguage("pt")} className={`lang-btn ${i18n.language.split('-')[0] === "pt" ? "active-lang" : ""}`}>
-                        <img
-                            src="http://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg"
-                            alt="Português"
-                            className="lang-flag"
-                            width="24"
-                            height="16"
-                        />
+                    <button onClick={() => { i18n.changeLanguage("pt"); navigate("/pt"); }} className={`lang-btn ${i18n.language.split('-')[0] === "pt" ? "active-lang" : ""}`}>
+                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" alt="Português" className="lang-flag" width="24" height="16" />
                     </button>
 
-                    <button onClick={() => i18n.changeLanguage("en")} className={`lang-btn ${i18n.language.split('-')[0] === "en" ? "active-lang" : ""}`}>
-                        <img
-                            src="http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg"
-                            alt="English"
-                            className="lang-flag"
-                            width="24"
-                            height="16"
-                        />
+                    <button onClick={() => { i18n.changeLanguage("en"); navigate("/en"); }} className={`lang-btn ${i18n.language.split('-')[0] === "en" ? "active-lang" : ""}`}>
+                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg" alt="English" className="lang-flag" width="24" height="16" />
                     </button>
 
-                    <button onClick={() => i18n.changeLanguage("es")} className={`lang-btn ${i18n.language.split('-')[0] === "es" ? "active-lang" : ""}`}>
-                        <img
-                            src="http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg"
-                            alt="Español"
-                            className="lang-flag"
-                            width="24"
-                            height="16"
-                        />
+                    <button onClick={() => { i18n.changeLanguage("es"); navigate("/es"); }} className={`lang-btn ${i18n.language.split('-')[0] === "es" ? "active-lang" : ""}`}>
+                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" alt="Español" className="lang-flag" width="24" height="16" />
                     </button>
                 </li>
 
