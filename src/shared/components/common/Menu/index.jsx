@@ -36,6 +36,16 @@ function Menu() {
         }
     };
 
+    const handleScroll = (e, href) => {
+        e.preventDefault();
+        const id = href.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
+
     return (
         <nav className="main-menu relative w-full">
             {/* Botão para rolar à esquerda */}
@@ -61,9 +71,14 @@ function Menu() {
                         </li>
                     ) : (
                         <li key={index} className="flex flex-col justify-end h-full items-end">
-                            <a href={item.href} className="text-gray-light hover:underline whitespace-nowrap self-end h-4 xsm:text-[12px] sm:text-[16px] xl:text-sm">
+                            <a
+                                href={item.href}
+                                onClick={(e) => handleScroll(e, item.href)}
+                                className="text-gray-light hover:underline whitespace-nowrap self-end h-4 xsm:text-[12px] sm:text-[16px] xl:text-sm"
+                            >
                                 {item.label}
                             </a>
+
                         </li>
                     )
                 ))}
