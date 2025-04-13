@@ -27,7 +27,6 @@ function Menu() {
         { href: "#contact", label: t("contact") },
         { isDivider: true },
     ];
-    console.log(i18n.language)
 
     const scrollMenu = (direction) => {
         if (menuRef.current) {
@@ -44,7 +43,6 @@ function Menu() {
             element.scrollIntoView({ behavior: "smooth" });
         }
     };
-
 
     return (
         <nav className="main-menu relative w-full">
