@@ -24,6 +24,7 @@ function Menu() {
         { href: "#contact", label: t("contact") },
         { isDivider: true },
     ];
+    console.log(i18n.language)
 
     const scrollMenu = (direction) => {
         if (menuRef.current) {
@@ -89,7 +90,7 @@ function Menu() {
 
                 {/* Bandeiras de idioma */}
                 <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center">
-                    <button onClick={() => i18n.changeLanguage("pt")} className={`lang-btn ${i18n.language === "pt" ? "active-lang" : ""}`}>
+                    <button onClick={() => i18n.changeLanguage("pt")} className={`lang-btn ${i18n.language.split('-')[0] === "pt" ? "active-lang" : ""}`}>
                         <img
                             src="http://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg"
                             alt="Português"
@@ -99,7 +100,7 @@ function Menu() {
                         />
                     </button>
 
-                    <button onClick={() => i18n.changeLanguage("en")} className={`lang-btn ${i18n.language === "en" ? "active-lang" : ""}`}>
+                    <button onClick={() => i18n.changeLanguage("en")} className={`lang-btn ${i18n.language.split('-')[0] === "en" ? "active-lang" : ""}`}>
                         <img
                             src="http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg"
                             alt="English"
@@ -109,7 +110,7 @@ function Menu() {
                         />
                     </button>
 
-                    <button onClick={() => i18n.changeLanguage("es")} className={`lang-btn ${i18n.language === "es" ? "active-lang" : ""}`}>
+                    <button onClick={() => i18n.changeLanguage("es")} className={`lang-btn ${i18n.language.split('-')[0] === "es" ? "active-lang" : ""}`}>
                         <img
                             src="http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg"
                             alt="Español"
@@ -119,6 +120,7 @@ function Menu() {
                         />
                     </button>
                 </li>
+
             </ul>
 
             {/* Botão para rolar à direita */}
