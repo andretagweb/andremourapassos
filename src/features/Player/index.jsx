@@ -203,7 +203,9 @@ const Player = forwardRef((props, ref) => {
             {currentPlaylistName ? (
               <>
                 <h3 className="text-gray-medium text-sm">{currentPlaylistName}</h3>
-                <h2 className="text-lg font-bold">{playlist[currentTrackIndex]?.title}</h2>
+                <h2 className="text-lg font-bold">
+                  {playlist[currentTrackIndex]?.title.replace(/^[0-9]+\s*-\s*/, '')}
+                </h2>
               </>
             ) : (
               <span className="text-gray-medium text-xs">
