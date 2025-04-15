@@ -80,8 +80,8 @@ function Contact() {
           <button className="bg-primary text-white py-2 px-4 rounded hover:bg-blue-800">
             {t("send")}
           </button>
-          {loading && <p className="mt-2 text-blue text-center">{t("sending_email")}</p>}
-          {!loading && status && <p className="mt-2 text-center">{status}</p>}
+          {loading && <p className="mt-4 text-blue text-center">{t("sending_email")}</p>}
+          {!loading && status && <p className="mt-4 text-center">{status}</p>}
         </form>
       </div>
     </section>
