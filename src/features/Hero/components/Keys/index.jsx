@@ -37,7 +37,7 @@ function Keys({ playPlaylist }) {
           <div className="key-image"></div>
           <div className="hover-text text">
             <p>
-              {t("intro_1")} <strong>{t("intro_2")}</strong> e <strong>{t("intro_3")}</strong>.
+              {t("intro_1")} <strong>{t("intro_2")}</strong> {t("intro_2_2")} <strong>{t("intro_3")}</strong>.
               <br /> {t("intro_4")}
             </p>
             <p>{t("lyrics_1")}<br />{t("lyrics_2")}</p>
