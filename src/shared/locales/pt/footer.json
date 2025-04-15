@@ -5,6 +5,7 @@
     "message": "Mensagem",
     "send": "Enviar",
     "copyright": "Todos os direitos reservados",
-    "email_sent": "E-mail enviado",
-    "email_failed": "Erro ao enviar"
+    "email_sent": "Mensagem enviada",
+    "email_failed": "Erro ao enviar",
+    "sending_email": "enviando mensagem..."
 }

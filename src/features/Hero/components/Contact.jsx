@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState(null);
+  const [loading, setLoading] = useState(false); // novo estado
   const { t } = useTranslation("footer");
 
   const API_BASE_URL =
@@ -17,15 +18,23 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setStatus(null);
 
-    const response = await fetch(`${API_BASE_URL}/api/send-email`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/send-email`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    const data = await response.json();
-    setStatus(data.success ? t("email_sent") : t("email_failed"));
+      const data = await response.json();
+      setStatus(data.success ? t("email_sent") : t("email_failed"));
+    } catch (error) {
+      setStatus(t("email_failed"));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -71,7 +80,8 @@ function Contact() {
           <button className="bg-primary text-white py-2 px-4 rounded hover:bg-blue-800">
             {t("send")}
           </button>
-          {status && <p className="mt-2 text-center">{status}</p>}
+          {loading && <p className="mt-2 text-blue text-center">{t("sending_email")}</p>}
+          {!loading && status && <p className="mt-2 text-center">{status}</p>}
         </form>
       </div>
     </section>
