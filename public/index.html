@@ -42,8 +42,17 @@
   <!-- Ícones e Manifest -->
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="canonical" href="https://andremourapassos.com" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <!-- Canonical + hreflang -->
+  <script>
+    const canonicalPath = window.location.pathname.replace(/\/$/, "") || "/";
+    document.write(`<link rel="canonical" href="https://andremourapassos.com${canonicalPath}" />`);
+    document.write(`<link rel="alternate" href="https://andremourapassos.com/pt" hreflang="pt" />`);
+    document.write(`<link rel="alternate" href="https://andremourapassos.com/en" hreflang="en" />`);
+    document.write(`<link rel="alternate" href="https://andremourapassos.com/es" hreflang="es" />`);
+    document.write(`<link rel="alternate" href="https://andremourapassos.com" hreflang="x-default" />`);
+  </script>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
