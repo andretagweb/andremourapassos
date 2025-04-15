@@ -10,7 +10,7 @@ const generatePlaylist = (folderPath, baseUrl) => {
     const files = fs.readdirSync(folderPath).filter(file => file.endsWith(".mp3"));
 
     return files.map(file => ({
-      title: file.replace(/^[0-9]+-/, "").replace(/-/g, " ").replace(/\.mp3$/, ""),
+      title: file.replace(/\.mp3$/, ""),
       artist: "Artista Desconhecido",
       url: `${baseUrl}/${file}`,
     }));
