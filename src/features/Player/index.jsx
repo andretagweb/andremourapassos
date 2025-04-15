@@ -51,7 +51,6 @@ const Player = forwardRef((props, ref) => {
 
   const loadPlaylist = async (playlistName, isToPlay) => {
     setStatusMessage(`${t("loading_playlist")} ${playlistName}`);
-    console.log(`${t("loading_playlist")} ${playlistName}`);
 
     if (!playlistName) {
       console.error('Nenhum nome de playlist fornecido.');
@@ -176,7 +175,6 @@ const Player = forwardRef((props, ref) => {
     if (audioRef.current) {
       const newVolume = Math.max(0, audioRef.current.volume - 0.1);
       audioRef.current.volume = newVolume;
-      console.log(`Volume diminuído para: ${newVolume}`);
     }
   };
 
@@ -184,7 +182,6 @@ const Player = forwardRef((props, ref) => {
     if (audioRef.current) {
       const newVolume = Math.min(1, audioRef.current.volume + 0.1);
       audioRef.current.volume = newVolume;
-      console.log(`Volume aumentado para: ${newVolume}`);
     }
   };
 

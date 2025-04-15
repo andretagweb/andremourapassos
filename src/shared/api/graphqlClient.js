@@ -1,7 +1,5 @@
 const GRAPHQL_ENDPOINT = process.env.REACT_APP_GRAPHQL_ENDPOINT || "http://localhost:3001/graphql";
 
-console.log("GraphQL rodando em:", GRAPHQL_ENDPOINT);
-
 /**
  * Executa uma consulta GraphQL genérica
  * @param {string} query - A consulta GraphQL

@@ -10,8 +10,6 @@ export const fetchPlaylist = async (playlistName) => {
     throw new Error('Nenhum nome de playlist fornecido.');
   }
 
-  console.log(`Buscando playlist: ${playlistName}`);
-
   const query = `
     query GetPlaylist($playlistName: String) {
       playlist(playlistName: $playlistName) {
