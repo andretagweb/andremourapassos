@@ -8,5 +8,6 @@
     "email_sent": "Mensaje enviada",
     "email_failed": "Error al enviar",
     "sending_email": "enviando mensaje...",
-    "alt_email": "O envía un correo a <email>andrepassos.compositor@gmail.com</email>"
+    "alt_email": "O envía un correo a <email>andrepassos.compositor@gmail.com</email>",
+    "alt_email_split_1": "o envía un correo a"
 }

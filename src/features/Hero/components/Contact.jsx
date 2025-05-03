@@ -77,11 +77,15 @@ function Contact() {
               required
             />
           </div>
-          <div className="flex justify-center items-center flex-wrap gap-4 mt-4">
-            <button className="bg-primary text-white py-2 px-4 rounded hover:bg-blue-800">
-              {t("send")}
-            </button>
-            <p className=" text-sm text-gray-300 break-all" style={{ color: "rgb(110, 160, 209)" }}>
+          <div className="text-sm text-center break-all" style={{ color: "rgb(110, 160, 209)" }}>
+            <div className="mb-4">
+              <button className="text-base bg-primary text-white py-2 px-4 rounded hover:bg-blue-800">
+                {t("send")}
+              </button>
+            </div>
+
+            {/* Desktop/tablet: tudo na mesma linha */}
+            <span className="hidden sm:inline">
               <Trans
                 i18nKey="alt_email"
                 t={t}
@@ -93,11 +97,25 @@ function Contact() {
                     >
                       andrepassos.compositor@gmail.com
                     </a>
-                  )
+                  ),
                 }}
               />
-            </p>
+            </span>
+
+            {/* Mobile: texto + quebra manual */}
+            <span className="block sm:hidden">
+              {t("alt_email_split_1")}<br />
+              <a
+                href="mailto:andrepassos.compositor@gmail.com"
+                className="underline"
+              >
+                andrepassos.compositor@gmail.com
+              </a>
+            </span>
           </div>
+
+
+
           {loading && <p className="mt-4 text-blue text-center w-full">{t("sending_email")}</p>}
           {!loading && status && <p className="mt-4 text-center w-full">{status}</p>}
         </form>
