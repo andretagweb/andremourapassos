@@ -7,5 +7,6 @@
     "copyright": "All rights reserved",
     "email_sent": "Message sent",
     "email_failed": "Failed to send",
-    "sending_email": "sending message..."
+    "sending_email": "sending message...",
+    "alt_email": "Or send an email to <email>andrepassos.compositor@gmail.com</email>"
 }

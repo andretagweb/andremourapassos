@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 
 function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState(null);
-  const [loading, setLoading] = useState(false); // novo estado
+  const [loading, setLoading] = useState(false);
   const { t } = useTranslation("footer");
 
   const API_BASE_URL =
@@ -77,11 +77,29 @@ function Contact() {
               required
             />
           </div>
-          <button className="bg-primary text-white py-2 px-4 rounded hover:bg-blue-800">
-            {t("send")}
-          </button>
-          {loading && <p className="mt-4 text-blue text-center">{t("sending_email")}</p>}
-          {!loading && status && <p className="mt-4 text-center">{status}</p>}
+          <div className="flex justify-center items-center flex-wrap gap-4 mt-4">
+            <button className="bg-primary text-white py-2 px-4 rounded hover:bg-blue-800">
+              {t("send")}
+            </button>
+            <p className=" text-sm text-gray-300 break-all" style={{ color: "rgb(110, 160, 209)" }}>
+              <Trans
+                i18nKey="alt_email"
+                t={t}
+                components={{
+                  email: (
+                    <a
+                      href="mailto:andrepassos.compositor@gmail.com"
+                      className="underline"
+                    >
+                      andrepassos.compositor@gmail.com
+                    </a>
+                  )
+                }}
+              />
+            </p>
+          </div>
+          {loading && <p className="mt-4 text-blue text-center w-full">{t("sending_email")}</p>}
+          {!loading && status && <p className="mt-4 text-center w-full">{status}</p>}
         </form>
       </div>
     </section>
