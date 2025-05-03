@@ -92,7 +92,7 @@ function Contact() {
                 components={{
                   email: (
                     <a
-                      href="mailto:andrepassos.compositor@gmail.com"
+                      href="mailto:andrepassos.compositor@gmail.com?subject=Contato%20Pelo%20Site%20Oficial%20de%20André%20Moura%20Passos"
                       className="underline"
                     >
                       andrepassos.compositor@gmail.com
