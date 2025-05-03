@@ -114,8 +114,6 @@ function Contact() {
             </span>
           </div>
 
-
-
           {loading && <p className="mt-4 text-blue text-center w-full">{t("sending_email")}</p>}
           {!loading && status && <p className="mt-4 text-center w-full">{status}</p>}
         </form>
