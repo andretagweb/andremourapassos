@@ -107,15 +107,15 @@ function Menu() {
                 {/* Bandeiras de idioma */}
                 <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center">
                     <button onClick={() => { i18n.changeLanguage("pt"); navigate("/pt"); }} className={`lang-btn ${i18n.language.split('-')[0] === "pt" ? "active-lang" : ""}`}>
-                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" alt="Português" className="lang-flag" width="24" height="16" />
+                        <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" alt="Português" className="lang-flag" width="24" height="16" />
                     </button>
 
                     <button onClick={() => { i18n.changeLanguage("en"); navigate("/en"); }} className={`lang-btn ${i18n.language.split('-')[0] === "en" ? "active-lang" : ""}`}>
-                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg" alt="English" className="lang-flag" width="24" height="16" />
+                        <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg" alt="English" className="lang-flag" width="24" height="16" />
                     </button>
 
                     <button onClick={() => { i18n.changeLanguage("es"); navigate("/es"); }} className={`lang-btn ${i18n.language.split('-')[0] === "es" ? "active-lang" : ""}`}>
-                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" alt="Español" className="lang-flag" width="24" height="16" />
+                        <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" alt="Español" className="lang-flag" width="24" height="16" />
                     </button>
                 </li>
 
