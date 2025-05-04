@@ -56,6 +56,13 @@
     display: none;
 }
 
+@media (max-width: 480px) {
+    .main-menu ul {
+        padding-top: 1px;
+    }
+}
+
+
 @media (min-width: 1300px) {
     .main-menu ul {
         justify-content: center;
