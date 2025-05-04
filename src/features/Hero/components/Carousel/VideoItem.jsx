@@ -19,6 +19,7 @@ const VideoItem = ({ video }) => {
           src={`https://img.youtube.com/vi/${video.id}/0.jpg`}
           alt={video.title}
           className="rounded-lg"
+          loading="lazy"
         />
         <p>{video.title}</p>
       </div>

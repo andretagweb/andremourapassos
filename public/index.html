@@ -43,13 +43,24 @@
   <!-- Canonical + hreflang -->
   <script>
     const canonicalPath = window.location.pathname.replace(/\/$/, "") || "/";
-    document.write(`<link rel="canonical" href="https://www.andremourapassos.com${canonicalPath}" />`);
-    document.write(`<link rel="alternate" href="https://www.andremourapassos.com/pt" hreflang="pt" />`);
-    document.write(`<link rel="alternate" href="https://www.andremourapassos.com/en" hreflang="en" />`);
-    document.write(`<link rel="alternate" href="https://www.andremourapassos.com/es" hreflang="es" />`);
-    document.write(`<link rel="alternate" href="https://www.andremourapassos.com" hreflang="x-default" />`);
+    const links = [
+      { rel: "canonical", href: `https://www.andremourapassos.com${canonicalPath}` },
+      { rel: "alternate", hreflang: "pt", href: "https://www.andremourapassos.com/pt" },
+      { rel: "alternate", hreflang: "en", href: "https://www.andremourapassos.com/en" },
+      { rel: "alternate", hreflang: "es", href: "https://www.andremourapassos.com/es" },
+      { rel: "alternate", hreflang: "x-default", href: "https://www.andremourapassos.com" },
+    ];
+  
+    const head = document.head;
+    links.forEach(({ rel, href, hreflang }) => {
+      const link = document.createElement("link");
+      link.rel = rel;
+      link.href = href;
+      if (hreflang) link.hreflang = hreflang;
+      head.appendChild(link);
+    });
   </script>
-
+  
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
