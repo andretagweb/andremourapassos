@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Explore as músicas instrumentais e projetos de desenvolvimento de André Moura Passos. Descubra composições, letras e criações únicas." />
-  <meta name="keywords" content="André Moura Passos, compositor, desenvolvedor, música instrumental, piano, criação musical, site pessoal" />
+  <meta name="description"
+    content="Explore as músicas instrumentais e projetos de desenvolvimento de André Moura Passos. Descubra composições, letras e criações únicas." />
+  <meta name="keywords"
+    content="André Moura Passos, compositor, desenvolvedor, música instrumental, piano, criação musical, site pessoal" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="André Moura Passos" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="André Moura Passos | Compositor & Desenvolvedor">
-  <meta property="og:description" content="Explore as músicas instrumentais e projetos de desenvolvimento de André Moura Passos. Descubra composições, letras e criações únicas.">
+  <meta property="og:description"
+    content="Explore as músicas instrumentais e projetos de desenvolvimento de André Moura Passos. Descubra composições, letras e criações únicas.">
   <meta property="og:image" content="https://andremourapassos.com/logo192.png">
   <meta property="og:url" content="https://andremourapassos.com">
   <meta property="og:type" content="website">
@@ -21,7 +25,8 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="André Moura Passos | Compositor & Desenvolvedor">
-  <meta name="twitter:description" content="Explore as músicas instrumentais e projetos de desenvolvimento de André Moura Passos. Descubra composições, letras e criações únicas.">
+  <meta name="twitter:description"
+    content="Explore as músicas instrumentais e projetos de desenvolvimento de André Moura Passos. Descubra composições, letras e criações únicas.">
   <meta name="twitter:image" content="https://andremourapassos.com/logo192.png">
 
   <!-- Preloads e otimizações -->
@@ -29,11 +34,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Preload da imagem LCP com caminho real de build -->
-  <link rel="preload" as="image" href="/static/media/background2.67dd6978cd288e220aaa.webp" fetchpriority="high" importance="high" />
+  <link rel="preload" as="image" href="/static/media/background2.67dd6978cd288e220aaa.webp" fetchpriority="high"
+    importance="high" />
 
   <!-- CSS principal com load assíncrono -->
   <link rel="preload" as="style" href="/static/css/main.7cbc27b1.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/static/css/main.7cbc27b1.css"></noscript>
+  <noscript>
+    <link rel="stylesheet" href="/static/css/main.7cbc27b1.css">
+  </noscript>
 
   <!-- Ícones e Manifest -->
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -50,7 +58,7 @@
       { rel: "alternate", hreflang: "es", href: "https://www.andremourapassos.com/es" },
       { rel: "alternate", hreflang: "x-default", href: "https://www.andremourapassos.com" },
     ];
-  
+
     const head = document.head;
     links.forEach(({ rel, href, hreflang }) => {
       const link = document.createElement("link");
@@ -60,7 +68,7 @@
       head.appendChild(link);
     });
   </script>
-  
+
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -91,10 +99,31 @@
   </script>
 
   <title>André Moura Passos | Compositor & Desenvolvedor</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-993081860"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-993081860');
+  </script>
+
+  <!-- Event snippet for Visualização de página conversion page -->
+  <script>
+    gtag('event', 'conversion', {
+      'send_to': 'AW-993081860/jJnRCMm_muSaEIT0xNkD',
+      'value': 1.0,
+      'currency': 'BRL'
+    });
+  </script>
+
 </head>
 
 <body>
   <noscript>Você precisa ativar o JavaScript para rodar este app.</noscript>
   <div id="root"></div>
 </body>
+
 </html>
