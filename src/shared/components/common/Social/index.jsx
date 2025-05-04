@@ -7,19 +7,9 @@ const socialMedia = [
         label: "Spotify"
     },
     { 
-        href: "https://www.youtube.com/@samebloodscocktail", 
-        icon: <FaYoutube />,
-        label: "YouTube"
-    },
-    { 
         href: "https://music.apple.com/us/artist/same-bloods-cocktail/123456789", 
         icon: <FaApple />,
         label: "Apple Music"
-    },
-    { 
-        href: "https://instagram.com/samebloodscocktail", 
-        icon: <FaInstagram />, 
-        label: "Instagram"
     },
     { 
         href: "https://soundcloud.com/same-bloods-cocktail", 
@@ -27,9 +17,19 @@ const socialMedia = [
         label: "SoundCloud"
     },
     { 
+        href: "https://www.youtube.com/@samebloodscocktail", 
+        icon: <FaYoutube />,
+        label: "YouTube"
+    },
+    { 
         href: "https://tiktok.com/@samebloodscocktail", 
         icon: <FaTiktok />,
         label: "TikTok"
+    },
+    { 
+        href: "https://instagram.com/samebloodscocktail", 
+        icon: <FaInstagram />, 
+        label: "Instagram"
     },
     { 
         href: "https://www.facebook.com/profile.php?id=100091738507321", 
