@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "Limelight";
+    src: url("../../features/Hero/assets/fonts/Limelight/Limelight-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Special Elite";
+    src: url("../../features/Hero/assets/fonts/Special_Elite/SpecialElite-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
