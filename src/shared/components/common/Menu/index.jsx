@@ -61,7 +61,7 @@ function Menu() {
             {/* Lista do menu */}
             <ul ref={menuRef} className="flex xl:flex-col justify-start flex-nowrap overflow-x-auto space-x-4 sm:space-x-4 xsm:space-x-2 xl:space-x-0 xl:space-y-4 no-scrollbar ml-14 mr-14 xl:ml-0 xl:mr-0 xl:items-start items-center text-center">
                 {/* Bandeiras de idioma */}
-                <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center">
+                <li className="flags flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center">
                     <button onClick={() => { i18n.changeLanguage("pt"); navigate("/pt"); }} className={`lang-btn ${i18n.language.split('-')[0] === "pt" ? "active-lang" : ""}`}>
                         <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" alt="Português" className="lang-flag" width="24" height="16" />
                     </button>

@@ -63,6 +63,9 @@
 }
 
 @media (max-width: 480px) {
+    .flags {
+        margin-top: -2px;
+    }
     .lang-flag {
         min-width: 18px;
         min-height: 23px;
