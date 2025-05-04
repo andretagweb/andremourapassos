@@ -110,15 +110,18 @@
     gtag('config', 'AW-993081860');
   </script>
 
-  <!-- Event snippet for Visualização de página conversion page -->
+  <!-- Event snippet with delay to ensure gtag is loaded -->
   <script>
-    gtag('event', 'conversion', {
-      'send_to': 'AW-993081860/jJnRCMm_muSaEIT0xNkD',
-      'value': 1.0,
-      'currency': 'BRL'
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-993081860/jJnRCMm_muSaEIT0xNkD',
+          'value': 1.0,
+          'currency': 'BRL'
+        });
+      }, 1000); // espera 1 segundo após o carregamento da página
     });
   </script>
-
 </head>
 
 <body>
