@@ -25,7 +25,6 @@ function Menu() {
         { href: "#poems", label: t("poems") },
         { isDivider: true },
         { href: "#contact", label: t("contact") },
-        { isDivider: true },
     ];
 
     const scrollMenu = (direction) => {
@@ -60,11 +59,32 @@ function Menu() {
             </div>
 
             {/* Lista do menu */}
-            <ul ref={menuRef} className="flex xl:flex-col justify-start lg:justify-center flex-nowrap overflow-x-auto space-x-4 sm:space-x-4 xsm:space-x-2 xl:space-x-0 xl:space-y-4 no-scrollbar ml-14 mr-14 xl:ml-0 xl:mr-0 xl:items-start items-center text-center">
+            <ul ref={menuRef} className="flex xl:flex-col justify-start flex-nowrap overflow-x-auto space-x-4 sm:space-x-4 xsm:space-x-2 xl:space-x-0 xl:space-y-4 no-scrollbar ml-14 mr-14 xl:ml-0 xl:mr-0 xl:items-start items-center text-center">
+                {/* Bandeiras de idioma */}
+                <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center">
+                    <button onClick={() => { i18n.changeLanguage("pt"); navigate("/pt"); }} className={`lang-btn ${i18n.language.split('-')[0] === "pt" ? "active-lang" : ""}`}>
+                        <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" alt="Português" className="lang-flag" width="24" height="16" />
+                    </button>
+
+                    <button onClick={() => { i18n.changeLanguage("en"); navigate("/en"); }} className={`lang-btn ${i18n.language.split('-')[0] === "en" ? "active-lang" : ""}`}>
+                        <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg" alt="English" className="lang-flag" width="24" height="16" />
+                    </button>
+
+                    <button onClick={() => { i18n.changeLanguage("es"); navigate("/es"); }} className={`lang-btn ${i18n.language.split('-')[0] === "es" ? "active-lang" : ""}`}>
+                        <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" alt="Español" className="lang-flag" width="24" height="16" />
+                    </button>
+                </li>
+
+                {/* Divisor entre bandeiras e menu */}
+                <li className="flex xl:w-full justify-start align-top">
+                    <span className="xl:hidden text-gray-light hover:underline whitespace-nowrap self-end h-4 xsm:text-[12px] sm:text-[15px] xl:text-[16px]">|</span>
+                    <hr className="hidden xl:block border-t border-gray-400 w-full h-[1px]" />
+                </li>
+
                 {menuItems.map((item, index) => (
                     item.isDivider ? (
                         <li key={index} className="flex xl:w-full justify-start align-top">
-                            <span className="xl:hidden text-gray-light hover:underline whitespace-nowrap self-end h-4 xsm:text-[12px] sm:text-[16px]">|</span>
+                            <span className="xl:hidden text-gray-light hover:underline whitespace-nowrap self-end h-4 xsm:text-[12px] sm:text-[15px] xl:text-sm">|</span>
                             <hr className="hidden xl:block border-t border-gray-400 w-full h-[1px]" />
                         </li>
                     ) : (
@@ -72,7 +92,7 @@ function Menu() {
                             <a
                                 href={item.href}
                                 onClick={(e) => handleScroll(e, item.href)}
-                                className="text-gray-light hover:underline whitespace-nowrap self-end h-4 xsm:text-[12px] sm:text-[16px] xl:text-sm"
+                                className="text-gray-light hover:underline whitespace-nowrap self-end h-4 xsm:text-[12px] sm:text-[15px] xl:text-sm"
                             >
                                 {item.label}
                             </a>
@@ -80,6 +100,12 @@ function Menu() {
                         </li>
                     )
                 ))}
+
+                {/* Divisor entre menu e social */}
+                <li className="flex xl:items-start items-center xl:w-full sm:flex xsm:hidden">
+                    <span className="xl:hidden h-4">|</span>
+                    <hr className="hidden xl:block border-t border-gray-400 w-full h-[1px]" />
+                </li>
 
                 {/* Mídias sociais */}
                 <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center sm:flex xsm:hidden">
@@ -98,26 +124,7 @@ function Menu() {
                     ))}
                 </li>
 
-                {/* Divisor entre social e bandeiras */}
-                <li className="flex xl:items-start items-center xl:w-full sm:flex xsm:hidden">
-                    <span className="xl:hidden h-4">|</span>
-                    <hr className="hidden xl:block border-t border-gray-400 w-full h-[1px]" />
-                </li>
 
-                {/* Bandeiras de idioma */}
-                <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center">
-                    <button onClick={() => { i18n.changeLanguage("pt"); navigate("/pt"); }} className={`lang-btn ${i18n.language.split('-')[0] === "pt" ? "active-lang" : ""}`}>
-                        <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" alt="Português" className="lang-flag" width="24" height="16" />
-                    </button>
-
-                    <button onClick={() => { i18n.changeLanguage("en"); navigate("/en"); }} className={`lang-btn ${i18n.language.split('-')[0] === "en" ? "active-lang" : ""}`}>
-                        <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg" alt="English" className="lang-flag" width="24" height="16" />
-                    </button>
-
-                    <button onClick={() => { i18n.changeLanguage("es"); navigate("/es"); }} className={`lang-btn ${i18n.language.split('-')[0] === "es" ? "active-lang" : ""}`}>
-                        <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg" alt="Español" className="lang-flag" width="24" height="16" />
-                    </button>
-                </li>
 
             </ul>
 
