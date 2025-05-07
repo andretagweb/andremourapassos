@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 
@@ -42,6 +42,14 @@ const SEO = () => {
       "name": t("organization_name", "Projeto de Música Independente")
     }
   };
+
+  // Força a atualização do <meta name="description"> no DOM
+  useEffect(() => {
+    const descriptionTag = document.querySelector('meta[name="description"]');
+    if (descriptionTag) {
+      descriptionTag.setAttribute("content", t("description"));
+    }
+  }, [t]);
 
   return (
     <>
