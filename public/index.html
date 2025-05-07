@@ -1,136 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description"
-    content="Explore as músicas instrumentais e projetos de desenvolvimento de André Moura Passos. Descubra composições, letras e criações únicas." />
-  <meta name="keywords"
-    content="André Moura Passos, compositor, desenvolvedor, música instrumental, piano, criação musical, site pessoal" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="André Moura Passos" />
+    <!-- Fallback para SEO e redes sociais -->
+    <meta name="description" content="Explore as músicas instrumentais e projetos de desenvolvimento de André Moura Passos. Descubra composições, letras e criações únicas." />
+    <meta name="keywords" content="André Moura Passos, compositor, desenvolvedor, música instrumental, piano, criação musical, site pessoal" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="André Moura Passos" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="André Moura Passos | Site Oficial">
-  <meta property="og:description"
-    content="Explore as músicas instrumentais e projetos de desenvolvimento de André Moura Passos. Descubra composições, letras e criações únicas.">
-  <meta property="og:image" content="https://andremourapassos.com/logo192.png">
-  <meta property="og:url" content="https://andremourapassos.com">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="pt_BR">
-  <meta property="og:site_name" content="André Moura Passos">
+    <meta property="og:title" content="André Moura Passos | Site Oficial" />
+    <meta property="og:description" content="Explore as músicas instrumentais e projetos de desenvolvimento de André Moura Passos. Descubra composições, letras e criações únicas." />
+    <meta property="og:image" content="https://andremourapassos.com/logo192.png" />
+    <meta property="og:url" content="https://andremourapassos.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="André Moura Passos" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="André Moura Passos | Site Oficial">
-  <meta name="twitter:description"
-    content="Explore as músicas instrumentais e projetos de desenvolvimento de André Moura Passos. Descubra composições, letras e criações únicas.">
-  <meta name="twitter:image" content="https://andremourapassos.com/logo192.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="André Moura Passos | Site Oficial" />
+    <meta name="twitter:description" content="Explore as músicas instrumentais e projetos de desenvolvimento de André Moura Passos. Descubra composições, letras e criações únicas." />
+    <meta name="twitter:image" content="https://andremourapassos.com/logo192.png" />
 
-  <!-- Preloads e otimizações -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Preconnects e preloads -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/static/media/background2.67dd6978cd288e220aaa.webp" fetchpriority="high" importance="high" />
+    <link rel="preload" as="style" href="/static/css/main.7cbc27b1.css" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/static/css/main.7cbc27b1.css" /></noscript>
 
-  <!-- Preload da imagem LCP com caminho real de build -->
-  <link rel="preload" as="image" href="/static/media/background2.67dd6978cd288e220aaa.webp" fetchpriority="high"
-    importance="high" />
+    <!-- Ícones e Manifest -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-  <!-- CSS principal com load assíncrono -->
-  <link rel="preload" as="style" href="/static/css/main.7cbc27b1.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="/static/css/main.7cbc27b1.css">
-  </noscript>
+    <!-- Canonical + hreflang (fallback; real será atualizado via React) -->
+    <script>
+      const canonicalPath = window.location.pathname.replace(/\/$/, "") || "/";
+      const links = [
+        { rel: "canonical", href: `https://www.andremourapassos.com${canonicalPath}` },
+        { rel: "alternate", hreflang: "pt", href: "https://www.andremourapassos.com/pt" },
+        { rel: "alternate", hreflang: "en", href: "https://www.andremourapassos.com/en" },
+        { rel: "alternate", hreflang: "es", href: "https://www.andremourapassos.com/es" },
+        { rel: "alternate", hreflang: "x-default", href: "https://www.andremourapassos.com" }
+      ];
+      const head = document.head;
+      links.forEach(({ rel, href, hreflang }) => {
+        const link = document.createElement("link");
+        link.rel = rel;
+        link.href = href;
+        if (hreflang) link.hreflang = hreflang;
+        head.appendChild(link);
+      });
+    </script>
 
-  <!-- Ícones e Manifest -->
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-  <!-- Canonical + hreflang -->
-  <script>
-    const canonicalPath = window.location.pathname.replace(/\/$/, "") || "/";
-    const links = [
-      { rel: "canonical", href: `https://www.andremourapassos.com${canonicalPath}` },
-      { rel: "alternate", hreflang: "pt", href: "https://www.andremourapassos.com/pt" },
-      { rel: "alternate", hreflang: "en", href: "https://www.andremourapassos.com/en" },
-      { rel: "alternate", hreflang: "es", href: "https://www.andremourapassos.com/es" },
-      { rel: "alternate", hreflang: "x-default", href: "https://www.andremourapassos.com" },
-    ];
-
-    const head = document.head;
-    links.forEach(({ rel, href, hreflang }) => {
-      const link = document.createElement("link");
-      link.rel = rel;
-      link.href = href;
-      if (hreflang) link.hreflang = hreflang;
-      head.appendChild(link);
-    });
-  </script>
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MusicGroup",
-    "name": "Same Bloods Cocktail",
-    "description": "Projeto musical de André Moura Passos que funde influências do rock com arranjos expressivos de piano, apresentando músicas cantadas e instrumentais com um estilo distinto e dinâmico.",
-    "url": "https://www.palcomp3.com.br/samebloodscocktail/",
-    "image": "https://andremourapassos.com/logo192.png",
-    "sameAs": [
-      "https://www.instagram.com/samebloodscocktail",
-      "https://www.tiktok.com/@samebloodscocktail",
-      "https://www.youtube.com/@samebloodscocktail",
-      "https://open.spotify.com/artist/4lIiJuoMLpeO6JKNkOcx4y",
-      "https://www.deezer.com/br/artist/205700247",
-      "https://soundcloud.com/same-bloods-cocktail",
-      "https://www.facebook.com/profile.php?id=100091738507321",
-      "https://music.apple.com/br/artist/same-bloods-cocktail/1676328013"
-    ],
-    "member": {
-      "@type": "Person",
-      "name": "André Moura Passos",
+    <!-- Structured Data do grupo musical -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "Same Bloods Cocktail",
+      "description": "Projeto musical de André Moura Passos que funde influências do rock com arranjos expressivos de piano, apresentando músicas cantadas e instrumentais com um estilo distinto e dinâmico.",
+      "url": "https://www.palcomp3.com.br/samebloodscocktail/",
+      "image": "https://andremourapassos.com/logo192.png",
       "sameAs": [
-        "https://soundcloud.com/andr-moura-passos"
-      ]
+        "https://www.instagram.com/samebloodscocktail",
+        "https://www.tiktok.com/@samebloodscocktail",
+        "https://www.youtube.com/@samebloodscocktail",
+        "https://open.spotify.com/artist/4lIiJuoMLpeO6JKNkOcx4y",
+        "https://www.deezer.com/br/artist/205700247",
+        "https://soundcloud.com/same-bloods-cocktail",
+        "https://www.facebook.com/profile.php?id=100091738507321",
+        "https://music.apple.com/br/artist/same-bloods-cocktail/1676328013"
+      ],
+      "member": {
+        "@type": "Person",
+        "name": "André Moura Passos",
+        "sameAs": ["https://soundcloud.com/andr-moura-passos"]
+      }
     }
-  }
-  </script>
+    </script>
 
-  <title>André Moura Passos | Site Oficial</title>
+    <title>André Moura Passos | Site Oficial</title>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-993081860"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-993081860"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'AW-993081860');
+      gtag('config', 'G-PE0JQ12V5R');
+    </script>
 
-    // Google Ads
-    gtag('config', 'AW-993081860');
+    <!-- Conversion tracking -->
+    <script>
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-993081860/jJnRCMm_muSaEIT0xNkD',
+            'value': 1.0,
+            'currency': 'BRL'
+          });
+        }, 1000);
+      });
+    </script>
+  </head>
 
-    // Google Analytics 4
-    gtag('config', 'G-PE0JQ12V5R'); 
-  </script>
-
-  <!-- Event snippet with delay to ensure gtag is loaded -->
-  <script>
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        gtag('event', 'conversion', {
-          'send_to': 'AW-993081860/jJnRCMm_muSaEIT0xNkD',
-          'value': 1.0,
-          'currency': 'BRL'
-        });
-      }, 1000); // espera 1 segundo após o carregamento da página
-    });
-  </script>
-</head>
-
-<body>
-  <noscript>Você precisa ativar o JavaScript para rodar este app.</noscript>
-  <div id="root"></div>
-</body>
-
+  <body>
+    <noscript>Você precisa ativar o JavaScript para rodar este app.</noscript>
+    <div id="root"></div>
+  </body>
 </html>
