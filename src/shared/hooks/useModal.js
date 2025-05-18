@@ -6,48 +6,58 @@ function useModal() {
     const [activeModal, setActiveModal] = useState(null);
 
     function showModal(modalId) {
-        if (isMobile && modalId) {
-            setActiveModal(modalId);
+  if (isMobile && modalId) {
+    setActiveModal(modalId);
 
-            // Esconde todos os modais
-            document.querySelectorAll(`.key-modal`).forEach((modal) => {
-                modal.style.display = "none";
-            });
-            document.querySelectorAll(`.hover-text`).forEach((hoverText) => {
-                hoverText.style.display = "none";
-            });
+    // Esconde todos os modais (sem quebrar layout)
+    document.querySelectorAll(`.key-modal`).forEach((modal) => {
+      modal.classList.remove("showing");
+    });
 
-            // Mostra o modal específico
-            const modalElement = document.querySelector(`#${modalId} .key-modal`);
-            const hoverTextElement = document.querySelector(`#${modalId} .key-modal .hover-text`);
-            if (modalElement && hoverTextElement) {
-                modalElement.style.display = "block";
-                modalElement.style.opacity = 1;
-                hoverTextElement.style.display = "block";
-                hoverTextElement.style.opacity = 1;
-            }
+    document.querySelectorAll(`.hover-text`).forEach((hoverText) => {
+      hoverText.style.display = "none";
+    });
 
-            // Exibe o botão de fechar
-            const closeModalElement = document.querySelector(`.close-modal`);
-            if (closeModalElement) closeModalElement.style.display = "block";
-        }
+    const modalElement = document.querySelector(`#${modalId} .key-modal`);
+    const hoverTextElement = document.querySelector(`#${modalId} .key-modal .hover-text`);
+
+    if (modalElement && hoverTextElement) {
+      modalElement.style.display = "block";
+      hoverTextElement.style.display = "block";
+
+      // FORÇA REPAINT PARA A TRANSIÇÃO PEGAR
+      void modalElement.offsetWidth;
+
+      modalElement.classList.add("showing");
     }
 
-    function hideModal() {
-        if (isMobile) {
-            setActiveModal(null);
-            document.querySelectorAll(`.key-modal`).forEach((modal) => {
-                modal.style.display = "none";
-            });
-            document.querySelectorAll(`.hover-text`).forEach((hoverText) => {
-                hoverText.style.display = "none";
-            });
+    const closeModalElement = document.querySelector(`.close-modal`);
+    if (closeModalElement) closeModalElement.style.display = "block";
+  }
+}
 
-            // Esconde o botão de fechar
-            const closeModalElement = document.querySelector(`.close-modal`);
-            if (closeModalElement) closeModalElement.style.display = "none";
-        }
-    }
+function hideModal() {
+  if (isMobile) {
+    setActiveModal(null);
+
+    document.querySelectorAll(`.key-modal.showing`).forEach((modal) => {
+      modal.classList.remove("showing");
+
+      // Aguarda fim da transição e esconde
+      setTimeout(() => {
+        modal.style.display = "none";
+      }, 500); // MESMO TEMPO DO CSS
+    });
+
+    document.querySelectorAll(`.hover-text`).forEach((hoverText) => {
+      hoverText.style.display = "none";
+    });
+
+    const closeModalElement = document.querySelector(`.close-modal`);
+    if (closeModalElement) closeModalElement.style.display = "none";
+  }
+}
+
 
     return { activeModal, showModal, hideModal };
 }
