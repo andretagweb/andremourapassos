@@ -7,7 +7,7 @@ const socialMedia = [
         label: "Spotify"
     },
     { 
-        href: "https://music.apple.com/us/artist/same-bloods-cocktail/123456789", 
+        href: "https://music.apple.com/br/artist/same-bloods-cocktail/1676328013", 
         icon: <FaApple />,
         label: "Apple Music"
     },
