@@ -11,12 +11,22 @@ const VideoItem = ({ video }) => {
   const closePopup = () => {
     setSelectedVideo(null);
   };
+  
+  const getThumbnailSrc = () => {
+    if (video.thumb) {
+      return `/images/${video.thumb}`; // acessa direto do public
+      // ou, se precisar de caminho relativo exato:
+      // return `/src/features/Hero/assets/images/${video.thumb}`;
+    }
+    return `https://img.youtube.com/vi/${video.id}/0.jpg`;
+  };
+
 
   return (
     <>
       <div className="thumbnail cursor-pointer" onClick={handleThumbnailClick}>
         <img
-          src={`https://img.youtube.com/vi/${video.id}/0.jpg`}
+          src={getThumbnailSrc()}
           alt={video.title}
           className="rounded-lg"
           loading="lazy"
