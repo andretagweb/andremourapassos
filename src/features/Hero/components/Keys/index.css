@@ -326,7 +326,7 @@
     width: 100%;
     transition: opacity 0.5s ease;
     background-color: rgba(0, 0, 0, 0.85);
-    z-index: 9998;
+    z-index: 9995;
     pointer-events: auto;
     border: 1px solid #444;
   }
@@ -368,7 +368,7 @@
 
   .close-modal {
     display: none;
-    z-index: 9999;
+    z-index: 9996;
     position: fixed;
     top: 0;
     width: 100%;

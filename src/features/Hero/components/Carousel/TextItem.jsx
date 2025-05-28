@@ -46,7 +46,7 @@ const TextItem = ({ text }) => {
                     <div>
                         <div className="overlay" onClick={closeModal}></div>
                         <div className="modal text-modal">
-                            <button className="close-button" onClick={closeModal}>X</button>
+                            <button className="button block sm:block md:hidden absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl font-bold cursor-pointer" onClick={closeModal}>✕</button>
                             <h3 className="text-xl font-bold mb-4">{text.title}</h3>
                             <div className="text-content special-elite-regular">{text.content}</div>
                         </div>

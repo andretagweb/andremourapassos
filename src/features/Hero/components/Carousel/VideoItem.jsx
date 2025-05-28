@@ -39,7 +39,7 @@ const VideoItem = ({ video }) => {
           <div>
             <div className="overlay" onClick={closePopup}></div>
             <div className="modal">
-              <button className="close-button" onClick={closePopup}>X</button>
+              <button className="button block sm:block md:hidden absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl font-bold cursor-pointer" onClick={closePopup}>✕</button>
               <iframe
                 src={`${selectedVideo}?autoplay=1`}
                 title="YouTube Video"
