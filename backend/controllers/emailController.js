@@ -79,7 +79,7 @@ export default async function handler(req, res) {
       from: `"Contato via Site" <${process.env.EMAIL_USER}>`,
       replyTo: email,
       to: process.env.EMAIL_TO,
-      subject: "Novo Contato pelo Site",
+      subject: "Novo Contato pelo Site Pessoal",
       text: `Nome: ${name}\nE-mail: ${email}\nMensagem: ${message}`,
     });
     debugSteps.push("✅ E-mail principal enviado com sucesso.");
