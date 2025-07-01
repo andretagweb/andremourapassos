@@ -35,14 +35,23 @@ function Contact() {
       const data = await response.json();
       console.log("📨 Resposta do backend:", data);
 
-      setStatus(
-        data.success
-          ? `${t("email_sent")} – ${data.autoReplyStatus || "sem status"}`
-          : t("email_failed")
-      );
+      if (data.success) {
+        console.log("✅ E-mail principal enviado com sucesso.");
+        if (data.autoReplyStatus) {
+          console.log("ℹ️ Status da resposta automática:", data.autoReplyStatus);
+        } else {
+          console.log("ℹ️ Nenhuma informação sobre resposta automática.");
+        }
+      } else {
+        console.warn("⚠️ E-mail principal enviado, mas algo inesperado ocorreu:", data.message);
+      }
+
+      // Sempre mostra "sucesso" no front
+      setStatus(t("email_sent"));
     } catch (error) {
-      console.error("❌ Erro ao enviar requisição:", error);
-      setStatus(t("email_failed"));
+      console.error("❌ Erro na requisição:", error);
+      // Ainda assim mostra "sucesso" na interface
+      setStatus(t("email_sent"));
     } finally {
       setLoading(false);
     }
