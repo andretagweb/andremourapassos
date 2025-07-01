@@ -4,6 +4,7 @@ import { useTranslation, Trans } from "react-i18next";
 function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
   const { t, i18n } = useTranslation("footer");
 
   const API_BASE_URL =
@@ -18,6 +19,7 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setSent(false);
 
     try {
       console.log("📤 Enviando dados para backend:", formData, "Idioma:", i18n.language);
@@ -44,6 +46,9 @@ function Contact() {
       } else {
         console.warn("⚠️ E-mail principal enviado, mas houve erro:", data.message);
       }
+
+      setSent(true); // Ativa "Mensagem enviada"
+      setTimeout(() => setSent(false), 4000); // Volta ao texto padrão após 4s
     } catch (error) {
       console.error("❌ Erro na requisição:", error);
     } finally {
@@ -57,7 +62,6 @@ function Contact() {
         <h3 className="text-3xl font-bold text-center mb-6">{t("contact")}</h3>
 
         <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
-          {/* Nome */}
           <div className="mb-4">
             <label htmlFor="name" className="block mb-2">{t("name")}</label>
             <input
@@ -71,7 +75,6 @@ function Contact() {
             />
           </div>
 
-          {/* E-mail */}
           <div className="mb-4">
             <label htmlFor="email" className="block mb-2">{t("e-mail")}</label>
             <input
@@ -85,7 +88,6 @@ function Contact() {
             />
           </div>
 
-          {/* Mensagem */}
           <div className="mb-4">
             <label htmlFor="message" className="block mb-2">{t("message")}</label>
             <textarea
@@ -98,14 +100,18 @@ function Contact() {
             />
           </div>
 
-          {/* Botão + e-mail alternativo */}
           <div className="text-sm text-center break-all" style={{ color: "rgb(110, 160, 209)" }}>
             <div className="mb-4">
               <button
                 type="submit"
                 className="text-base bg-primary text-white py-2 px-4 rounded hover:bg-blue-800"
+                disabled={loading}
               >
-                {loading ? t("sending_email") : t("send")}
+                {loading
+                  ? t("sending_email")
+                  : sent
+                  ? t("email_sent") + " ✔️"
+                  : t("send")}
               </button>
             </div>
 
