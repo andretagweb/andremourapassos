@@ -53,10 +53,10 @@ Con aprecio,
 André Moura Passos`,
   };
 
-  return messages[lang] || messages["en"]; // fallback para inglês
+  return messages[lang] || messages["en"];
 }
 
-exports.sendEmail = async (req, res) => {
+export default async function handler(req, res) {
   const { name, email, message, lang = "pt" } = req.body;
 
   if (!name || !email || !message) {
@@ -98,4 +98,4 @@ exports.sendEmail = async (req, res) => {
     console.error("❌ Erro ao enviar o primeiro e-mail:", error);
     res.status(500).json({ success: false, message: "Erro ao enviar e-mail" });
   }
-};
+}
