@@ -38,11 +38,12 @@ function Contact() {
 
       if (data.success) {
         console.log("✅ E-mail principal enviado com sucesso.");
-        if ("autoReplyStatus" in data) {
-          console.log("📬 Status da resposta automática:", data.autoReplyStatus);
-        } else {
-          console.log("ℹ️ Nenhuma informação sobre resposta automática.");
-        }
+if (data.autoReplyStatus !== undefined) {
+  console.log("📬 Status da resposta automática:", data.autoReplyStatus);
+} else {
+  console.warn("⚠️ Campo autoReplyStatus ausente no JSON do backend.");
+}
+
 
       } else {
         console.warn("⚠️ E-mail principal enviado, mas houve erro:", data.message);
