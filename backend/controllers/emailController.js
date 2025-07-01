@@ -59,6 +59,10 @@ André Moura Passos`,
 exports.sendEmail = async (req, res) => {
   const { name, email, message, lang = "pt" } = req.body;
 
+  if (!name || !email || !message) {
+    return res.status(400).json({ success: false, message: "Dados obrigatórios ausentes." });
+  }
+
   try {
     // Envia o e-mail para o dono do site
     await transporter.sendMail({
@@ -70,27 +74,28 @@ exports.sendEmail = async (req, res) => {
 
     console.log("✅ Primeiro e-mail enviado com sucesso");
 
+    // Tenta enviar resposta automática ao visitante
     try {
       const autoReplyInfo = await transporter.sendMail({
         from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
         to: email,
-        subject: lang === "pt"
-          ? "Obrigado pelo seu contato"
-          : lang === "es"
+        subject:
+          lang === "pt"
+            ? "Obrigado pelo seu contato"
+            : lang === "es"
             ? "Gracias por tu mensaje"
             : "Thank you for your message",
         text: getAutoReplyMessage(name, lang),
       });
 
-      console.log("✅ Resposta automática enviada com sucesso:", autoReplyInfo);
+      console.log("✅ Resposta automática enviada com sucesso:", autoReplyInfo.messageId);
     } catch (replyError) {
       console.error("❌ Falha ao enviar resposta automática:", replyError);
     }
 
-
     res.status(200).json({ success: true, message: "E-mail enviado com sucesso!" });
   } catch (error) {
-    console.error(error);
+    console.error("❌ Erro ao enviar o primeiro e-mail:", error);
     res.status(500).json({ success: false, message: "Erro ao enviar e-mail" });
   }
 };
