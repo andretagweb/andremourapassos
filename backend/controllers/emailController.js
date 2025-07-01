@@ -71,8 +71,8 @@ export default async function handler(req, res) {
   const debugSteps = [];
 
   try {
-    debugSteps.push("🟢 Iniciando envio do e-mail principal");
-
+    // Primeiro e-mail
+    debugSteps.push("🟢 Enviando e-mail principal...");
     await transporter.sendMail({
       from: `"Contato via Site" <${process.env.EMAIL_USER}>`,
       replyTo: email,
@@ -80,43 +80,55 @@ export default async function handler(req, res) {
       subject: "Novo Contato pelo Site",
       text: `Nome: ${name}\nE-mail: ${email}\nMensagem: ${message}`,
     });
-
     debugSteps.push("✅ E-mail principal enviado");
-
-    debugSteps.push("🟢 Tentando enviar resposta automática");
-    const autoReplyInfo = await transporter.sendMail({
-      from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject:
-        lang === "pt"
-          ? "Obrigado pelo seu contato"
-          : lang === "es"
-          ? "Gracias por tu mensaje"
-          : "Thank you for your message",
-      text: getAutoReplyMessage(name, lang),
+  } catch (error) {
+    debugSteps.push("❌ Erro no envio principal: " + error.message);
+    return res.status(500).json({
+      success: false,
+      message: "Erro ao enviar e-mail principal.",
+      error: error.message,
+      debug: debugSteps,
+      autoReplyStatus,
     });
+  }
 
-    if (!autoReplyInfo || !autoReplyInfo.messageId) {
-      throw new Error("Envio sem messageId retornado");
-    }
+  try {
+    debugSteps.push("🟢 Enviando resposta automática...");
 
-    debugSteps.push("✅ Resposta automática enviada");
+    // FORÇA UM TIMEOUT de 3s para não travar o processo se o segundo e-mail falhar
+    const autoReplyInfo = await Promise.race([
+      transporter.sendMail({
+        from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject:
+          lang === "pt"
+            ? "Obrigado pelo seu contato"
+            : lang === "es"
+            ? "Gracias por tu mensaje"
+            : "Thank you for your message",
+        text: getAutoReplyMessage(name, lang),
+      }),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Timeout ao enviar resposta automática")), 3000)
+      ),
+    ]);
+
     autoReplyStatus = `enviada com sucesso (ID: ${autoReplyInfo.messageId})`;
-
+    debugSteps.push("✅ Resposta automática enviada");
+  } catch (replyError) {
+    const errorCode = replyError.code || "SEM_CODIGO";
+    const errorMsg = replyError.message || "Erro desconhecido";
+    autoReplyStatus = `erro (${errorCode}): ${errorMsg}`;
+    debugSteps.push(`❌ Falha na resposta automática – Código: ${errorCode} | Mensagem: ${errorMsg}`);
+  } finally {
+    // Garante SEMPRE a resposta com status do segundo e-mail
     return res.status(200).json({
       success: true,
       message: "E-mail principal enviado.",
       autoReplyStatus,
       debug: debugSteps,
     });
-  } catch (error) {
-    debugSteps.push("❌ Erro geral: " + error.message);
-    return res.status(500).json({
-      success: false,
-      message: "Erro ao enviar e-mails.",
-      autoReplyStatus: `erro: ${error.message}`,
-      debug: debugSteps,
-    });
   }
 }
+
 
