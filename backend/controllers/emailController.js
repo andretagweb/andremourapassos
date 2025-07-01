@@ -68,17 +68,25 @@ exports.sendEmail = async (req, res) => {
       text: `Nome: ${name}\nE-mail: ${email}\nMensagem: ${message}`,
     });
 
-    // Envia resposta automática para o visitante
-    await transporter.sendMail({
-      from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: lang === "pt"
-        ? "Obrigado pelo seu contato"
-        : lang === "es"
-        ? "Gracias por tu mensaje"
-        : "Thank you for your message",
-      text: getAutoReplyMessage(name, lang),
-    });
+    console.log("✅ Primeiro e-mail enviado com sucesso");
+
+    try {
+      const autoReplyInfo = await transporter.sendMail({
+        from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject: lang === "pt"
+          ? "Obrigado pelo seu contato"
+          : lang === "es"
+            ? "Gracias por tu mensaje"
+            : "Thank you for your message",
+        text: getAutoReplyMessage(name, lang),
+      });
+
+      console.log("✅ Resposta automática enviada com sucesso:", autoReplyInfo);
+    } catch (replyError) {
+      console.error("❌ Falha ao enviar resposta automática:", replyError);
+    }
+
 
     res.status(200).json({ success: true, message: "E-mail enviado com sucesso!" });
   } catch (error) {
