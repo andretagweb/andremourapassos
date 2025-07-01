@@ -62,22 +62,21 @@ André Moura Passos`,
 
 export default async function handler(req, res) {
   const { name, email, message, lang = "pt" } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({
+      success: false,
+      message: "Dados obrigatórios ausentes.",
+      autoReplyStatus: "não enviado (requisição incompleta)",
+    });
+  }
+
   let autoReplyStatus = "não enviado";
   const debugSteps = [];
 
   try {
-    if (!name || !email || !message) {
-      debugSteps.push("❌ Campos obrigatórios ausentes.");
-      return res.status(400).json({
-        success: false,
-        message: "Dados obrigatórios ausentes.",
-        autoReplyStatus,
-        debug: debugSteps,
-      });
-    }
+    debugSteps.push("🟢 Iniciando envio do e-mail principal");
 
-    // Envio do e-mail principal
-    debugSteps.push("📤 Enviando e-mail principal...");
     await transporter.sendMail({
       from: `"Contato via Site" <${process.env.EMAIL_USER}>`,
       replyTo: email,
@@ -85,12 +84,14 @@ export default async function handler(req, res) {
       subject: "Novo Contato pelo Site",
       text: `Nome: ${name}\nE-mail: ${email}\nMensagem: ${message}`,
     });
+
     debugSteps.push("✅ E-mail principal enviado");
 
-    // Tentativa de envio da resposta automática
-    debugSteps.push("📨 Enviando resposta automática...");
-    const autoReplyInfo = await Promise.race([
-      transporter.sendMail({
+    // Resposta automática
+    try {
+      debugSteps.push("🟢 Tentando enviar resposta automática");
+
+      const autoReplyInfo = await transporter.sendMail({
         from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
         to: email,
         subject:
@@ -100,26 +101,33 @@ export default async function handler(req, res) {
             ? "Gracias por tu mensaje"
             : "Thank you for your message",
         text: getAutoReplyMessage(name, lang),
-      }),
-      new Promise((_, reject) =>
-        setTimeout(() => reject(new Error("Timeout ao enviar resposta automática")), 3000)
-      ),
-    ]);
+      });
 
-    autoReplyStatus = `enviada com sucesso (ID: ${autoReplyInfo.messageId})`;
-    debugSteps.push("✅ Resposta automática enviada");
+      debugSteps.push("✅ Resposta automática enviada");
+      autoReplyStatus = `enviada com sucesso (ID: ${autoReplyInfo.messageId})`;
+
+    } catch (replyError) {
+      debugSteps.push("❌ Erro na resposta automática: " + replyError.message);
+      autoReplyStatus = `erro: ${replyError.message}`;
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "E-mail principal enviado.",
+      autoReplyStatus,
+      debug: debugSteps,
+    });
+
   } catch (error) {
-    const errorCode = error.code || "SEM_CODIGO";
-    const errorMsg = error.message || "Erro desconhecido";
-    autoReplyStatus = `erro (${errorCode}): ${errorMsg}`;
-    debugSteps.push(`❌ Erro durante envio: ${autoReplyStatus}`);
-  }
+    debugSteps.push("❌ Erro no envio principal: " + error.message);
 
-  // Retorno garantido com autoReplyStatus
-  return res.status(200).json({
-    success: true,
-    message: "E-mail principal enviado.",
-    autoReplyStatus,
-    debug: debugSteps,
-  });
+    return res.status(500).json({
+      success: false,
+      message: "Erro ao enviar e-mail principal.",
+      error: error.message,
+      autoReplyStatus: "falhou junto com envio principal",
+      debug: debugSteps,
+    });
+  }
 }
+
