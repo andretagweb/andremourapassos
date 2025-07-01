@@ -74,7 +74,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    debugSteps.push("✅ Enviando e-mail principal...");
+    debugSteps.push("✅ Enviando e-mail principal agora...");
     await transporter.sendMail({
       from: `"Contato via Site" <${process.env.EMAIL_USER}>`,
       replyTo: email,
@@ -82,7 +82,7 @@ export default async function handler(req, res) {
       subject: "Novo Contato pelo Site Pessoal",
       text: `Nome: ${name}\nE-mail: ${email}\nMensagem: ${message}`,
     });
-    debugSteps.push("✅ E-mail principal enviado com sucesso.");
+    debugSteps.push("✅ E-mail principal enviado com sucesso hahah.");
   } catch (error) {
     debugSteps.push("❌ Erro ao enviar e-mail principal: " + error.message);
     return res.status(500).json({

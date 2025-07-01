@@ -34,23 +34,22 @@ function Contact() {
       });
 
       const data = await response.json();
-      console.log("📨 Resposta do backend:", data);
+      console.log("🧪 RESPOSTA COMPLETA DO BACKEND:", data); // Log importante
 
       if (data.success) {
         console.log("✅ E-mail principal enviado com sucesso.");
 
-        if (Object.prototype.hasOwnProperty.call(data, "autoReplyStatus")) {
+        if (data.autoReplyStatus !== undefined) {
           console.log("📬 Status da resposta automática:", data.autoReplyStatus);
         } else {
           console.warn("⚠️ Campo autoReplyStatus ausente no JSON do backend.");
         }
-
       } else {
         console.warn("⚠️ E-mail principal enviado, mas houve erro:", data.message);
       }
 
-      setSent(true); // Ativa "Mensagem enviada"
-      setTimeout(() => setSent(false), 4000); // Volta ao texto padrão após 4s
+      setSent(true);
+      setTimeout(() => setSent(false), 4000);
     } catch (error) {
       console.error("❌ Erro na requisição:", error);
     } finally {
@@ -112,8 +111,8 @@ function Contact() {
                 {loading
                   ? t("sending_email")
                   : sent
-                  ? t("email_sent") + " ✔️"
-                  : t("send")}
+                    ? t("email_sent") + " ✔️"
+                    : t("send")}
               </button>
             </div>
 
