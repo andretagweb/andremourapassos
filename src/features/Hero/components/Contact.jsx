@@ -38,11 +38,12 @@ function Contact() {
 
       if (data.success) {
         console.log("✅ E-mail principal enviado com sucesso.");
-        if (data.autoReplyStatus) {
+        if ("autoReplyStatus" in data) {
           console.log("📬 Status da resposta automática:", data.autoReplyStatus);
         } else {
           console.log("ℹ️ Nenhuma informação sobre resposta automática.");
         }
+
       } else {
         console.warn("⚠️ E-mail principal enviado, mas houve erro:", data.message);
       }
@@ -110,8 +111,8 @@ function Contact() {
                 {loading
                   ? t("sending_email")
                   : sent
-                  ? t("email_sent") + " ✔️"
-                  : t("send")}
+                    ? t("email_sent") + " ✔️"
+                    : t("send")}
               </button>
             </div>
 
