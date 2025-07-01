@@ -22,18 +22,26 @@ function Contact() {
     setStatus(null);
 
     try {
+      console.log("📤 Enviando dados para backend:", formData, "Idioma:", i18n.language);
       const response = await fetch(`${API_BASE_URL}/api/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          lang: i18n.language, // ⬅️ idioma atual enviado ao backend
+          lang: i18n.language,
         }),
       });
 
       const data = await response.json();
-      setStatus(data.success ? t("email_sent") : t("email_failed"));
+      console.log("📨 Resposta do backend:", data);
+
+      setStatus(
+        data.success
+          ? `${t("email_sent")} – ${data.autoReplyStatus || "sem status"}`
+          : t("email_failed")
+      );
     } catch (error) {
+      console.error("❌ Erro ao enviar requisição:", error);
       setStatus(t("email_failed"));
     } finally {
       setLoading(false);
@@ -44,7 +52,9 @@ function Contact() {
     <section id="contact" className="text-white bg-gray-dark py-12 special-elite-regular">
       <div className="mx-auto xsm:mx-4">
         <h3 className="text-3xl font-bold text-center mb-6">{t("contact")}</h3>
+
         <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
+          {/* Nome */}
           <div className="mb-4">
             <label htmlFor="name" className="block mb-2">{t("name")}</label>
             <input
@@ -57,6 +67,8 @@ function Contact() {
               required
             />
           </div>
+
+          {/* E-mail */}
           <div className="mb-4">
             <label htmlFor="email" className="block mb-2">{t("e-mail")}</label>
             <input
@@ -69,6 +81,8 @@ function Contact() {
               required
             />
           </div>
+
+          {/* Mensagem */}
           <div className="mb-4">
             <label htmlFor="message" className="block mb-2">{t("message")}</label>
             <textarea
@@ -80,14 +94,19 @@ function Contact() {
               required
             />
           </div>
+
+          {/* Botão e e-mail alternativo */}
           <div className="text-sm text-center break-all" style={{ color: "rgb(110, 160, 209)" }}>
             <div className="mb-4">
-              <button className="text-base bg-primary text-white py-2 px-4 rounded hover:bg-blue-800">
+              <button
+                type="submit"
+                className="text-base bg-primary text-white py-2 px-4 rounded hover:bg-blue-800"
+              >
                 {t("send")}
               </button>
             </div>
 
-            {/* Desktop/tablet: tudo na mesma linha */}
+            {/* Desktop */}
             <span className="hidden sm:inline">
               <Trans
                 i18nKey="alt_email"
@@ -105,7 +124,7 @@ function Contact() {
               />
             </span>
 
-            {/* Mobile: texto + quebra manual */}
+            {/* Mobile */}
             <span className="block sm:hidden">
               {t("alt_email_split_1")}<br />
               <a
@@ -117,6 +136,7 @@ function Contact() {
             </span>
           </div>
 
+          {/* Status */}
           {loading && <p className="mt-4 text-blue text-center w-full">{t("sending_email")}</p>}
           {!loading && status && <p className="mt-4 text-center w-full">{status}</p>}
         </form>
