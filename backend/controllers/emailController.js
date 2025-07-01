@@ -71,7 +71,6 @@ export default async function handler(req, res) {
   const debugSteps = [];
 
   try {
-    // Primeiro e-mail para você
     debugSteps.push("🟢 Iniciando envio do e-mail principal");
 
     await transporter.sendMail({
@@ -84,28 +83,25 @@ export default async function handler(req, res) {
 
     debugSteps.push("✅ E-mail principal enviado");
 
-    // Resposta automática
-    try {
-      debugSteps.push("🟢 Tentando enviar resposta automática");
+    debugSteps.push("🟢 Tentando enviar resposta automática");
+    const autoReplyInfo = await transporter.sendMail({
+      from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject:
+        lang === "pt"
+          ? "Obrigado pelo seu contato"
+          : lang === "es"
+          ? "Gracias por tu mensaje"
+          : "Thank you for your message",
+      text: getAutoReplyMessage(name, lang),
+    });
 
-      const autoReplyInfo = await transporter.sendMail({
-        from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
-        to: email,
-        subject:
-          lang === "pt"
-            ? "Obrigado pelo seu contato"
-            : lang === "es"
-            ? "Gracias por tu mensaje"
-            : "Thank you for your message",
-        text: getAutoReplyMessage(name, lang),
-      });
-
-      debugSteps.push("✅ Resposta automática enviada");
-      autoReplyStatus = `enviada com sucesso (ID: ${autoReplyInfo.messageId})`;
-    } catch (replyError) {
-      debugSteps.push("❌ Erro na resposta automática: " + replyError.message);
-      autoReplyStatus = `erro: ${replyError.message}`;
+    if (!autoReplyInfo || !autoReplyInfo.messageId) {
+      throw new Error("Envio sem messageId retornado");
     }
+
+    debugSteps.push("✅ Resposta automática enviada");
+    autoReplyStatus = `enviada com sucesso (ID: ${autoReplyInfo.messageId})`;
 
     return res.status(200).json({
       success: true,
@@ -114,12 +110,13 @@ export default async function handler(req, res) {
       debug: debugSteps,
     });
   } catch (error) {
-    debugSteps.push("❌ Erro no envio principal: " + error.message);
+    debugSteps.push("❌ Erro geral: " + error.message);
     return res.status(500).json({
       success: false,
-      message: "Erro ao enviar e-mail principal.",
-      error: error.message,
+      message: "Erro ao enviar e-mails.",
+      autoReplyStatus: `erro: ${error.message}`,
       debug: debugSteps,
     });
   }
 }
+
