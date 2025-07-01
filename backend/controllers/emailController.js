@@ -77,7 +77,7 @@ exports.sendEmail = async (req, res) => {
     // Tenta enviar resposta automática ao visitante
     try {
       const autoReplyInfo = await transporter.sendMail({
-        from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
+        from: `"André Moura Passos" <${process.env.EMAIL_TO}>`,
         to: email,
         subject:
           lang === "pt"
