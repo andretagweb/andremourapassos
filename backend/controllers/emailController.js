@@ -18,10 +18,12 @@ function getAutoReplyMessage(name, lang = "pt") {
 🎵 TikTok: https://tiktok.com/@samebloodscocktail
 📸 Instagram: https://instagram.com/samebloodscocktail
 📘 Facebook: https://www.facebook.com/share/16sm9c4wd9/
-💼 LinkedIn: https://www.linkedin.com/in/andremourapassos/`;
+💼 LinkedIn: https://www.linkedin.com/in/andremourapassos/
+`;
 
   const messages = {
     pt: `Olá ${name}!
+
 Agradeço muito sua visita e o interesse em conhecer meu site pessoal e meu trabalho musical.
 
 Sinta-se à vontade para continuar explorando minha música e conteúdos através dos canais oficiais do projeto Same Bloods Cocktail:
@@ -32,6 +34,7 @@ Mais uma vez, obrigado pela sua mensagem.
 Com apreço,
 André Moura Passos`,
     en: `Hello ${name}!
+
 I truly appreciate your visit and your interest in checking out my personal website and musical work.
 
 Feel free to keep exploring my music and content through the official channels of my project Same Bloods Cocktail:
@@ -42,6 +45,7 @@ Thank you again for your message.
 With appreciation,
 André Moura Passos`,
     es: `¡Hola ${name}!
+
 Te agradezco mucho tu visita y tu interés en conocer mi sitio web personal y mi trabajo musical.
 
 No dudes en seguir explorando mi música y contenido a través de los canales oficiales de mi proyecto Same Bloods Cocktail:
@@ -63,8 +67,10 @@ export default async function handler(req, res) {
     return res.status(400).json({ success: false, message: "Dados obrigatórios ausentes." });
   }
 
+  let autoReplyStatus = "não enviado";
+
   try {
-    // Envia o e-mail para o dono do site
+    // Primeiro e-mail para você
     await transporter.sendMail({
       from: `"${name}" <${email}>`,
       to: process.env.EMAIL_TO,
@@ -74,7 +80,7 @@ export default async function handler(req, res) {
 
     console.log("✅ Primeiro e-mail enviado com sucesso");
 
-    // Tenta enviar resposta automática ao visitante
+    // Resposta automática
     try {
       const autoReplyInfo = await transporter.sendMail({
         from: `"André Moura Passos" <${process.env.EMAIL_TO}>`,
@@ -89,13 +95,23 @@ export default async function handler(req, res) {
       });
 
       console.log("✅ Resposta automática enviada com sucesso:", autoReplyInfo.messageId);
+      autoReplyStatus = `enviada com sucesso (ID: ${autoReplyInfo.messageId})`;
     } catch (replyError) {
       console.error("❌ Falha ao enviar resposta automática:", replyError);
+      autoReplyStatus = `erro: ${replyError.message}`;
     }
 
-    res.status(200).json({ success: true, message: "E-mail enviado com sucesso!" });
+    return res.status(200).json({
+      success: true,
+      message: "E-mail principal enviado.",
+      autoReplyStatus,
+    });
   } catch (error) {
     console.error("❌ Erro ao enviar o primeiro e-mail:", error);
-    res.status(500).json({ success: false, message: "Erro ao enviar e-mail" });
+    return res.status(500).json({
+      success: false,
+      message: "Erro ao enviar e-mail principal.",
+      error: error.message,
+    });
   }
 }
