@@ -8,7 +8,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Mensagem de resposta automática
 function getAutoReplyMessage(name, lang = "pt") {
   const links = `
 🎧 Spotify: https://open.spotify.com/artist/4lIiJuoMLpeO6JKNkOcx4y
@@ -62,21 +61,20 @@ André Moura Passos`,
 
 export default async function handler(req, res) {
   const { name, email, message, lang = "pt" } = req.body;
+  let autoReplyStatus = "não enviado";
+  const debugSteps = [];
 
   if (!name || !email || !message) {
     return res.status(400).json({
       success: false,
       message: "Dados obrigatórios ausentes.",
-      autoReplyStatus: "não enviado (requisição incompleta)",
+      autoReplyStatus,
+      debug: debugSteps,
     });
   }
 
-  let autoReplyStatus = "não enviado";
-  const debugSteps = [];
-
   try {
-    debugSteps.push("🟢 Iniciando envio do e-mail principal");
-
+    debugSteps.push("✅ Enviando e-mail principal...");
     await transporter.sendMail({
       from: `"Contato via Site" <${process.env.EMAIL_USER}>`,
       replyTo: email,
@@ -84,50 +82,45 @@ export default async function handler(req, res) {
       subject: "Novo Contato pelo Site",
       text: `Nome: ${name}\nE-mail: ${email}\nMensagem: ${message}`,
     });
-
-    debugSteps.push("✅ E-mail principal enviado");
-
-    // Resposta automática
-    try {
-      debugSteps.push("🟢 Tentando enviar resposta automática");
-
-      const autoReplyInfo = await transporter.sendMail({
-        from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
-        to: email,
-        subject:
-          lang === "pt"
-            ? "Obrigado pelo seu contato"
-            : lang === "es"
-            ? "Gracias por tu mensaje"
-            : "Thank you for your message",
-        text: getAutoReplyMessage(name, lang),
-      });
-
-      debugSteps.push("✅ Resposta automática enviada");
-      autoReplyStatus = `enviada com sucesso (ID: ${autoReplyInfo.messageId})`;
-
-    } catch (replyError) {
-      debugSteps.push("❌ Erro na resposta automática: " + replyError.message);
-      autoReplyStatus = `erro: ${replyError.message}`;
-    }
-
-    return res.status(200).json({
-      success: true,
-      message: "E-mail principal enviado.",
-      autoReplyStatus,
-      debug: debugSteps,
-    });
-
+    debugSteps.push("✅ E-mail principal enviado com sucesso.");
   } catch (error) {
-    debugSteps.push("❌ Erro no envio principal: " + error.message);
-
+    debugSteps.push("❌ Erro ao enviar e-mail principal: " + error.message);
     return res.status(500).json({
       success: false,
       message: "Erro ao enviar e-mail principal.",
       error: error.message,
-      autoReplyStatus: "falhou junto com envio principal",
+      autoReplyStatus,
       debug: debugSteps,
     });
   }
-}
 
+  try {
+    debugSteps.push("📬 Enviando resposta automática...");
+
+    const autoReplyInfo = await transporter.sendMail({
+      from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject:
+        lang === "pt"
+          ? "Obrigado pelo seu contato"
+          : lang === "es"
+          ? "Gracias por tu mensaje"
+          : "Thank you for your message",
+      text: getAutoReplyMessage(name, lang),
+    });
+
+    autoReplyStatus = `enviada com sucesso (ID: ${autoReplyInfo.messageId})`;
+    debugSteps.push("✅ Resposta automática enviada com sucesso.");
+  } catch (replyError) {
+    const errorMsg = replyError.message || "Erro desconhecido";
+    autoReplyStatus = `erro: ${errorMsg}`;
+    debugSteps.push("❌ Erro na resposta automática: " + errorMsg);
+  }
+
+  return res.status(200).json({
+    success: true,
+    message: "E-mail principal enviado.",
+    autoReplyStatus,
+    debug: debugSteps,
+  });
+}
