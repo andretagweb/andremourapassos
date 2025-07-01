@@ -3,7 +3,6 @@ import { useTranslation, Trans } from "react-i18next";
 
 function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
   const { t, i18n } = useTranslation("footer");
 
@@ -19,10 +18,10 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setStatus(null);
 
     try {
       console.log("📤 Enviando dados para backend:", formData, "Idioma:", i18n.language);
+
       const response = await fetch(`${API_BASE_URL}/api/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -38,20 +37,15 @@ function Contact() {
       if (data.success) {
         console.log("✅ E-mail principal enviado com sucesso.");
         if (data.autoReplyStatus) {
-          console.log("ℹ️ Status da resposta automática:", data.autoReplyStatus);
+          console.log("📬 Status da resposta automática:", data.autoReplyStatus);
         } else {
           console.log("ℹ️ Nenhuma informação sobre resposta automática.");
         }
       } else {
-        console.warn("⚠️ E-mail principal enviado, mas algo inesperado ocorreu:", data.message);
+        console.warn("⚠️ E-mail principal enviado, mas houve erro:", data.message);
       }
-
-      // Sempre mostra "sucesso" no front
-      setStatus(t("email_sent"));
     } catch (error) {
       console.error("❌ Erro na requisição:", error);
-      // Ainda assim mostra "sucesso" na interface
-      setStatus(t("email_sent"));
     } finally {
       setLoading(false);
     }
@@ -104,18 +98,17 @@ function Contact() {
             />
           </div>
 
-          {/* Botão e e-mail alternativo */}
+          {/* Botão + e-mail alternativo */}
           <div className="text-sm text-center break-all" style={{ color: "rgb(110, 160, 209)" }}>
             <div className="mb-4">
               <button
                 type="submit"
                 className="text-base bg-primary text-white py-2 px-4 rounded hover:bg-blue-800"
               >
-                {t("send")}
+                {loading ? t("sending_email") : t("send")}
               </button>
             </div>
 
-            {/* Desktop */}
             <span className="hidden sm:inline">
               <Trans
                 i18nKey="alt_email"
@@ -133,7 +126,6 @@ function Contact() {
               />
             </span>
 
-            {/* Mobile */}
             <span className="block sm:hidden">
               {t("alt_email_split_1")}<br />
               <a
@@ -144,10 +136,6 @@ function Contact() {
               </a>
             </span>
           </div>
-
-          {/* Status */}
-          {loading && <p className="mt-4 text-blue text-center w-full">{t("sending_email")}</p>}
-          {!loading && status && <p className="mt-4 text-center w-full">{status}</p>}
         </form>
       </div>
     </section>
