@@ -68,9 +68,12 @@ export default async function handler(req, res) {
   }
 
   let autoReplyStatus = "não enviado";
+  const debugSteps = [];
 
   try {
-    // Primeiro e-mail para você (remetente deve ser seu e-mail autenticado)
+    // Primeiro e-mail para você
+    debugSteps.push("🟢 Iniciando envio do e-mail principal");
+
     await transporter.sendMail({
       from: `"Contato via Site" <${process.env.EMAIL_USER}>`,
       replyTo: email,
@@ -79,8 +82,12 @@ export default async function handler(req, res) {
       text: `Nome: ${name}\nE-mail: ${email}\nMensagem: ${message}`,
     });
 
-    // Resposta automática (também deve ser enviada com seu e-mail autenticado)
+    debugSteps.push("✅ E-mail principal enviado");
+
+    // Resposta automática
     try {
+      debugSteps.push("🟢 Tentando enviar resposta automática");
+
       const autoReplyInfo = await transporter.sendMail({
         from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
         to: email,
@@ -93,8 +100,10 @@ export default async function handler(req, res) {
         text: getAutoReplyMessage(name, lang),
       });
 
+      debugSteps.push("✅ Resposta automática enviada");
       autoReplyStatus = `enviada com sucesso (ID: ${autoReplyInfo.messageId})`;
     } catch (replyError) {
+      debugSteps.push("❌ Erro na resposta automática: " + replyError.message);
       autoReplyStatus = `erro: ${replyError.message}`;
     }
 
@@ -102,12 +111,15 @@ export default async function handler(req, res) {
       success: true,
       message: "E-mail principal enviado.",
       autoReplyStatus,
+      debug: debugSteps,
     });
   } catch (error) {
+    debugSteps.push("❌ Erro no envio principal: " + error.message);
     return res.status(500).json({
       success: false,
       message: "Erro ao enviar e-mail principal.",
       error: error.message,
+      debug: debugSteps,
     });
   }
 }
