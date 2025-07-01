@@ -70,20 +70,19 @@ export default async function handler(req, res) {
   let autoReplyStatus = "não enviado";
 
   try {
-    // Primeiro e-mail para você
+    // Primeiro e-mail para você (remetente deve ser seu e-mail autenticado)
     await transporter.sendMail({
-      from: `"${name}" <${email}>`,
+      from: `"Contato via Site" <${process.env.EMAIL_USER}>`,
+      replyTo: email,
       to: process.env.EMAIL_TO,
       subject: "Novo Contato pelo Site",
       text: `Nome: ${name}\nE-mail: ${email}\nMensagem: ${message}`,
     });
 
-    console.log("✅ Primeiro e-mail enviado com sucesso");
-
-    // Resposta automática
+    // Resposta automática (também deve ser enviada com seu e-mail autenticado)
     try {
       const autoReplyInfo = await transporter.sendMail({
-        from: `"André Moura Passos" <${process.env.EMAIL_TO}>`,
+        from: `"André Moura Passos" <${process.env.EMAIL_USER}>`,
         to: email,
         subject:
           lang === "pt"
@@ -94,10 +93,8 @@ export default async function handler(req, res) {
         text: getAutoReplyMessage(name, lang),
       });
 
-      console.log("✅ Resposta automática enviada com sucesso:", autoReplyInfo.messageId);
       autoReplyStatus = `enviada com sucesso (ID: ${autoReplyInfo.messageId})`;
     } catch (replyError) {
-      console.error("❌ Falha ao enviar resposta automática:", replyError);
       autoReplyStatus = `erro: ${replyError.message}`;
     }
 
@@ -107,7 +104,6 @@ export default async function handler(req, res) {
       autoReplyStatus,
     });
   } catch (error) {
-    console.error("❌ Erro ao enviar o primeiro e-mail:", error);
     return res.status(500).json({
       success: false,
       message: "Erro ao enviar e-mail principal.",
