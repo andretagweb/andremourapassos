@@ -32,7 +32,7 @@ const socialMedia = [
         label: "Instagram"
     },
     { 
-        href: "https://www.facebook.com/profile.php?id=100091738507321", 
+        href: "https://www.facebook.com/people/Same-Bloods-Cocktail/100091738507321/", 
         icon: <FaFacebookF />,
         label: "Facebook"
     },

@@ -5,7 +5,7 @@ function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { t } = useTranslation("footer");
+  const { t, i18n } = useTranslation("footer");
 
   const API_BASE_URL =
     window.location.hostname === "localhost"
@@ -25,7 +25,10 @@ function Contact() {
       const response = await fetch(`${API_BASE_URL}/api/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          lang: i18n.language, // ⬅️ idioma atual enviado ao backend
+        }),
       });
 
       const data = await response.json();
