@@ -38,12 +38,12 @@ function Contact() {
 
       if (data.success) {
         console.log("✅ E-mail principal enviado com sucesso.");
-if (data.autoReplyStatus !== undefined) {
-  console.log("📬 Status da resposta automática:", data.autoReplyStatus);
-} else {
-  console.warn("⚠️ Campo autoReplyStatus ausente no JSON do backend.");
-}
 
+        if (Object.prototype.hasOwnProperty.call(data, "autoReplyStatus")) {
+          console.log("📬 Status da resposta automática:", data.autoReplyStatus);
+        } else {
+          console.warn("⚠️ Campo autoReplyStatus ausente no JSON do backend.");
+        }
 
       } else {
         console.warn("⚠️ E-mail principal enviado, mas houve erro:", data.message);
@@ -112,8 +112,8 @@ if (data.autoReplyStatus !== undefined) {
                 {loading
                   ? t("sending_email")
                   : sent
-                    ? t("email_sent") + " ✔️"
-                    : t("send")}
+                  ? t("email_sent") + " ✔️"
+                  : t("send")}
               </button>
             </div>
 
