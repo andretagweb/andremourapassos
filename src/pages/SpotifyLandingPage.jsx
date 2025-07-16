@@ -169,7 +169,7 @@ const SpotifyLandingPage = () => {
         }}
       />
 
-      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '1rem', fontFamily: "Limelight,serif" }}>
+      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '0.9rem', fontFamily: "Limelight,serif" }}>
         Same Bloods Cocktail
       </h1>
 
@@ -177,8 +177,8 @@ const SpotifyLandingPage = () => {
         fontSize: '1rem',
         textAlign: 'center',
         maxWidth: '500px',
-        lineHeight: '1.6',
-        marginBottom: '2.5rem',
+        lineHeight: '1.5',
+        marginBottom: '2rem',
         color: '#b3b3b3',
       }}>
         {t('description')}
@@ -191,7 +191,7 @@ const SpotifyLandingPage = () => {
         onClick={handleClick}
         style={{
           backgroundColor: '#1DB954',
-          color: '#000',
+          color: 'rgb(111 3 3)',
           padding: '1rem 2rem',
           borderRadius: '32px',
           fontSize: '1.1rem',
@@ -207,7 +207,7 @@ const SpotifyLandingPage = () => {
       </a>
 
       <p style={{
-        marginTop: '3rem',
+        marginTop: '2rem',
         color: '#888',
         fontSize: '0.95rem',
         maxWidth: '500px',
@@ -217,7 +217,7 @@ const SpotifyLandingPage = () => {
       </p>
 
       <div style={{
-        marginTop: '1.5rem',
+        marginTop: '1.2rem',
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
