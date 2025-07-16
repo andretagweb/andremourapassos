@@ -11,6 +11,7 @@ import {
   FaTiktok,
   FaSpotify,
   FaApple,
+  FaHome,
 } from 'react-icons/fa';
 
 const socialMedia = [
@@ -60,16 +61,15 @@ const SpotifyLandingPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-useEffect(() => {
-  const langFromPath = location.pathname.split('/')[1];
-  if (
-    ['pt', 'en', 'es'].includes(langFromPath) &&
-    i18n.language !== langFromPath
-  ) {
-    i18n.changeLanguage(langFromPath);
-  }
-}, [location.pathname, i18n]);
-
+  useEffect(() => {
+    const langFromPath = location.pathname.split('/')[1];
+    if (
+      ['pt', 'en', 'es'].includes(langFromPath) &&
+      i18n.language !== langFromPath
+    ) {
+      i18n.changeLanguage(langFromPath);
+    }
+  }, [location.pathname, i18n]);
 
   const handleClick = () => {
     if (window.gtag) {
@@ -94,6 +94,12 @@ useEffect(() => {
     navigate(newPath);
   };
 
+  const goToHome = () => {
+    const lang = location.pathname.split('/')[1];
+    const homePath = ['pt', 'en', 'es'].includes(lang) ? `/${lang}` : '/';
+    navigate(homePath);
+  };
+
   return (
     <div
       style={{
@@ -107,10 +113,38 @@ useEffect(() => {
         padding: '3rem 1.5rem',
         fontFamily:
           'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif',
+        position: 'relative',
       }}
     >
-      {/* Bandeiras de idioma */}
-      <div style={{ position: 'absolute', top: '1rem', right: '1rem', display: 'flex', gap: '0.5rem' }}>
+      {/* Home button */}
+      <button
+        onClick={goToHome}
+        style={{
+          position: 'absolute',
+          top: '1rem',
+          left: '1rem',
+          background: 'none',
+          border: 'none',
+          color: '#ffffff',
+          fontSize: '1.8rem',
+          cursor: 'pointer',
+        }}
+        title="Home"
+      >
+        <FaHome />
+      </button>
+
+      {/* Language flags */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '1rem',
+          right: '1rem',
+          display: 'flex',
+          gap: '0.5rem',
+          alignItems: 'center',
+        }}
+      >
         <button onClick={() => changeLanguage('pt')} style={{ border: 'none', background: 'none' }}>
           <img src="https://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg" alt="Português" width="32" height="21" />
         </button>
@@ -122,6 +156,7 @@ useEffect(() => {
         </button>
       </div>
 
+      {/* Logo */}
       <img
         src="/images/spotify-min.png"
         alt="Same Bloods Cocktail Logo"
