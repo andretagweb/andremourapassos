@@ -9,6 +9,7 @@ import enMenu from "./en/menu.json";
 import enPlayer from "./en/player.json";
 import enFooter from "./en/footer.json";
 import enSeo from "./en/seo.json";
+import enSpotify from "./en/spotify.json";
 
 // PT
 import ptCommon from "./pt/common.json";
@@ -17,6 +18,7 @@ import ptMenu from "./pt/menu.json";
 import ptPlayer from "./pt/player.json";
 import ptFooter from "./pt/footer.json";
 import ptSeo from "./pt/seo.json";
+import ptSpotify from "./pt/spotify.json";
 
 // ES
 import esCommon from "./es/common.json";
@@ -25,6 +27,7 @@ import esMenu from "./es/menu.json";
 import esPlayer from "./es/player.json";
 import esFooter from "./es/footer.json";
 import esSeo from "./es/seo.json";
+import esSpotify from "./es/spotify.json";
 
 i18n
   .use(initReactI18next)
@@ -37,7 +40,8 @@ i18n
         menu: enMenu,
         player: enPlayer,
         footer: enFooter,
-        seo: enSeo
+        seo: enSeo,
+        spotify: enSpotify
       },
       pt: {
         common: ptCommon,
@@ -45,7 +49,8 @@ i18n
         menu: ptMenu,
         player: ptPlayer,
         footer: ptFooter,
-        seo: ptSeo
+        seo: ptSeo,
+        spotify: ptSpotify
       },
       es: {
         common: esCommon,
@@ -53,7 +58,8 @@ i18n
         menu: esMenu,
         player: esPlayer,
         footer: esFooter,
-        seo: esSeo
+        seo: esSeo,
+        spotify: esSpotify
       }
     },
     fallbackLng: "en",

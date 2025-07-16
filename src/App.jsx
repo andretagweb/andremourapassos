@@ -9,6 +9,8 @@ import Hero from './features/Hero';
 import SEO from "./shared/components/common/SEO";
 import HreflangTags from "./shared/components/common/HreflangTags";
 
+import SpotifyLandingPage from './pages/SpotifyLandingPage';
+
 import './shared/styles/App.css';
 
 function SiteContent() {
@@ -78,10 +80,14 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/:lang/spotify" element={<SpotifyLandingPage />} />
+      <Route path="/spotify" element={<SpotifyLandingPage />} />
       <Route path="/:lang" element={<LanguageWrapper />} />
       <Route path="*" element={<Navigate to="/pt" />} />
     </Routes>
+
   );
+
 }
 
 export default function WrappedApp() {
