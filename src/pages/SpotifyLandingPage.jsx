@@ -169,7 +169,7 @@ const SpotifyLandingPage = () => {
         }}
       />
 
-      <h1 style={{ fontSize: '2.4rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '1rem' }}>
+      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '1rem' }}>
         Same Bloods Cocktail
       </h1>
 
