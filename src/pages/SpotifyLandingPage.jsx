@@ -112,7 +112,7 @@ const SpotifyLandingPage = () => {
         justifyContent: 'center',
         padding: '3rem 1.5rem',
         fontFamily:
-          'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif',
+          "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
         position: 'relative',
       }}
     >
@@ -169,7 +169,7 @@ const SpotifyLandingPage = () => {
         }}
       />
 
-      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '1rem' }}>
+      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '1rem', fontFamily: "Limelight,serif" }}>
         Same Bloods Cocktail
       </h1>
 
