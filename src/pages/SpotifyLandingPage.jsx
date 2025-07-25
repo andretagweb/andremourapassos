@@ -40,16 +40,6 @@ const socialMedia = [
     icon: <FaTiktok />,
     label: 'TikTok',
   },
-  {
-    href: 'https://instagram.com/samebloodscocktail',
-    icon: <FaInstagram />,
-    label: 'Instagram',
-  },
-  {
-    href: 'https://www.facebook.com/people/Same-Bloods-Cocktail/100091738507321/',
-    icon: <FaFacebookF />,
-    label: 'Facebook',
-  },
 ];
 
 const SpotifyLandingPage = () => {
