@@ -28,18 +28,8 @@ const socialMedia = [
   },
   {
     href: "https://www.deezer.com/us/artist/205700247",
-    icon: <FaDeezer  />,
+    icon: <FaDeezer />,
     label: "Deezer"
-  },
-  {
-    href: 'https://soundcloud.com/same-bloods-cocktail',
-    icon: <FaSoundcloud />,
-    label: 'SoundCloud',
-  },
-   {
-    href: "https://samebloodscocktail.bandcamp.com/",
-    icon: <FaBandcamp  />,
-    label: "Bandcamp"
   },
   {
     href: 'https://www.youtube.com/@samebloodscocktail',
@@ -50,6 +40,16 @@ const socialMedia = [
     href: 'https://tiktok.com/@samebloodscocktail',
     icon: <FaTiktok />,
     label: 'TikTok',
+  },
+  {
+    href: 'https://soundcloud.com/same-bloods-cocktail',
+    icon: <FaSoundcloud />,
+    label: 'SoundCloud',
+  },
+  {
+    href: "https://samebloodscocktail.bandcamp.com/",
+    icon: <FaBandcamp />,
+    label: "Bandcamp"
   },
 ];
 
