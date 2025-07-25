@@ -4,15 +4,15 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import "../shared/locales/i18n";
 
 import {
-  FaInstagram,
-  FaFacebookF,
   FaYoutube,
   FaSoundcloud,
   FaTiktok,
   FaSpotify,
   FaApple,
   FaHome,
+  FaDeezer
 } from 'react-icons/fa';
+
 
 const socialMedia = [
   {
@@ -24,6 +24,11 @@ const socialMedia = [
     href: 'https://music.apple.com/br/artist/same-bloods-cocktail/1676328013',
     icon: <FaApple />,
     label: 'Apple Music',
+  },
+  {
+    href: "https://www.deezer.com/us/artist/205700247",
+    icon: <FaDeezer  />,
+    label: "Deezer"
   },
   {
     href: 'https://soundcloud.com/same-bloods-cocktail',

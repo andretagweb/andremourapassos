@@ -19,7 +19,7 @@ function Footer() {
         </nav>*/}
 
         {/* Ícones Sociais */}
-        <div className="flex justify-center space-x-4 mb-4">
+        <div className="flex justify-center space-x-3 lg:space-x-4 mb-4">
           {socialMedia.map((media, index) => (
             <a 
               key={index}
