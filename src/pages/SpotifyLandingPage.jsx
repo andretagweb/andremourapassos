@@ -10,7 +10,8 @@ import {
   FaSpotify,
   FaApple,
   FaHome,
-  FaDeezer
+  FaDeezer,
+  FaBandcamp
 } from 'react-icons/fa';
 
 
@@ -34,6 +35,11 @@ const socialMedia = [
     href: 'https://soundcloud.com/same-bloods-cocktail',
     icon: <FaSoundcloud />,
     label: 'SoundCloud',
+  },
+   {
+    href: "https://samebloodscocktail.bandcamp.com/",
+    icon: <FaBandcamp  />,
+    label: "Bandcamp"
   },
   {
     href: 'https://www.youtube.com/@samebloodscocktail',

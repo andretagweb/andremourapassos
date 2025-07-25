@@ -1,4 +1,4 @@
-import { FaInstagram, FaFacebookF, FaYoutube, FaSoundcloud, FaTiktok, FaSpotify, FaApple, FaLinkedin, FaDeezer } from "react-icons/fa";
+import { FaInstagram, FaFacebookF, FaYoutube, FaSoundcloud, FaTiktok, FaSpotify, FaApple, FaDeezer, FaBandcamp } from "react-icons/fa";
 
 const socialMedia = [
     {
@@ -22,6 +22,11 @@ const socialMedia = [
         label: "SoundCloud"
     },
     {
+        href: "https://samebloodscocktail.bandcamp.com/",
+        icon: <FaBandcamp />,
+        label: "Bandcamp"
+    },
+    {
         href: "https://www.youtube.com/@samebloodscocktail",
         icon: <FaYoutube />,
         label: "YouTube"
@@ -41,11 +46,6 @@ const socialMedia = [
         icon: <FaFacebookF />,
         label: "Facebook"
     },
-    {
-        href: "https://www.linkedin.com/in/andremourapassos/",
-        icon: <FaLinkedin />,
-        label: "Linkedin"
-    }
 ];
 
 export default socialMedia;

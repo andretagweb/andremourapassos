@@ -108,7 +108,7 @@ function Menu() {
                 </li>
 
                 {/* Mídias sociais */}
-                <li className="flex justify-center xl:justify-start space-x-3 xl:mt-4 xl:items-start items-center sm:flex xsm:hidden">
+                <li className="flex justify-center xl:justify-start space-x-3 xl:space-x-2.5 xl:mt-4 xl:items-start items-center sm:flex xsm:hidden">
                     {socialMedia.map((media, index) => (
                         <a
                             key={index}
