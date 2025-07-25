@@ -27,11 +27,6 @@ const socialMedia = [
     label: 'Apple Music',
   },
   {
-    href: "https://www.deezer.com/us/artist/205700247",
-    icon: <FaDeezer />,
-    label: "Deezer"
-  },
-  {
     href: 'https://www.youtube.com/@samebloodscocktail',
     icon: <FaYoutube />,
     label: 'YouTube',
@@ -40,6 +35,11 @@ const socialMedia = [
     href: 'https://tiktok.com/@samebloodscocktail',
     icon: <FaTiktok />,
     label: 'TikTok',
+  },
+  {
+    href: "https://www.deezer.com/us/artist/205700247",
+    icon: <FaDeezer />,
+    label: "Deezer"
   },
   {
     href: 'https://soundcloud.com/same-bloods-cocktail',
