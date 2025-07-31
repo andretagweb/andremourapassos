@@ -159,7 +159,7 @@ const SpotifyLandingPage = () => {
 
       {/* Logo */}
       <img
-        src="/images/spotify-min.png"
+        src="/images/adslogo-min.png"
         alt="Same Bloods Cocktail Logo"
         style={{
           width: '120px',
