@@ -13,6 +13,35 @@ import SpotifyLandingPage from './pages/SpotifyLandingPage';
 
 import './shared/styles/App.css';
 
+/* ---------- Hook para rastrear pageviews no SPA ---------- */
+function useTrackPageviews() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!window.gtag) return;
+
+    const page_path = location.pathname + location.search + location.hash;
+    const page_location = window.location.href;
+    const page_title = document.title;
+
+    // GA4
+    window.gtag('config', 'G-PE0JQ12V5R', {
+      page_path,
+      page_title,
+      page_location
+    });
+
+    // Google Ads (opcional, útil para remarketing por página)
+    window.gtag('event', 'page_view', {
+      send_to: 'AW-993081860',
+      page_path,
+      page_title,
+      page_location
+    });
+  }, [location]);
+}
+/* --------------------------------------------------------- */
+
 function SiteContent() {
   return (
     <>
@@ -32,47 +61,35 @@ function LanguageWrapper() {
 
   useEffect(() => {
     if (lang && i18n.language.split('-')[0] !== lang) {
-      i18n.changeLanguage(lang).then(() => {
-        setLoading(false); // Só libera quando a troca de idioma terminar
-      });
+      i18n.changeLanguage(lang).then(() => setLoading(false));
     } else {
-      setLoading(false); // Já está no idioma certo
+      setLoading(false);
     }
   }, [lang, i18n]);
 
-  if (loading) {
-    return null; // Enquanto não terminar a troca de idioma, não renderiza
-  }
-
+  if (loading) return null;
   return <SiteContent />;
 }
 
-
 function App() {
+  useTrackPageviews();
+
   const location = useLocation();
   const [isDetecting, setIsDetecting] = useState(true);
   const [redirectPath, setRedirectPath] = useState(null);
 
   useEffect(() => {
     if (location.pathname === "/") {
-      const userLang = navigator.language.split('-')[0];
-      let path = "/pt"; // padrão
-
-      if (userLang === "en") {
-        path = "/en";
-      } else if (userLang === "es") {
-        path = "/es";
-      }
-
+      const userLang = (navigator.language || 'pt').split('-')[0];
+      let path = "/pt";
+      if (userLang === "en") path = "/en";
+      else if (userLang === "es") path = "/es";
       setRedirectPath(path);
     }
-    setIsDetecting(false); // acabou a detecção
+    setIsDetecting(false);
   }, [location.pathname]);
 
-  // Se ainda está detectando, não renderiza nada
-  if (isDetecting) {
-    return null; // (só pra não quebrar o app)
-  }
+  if (isDetecting) return null;
 
   if (redirectPath && location.pathname === "/") {
     return <Navigate to={redirectPath} replace />;
@@ -80,15 +97,20 @@ function App() {
 
   return (
     <Routes>
+      {/* Páginas com prefixo de idioma */}
       <Route path="/:lang/spotify" element={<SpotifyLandingPage />} />
       <Route path="/:lang/samebloodscocktail" element={<SpotifyLandingPage />} />
+
+      {/* Compatibilidade sem prefixo */}
       <Route path="/samebloodscocktail" element={<SpotifyLandingPage />} />
+
+      {/* Home por idioma */}
       <Route path="/:lang" element={<LanguageWrapper />} />
-      <Route path="*" element={<Navigate to="/pt" />} />
+
+      {/* Fallback */}
+      <Route path="*" element={<Navigate to="/pt" replace />} />
     </Routes>
-
   );
-
 }
 
 export default function WrappedApp() {
