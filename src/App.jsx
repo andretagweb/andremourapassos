@@ -13,11 +13,12 @@ import SpotifyLandingPage from './pages/SpotifyLandingPage';
 
 import './shared/styles/App.css';
 
-/* ---------- Hook para rastrear pageviews no SPA ---------- */
-function useTrackPageviews() {
+/* ========= Hook: rastrear pageviews (GA4 + Google Ads) ========= */
+function useTrackPageviews(enabled = true) {
   const location = useLocation();
 
   useEffect(() => {
+    if (!enabled) return;
     if (!window.gtag) return;
 
     const page_path = location.pathname + location.search + location.hash;
@@ -31,16 +32,16 @@ function useTrackPageviews() {
       page_location
     });
 
-    // Google Ads (opcional, útil para remarketing por página)
+    // Google Ads (útil para remarketing por página)
     window.gtag('event', 'page_view', {
       send_to: 'AW-993081860',
       page_path,
       page_title,
       page_location
     });
-  }, [location]);
+  }, [location, enabled]);
 }
-/* --------------------------------------------------------- */
+/* =============================================================== */
 
 function SiteContent() {
   return (
@@ -72,9 +73,9 @@ function LanguageWrapper() {
 }
 
 function App() {
-  useTrackPageviews();
-
   const location = useLocation();
+
+  // Redirecionamento inicial "/" -> idioma do navegador
   const [isDetecting, setIsDetecting] = useState(true);
   const [redirectPath, setRedirectPath] = useState(null);
 
@@ -88,6 +89,10 @@ function App() {
     }
     setIsDetecting(false);
   }, [location.pathname]);
+
+  // Evita enviar pageview durante o redirecionamento inicial
+  const analyticsReady = !isDetecting && !(redirectPath && location.pathname === "/");
+  useTrackPageviews(analyticsReady);
 
   if (isDetecting) return null;
 
