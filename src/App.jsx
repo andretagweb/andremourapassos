@@ -81,6 +81,7 @@ function App() {
   return (
     <Routes>
       <Route path="/:lang/spotify" element={<SpotifyLandingPage />} />
+      <Route path="/:lang/samebloodscocktail" element={<SpotifyLandingPage />} />
       <Route path="/samebloodscocktail" element={<SpotifyLandingPage />} />
       <Route path="/:lang" element={<LanguageWrapper />} />
       <Route path="*" element={<Navigate to="/pt" />} />
