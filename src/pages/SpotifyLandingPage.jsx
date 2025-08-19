@@ -42,7 +42,7 @@ function getCopyByLang(lang) {
       };
     default:
       return {
-        title: 'Same Bloods Cocktail — Ouça no Spotify',
+        title: 'Same Bloods Cocktail — Ouça agora no Spotify',
         description:
           'Landing page oficial do Same Bloods Cocktail. Rock com piano, faixas vocais e instrumentais. Ouça no Spotify e em outras plataformas.'
       };
