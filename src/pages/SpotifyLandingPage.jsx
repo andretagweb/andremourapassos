@@ -26,29 +26,6 @@ const socialMedia = [
   { href: 'https://samebloodscocktail.bandcamp.com/', icon: <FaBandcamp />, label: 'Bandcamp' },
 ];
 
-function getCopyByLang(lang) {
-  switch ((lang || 'pt').split('-')[0]) {
-    case 'en':
-      return {
-        title: 'Same Bloods Cocktail — Listen on Spotify',
-        description:
-          'Official landing page of Same Bloods Cocktail. Rock with piano, vocal and instrumental tracks. Listen on Spotify and other platforms.'
-      };
-    case 'es':
-      return {
-        title: 'Same Bloods Cocktail — Escucha en Spotify',
-        description:
-          'Landing page oficial de Same Bloods Cocktail. Rock con piano, temas vocales e instrumentales. Escúchalo en Spotify y otras plataformas.'
-      };
-    default:
-      return {
-        title: 'Same Bloods Cocktail — Ouça agora no Spotify',
-        description:
-          'Landing page oficial do Same Bloods Cocktail. Rock com piano, faixas vocais e instrumentais. Ouça no Spotify e em outras plataformas.'
-      };
-  }
-}
-
 const SpotifyLandingPage = () => {
   const { t, i18n } = useTranslation('spotify');
   const navigate = useNavigate();
@@ -96,25 +73,24 @@ const SpotifyLandingPage = () => {
 
   // SEO dinâmico por idioma/rota
   const langFromPath = location.pathname.split('/')[1] || i18n.language || 'pt';
-  const { title, description } = getCopyByLang(langFromPath);
   const canonical = `${window.location.origin}${location.pathname}${location.search}`;
   const ogImage = `${window.location.origin}/images/adslogo-min.png`;
 
   return (
     <>
       <SEO
-        title={title}
-        description={description}
-        keywords="Same Bloods Cocktail, Spotify, rock com piano, rock, música, instrumental"
+        title={t('title')}
+        description={t('description')}
+        keywords={t('keywords')}
         canonical={canonical}
-        ogTitle={title}
-        ogDescription={description}
+        ogTitle={t('title')}
+        ogDescription={t('description')}
         ogType="website"
         ogUrl={canonical}
         ogImage={ogImage}
         twitterCard="summary_large_image"
-        twitterTitle={title}
-        twitterDescription={description}
+        twitterTitle={t('title')}
+        twitterDescription={t('description')}
         twitterImage={ogImage}
       />
 
@@ -174,6 +150,7 @@ const SpotifyLandingPage = () => {
           </button>
         </div>
 
+
         {/* Logo */}
         <img
           src="/images/adslogo-min.png"
@@ -192,7 +169,7 @@ const SpotifyLandingPage = () => {
         </h1>
 
         <p style={{ fontSize: '1rem', textAlign: 'center', maxWidth: '500px', lineHeight: '1.5', marginBottom: '2rem', color: '#b3b3b3' }}>
-          {t('description')}
+          {t('page_description')}
         </p>
 
         <a
