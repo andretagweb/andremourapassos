@@ -3,6 +3,7 @@ https://andremourapassos.com.br/*      https://www.andremourapassos.com/:splat 3
 https://andremourapassos.com/*         https://www.andremourapassos.com/:splat 301!
 http://andremourapassos.com/*          https://www.andremourapassos.com/:splat 301!
 http://www.andremourapassos.com/*      https://www.andremourapassos.com/:splat 301!
+https://samebloodscocktail.com/*    /samebloodscocktail/:splat  200
 
 # SPA fallback
 /*                                    /index.html 200
