@@ -1,9 +1,11 @@
+# SAME BLOODS COCKTAIL — prioridade máxima
+https://samebloodscocktail.com/*   /samebloodscocktail/:splat   200!
+
 # Redireciona tudo para https://www.andremourapassos.com
-https://andremourapassos.com.br/*      https://www.andremourapassos.com/:splat 301!
-https://andremourapassos.com/*         https://www.andremourapassos.com/:splat 301!
-http://andremourapassos.com/*          https://www.andremourapassos.com/:splat 301!
-http://www.andremourapassos.com/*      https://www.andremourapassos.com/:splat 301!
-https://samebloodscocktail.com/*    /samebloodscocktail/:splat  200
+https://andremourapassos.com.br/*  https://www.andremourapassos.com/:splat 301!
+https://andremourapassos.com/*     https://www.andremourapassos.com/:splat 301!
+http://andremourapassos.com/*      https://www.andremourapassos.com/:splat 301!
+http://www.andremourapassos.com/*  https://www.andremourapassos.com/:splat 301!
 
 # SPA fallback
-/*                                    /index.html 200
+/*                                /index.html 200
