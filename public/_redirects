@@ -1,5 +1,5 @@
 # SAME BLOODS COCKTAIL — prioridade máxima
-https://samebloodscocktail.com/*   /index.html   200!
+https://samebloodscocktail.com/*   /index.html   200
 
 # Redireciona tudo para https://www.andremourapassos.com
 https://andremourapassos.com.br/*  https://www.andremourapassos.com/:splat 301!
