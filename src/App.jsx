@@ -81,14 +81,28 @@ function App() {
 
   useEffect(() => {
     if (location.pathname === "/") {
-      const userLang = (navigator.language || 'pt').split('-')[0];
-      let path = "/pt";
-      if (userLang === "en") path = "/en";
-      else if (userLang === "es") path = "/es";
-      setRedirectPath(path);
+      const userLang = (navigator.language || "pt").split("-")[0];
+
+      let lang = "pt";
+      if (userLang === "en") lang = "en";
+      else if (userLang === "es") lang = "es";
+
+      const host = window.location.hostname;
+
+      if (
+        host === "samebloodscocktail.com" ||
+        host === "www.samebloodscocktail.com"
+      ) {
+        setRedirectPath(`/${lang}/samebloodscocktail`);
+      } else {
+        // Domínio do site principal
+        setRedirectPath(`/${lang}`);
+      }
     }
+
     setIsDetecting(false);
   }, [location.pathname]);
+
 
   // Evita enviar pageview durante o redirecionamento inicial
   const analyticsReady = !isDetecting && !(redirectPath && location.pathname === "/");
