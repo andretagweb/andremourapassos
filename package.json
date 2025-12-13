@@ -2,6 +2,7 @@
   "name": "andre-moura-passos",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "cra-template": "1.2.0",
     "express-graphql": "^0.12.0",
