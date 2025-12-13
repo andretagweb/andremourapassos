@@ -1,17 +1,24 @@
-import { BrowserRouter, Routes, Route, Navigate, useParams, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useParams,
+  useLocation,
+} from "react-router-dom";
+import { useEffect, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-import Header from './shared/components/layout/Header';
-import Footer from './shared/components/layout/Footer';
-import Hero from './features/Hero';
+import Header from "./shared/components/layout/Header";
+import Footer from "./shared/components/layout/Footer";
+import Hero from "./features/Hero";
 
 import SEO from "./shared/components/common/SEO";
 import HreflangTags from "./shared/components/common/HreflangTags";
 
-import SpotifyLandingPage from './pages/SpotifyLandingPage';
+import SpotifyLandingPage from "./pages/SpotifyLandingPage";
 
-import './shared/styles/App.css';
+import "./shared/styles/App.css";
 
 /* ========= Hook: rastrear pageviews (GA4 + Google Ads) ========= */
 function useTrackPageviews(enabled = true) {
@@ -21,23 +28,22 @@ function useTrackPageviews(enabled = true) {
     if (!enabled) return;
     if (!window.gtag) return;
 
-    const page_path = location.pathname + location.search + location.hash;
+    const page_path =
+      location.pathname + location.search + location.hash;
     const page_location = window.location.href;
     const page_title = document.title;
 
-    // GA4
-    window.gtag('config', 'G-PE0JQ12V5R', {
+    window.gtag("config", "G-PE0JQ12V5R", {
       page_path,
       page_title,
-      page_location
+      page_location,
     });
 
-    // Google Ads (útil para remarketing por página)
-    window.gtag('event', 'page_view', {
-      send_to: 'AW-993081860',
+    window.gtag("event", "page_view", {
+      send_to: "AW-993081860",
       page_path,
       page_title,
-      page_location
+      page_location,
     });
   }, [location, enabled]);
 }
@@ -61,7 +67,7 @@ function LanguageWrapper() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (lang && i18n.language.split('-')[0] !== lang) {
+    if (lang && i18n.language.split("-")[0] !== lang) {
       i18n.changeLanguage(lang).then(() => setLoading(false));
     } else {
       setLoading(false);
@@ -75,37 +81,38 @@ function LanguageWrapper() {
 function App() {
   const location = useLocation();
 
-  // Redirecionamento inicial "/" -> idioma do navegador
+  const isSameBloodDomain = useMemo(() => {
+    const host = window.location.hostname;
+    return (
+      host === "samebloodscocktail.com" ||
+      host === "www.samebloodscocktail.com"
+    );
+  }, []);
+
+  /* ========= Redirect inicial por domínio + idioma ========= */
   const [isDetecting, setIsDetecting] = useState(true);
   const [redirectPath, setRedirectPath] = useState(null);
 
   useEffect(() => {
     if (location.pathname === "/") {
-      const userLang = (navigator.language || "pt").split("-")[0];
+      const browserLang =
+        (navigator.language || "pt").split("-")[0];
 
       let lang = "pt";
-      if (userLang === "en") lang = "en";
-      else if (userLang === "es") lang = "es";
+      if (browserLang === "en") lang = "en";
+      else if (browserLang === "es") lang = "es";
 
-      const host = window.location.hostname;
-
-      if (
-        host === "samebloodscocktail.com" ||
-        host === "www.samebloodscocktail.com"
-      ) {
-        setRedirectPath(`/${lang}/samebloodscocktail`);
-      } else {
-        // Domínio do site principal
-        setRedirectPath(`/${lang}`);
-      }
+      setRedirectPath(`/${lang}`);
     }
 
     setIsDetecting(false);
   }, [location.pathname]);
+  /* ========================================================= */
 
+  const analyticsReady =
+    !isDetecting &&
+    !(redirectPath && location.pathname === "/");
 
-  // Evita enviar pageview durante o redirecionamento inicial
-  const analyticsReady = !isDetecting && !(redirectPath && location.pathname === "/");
   useTrackPageviews(analyticsReady);
 
   if (isDetecting) return null;
@@ -116,17 +123,41 @@ function App() {
 
   return (
     <Routes>
-      {/* Páginas com prefixo de idioma */}
-      <Route path="/:lang/spotify" element={<SpotifyLandingPage />} />
-      <Route path="/:lang/samebloodscocktail" element={<SpotifyLandingPage />} />
+      {/* ===================== */}
+      {/* DOMÍNIO SAMEBLOODS */}
+      {/* ===================== */}
+      {isSameBloodDomain && (
+        <>
+          <Route path="/:lang" element={<SpotifyLandingPage />} />
+          <Route
+            path="*"
+            element={<Navigate to="/pt" replace />}
+          />
+        </>
+      )}
 
-      {/* Compatibilidade sem prefixo */}
-      <Route path="/samebloodscocktail" element={<SpotifyLandingPage />} />
+      {/* ===================== */}
+      {/* LANDING NO SITE PRINCIPAL */}
+      {/* ===================== */}
+      <Route
+        path="/:lang/samebloodscocktail"
+        element={<SpotifyLandingPage />}
+      />
+      <Route
+        path="/samebloodscocktail"
+        element={<SpotifyLandingPage />}
+      />
 
-      {/* Home por idioma */}
-      <Route path="/:lang" element={<LanguageWrapper />} />
+      {/* ===================== */}
+      {/* SITE PRINCIPAL */}
+      {/* ===================== */}
+      {!isSameBloodDomain && (
+        <Route path="/:lang" element={<LanguageWrapper />} />
+      )}
 
-      {/* Fallback */}
+      {/* ===================== */}
+      {/* FALLBACK GLOBAL */}
+      {/* ===================== */}
       <Route path="*" element={<Navigate to="/pt" replace />} />
     </Routes>
   );
