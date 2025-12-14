@@ -1,9 +1,6 @@
 import React from "react";
 import socialMedia from "../../../shared/components/common/Social";
 
-/**
- * Cores oficiais das plataformas
- */
 const PLATFORM_COLORS = {
   Spotify: "#1DB954",
   "Apple Music": "#FA243C",
@@ -16,10 +13,6 @@ const PLATFORM_COLORS = {
   Facebook: "#1877F2",
 };
 
-/**
- * Caos orgânico, mas legível
- * Nada de linhas artificiais
- */
 const CHAOS = [
   { x: -12, y: -6, r: -0.6 },
   { x: 6, y: -14, r: 0.4 },
@@ -33,19 +26,17 @@ const CHAOS = [
 ];
 
 export default function PlatformButtons({ onSpotifyClick }) {
+  const isMobile = window.innerWidth <= 768;
+
   return (
     <div
       style={{
-        marginTop: "4rem",
-
-        /* largura do copo */
+        marginTop: isMobile ? "1rem" : "4rem", // ✅ só mobile muda
         maxWidth: 535,
         width: "100%",
-
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
-
         position: "relative",
         zIndex: 2,
       }}
@@ -65,25 +56,20 @@ export default function PlatformButtons({ onSpotifyClick }) {
             aria-label={media.label}
             style={{
               margin: "0.45rem",
-
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               gap: "0.55rem",
-
-              padding: "0.85rem 1.6rem",
+              padding: isMobile ? "0.6rem 1.2rem" : "0.85rem 1.6rem",
               minWidth: 150,
-
               borderRadius: "999px",
               backgroundColor: "#000",
               border: `1.5px solid ${color}`,
               color: color,
-
               fontFamily: "Limelight, serif",
-              fontSize: "0.9rem",
+              fontSize:  isMobile ? "0.8rem" : "0.9rem",
               letterSpacing: "0.04em",
               textDecoration: "none",
-
               transform: `
                 translate(${chaos.x}px, ${chaos.y}px)
                 rotate(${chaos.r}deg)

@@ -1,19 +1,24 @@
 import React from "react";
 
 export default function CocktailBackground() {
+  const isMobile = window.innerWidth <= 768;
+
   return (
     <div
       aria-hidden
       style={{
         position: "absolute",
-        top: "75%",
+        top: isMobile ? "35%" : "72%", // ✅ desktop intocado
         left: "50%",
 
-transform: "translate(-50%, -10%) scale(1.8)",
+        transform: isMobile
+          ? "translate(-50%, -10%) scale(1.5)"
+          : "translate(-50%, -10%) scale(1.8)",
+
         transformOrigin: "bottom center",
 
         width: "520px",
-        height: "1400px", // 👈 container mais alto para acompanhar a página longa
+        height: "1400px",
 
         zIndex: 0,
         pointerEvents: "none",
@@ -36,12 +41,10 @@ transform: "translate(-50%, -10%) scale(1.8)",
             "linear-gradient(to top, rgba(140,0,0,0.25), rgba(255,80,80,0.12))",
         }}
       >
-        {/* Líquido camada 1 */}
         <div
           style={{
             position: "absolute",
             bottom: 0,
-            left: 0,
             width: "100%",
             height: "45%",
             background: "linear-gradient(to top, #6b0000, #b11226)",
@@ -50,12 +53,10 @@ transform: "translate(-50%, -10%) scale(1.8)",
           }}
         />
 
-        {/* Líquido camada 2 */}
         <div
           style={{
             position: "absolute",
             bottom: "45%",
-            left: 0,
             width: "100%",
             height: "20%",
             background: "linear-gradient(to top, #2a0000, #5c0a12)",
@@ -63,7 +64,6 @@ transform: "translate(-50%, -10%) scale(1.8)",
           }}
         />
 
-        {/* Reflexo do vidro */}
         <div
           style={{
             position: "absolute",
@@ -77,7 +77,7 @@ transform: "translate(-50%, -10%) scale(1.8)",
         />
       </div>
 
-      {/* Haste longa com fade progressivo */}
+      {/* Haste */}
       <div
         style={{
           position: "absolute",
@@ -85,7 +85,7 @@ transform: "translate(-50%, -10%) scale(1.8)",
           left: "50%",
           transform: "translateX(-50%)",
           width: "6px",
-          height: "980px", // 👈 MUITO mais longa
+          height: "980px",
           background: `
             linear-gradient(
               to bottom,
@@ -100,7 +100,7 @@ transform: "translate(-50%, -10%) scale(1.8)",
         }}
       />
 
-      {/* Halo artístico */}
+      {/* Halo */}
       <div
         style={{
           position: "absolute",
