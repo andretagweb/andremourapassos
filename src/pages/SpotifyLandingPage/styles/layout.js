@@ -6,28 +6,59 @@ export const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: "3rem 1.5rem",
+
+    /* espaço para top bar fixa */
+    padding: "4.5rem 1.5rem 3rem",
+
+    /* cria stacking context */
     position: "relative",
+    zIndex: 0,
+  },
+
+  backgroundStage: {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%", // cobre toda a área de conteúdo
+  overflow: "hidden", // 👈 CORTA A HASTE
+  zIndex: 0,
+  pointerEvents: "none",
+},
+
+  /* ===================== */
+  /* TOPO FIXO */
+  /* ===================== */
+
+  topBar: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "0.75rem 1rem",
+    zIndex: 1000,
+
+    /* não bloqueia cliques abaixo */
+    pointerEvents: "none",
   },
 
   homeButton: {
-    position: "absolute",
-    top: 16,
-    left: 16,
     background: "none",
     border: "none",
     color: "#fff",
     fontSize: 28,
     cursor: "pointer",
+    pointerEvents: "auto",
   },
 
   flags: {
-    position: "absolute",
-    top: 16,
-    right: 16,
     display: "flex",
     gap: 8,
     alignItems: "center",
+    pointerEvents: "auto",
   },
 
   flagBtn: {
@@ -37,13 +68,21 @@ export const styles = {
     padding: 0,
   },
 
+  /* ===================== */
+  /* HERO */
+  /* ===================== */
+
   hero: {
     textAlign: "center",
-    marginTop: "3.5rem",
-    marginBottom: "5rem",
+    marginTop: "0rem",
+    marginBottom: "4.5rem",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+
+    /* garante que fique acima do fundo */
+    position: "relative",
+    zIndex: 1,
   },
 
   logo: {
@@ -52,8 +91,6 @@ export const styles = {
     borderRadius: "50%",
     border: "2px solid #1DB954",
     marginBottom: "2rem",
-    marginLeft: "auto",
-    marginRight: "auto",
   },
 
   title: {
@@ -81,9 +118,15 @@ export const styles = {
     display: "inline-block",
   },
 
+  /* ===================== */
+  /* SEÇÕES */
+  /* ===================== */
+
   sectionWrap: {
     width: "100%",
     maxWidth: 1100,
+    position: "relative",
+    zIndex: 1,
   },
 
   sectionTitle: {
@@ -122,6 +165,36 @@ export const styles = {
     fontSize: "1.25rem",
   },
 
+  scrollSpacer: {
+    height: "10vh", // empurra os álbuns para fora da primeira visão
+    width: "100%",
+  },
+
+  aboveFold: {
+    minHeight: "100vh",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    position: "relative",
+    zIndex: 1,
+  },
+
+  belowFold: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    position: "relative",
+    zIndex: 1,
+    paddingTop: "4rem",
+  },
+
+
+  /* ===================== */
+  /* FOOTER */
+  /* ===================== */
+
   footer: {
     marginTop: "5rem",
     display: "flex",
@@ -129,6 +202,8 @@ export const styles = {
     flexWrap: "wrap",
     justifyContent: "center",
     color: "#aaa",
+    position: "relative",
+    zIndex: 1,
   },
 
   footerLink: {

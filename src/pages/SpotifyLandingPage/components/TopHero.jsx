@@ -1,5 +1,6 @@
 import React from "react";
 import { styles } from "../styles/layout";
+import PlatformButtons from "./PlatformButtons";
 
 export default function TopHero({ t, onListen }) {
   return (
@@ -16,15 +17,7 @@ export default function TopHero({ t, onListen }) {
         {t("page_description")}
       </p>
 
-      <a
-        href="https://open.spotify.com/artist/4lIiJuoMLpeO6JKNkOcx4y"
-        target="_blank"
-        rel="noreferrer"
-        onClick={onListen}
-        style={styles.cta}
-      >
-        🎧 {t("button")}
-      </a>
+      <PlatformButtons onSpotifyClick={onListen} />
     </div>
   );
 }

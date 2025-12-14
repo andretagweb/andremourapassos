@@ -12,6 +12,7 @@ import TopHero from "./components/TopHero";
 import AlbumsSection from "./components/AlbumsSection";
 import SinglesSection from "./components/SinglesSection";
 import FooterSocials from "./components/FooterSocials";
+import CocktailBackground from "./components/CocktailBackground";
 
 export default function SpotifyLandingPage() {
   const { t, i18n } = useTranslation("spotify");
@@ -22,7 +23,6 @@ export default function SpotifyLandingPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  // Mantém o i18n sincronizado com o prefixo da URL
   useEffect(() => {
     const langFromPath = location.pathname.split("/")[1];
     if (["pt", "en", "es"].includes(langFromPath) && i18n.language !== langFromPath) {
@@ -45,15 +45,13 @@ export default function SpotifyLandingPage() {
     if (["pt", "en", "es"].includes(parts[1])) parts[1] = lng;
     else parts.splice(1, 0, lng);
 
-    const newPath = parts.join("/");
     i18n.changeLanguage(lng);
-    navigate(newPath);
+    navigate(parts.join("/"));
   };
 
   const goToHome = () => {
     const lang = location.pathname.split("/")[1];
-    const homePath = ["pt", "en", "es"].includes(lang) ? `/${lang}` : "/";
-    navigate(homePath);
+    navigate(["pt", "en", "es"].includes(lang) ? `/${lang}` : "/");
   };
 
   const canonical = `${window.location.origin}${location.pathname}${location.search}`;
@@ -78,20 +76,37 @@ export default function SpotifyLandingPage() {
       />
 
       <div style={styles.page}>
-        <button onClick={goToHome} style={styles.homeButton} title="Home" aria-label="Home">
-          <FaHome />
-        </button>
+  {/* Background decorativo limitado */}
+  <div style={styles.backgroundStage}>
+    <CocktailBackground />
+  </div>
 
-        <LanguageSwitcher onChange={changeLanguage} />
+  {/* Barra fixa */}
+  <div style={styles.topBar}>
+    <button
+      onClick={goToHome}
+      style={styles.homeButton}
+      title="Home"
+      aria-label="Home"
+    >
+      <FaHome />
+    </button>
 
-        <TopHero t={t} onListen={handleListen} />
+    <LanguageSwitcher onChange={changeLanguage} />
+  </div>
 
-        <AlbumsSection />
+  {/* HERO */}
+  <TopHero t={t} onListen={handleListen} />
 
-        <SinglesSection />
+  <div style={styles.scrollSpacer} />
 
-        <FooterSocials />
-      </div>
+  <SinglesSection />
+  <AlbumsSection />
+
+  {/* Footer fora da área artística */}
+  <FooterSocials />
+</div>
+
     </>
   );
 }

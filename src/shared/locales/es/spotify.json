@@ -5,5 +5,8 @@
   "page_description": "Una mezcla de rock y piano, letras directas e instrumentales envolventes. Escúchalo ahora en Spotify y encuentra tu sonido favorito.",
   "button": "Escuche",
   "noSpotify": "Si no usas Spotify, puedes escucharlo en otras plataformas a continuación:",
-  "keywords": "Same Bloods Cocktail, Spotify, rock con piano, rock alternativo, música instrumental, banda independiente, banda original, rock moderno, banda sonora, rock cinematográfico"
+  "keywords": "Same Bloods Cocktail, Spotify, rock con piano, rock alternativo, música instrumental, banda independiente, banda original, rock moderno, banda sonora, rock cinematográfico",
+  "footer": {
+    "rights": "© 2025 Same Bloods Cocktail. Todos los derechos reservados."
+  }
 }
