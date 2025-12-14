@@ -9,7 +9,7 @@ export default function CocktailBackground() {
         top: "75%",
         left: "50%",
 
-        transform: "translateX(-50%) scale(1.8)",
+transform: "translate(-50%, -10%) scale(1.8)",
         transformOrigin: "bottom center",
 
         width: "520px",

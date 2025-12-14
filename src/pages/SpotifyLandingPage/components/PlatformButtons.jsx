@@ -36,7 +36,7 @@ export default function PlatformButtons({ onSpotifyClick }) {
   return (
     <div
       style={{
-        marginTop: "2rem",
+        marginTop: "4rem",
 
         /* largura do copo */
         maxWidth: 535,

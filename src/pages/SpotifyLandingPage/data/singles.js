@@ -6,6 +6,7 @@ export const singles = [
   {
     id: "sometimes-rock",
     title: "Sometimes Rock",
+    year: "2025",
     cover: SometimesRock,
     links: {
       spotify: "https://open.spotify.com/track/FAKE1",
@@ -17,6 +18,7 @@ export const singles = [
     id: "suburban-ride",
     title: "Suburban Ride",
     cover: SuburbanRide,
+    year: "2024",
     links: {
       spotify: "https://open.spotify.com/track/FAKE2",
       apple: "https://music.apple.com/track/FAKE2",
@@ -27,6 +29,7 @@ export const singles = [
     id: "strange-way",
     title: "Strange Way To Know Me",
     cover: StrangeWay,
+    year: "2024",
     links: {
       spotify: "https://open.spotify.com/track/FAKE3",
       apple: "https://music.apple.com/track/FAKE3",

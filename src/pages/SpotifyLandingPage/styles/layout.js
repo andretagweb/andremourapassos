@@ -6,25 +6,10 @@ export const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-
-    /* espaço para top bar fixa */
     padding: "4.5rem 1.5rem 3rem",
-
-    /* cria stacking context */
     position: "relative",
     zIndex: 0,
   },
-
-  backgroundStage: {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%", // cobre toda a área de conteúdo
-  overflow: "hidden", // 👈 CORTA A HASTE
-  zIndex: 0,
-  pointerEvents: "none",
-},
 
   /* ===================== */
   /* TOPO FIXO */
@@ -40,8 +25,6 @@ export const styles = {
     alignItems: "center",
     padding: "0.75rem 1rem",
     zIndex: 1000,
-
-    /* não bloqueia cliques abaixo */
     pointerEvents: "none",
   },
 
@@ -69,6 +52,30 @@ export const styles = {
   },
 
   /* ===================== */
+  /* ABOVE THE FOLD */
+  /* ===================== */
+
+  aboveFold: {
+    minHeight: "100vh",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    position: "relative",
+    zIndex: 1,
+    overflow: "hidden",
+  },
+
+backgroundStage: {
+  position: "absolute",
+  inset: 0,
+  zIndex: 0,
+  pointerEvents: "none",
+  overflow: "hidden", // 🔥 ESSENCIAL
+},
+
+
+  /* ===================== */
   /* HERO */
   /* ===================== */
 
@@ -79,8 +86,6 @@ export const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-
-    /* garante que fique acima do fundo */
     position: "relative",
     zIndex: 1,
   },
@@ -122,6 +127,11 @@ export const styles = {
   /* SEÇÕES */
   /* ===================== */
 
+  scrollSpacer: {
+    height: "50vh",
+    width: "100%",
+  },
+
   sectionWrap: {
     width: "100%",
     maxWidth: 1100,
@@ -156,6 +166,7 @@ export const styles = {
   cardSubtitle: {
     fontSize: "0.85rem",
     color: "#aaa",
+    marginBottom: "0.5rem",
   },
 
   iconRow: {
@@ -164,32 +175,6 @@ export const styles = {
     gap: "0.9rem",
     fontSize: "1.25rem",
   },
-
-  scrollSpacer: {
-    height: "10vh", // empurra os álbuns para fora da primeira visão
-    width: "100%",
-  },
-
-  aboveFold: {
-    minHeight: "100vh",
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    position: "relative",
-    zIndex: 1,
-  },
-
-  belowFold: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    position: "relative",
-    zIndex: 1,
-    paddingTop: "4rem",
-  },
-
 
   /* ===================== */
   /* FOOTER */

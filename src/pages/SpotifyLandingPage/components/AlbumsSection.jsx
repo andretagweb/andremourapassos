@@ -7,16 +7,14 @@ export default function AlbumsSection() {
   return (
     <div style={styles.sectionWrap}>
       <h2 style={styles.sectionTitle}>Discography</h2>
-
       <div style={styles.grid}>
         {albums.map((album) => (
           <div key={album.id} style={styles.card}>
             <img src={album.cover} alt={album.title} style={styles.cardImage} />
-            <h3 style={{ marginTop: "0.8rem" }}>{album.title}</h3>
+            <h3 style={{ marginTop: "1rem", marginBottom: "0.3rem" }}>{album.title}</h3>
             <p style={styles.cardSubtitle}>
               {album.subtitle ? `${album.subtitle} • ` : ""}{album.year}
             </p>
-
             <MediaIconLinks links={album.links} />
           </div>
         ))}

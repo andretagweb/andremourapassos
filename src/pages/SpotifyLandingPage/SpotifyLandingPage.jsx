@@ -76,36 +76,36 @@ export default function SpotifyLandingPage() {
       />
 
       <div style={styles.page}>
-  {/* Background decorativo limitado */}
-  <div style={styles.backgroundStage}>
-    <CocktailBackground />
-  </div>
+        {/* Background decorativo limitado */}
+        <div style={styles.backgroundStage}>
+          <CocktailBackground />
+        </div>
 
-  {/* Barra fixa */}
-  <div style={styles.topBar}>
-    <button
-      onClick={goToHome}
-      style={styles.homeButton}
-      title="Home"
-      aria-label="Home"
-    >
-      <FaHome />
-    </button>
+        {/* Barra fixa */}
+        <div style={styles.topBar}>
+          <button
+            onClick={goToHome}
+            style={styles.homeButton}
+            title="Home"
+            aria-label="Home"
+          >
+            <FaHome />
+          </button>
 
-    <LanguageSwitcher onChange={changeLanguage} />
-  </div>
+          <LanguageSwitcher onChange={changeLanguage} />
+        </div>
 
-  {/* HERO */}
-  <TopHero t={t} onListen={handleListen} />
+        {/* HERO */}
+        <TopHero t={t} onListen={handleListen} />
 
-  <div style={styles.scrollSpacer} />
+        <div style={styles.scrollSpacer} />
 
-  <SinglesSection />
-  <AlbumsSection />
+        <AlbumsSection />
+        <SinglesSection />
 
-  {/* Footer fora da área artística */}
-  <FooterSocials />
-</div>
+        {/* Footer fora da área artística */}
+        <FooterSocials />
+      </div>
 
     </>
   );

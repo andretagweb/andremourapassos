@@ -7,14 +7,15 @@ export default function SinglesSection() {
   return (
     <div style={{ ...styles.sectionWrap, marginTop: "5rem" }}>
       <h2 style={styles.sectionTitle}>Singles</h2>
-
       <div style={styles.grid}>
         {singles.map((single) => (
           <div key={single.id} style={styles.card}>
             <img src={single.cover} alt={single.title} style={styles.cardImage} />
-            <h3 style={{ marginTop: "0.8rem" }}>{single.title}</h3>
-
-            <MediaIconLinks links={single.links} only={["spotify", "apple", "youtube"]} />
+            <h3 style={{ marginTop: "1rem", marginBottom: "0.3rem" }}>{single.title}</h3>
+            <p style={styles.cardSubtitle}>
+              {single.subtitle ? `${single.subtitle} • ` : ""}{single.year}
+            </p>
+            <MediaIconLinks links={single.links} />
           </div>
         ))}
       </div>

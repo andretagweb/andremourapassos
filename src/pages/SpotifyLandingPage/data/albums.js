@@ -6,7 +6,7 @@ export const albums = [
   {
     id: "cocktail-1",
     title: "Cocktail Nº1",
-    year: "2022",
+    year: "2023",
     cover: CocktailN1,
     links: {
       spotify: "https://open.spotify.com/album/FAKE1",
@@ -29,8 +29,7 @@ export const albums = [
   },
   {
     id: "ttmm",
-    title: "TTMM",
-    subtitle: "The Twelve Musical Moments",
+    title: "Tasty Themes for Mono Myths",
     year: "2024",
     cover: TTMM,
     links: {
