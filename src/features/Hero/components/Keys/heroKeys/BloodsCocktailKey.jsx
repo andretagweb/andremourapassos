@@ -1,4 +1,4 @@
-import React from "react";
+import HeroKeyModal from "../HeroKeyModal";
 
 function BloodsCocktailKey({
   t,
@@ -8,7 +8,7 @@ function BloodsCocktailKey({
   setNoPlaylistStatus,
 }) {
   return (
-    <div
+    <HeroKeyModal
       id="bloodscocktail"
       className="hero-key key-natural key-white"
       onMouseEnter={setPlaylistStatus}
@@ -18,35 +18,30 @@ function BloodsCocktailKey({
         showModal("bloodscocktail");
       }}
     >
-      <div className="key-image"></div>
-      <div className="key-modal">
-        <div className="key-image"></div>
-
-        <div className="hover-text hover-play text">
-          <p className="text-gray-800">
-            <strong>{t("same_bloods_title")}</strong> {t("same_bloods_1")}
-            <br />
-            {t("same_bloods_2")}
-            <br />
-            {t("same_bloods_3")}
-            <br />
-            {t("same_bloods_4")}
-          </p>
-
+      <div className="hover-text hover-play text">
+        <p className="text-gray-800">
+          <strong>{t("same_bloods_title")}</strong> {t("same_bloods_1")}
           <br />
+          {t("same_bloods_2")}
+          <br />
+          {t("same_bloods_3")}
+          <br />
+          {t("same_bloods_4")}
+        </p>
 
-          <p className="font-semibold text-gray-800">
-            {t("cocktail1_1")}
-            <br />
-            {t("cocktail1_2")}
-            <br />
-            {t("cocktail1_3")}
-            <br />
-            {t("cocktail1_4")}
-          </p>
-        </div>
+        <br />
+
+        <p className="font-semibold text-gray-800">
+          {t("cocktail1_1")}
+          <br />
+          {t("cocktail1_2")}
+          <br />
+          {t("cocktail1_3")}
+          <br />
+          {t("cocktail1_4")}
+        </p>
       </div>
-    </div>
+    </HeroKeyModal>
   );
 }
 

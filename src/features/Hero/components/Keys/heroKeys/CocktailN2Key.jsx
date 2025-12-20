@@ -1,4 +1,4 @@
-import React from "react";
+import HeroKeyModal from "../HeroKeyModal";
 
 function CocktailN2Key({
   t,
@@ -8,7 +8,7 @@ function CocktailN2Key({
   setNoPlaylistStatus,
 }) {
   return (
-    <div
+    <HeroKeyModal
       id="cocktailn2"
       className="hero-key key-natural key-white"
       onMouseEnter={setPlaylistStatus}
@@ -18,17 +18,12 @@ function CocktailN2Key({
         showModal("cocktailn2");
       }}
     >
-      <div className="key-image"></div>
-      <div className="key-modal">
-        <div className="key-image"></div>
-
-        <div className="hover-text hover-play text">
-          <p className="text-gray-800">{t("cocktail2_1")}</p>
-          <br />
-          <p>{t("cocktail2_2")}</p>
-        </div>
+      <div className="hover-text hover-play text">
+        <p className="text-gray-800">{t("cocktail2_1")}</p>
+        <br />
+        <p>{t("cocktail2_2")}</p>
       </div>
-    </div>
+    </HeroKeyModal>
   );
 }
 

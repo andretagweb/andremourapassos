@@ -1,4 +1,4 @@
-import React from "react";
+import HeroKeyModal from "../HeroKeyModal";
 
 function TTMMKey({
   t,
@@ -8,7 +8,7 @@ function TTMMKey({
   setNoPlaylistStatus,
 }) {
   return (
-    <div
+    <HeroKeyModal
       id="ttmm"
       className="hero-key key-natural key-white"
       onMouseEnter={setPlaylistStatus}
@@ -18,17 +18,12 @@ function TTMMKey({
         showModal("ttmm");
       }}
     >
-      <div className="key-image"></div>
-      <div className="key-modal">
-        <div className="key-image"></div>
-
-        <div className="hover-text hover-play text">
-          <p className="font-semibold text-gray-800">{t("ttmm_1")}</p>
-          <br />
-          <p>{t("ttmm_2")}</p>
-        </div>
+      <div className="hover-text hover-play text">
+        <p className="font-semibold text-gray-800">{t("ttmm_1")}</p>
+        <br />
+        <p>{t("ttmm_2")}</p>
       </div>
-    </div>
+    </HeroKeyModal>
   );
 }
 
