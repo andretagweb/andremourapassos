@@ -137,11 +137,33 @@
   box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.6), 2px 2px 5px rgba(0, 0, 0, 0.8);
 }
 
+.status-message {
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 @media (max-width: 768px) {
   .player-container{
     min-height: 100px;
   }
   .player-container.player-playing {
     padding: 5px 20px;
+  }
+  .player-container .details {
+    min-height: 30px;
+    display: flex;
+    align-items: center;
   }
 }

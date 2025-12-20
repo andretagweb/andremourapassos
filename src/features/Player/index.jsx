@@ -204,9 +204,13 @@ const Player = forwardRef((props, ref) => {
                 </h2>
               </>
             ) : (
-              <span className="text-gray-medium text-xs">
+              <span
+                key={statusMessage}
+                className="status-message text-gray-medium text-xs"
+              >
                 {statusMessage}
               </span>
+
             )}
           </>
         )}

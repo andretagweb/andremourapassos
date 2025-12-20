@@ -15,7 +15,7 @@ function Hero() {
 
   const playerRef = useRef(null);
   const isMobile = useIsMobile();
-  const { t } = useTranslation("player"); // 🔧
+  const { t } = useTranslation("player");
 
   // Função para controlar o player via Keys.jsx
   const playPlaylist = (playlist) => {
@@ -32,7 +32,6 @@ function Hero() {
     }
   };
 
-  // 🔧 CONTROLE DE STATUS (NOVO, UI ONLY)
   const setPlaylistStatus = () => {
     playerRef.current?.setStatusMessage(t("playlist"));
   };
@@ -55,8 +54,8 @@ function Hero() {
 
             <Keys
               playPlaylist={playPlaylist}
-              setPlaylistStatus={setPlaylistStatus}       // 🔧
-              setNoPlaylistStatus={setNoPlaylistStatus}   // 🔧
+              setPlaylistStatus={setPlaylistStatus}
+              setNoPlaylistStatus={setNoPlaylistStatus} 
             />
 
             <Contact />
