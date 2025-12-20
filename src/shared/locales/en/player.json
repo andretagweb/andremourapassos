@@ -1,6 +1,6 @@
 {
-    "no_playlist": "Click on one of the slides",
-    "click_to_play": "Click on one of the slides",
-    "loading_playlist": "Loading playlist:"
-  }
-  
+  "no_playlist": "",
+  "playlist": "Click to play",
+  "click_to_play": "Click on one of the playable slides",
+  "loading_playlist": "Loading playlist:"
+}

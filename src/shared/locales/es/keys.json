@@ -43,5 +43,7 @@
     "texts_title": "Textos",
     "poetry_title": "Poesía",
     "soon": "pronto más...",
-    "published_at" : "Publicado en"
+    "published_at" : "Publicado en",
+      "no_playlist": "Haz clic en una diapositiva con botón de reproducción",
+  "playlist": "Haz clic para reproducir"
 }

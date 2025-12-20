@@ -10,7 +10,11 @@ import VideoItem from "../Carousel/VideoItem";
 import TextItem from "../Carousel/TextItem";
 import allTexts from "../Carousel/Texts/allTexts";
 
-function Keys({ playPlaylist }) {
+function Keys({
+  playPlaylist,
+  setPlaylistStatus,     
+  setNoPlaylistStatus    
+}) {
 
   const { showModal, hideModal } = useModal();
   const { t } = useTranslation("keys");
@@ -28,10 +32,15 @@ function Keys({ playPlaylist }) {
           ✕
         </button>
       </div>
-      <div id="perfiliconograma" className="hero-key key-natural key-white flex items-center"
+
+      <div
+        id="perfiliconograma"
+        className="hero-key key-natural key-white flex items-center"
+        onMouseEnter={setNoPlaylistStatus}
         onClick={() => {
           showModal('perfiliconograma')
-        }}>
+        }}
+      >
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-image"></div>
@@ -66,10 +75,16 @@ function Keys({ playPlaylist }) {
 
 
       {/* Sequência de teclas alternadas */}
-      <div id="bloodscocktail" className="hero-key key-natural key-white" onClick={() => {
-        playPlaylist('Cocktail Nº1');
-        showModal('bloodscocktail');
-      }}>
+      <div
+        id="bloodscocktail"
+        className="hero-key key-natural key-white"
+        onMouseEnter={setPlaylistStatus}    
+        onMouseLeave={setNoPlaylistStatus}  
+        onClick={() => {
+          playPlaylist('Cocktail Nº1');
+          showModal('bloodscocktail');
+        }}
+      >
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-image"></div>
@@ -97,15 +112,21 @@ function Keys({ playPlaylist }) {
         </div>
       </div>
 
-      <div id="cocktailn2" className="hero-key key-natural key-white" onClick={() => {
-        playPlaylist('Cocktail Nº2');
-        showModal('cocktailn2');
-      }}>
+      <div
+        id="cocktailn2"
+        className="hero-key key-natural key-white"
+        onMouseEnter={setPlaylistStatus}    
+        onMouseLeave={setNoPlaylistStatus}  
+        onClick={() => {
+          playPlaylist('Cocktail Nº2');
+          showModal('cocktailn2');
+        }}
+      >
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-image"></div>
           <div className="hover-text hover-play text">
-            <p className="text-gray-800">{t("cocktail2_1")}</p><br/><p>{t("cocktail2_2")}</p>
+            <p className="text-gray-800">{t("cocktail2_1")}</p><br /><p>{t("cocktail2_2")}</p>
           </div>
         </div>
       </div>
@@ -116,10 +137,16 @@ function Keys({ playPlaylist }) {
         </div>
       </div>
 
-      <div id="singles" className="hero-key key-natural key-white" onClick={() => {
-        playPlaylist('Singles');
-        showModal('singles');
-      }}>
+      <div
+        id="singles"
+        className="hero-key key-natural key-white"
+        onMouseEnter={setPlaylistStatus}    
+        onMouseLeave={setNoPlaylistStatus}  
+        onClick={() => {
+          playPlaylist('Singles');
+          showModal('singles');
+        }}
+      >
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-image"></div>
@@ -133,9 +160,14 @@ function Keys({ playPlaylist }) {
       </div>
 
 
-      <div id="strange" className="hero-key key-natural key-white" onClick={() => {
-        showModal('strange');
-      }}>
+      <div
+        id="strange"
+        className="hero-key key-natural key-white"
+        onMouseEnter={setNoPlaylistStatus} non-playable
+        onClick={() => {
+          showModal('strange');
+        }}
+      >
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-image"></div>
@@ -152,10 +184,16 @@ function Keys({ playPlaylist }) {
         </div>
       </div>
 
-      <div id="ttmm" className="hero-key key-natural key-white" onClick={() => {
-        playPlaylist('TTMM');
-        showModal('ttmm');
-      }}>
+      <div
+        id="ttmm"
+        className="hero-key key-natural key-white"
+        onMouseEnter={setPlaylistStatus}    
+        onMouseLeave={setNoPlaylistStatus}  
+        onClick={() => {
+          playPlaylist('TTMM');
+          showModal('ttmm');
+        }}
+      >
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-image"></div>
@@ -175,9 +213,14 @@ function Keys({ playPlaylist }) {
         </div>
       </div>
 
-      <div id="suburban" className="hero-key key-natural key-white" onClick={() => {
-        showModal('suburban');
-      }}>
+      <div
+        id="suburban"
+        className="hero-key key-natural key-white"
+        onMouseEnter={setNoPlaylistStatus} non-playable
+        onClick={() => {
+          showModal('suburban');
+        }}
+      >
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-image"></div>
@@ -189,9 +232,14 @@ function Keys({ playPlaylist }) {
         </div>
       </div>
 
-      <div id="videos" className="hero-key key-natural key-black" onClick={() => {
-        showModal('videos');
-      }}>
+      <div
+        id="videos"
+        className="hero-key key-natural key-black"
+        onMouseEnter={setNoPlaylistStatus} non-playable
+        onClick={() => {
+          showModal('videos');
+        }}
+      >
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-image"></div>
@@ -212,9 +260,14 @@ function Keys({ playPlaylist }) {
         </div>
       </div>
 
-      <div id="poems" className="hero-key key-natural key-black" onClick={() => {
-        showModal('poems');
-      }}>
+      <div
+        id="poems"
+        className="hero-key key-natural key-black"
+        onMouseEnter={setNoPlaylistStatus} non-playable
+        onClick={() => {
+          showModal('poems');
+        }}
+      >
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-videos hover-text text w-1/3 absolute left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
@@ -234,9 +287,14 @@ function Keys({ playPlaylist }) {
       </div>
 
 
-      <div id="soon" className="hero-key key-natural key-black" onClick={() => {
-        showModal('soon');
-      }}>
+      <div
+        id="soon"
+        className="hero-key key-natural key-black"
+        onMouseEnter={setNoPlaylistStatus} non-playable
+        onClick={() => {
+          showModal('soon');
+        }}
+      >
         <div className="key-image"></div>
         <div className="key-modal">
           <div className="key-videos hover-text text-white text w-1/3 absolute left-[60%] transform -translate-y-1/2 p-5 rounded-lg text-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out text-black">
@@ -244,6 +302,7 @@ function Keys({ playPlaylist }) {
           </div>
         </div>
       </div>
+
     </div>
   );
 }

@@ -21,7 +21,6 @@ const Player = forwardRef((props, ref) => {
   const [statusMessage, setStatusMessage] = useState('');
   const audioRef = useRef(null);
 
-
   // Atualiza o texto toda vez que o idioma mudar
   useEffect(() => {
     setStatusMessage(t("no_playlist"));
@@ -36,7 +35,7 @@ const Player = forwardRef((props, ref) => {
 
   // Tornar a função disponível para o componente pai
   useImperativeHandle(ref, () => ({
-    handlePlayPause, loadPlaylist
+    handlePlayPause, loadPlaylist, setStatusMessage
   }));
 
   const handleTimeUpdate = () => {
@@ -118,7 +117,6 @@ const Player = forwardRef((props, ref) => {
     }
   };
 
-
   const handlePrevTrack = () => {
     if (playlist.length === 0) return;
 
@@ -163,11 +161,11 @@ const Player = forwardRef((props, ref) => {
 
   const handleProgressBarClick = (event) => {
     if (audioRef.current && audioRef.current.duration) {
-      const rect = event.target.getBoundingClientRect(); // Obtém o tamanho e posição da barra
-      const clickX = event.clientX - rect.left; // Posição do clique em relação à barra
-      const newTime = (clickX / rect.width) * audioRef.current.duration; // Calcula o novo tempo
-      audioRef.current.currentTime = newTime; // Atualiza o tempo atual
-      setProgress((newTime / audioRef.current.duration) * 100); // Atualiza a barra de progresso visualmente
+      const rect = event.target.getBoundingClientRect();
+      const clickX = event.clientX - rect.left;
+      const newTime = (clickX / rect.width) * audioRef.current.duration;
+      audioRef.current.currentTime = newTime;
+      setProgress((newTime / audioRef.current.duration) * 100);
     }
   };
 
@@ -193,12 +191,10 @@ const Player = forwardRef((props, ref) => {
         className={`details pb-2 lg:pb-0 flex xl:flex-col items-center xl:justify-center flex-row justify-start xl:space-x-0 space-x-4`}
       >
         {playlist.length === 0 ? (
-          // Aviso quando não há playlist ou música tocando
           <p className="text-gray-medium text-center text-sm">
             {statusMessage}
           </p>
         ) : (
-          // Exibição normal da playlist e música atual
           <>
             {currentPlaylistName ? (
               <>
