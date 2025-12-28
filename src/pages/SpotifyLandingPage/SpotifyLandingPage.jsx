@@ -100,11 +100,11 @@ export default function SpotifyLandingPage() {
 
         <div style={styles.scrollSpacer} />
 
-        <AlbumsSection />
-        <SinglesSection />
+       {/* <AlbumsSection />
+        <SinglesSection />*/}
 
         {/* Footer fora da área artística */}
-        <FooterSocials />
+        <FooterSocials t={t} />
       </div>
 
     </>

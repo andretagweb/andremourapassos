@@ -64,7 +64,7 @@ export default function PlatformButtons() {
   return (
     <div
       style={{
-        marginTop: isMobile ? "1rem" : "4rem",
+        marginTop: isMobile ? "3rem" : "4rem",
         maxWidth: 535,
         width: "100%",
         display: "flex",

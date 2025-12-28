@@ -104,13 +104,14 @@ backgroundStage: {
     marginBottom: "1rem",
   },
 
-  description: {
-    maxWidth: 640,
-    fontSize: "1.15rem",
-    lineHeight: 0,
-    color: "#cfcfcf",
-    marginBottom: "2.2rem",
-  },
+description: {
+  maxWidth: 640,
+  fontSize: "1.15rem",
+  lineHeight: 1.2, 
+  color: "#cfcfcf",
+  marginBottom: "1rem",
+},
+
 
   cta: {
     backgroundColor: "#1DB954",

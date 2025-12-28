@@ -2,7 +2,7 @@ import React from "react";
 import socialMedia from "../../../shared/components/common/Social";
 import { styles } from "../styles/layout";
 
-export default function FooterSocials() {
+export default function FooterSocials({ t }) {
   const items = socialMedia.filter((m) => m.type === "social");
 
   return (
@@ -40,7 +40,7 @@ export default function FooterSocials() {
           letterSpacing: "0.3px",
         }}
       >
-        © 2025 Same Bloods Cocktail. All rights reserved.
+        {t("footer.rights", { year: new Date().getFullYear() })}
       </p>
     </footer>
   );
