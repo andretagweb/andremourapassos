@@ -28,6 +28,7 @@ export default function TopHero({ t, onListen }) {
       </h1>
 
       <p
+      className="special-elite-regular"
   style={
     isMobile
       ? {
@@ -40,6 +41,7 @@ export default function TopHero({ t, onListen }) {
 </p>
 
 <p
+      className="special-elite-regular"
   style={
     isMobile
       ? {

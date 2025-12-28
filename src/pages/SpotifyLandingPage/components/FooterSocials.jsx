@@ -30,19 +30,19 @@ export default function FooterSocials({ t }) {
           </a>
         ))}
         <a
-            key={t("footer.songwriter_text")}
-            href={"https://andremourapassos.com"}
-            target="_blank"
-            rel="noreferrer"
-            style={styles.footerLink}
-            aria-label={t("footer.songwriter_text")}
-          >
-            {<FaHome />} {t("footer.songwriter_text")}
-          </a>
+          key={t("footer.songwriter_text")}
+          href={"https://andremourapassos.com"}
+          target="_blank"
+          rel="noreferrer"
+          style={styles.footerLink}
+          aria-label={t("footer.songwriter_text")}
+        >
+          {<FaHome />} {t("footer.songwriter_text")}
+        </a>
       </div>
 
       {/* Copyright */}
-      <p
+      <p className="special-elite-regular"
         style={{
           marginTop: "1.2rem",
           fontSize: "0.75rem",
