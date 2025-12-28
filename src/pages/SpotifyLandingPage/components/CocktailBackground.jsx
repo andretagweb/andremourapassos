@@ -8,7 +8,7 @@ export default function CocktailBackground() {
       aria-hidden
       style={{
         position: "absolute",
-        top: isMobile ? "35%" : "72%", // ✅ desktop intocado
+        top: isMobile ? "28%" : "72%", // ✅ desktop intocado
         left: "50%",
 
         transform: isMobile
