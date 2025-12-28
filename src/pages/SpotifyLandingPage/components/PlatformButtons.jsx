@@ -25,14 +25,23 @@ const CHAOS = [
   { x: 0, y: 22, r: 0.2 },
 ];
 
-export default function PlatformButtons({ onSpotifyClick }) {
+export default function PlatformButtons() {
   const isMobile = window.innerWidth <= 768;
   const socialMediaItems = socialMedia.filter((m) => m.type === "music");
+
+  const handleMusicClick = (platform) => {
+    if (!window.gtag) return;
+
+    window.gtag("event", "conversion", {
+      send_to: "AW-993081860/jTnRCMm_mLsaEIT0xNkD",
+      platform: platform,
+    });
+  };
 
   return (
     <div
       style={{
-        marginTop: isMobile ? "1rem" : "4rem", // ✅ só mobile muda
+        marginTop: isMobile ? "1rem" : "4rem",
         maxWidth: 535,
         width: "100%",
         display: "flex",
@@ -44,7 +53,6 @@ export default function PlatformButtons({ onSpotifyClick }) {
     >
       {socialMediaItems.map((media, index) => {
         const color = PLATFORM_COLORS[media.label] || "#fff";
-        const isSpotify = media.label === "Spotify";
         const chaos = CHAOS[index % CHAOS.length];
 
         return (
@@ -53,7 +61,7 @@ export default function PlatformButtons({ onSpotifyClick }) {
             href={media.href}
             target="_blank"
             rel="noreferrer"
-            onClick={isSpotify ? onSpotifyClick : undefined}
+            onClick={() => handleMusicClick(media.label)}
             aria-label={media.label}
             style={{
               margin: "0.45rem",
@@ -68,7 +76,7 @@ export default function PlatformButtons({ onSpotifyClick }) {
               border: `1.5px solid ${color}`,
               color: color,
               fontFamily: "Limelight, serif",
-              fontSize:  isMobile ? "0.8rem" : "0.9rem",
+              fontSize: isMobile ? "0.8rem" : "0.9rem",
               letterSpacing: "0.04em",
               textDecoration: "none",
               transform: `
