@@ -29,13 +29,25 @@ export default function PlatformButtons() {
   const isMobile = window.innerWidth <= 768;
   const socialMediaItems = socialMedia.filter((m) => m.type === "music");
 
-  const handleMusicClick = (platform) => {
-    if (!window.gtag) return;
+  const handleMusicClick = (platform, url) => {
+    if (!window.gtag) {
+      window.open(url, "_blank", "noopener,noreferrer");
+      return;
+    }
 
     window.gtag("event", "conversion", {
       send_to: "AW-993081860/jTnRCMm_mLsaEIT0xNkD",
-      platform: platform,
+      event_category: "music_platform",
+      event_label: platform,
+      event_callback: () => {
+        window.open(url, "_blank", "noopener,noreferrer");
+      },
     });
+
+    // fallback de segurança (caso o callback não dispare)
+    setTimeout(() => {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }, 800);
   };
 
   return (
@@ -56,13 +68,11 @@ export default function PlatformButtons() {
         const chaos = CHAOS[index % CHAOS.length];
 
         return (
-          <a
+          <button
             key={media.label}
-            href={media.href}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => handleMusicClick(media.label)}
+            type="button"
             aria-label={media.label}
+            onClick={() => handleMusicClick(media.label, media.href)}
             style={{
               margin: "0.45rem",
               display: "flex",
@@ -78,7 +88,7 @@ export default function PlatformButtons() {
               fontFamily: "Limelight, serif",
               fontSize: isMobile ? "0.8rem" : "0.9rem",
               letterSpacing: "0.04em",
-              textDecoration: "none",
+              cursor: "pointer",
               transform: `
                 translate(${chaos.x}px, ${chaos.y}px)
                 rotate(${chaos.r}deg)
@@ -105,7 +115,7 @@ export default function PlatformButtons() {
           >
             {media.icon}
             <span>{media.label}</span>
-          </a>
+          </button>
         );
       })}
     </div>
