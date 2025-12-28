@@ -19,8 +19,8 @@ export const singles = [
     id: "suburban-ride",
     title: "Suburban Ride",
     cover: SuburbanRide,
-    month: "11",
-    year: "2024",
+    month: "12",
+    year: "2023",
     links: {
       spotify: "https://open.spotify.com/track/FAKE2",
       apple: "https://music.apple.com/track/FAKE2",
@@ -31,8 +31,8 @@ export const singles = [
     id: "strange-way",
     title: "Strange Way To Know Me",
     cover: StrangeWay,
-    month: "08",
-    year: "2024",
+    month: "11",
+    year: "2023",
     links: {
       spotify: "https://open.spotify.com/track/FAKE3",
       apple: "https://music.apple.com/track/FAKE3",

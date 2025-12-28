@@ -4,17 +4,15 @@ import TTMM from "../images/Tasty_Themes_for_Mono_Myths.jpg";
 
 export const albums = [
   {
-    id: "cocktail-1",
-    title: "Cocktail Nº1",
-    month: "04",
-    year: "2023",
-    cover: CocktailN1,
+    id: "ttmm",
+    title: "Tasty Themes for Mono Myths",
+    month: "11",
+    year: "2024",
+    cover: TTMM,
     links: {
-      spotify: "https://open.spotify.com/album/FAKE1",
-      apple: "https://music.apple.com/album/FAKE1",
-      youtube: "https://youtube.com/playlist?list=FAKE1",
-      deezer: "https://www.deezer.com/album/FAKE1",
-      bandcamp: "https://samebloodscocktail.bandcamp.com/album/cocktail-1",
+      spotify: "https://open.spotify.com/album/FAKE3",
+      apple: "https://music.apple.com/album/FAKE3",
+      youtube: "https://youtube.com/playlist?list=FAKE3",
     },
   },
   {
@@ -30,15 +28,17 @@ export const albums = [
     },
   },
   {
-    id: "ttmm",
-    title: "Tasty Themes for Mono Myths",
-    month: "11",
-    year: "2024",
-    cover: TTMM,
+    id: "cocktail-1",
+    title: "Cocktail Nº1",
+    month: "04",
+    year: "2023",
+    cover: CocktailN1,
     links: {
-      spotify: "https://open.spotify.com/album/FAKE3",
-      apple: "https://music.apple.com/album/FAKE3",
-      youtube: "https://youtube.com/playlist?list=FAKE3",
+      spotify: "https://open.spotify.com/album/FAKE1",
+      apple: "https://music.apple.com/album/FAKE1",
+      youtube: "https://youtube.com/playlist?list=FAKE1",
+      deezer: "https://www.deezer.com/album/FAKE1",
+      bandcamp: "https://samebloodscocktail.bandcamp.com/album/cocktail-1",
     },
   },
 ];
