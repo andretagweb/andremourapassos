@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import socialMedia from "../../../shared/components/common/Social";
 
 const PLATFORM_COLORS = {
@@ -29,9 +29,20 @@ export default function PlatformButtons() {
   const isMobile = window.innerWidth <= 768;
   const socialMediaItems = socialMedia.filter((m) => m.type === "music");
 
+  // flag para impedir abertura dupla
+  const hasOpenedRef = useRef(false);
+
+  const openOnce = (url) => {
+    if (hasOpenedRef.current) return;
+    hasOpenedRef.current = true;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   const handleMusicClick = (platform, url) => {
+    hasOpenedRef.current = false;
+
     if (!window.gtag) {
-      window.open(url, "_blank", "noopener,noreferrer");
+      openOnce(url);
       return;
     }
 
@@ -40,13 +51,13 @@ export default function PlatformButtons() {
       event_category: "music_platform",
       event_label: platform,
       event_callback: () => {
-        window.open(url, "_blank", "noopener,noreferrer");
+        openOnce(url);
       },
     });
 
-    // fallback de segurança (caso o callback não dispare)
+    // fallback seguro
     setTimeout(() => {
-      window.open(url, "_blank", "noopener,noreferrer");
+      openOnce(url);
     }, 800);
   };
 
