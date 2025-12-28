@@ -8,6 +8,9 @@
   "noSpotify": "If you don’t use Spotify, you can listen on other platforms below:",
   "keywords": "Same Bloods Cocktail, Spotify, piano rock, alternative rock, instrumental music, original soundtrack, indie music, independent band, cinematic rock, modern rock",
   "footer": {
-    "rights": "© 2025 Same Bloods Cocktail. All rights reserved."
-  }
+    "rights": "© 2025 Same Bloods Cocktail. All rights reserved.",
+    "songwriter_text": "Songwriter Website"
+  },
+  "albumsSectionTitle": "Discography",
+  "singlesSectionTitle": "Singles"
 }

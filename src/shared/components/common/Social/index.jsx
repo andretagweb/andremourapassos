@@ -45,7 +45,7 @@ const socialMedia = [
         href: "https://soundcloud.com/same-bloods-cocktail",
         icon: <FaSoundcloud />,
         label: "SoundCloud",
-        type: "social",
+        type: "music",
     },
     {
         href: "https://samebloodscocktail.bandcamp.com/",

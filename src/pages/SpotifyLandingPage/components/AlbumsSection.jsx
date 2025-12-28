@@ -3,19 +3,19 @@ import { albums } from "../data/albums";
 import { styles } from "../styles/layout";
 import MediaIconLinks from "./MediaIconLinks";
 
-export default function AlbumsSection() {
+export default function AlbumsSection({ t }) {
   return (
     <div style={styles.sectionWrap}>
-      <h2 style={styles.sectionTitle}>Discography</h2>
+      <h2 style={styles.sectionTitle}>{t("albumsSectionTitle")}</h2>
       <div style={styles.grid}>
         {albums.map((album) => (
           <div key={album.id} style={styles.card}>
             <img src={album.cover} alt={album.title} style={styles.cardImage} />
             <h3 style={{ marginTop: "1rem", marginBottom: "0.3rem" }}>{album.title}</h3>
             <p style={styles.cardSubtitle}>
-              {album.subtitle ? `${album.subtitle} • ` : ""}{album.year}
+              {album.subtitle ? `${album.subtitle} • ` : ""} {album.month}{"/"}{album.year}
             </p>
-            <MediaIconLinks links={album.links} />
+            {/*<MediaIconLinks links={album.links} />*/}
           </div>
         ))}
       </div>

@@ -110,6 +110,7 @@ description: {
   lineHeight: 1.2, 
   color: "#cfcfcf",
   marginBottom: "1rem",
+  fontWeight: "500",
 },
 
 

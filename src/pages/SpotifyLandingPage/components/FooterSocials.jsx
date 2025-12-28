@@ -1,6 +1,7 @@
 import React from "react";
 import socialMedia from "../../../shared/components/common/Social";
 import { styles } from "../styles/layout";
+import { FaHome } from "react-icons/fa";
 
 export default function FooterSocials({ t }) {
   const items = socialMedia.filter((m) => m.type === "social");
@@ -28,6 +29,16 @@ export default function FooterSocials({ t }) {
             {m.icon} {m.label}
           </a>
         ))}
+        <a
+            key={t("footer.songwriter_text")}
+            href={"https://andremourapassos.com"}
+            target="_blank"
+            rel="noreferrer"
+            style={styles.footerLink}
+            aria-label={t("footer.songwriter_text")}
+          >
+            {<FaHome />} {t("footer.songwriter_text")}
+          </a>
       </div>
 
       {/* Copyright */}

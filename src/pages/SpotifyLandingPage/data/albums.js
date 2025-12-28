@@ -6,6 +6,7 @@ export const albums = [
   {
     id: "cocktail-1",
     title: "Cocktail Nº1",
+    month: "04",
     year: "2023",
     cover: CocktailN1,
     links: {
@@ -19,6 +20,7 @@ export const albums = [
   {
     id: "cocktail-2",
     title: "Cocktail Nº2",
+    month: "12",
     year: "2023",
     cover: CocktailN2,
     links: {
@@ -30,6 +32,7 @@ export const albums = [
   {
     id: "ttmm",
     title: "Tasty Themes for Mono Myths",
+    month: "11",
     year: "2024",
     cover: TTMM,
     links: {

@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../../shared/locales/i18n";
 
 import SEO from "../../shared/components/common/SEO";
-import { FaHome } from "react-icons/fa";
+import { FaChevronUp } from "react-icons/fa";
 
 import { styles } from "./styles/layout";
 import LanguageSwitcher from "./components/LanguageSwitcher";
@@ -54,6 +54,14 @@ export default function SpotifyLandingPage() {
     navigate(["pt", "en", "es"].includes(lang) ? `/${lang}` : "/");
   };
 
+  const goTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+
   const canonical = `${window.location.origin}${location.pathname}${location.search}`;
   const ogImage = `${window.location.origin}/images/adslogo-min.png`;
 
@@ -84,12 +92,12 @@ export default function SpotifyLandingPage() {
         {/* Barra fixa */}
         <div style={styles.topBar}>
           <button
-            onClick={goToHome}
+            onClick={goTop}
             style={styles.homeButton}
             title="Home"
             aria-label="Home"
           >
-            <FaHome />
+            <FaChevronUp />
           </button>
 
           <LanguageSwitcher onChange={changeLanguage} />
@@ -100,8 +108,8 @@ export default function SpotifyLandingPage() {
 
         <div style={styles.scrollSpacer} />
 
-       {/* <AlbumsSection />
-        <SinglesSection />*/}
+        <AlbumsSection t={t} />
+        <SinglesSection t={t} />
 
         {/* Footer fora da área artística */}
         <FooterSocials t={t} />
