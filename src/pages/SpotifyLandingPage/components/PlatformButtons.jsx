@@ -36,7 +36,7 @@ export default function PlatformButtons() {
     }
 
     window.gtag("event", "conversion", {
-      send_to: "AW-993081860/jTnRCMm_mLsaEIT0xNkD",
+      send_to: "AW-993081860/pVCgCOaq3NgbEIT0xNkD",
       event_category: "music_platform",
       event_label: platform,
       event_callback: () => {
