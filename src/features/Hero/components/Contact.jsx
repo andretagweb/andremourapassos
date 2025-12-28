@@ -22,8 +22,6 @@ function Contact() {
     setSent(false);
 
     try {
-      console.log("📤 Enviando dados para backend:", formData, "Idioma:", i18n.language);
-
       const response = await fetch(`${API_BASE_URL}/api/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -34,10 +32,8 @@ function Contact() {
       });
 
       const data = await response.json();
-      console.log("🧪 RESPOSTA COMPLETA DO BACKEND:", data); // Log importante
 
       if (data.success) {
-        console.log("✅ E-mail principal enviado com sucesso.");
 
         if (data.autoReplyStatus !== undefined) {
           console.log("📬 Status da resposta automática:", data.autoReplyStatus);
