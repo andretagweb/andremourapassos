@@ -33,12 +33,26 @@ export default function TopHero({ t, onListen }) {
             ? {
                 ...styles.description,
                 fontSize: "0.8rem", // metade de 1.15rem
-                lineHeight: 1.5,
+                lineHeight: 0,
               }
             : styles.description // 🔒 desktop intocado
         }
       >
         {t("page_description")}
+      </p>
+
+      <p
+        style={
+          isMobile
+            ? {
+                ...styles.description,
+                fontSize: "0.8rem", // metade de 1.15rem
+                lineHeight: 0,
+              }
+            : styles.description // 🔒 desktop intocado
+        }
+      >
+        {t("page_description_2")}
       </p>
 
       <PlatformButtons onSpotifyClick={onListen} />

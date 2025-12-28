@@ -27,6 +27,7 @@ const CHAOS = [
 
 export default function PlatformButtons({ onSpotifyClick }) {
   const isMobile = window.innerWidth <= 768;
+  const socialMediaItems = socialMedia.filter((m) => m.type === "music");
 
   return (
     <div
@@ -41,7 +42,7 @@ export default function PlatformButtons({ onSpotifyClick }) {
         zIndex: 2,
       }}
     >
-      {socialMedia.map((media, index) => {
+      {socialMediaItems.map((media, index) => {
         const color = PLATFORM_COLORS[media.label] || "#fff";
         const isSpotify = media.label === "Spotify";
         const chaos = CHAOS[index % CHAOS.length];

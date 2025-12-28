@@ -1,22 +1,46 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import socialMedia from "../../../shared/components/common/Social";
 import { styles } from "../styles/layout";
 
 export default function FooterSocials() {
-  const { t } = useTranslation("spotify");
+  const items = socialMedia.filter((m) => m.type === "social");
 
   return (
     <footer style={styles.footer}>
-      <p
+      {/* Social links */}
+      <div
         style={{
-          fontSize: "0.8rem",
-          color: "#777",
-          textAlign: "center",
-          maxWidth: 680,
-          lineHeight: 1.6,
+          display: "flex",
+          gap: "1rem",
+          flexWrap: "wrap",
+          justifyContent: "center",
         }}
       >
-        {t("footer.rights")}
+        {items.map((m) => (
+          <a
+            key={m.label}
+            href={m.href}
+            target="_blank"
+            rel="noreferrer"
+            style={styles.footerLink}
+            aria-label={m.label}
+          >
+            {m.icon} {m.label}
+          </a>
+        ))}
+      </div>
+
+      {/* Copyright */}
+      <p
+        style={{
+          marginTop: "1.2rem",
+          fontSize: "0.75rem",
+          color: "#777",
+          textAlign: "center",
+          letterSpacing: "0.3px",
+        }}
+      >
+        © 2025 Same Bloods Cocktail. All rights reserved.
       </p>
     </footer>
   );

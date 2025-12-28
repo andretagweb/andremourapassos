@@ -107,7 +107,7 @@ backgroundStage: {
   description: {
     maxWidth: 640,
     fontSize: "1.15rem",
-    lineHeight: 1.7,
+    lineHeight: 0,
     color: "#cfcfcf",
     marginBottom: "2.2rem",
   },
@@ -183,6 +183,7 @@ backgroundStage: {
   footer: {
     marginTop: "5rem",
     display: "flex",
+    flexDirection: "column",
     gap: "1.2rem",
     flexWrap: "wrap",
     justifyContent: "center",

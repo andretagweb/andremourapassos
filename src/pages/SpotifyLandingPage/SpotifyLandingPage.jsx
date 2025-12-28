@@ -15,7 +15,7 @@ import FooterSocials from "./components/FooterSocials";
 import CocktailBackground from "./components/CocktailBackground";
 
 export default function SpotifyLandingPage() {
-  const { t, i18n } = useTranslation("spotify");
+  const { t, i18n } = useTranslation("hotsite");
   const navigate = useNavigate();
   const location = useLocation();
 

@@ -9,7 +9,7 @@ import enMenu from "./en/menu.json";
 import enPlayer from "./en/player.json";
 import enFooter from "./en/footer.json";
 import enSeo from "./en/seo.json";
-import enSpotify from "./en/spotify.json";
+import enHotsite from "./en/hotsite.json";
 
 // PT
 import ptCommon from "./pt/common.json";
@@ -18,7 +18,7 @@ import ptMenu from "./pt/menu.json";
 import ptPlayer from "./pt/player.json";
 import ptFooter from "./pt/footer.json";
 import ptSeo from "./pt/seo.json";
-import ptSpotify from "./pt/spotify.json";
+import ptHotsite from "./pt/hotsite.json";
 
 // ES
 import esCommon from "./es/common.json";
@@ -27,7 +27,7 @@ import esMenu from "./es/menu.json";
 import esPlayer from "./es/player.json";
 import esFooter from "./es/footer.json";
 import esSeo from "./es/seo.json";
-import esSpotify from "./es/spotify.json";
+import esHotsite from "./es/hotsite.json";
 
 i18n
   .use(initReactI18next)
@@ -41,7 +41,7 @@ i18n
         player: enPlayer,
         footer: enFooter,
         seo: enSeo,
-        spotify: enSpotify
+        hotsite: enHotsite
       },
       pt: {
         common: ptCommon,
@@ -50,7 +50,7 @@ i18n
         player: ptPlayer,
         footer: ptFooter,
         seo: ptSeo,
-        spotify: ptSpotify
+        hotsite: ptHotsite
       },
       es: {
         common: esCommon,
@@ -59,7 +59,7 @@ i18n
         player: esPlayer,
         footer: esFooter,
         seo: esSeo,
-        spotify: esSpotify
+        hotsite: esHotsite
       }
     },
     fallbackLng: "en",
