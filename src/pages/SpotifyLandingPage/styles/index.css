@@ -49,7 +49,7 @@ body {
 }
 
 /* ===========================
-   MOBILE (15% MENOR)
+   MOBILE (FIX DEFINITIVO)
    =========================== */
 
 @media (max-width: 768px) {
@@ -58,20 +58,27 @@ body {
   }
 
   .heroText {
-      top: auto;
-  bottom: 0;
+    /* 🔥 neutraliza COMPLETAMENTE o inline style */
     position: fixed !important;
-    inset: 0 !important;
+
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: 0 !important;
+
     width: 100% !important;
-    height: 100svh !important;
-    height: 100dvh;
-      min-height: 100svh;
     max-width: none !important;
+
     margin: 0 !important;
     padding: 2.5rem 1.5rem;
 
+    /* ❌ remove qualquer influência de left: 2.5rem */
+    transform: none !important;
+
     display: flex;
     align-items: flex-end;
+
+    box-sizing: border-box;
 
     background: linear-gradient(
       to top,
@@ -90,7 +97,7 @@ body {
     pointer-events: auto;
   }
 
-  /* 🔽 redução de 15% real */
+  /* 🔽 redução de 15% */
   .heroLogo {
     width: 119px;
     height: 119px;

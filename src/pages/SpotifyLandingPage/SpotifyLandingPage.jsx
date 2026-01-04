@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../../shared/locales/i18n";
-import './styles/index.css';
+import "./styles/index.css";
 
 import SEO from "../../shared/components/common/SEO";
 import { FaChevronUp } from "react-icons/fa";
@@ -48,6 +48,27 @@ export default function SpotifyLandingPage() {
   const canonical = `${window.location.origin}${location.pathname}${location.search}`;
   const ogImage = `${window.location.origin}/images/adslogo-min.png`;
 
+  // ✅ FIX DEFINITIVO DO BUG DA BARRA DO NAVEGADOR (MOBILE)
+  useEffect(() => {
+    if (!window.visualViewport) return;
+
+    const vv = window.visualViewport;
+
+    const syncViewport = () => {
+      document.documentElement.style.setProperty("--vvh", `${vv.height}px`);
+      document.documentElement.style.setProperty("--vvt", `${vv.offsetTop}px`);
+    };
+
+    syncViewport();
+    vv.addEventListener("resize", syncViewport);
+    vv.addEventListener("scroll", syncViewport);
+
+    return () => {
+      vv.removeEventListener("resize", syncViewport);
+      vv.removeEventListener("scroll", syncViewport);
+    };
+  }, []);
+
   return (
     <>
       <SEO
@@ -66,17 +87,14 @@ export default function SpotifyLandingPage() {
         twitterImage={ogImage}
       />
 
-      {/* ✅ TOPBAR FORA DO CONTAINER PRINCIPAL (fix real no viewport no mobile) */}
       <div style={styles.topBar}>
-        <button onClick={goTop} style={styles.homeButton} title="Home" aria-label="Home">
+        <button onClick={goTop} style={styles.homeButton} aria-label="Home">
           <FaChevronUp />
         </button>
-
         <LanguageSwitcher onChange={changeLanguage} />
       </div>
 
       <div style={styles.page}>
-        {/* 🔥 HERO COM VIEWPORT REAL */}
         <div style={styles.heroWrapper}>
           <div style={styles.heroStage}>
             <div className="heroText" style={styles.heroText}>
@@ -93,7 +111,6 @@ export default function SpotifyLandingPage() {
 
         <AlbumsSection t={t} />
         <SinglesSection t={t} />
-
         <FooterSocials t={t} />
       </div>
     </>
