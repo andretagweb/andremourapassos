@@ -23,7 +23,7 @@ export default function CocktailBackground({ children }) {
       style={{
         position: "absolute",
         top: 0,
-        right: isMobile ? "48%" : 0,
+        right: isMobile ? "45%" : 0,
         marginRight: isMobile ? `-${halfScaledCup}px` : 0,
         width: `${scaledCupWidth + 80}px`,
         height: "100%",

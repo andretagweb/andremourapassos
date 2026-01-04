@@ -1,6 +1,7 @@
 export const styles = {
   page: {
     minHeight: "100vh",
+    width: "100%",
     background: "linear-gradient(135deg, #191414, #121212)",
     color: "#fff",
     display: "flex",
@@ -9,6 +10,9 @@ export const styles = {
     padding: "4.5rem 1.5rem 3rem",
     position: "relative",
     zIndex: 0,
+
+    /* 🔒 segurança extra contra vazamento horizontal */
+    overflowX: "hidden",
   },
 
   heroWrapper: {
@@ -18,7 +22,6 @@ export const styles = {
     marginBottom: "-3rem",
   },
 
-  // ✅ Agora o topBar está fora do container principal, então ele fica realmente fixo no viewport
   topBar: {
     position: "fixed",
     left: 0,
@@ -29,7 +32,6 @@ export const styles = {
     padding: "0.75rem 1rem",
     zIndex: 99999,
 
-    // evita flicker/bugs de composição em mobile
     transform: "translateZ(0)",
     willChange: "transform",
     pointerEvents: "none",
@@ -149,14 +151,13 @@ export const styles = {
     justifyContent: "flex-end",
   },
 
-footerLink: {
-  display: "flex",
-  alignItems: "center",
-  gap: "0.4rem",
-  color: "#aaa",
-  textDecoration: "none",
-  fontSize: "0.85rem",
-  opacity: 0.75,
-},
-
+  footerLink: {
+    display: "flex",
+    alignItems: "center",
+    gap: "0.4rem",
+    color: "#aaa",
+    textDecoration: "none",
+    fontSize: "0.85rem",
+    opacity: 0.75,
+  },
 };
