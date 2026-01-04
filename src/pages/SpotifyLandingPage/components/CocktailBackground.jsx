@@ -91,7 +91,7 @@ export default function CocktailBackground({ children }) {
 
           // 🔥 começa exatamente onde o copo termina (mobile)
           top: isMobile
-            ? `${mobileStemTop}px`
+            ? `${mobileStemTop -12}px`
             : `${cupTopOffset + cupHeight * scale - 5}px`,
 
           // 🔥 alinhada ao centro do copo

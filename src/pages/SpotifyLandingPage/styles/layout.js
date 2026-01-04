@@ -32,7 +32,6 @@ export const styles = {
     // evita flicker/bugs de composição em mobile
     transform: "translateZ(0)",
     willChange: "transform",
-
     pointerEvents: "none",
   },
 
