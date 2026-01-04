@@ -11,9 +11,15 @@ export const styles = {
     zIndex: 0,
   },
 
-  /* ===================== */
-  /* TOPO FIXO */
-  /* ===================== */
+  /* Wrapper neutro para o palco */
+  heroWrapper: {
+    width: "100%",
+    position: "relative",
+
+    /* neutraliza o padding vertical da page */
+    marginTop: "-4.5rem",
+    marginBottom: "-3rem",
+  },
 
   topBar: {
     position: "fixed",
@@ -37,168 +43,35 @@ export const styles = {
     pointerEvents: "auto",
   },
 
-  flags: {
-    display: "flex",
-    gap: 8,
-    alignItems: "center",
-    pointerEvents: "auto",
-  },
-
-  flagBtn: {
-    border: "none",
-    background: "none",
-    cursor: "pointer",
-    padding: 0,
-  },
-
-  /* ===================== */
-  /* ABOVE THE FOLD */
-  /* ===================== */
-
-  aboveFold: {
-    minHeight: "100vh",
+  /* HERO STAGE */
+  heroStage: {
+    position: "relative",
     width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    position: "relative",
-    zIndex: 1,
-    overflow: "hidden",
+    height: "100vh",
+    overflow: "visible", // 🔥 ESSENCIAL PARA A HASTE APARECER
   },
 
-backgroundStage: {
-  position: "absolute",
-  inset: 0,
-  zIndex: 0,
-  pointerEvents: "none",
-  overflow: "hidden", // 🔥 ESSENCIAL
-},
-
-
-  /* ===================== */
-  /* HERO */
-  /* ===================== */
-
-  hero: {
-    textAlign: "center",
-    marginTop: "0rem",
-    marginBottom: "4.5rem",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    position: "relative",
-    zIndex: 1,
+  heroText: {
+    position: "absolute",
+    left: "1.5rem",
+    bottom: "2.5rem",
+    zIndex: 5,
+    maxWidth: "640px",
   },
-
-  logo: {
-    width: 140,
-    height: 140,
-    borderRadius: "50%",
-    border: "2px solid #1DB954",
-    marginBottom: "2rem",
-  },
-
-  title: {
-    fontFamily: "Limelight, serif",
-    fontSize: "2.8rem",
-    marginBottom: "1rem",
-  },
-
-description: {
-  maxWidth: 640,
-  fontSize: "1.15rem",
-  lineHeight: 1.2, 
-  color: "#cfcfcf",
-  marginBottom: "1rem",
-  fontWeight: "500",
-},
-
-
-  cta: {
-    backgroundColor: "#1DB954",
-    color: "rgb(111 3 3)",
-    padding: "1.1rem 2.4rem",
-    borderRadius: 36,
-    fontSize: "1.1rem",
-    fontWeight: 600,
-    textDecoration: "none",
-    display: "inline-block",
-  },
-
-  /* ===================== */
-  /* SEÇÕES */
-  /* ===================== */
 
   scrollSpacer: {
     height: "50vh",
     width: "100%",
   },
 
-  sectionWrap: {
-    width: "100%",
-    maxWidth: 1100,
-    position: "relative",
-    zIndex: 1,
-  },
-
-  sectionTitle: {
-    textAlign: "center",
-    fontFamily: "Limelight, serif",
-    marginBottom: "2.5rem",
-  },
-
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-    gap: "2.2rem",
-  },
-
-  card: {
-    background: "#0f0f0f",
-    borderRadius: 18,
-    padding: "1.4rem",
-    textAlign: "center",
-  },
-
-  cardImage: {
-    width: "100%",
-    borderRadius: 14,
-  },
-
-  cardSubtitle: {
-    fontSize: "0.85rem",
-    color: "#aaa",
-    marginBottom: "0.5rem",
-  },
-
-  iconRow: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "0.9rem",
-    fontSize: "1.25rem",
-  },
-
-  /* ===================== */
-  /* FOOTER */
-  /* ===================== */
-
   footer: {
     marginTop: "5rem",
     display: "flex",
     flexDirection: "column",
     gap: "1.2rem",
-    flexWrap: "wrap",
     justifyContent: "center",
     color: "#aaa",
     position: "relative",
     zIndex: 1,
-  },
-
-  footerLink: {
-    color: "#aaa",
-    textDecoration: "none",
-    display: "flex",
-    alignItems: "center",
-    gap: "0.4rem",
   },
 };

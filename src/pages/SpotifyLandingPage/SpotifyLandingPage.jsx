@@ -8,7 +8,8 @@ import { FaChevronUp } from "react-icons/fa";
 
 import { styles } from "./styles/layout";
 import LanguageSwitcher from "./components/LanguageSwitcher";
-import TopHero from "./components/TopHero";
+import TextManifest from "./components/TextManifest";
+import PlatformButtons from "./components/PlatformButtons";
 import AlbumsSection from "./components/AlbumsSection";
 import SinglesSection from "./components/SinglesSection";
 import FooterSocials from "./components/FooterSocials";
@@ -30,16 +31,6 @@ export default function SpotifyLandingPage() {
     }
   }, [location.pathname, i18n]);
 
-  const handleListen = () => {
-    if (window.gtag) {
-      window.gtag("event", "conversion", {
-        send_to: "AW-993081860/jTnRCMm_mLsaEIT0xNkD",
-        value: 1.0,
-        currency: "BRL",
-      });
-    }
-  };
-
   const changeLanguage = (lng) => {
     const parts = location.pathname.split("/");
     if (["pt", "en", "es"].includes(parts[1])) parts[1] = lng;
@@ -49,18 +40,9 @@ export default function SpotifyLandingPage() {
     navigate(parts.join("/"));
   };
 
-  const goToHome = () => {
-    const lang = location.pathname.split("/")[1];
-    navigate(["pt", "en", "es"].includes(lang) ? `/${lang}` : "/");
-  };
-
   const goTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
 
   const canonical = `${window.location.origin}${location.pathname}${location.search}`;
   const ogImage = `${window.location.origin}/images/adslogo-min.png`;
@@ -84,12 +66,6 @@ export default function SpotifyLandingPage() {
       />
 
       <div style={styles.page}>
-        {/* Background decorativo limitado */}
-        <div style={styles.backgroundStage}>
-          <CocktailBackground />
-        </div>
-
-        {/* Barra fixa */}
         <div style={styles.topBar}>
           <button
             onClick={goTop}
@@ -103,18 +79,26 @@ export default function SpotifyLandingPage() {
           <LanguageSwitcher onChange={changeLanguage} />
         </div>
 
-        {/* HERO */}
-        <TopHero t={t} onListen={handleListen} />
+        {/* 🔥 HERO COM VIEWPORT REAL */}
+        <div style={styles.heroWrapper}>
+          <div style={styles.heroStage}>
+            <div style={styles.heroText}>
+              <TextManifest t={t} />
+            </div>
+
+            <CocktailBackground>
+              <PlatformButtons />
+            </CocktailBackground>
+          </div>
+        </div>
 
         <div style={styles.scrollSpacer} />
 
         <AlbumsSection t={t} />
         <SinglesSection t={t} />
 
-        {/* Footer fora da área artística */}
         <FooterSocials t={t} />
       </div>
-
     </>
   );
 }

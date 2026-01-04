@@ -28,8 +28,6 @@ const CHAOS = [
 export default function PlatformButtons() {
   const isMobile = window.innerWidth <= 768;
   const socialMediaItems = socialMedia.filter((m) => m.type === "music");
-
-  // flag para impedir abertura dupla
   const hasOpenedRef = useRef(false);
 
   const openOnce = (url) => {
@@ -50,26 +48,21 @@ export default function PlatformButtons() {
       send_to: "AW-993081860/pVCgCOaq3NgbEIT0xNkD",
       event_category: "music_platform",
       event_label: platform,
-      event_callback: () => {
-        openOnce(url);
-      },
+      event_callback: () => openOnce(url),
     });
 
-    // fallback seguro
-    setTimeout(() => {
-      openOnce(url);
-    }, 800);
+    setTimeout(() => openOnce(url), 800);
   };
 
   return (
     <div
       style={{
-        marginTop: isMobile ? "3rem" : "4rem",
-        maxWidth: 535,
         width: "100%",
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
+        alignItems: "center",
+        gap: "0.6rem",
         position: "relative",
         zIndex: 2,
       }}
@@ -85,19 +78,18 @@ export default function PlatformButtons() {
             aria-label={media.label}
             onClick={() => handleMusicClick(media.label, media.href)}
             style={{
-              margin: "0.45rem",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: "0.55rem",
-              padding: isMobile ? "0.6rem 1.2rem" : "0.85rem 1.6rem",
-              minWidth: 150,
+              gap: "0.45rem",
+              padding: isMobile ? "0.55rem 1rem" : "0.7rem 1.2rem",
+              minWidth: isMobile ? 120 : 130,   // 🔥 cabem no copo
               borderRadius: "999px",
               backgroundColor: "#000",
               border: `1.5px solid ${color}`,
               color: color,
               fontFamily: "Limelight, serif",
-              fontSize: isMobile ? "0.8rem" : "0.9rem",
+              fontSize: isMobile ? "0.75rem" : "0.85rem",
               letterSpacing: "0.04em",
               cursor: "pointer",
               transform: `
