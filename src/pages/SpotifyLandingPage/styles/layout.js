@@ -11,7 +11,6 @@ export const styles = {
     zIndex: 0,
   },
 
-  /* Wrapper neutro para o palco */
   heroWrapper: {
     width: "100%",
     position: "relative",
@@ -19,16 +18,21 @@ export const styles = {
     marginBottom: "-3rem",
   },
 
+  // ✅ Agora o topBar está fora do container principal, então ele fica realmente fixo no viewport
   topBar: {
     position: "fixed",
-    top: 0,
     left: 0,
     width: "100%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     padding: "0.75rem 1rem",
-    zIndex: 1000,
+    zIndex: 99999,
+
+    // evita flicker/bugs de composição em mobile
+    transform: "translateZ(0)",
+    willChange: "transform",
+
     pointerEvents: "none",
   },
 
@@ -41,7 +45,6 @@ export const styles = {
     pointerEvents: "auto",
   },
 
-  /* HERO STAGE */
   heroStage: {
     position: "relative",
     width: "100%",
@@ -50,8 +53,8 @@ export const styles = {
   },
 
   heroText: {
-    position: "absolute",
-    left: "1.5rem",
+    position: "fixed",
+    left: "2.5rem",
     bottom: "2.5rem",
     zIndex: 5,
     maxWidth: "640px",
@@ -62,11 +65,9 @@ export const styles = {
     width: "100%",
   },
 
-  /* ===== DISCOGRAFIA ===== */
-
   sectionWrap: {
     width: "100%",
-    maxWidth: "1100px",
+    maxWidth: "1200px",
     margin: "0 auto",
     padding: "4.5rem 1rem",
   },
@@ -74,32 +75,28 @@ export const styles = {
   sectionTitle: {
     fontSize: "1.9rem",
     letterSpacing: "0.12em",
-    marginBottom: "3.2rem",
+    marginBottom: "3.5rem",
     opacity: 0.8,
     textTransform: "uppercase",
+    textAlign: "right",
   },
 
-  /* Grid base (álbuns) */
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-    gap: "4rem",
+  verticalListRight: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    gap: "5rem",
   },
 
-  /* Grid mais contido (singles) */
-  gridCompact: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-    gap: "2.8rem",
+  albumItem: {
+    maxWidth: "320px",
+    textAlign: "right",
   },
 
-  card: {
-    background: "transparent",
-    padding: 0,
-    borderRadius: 0,
-    boxShadow: "none",
-    cursor: "default",
-    userSelect: "text",
+  singleItem: {
+    maxWidth: "320px",
+    textAlign: "right",
+    opacity: 0.85,
   },
 
   cardImage: {
@@ -123,16 +120,31 @@ export const styles = {
     letterSpacing: "0.05em",
   },
 
-  /* FOOTER */
-
   footer: {
-    marginTop: "5rem",
+    width: "100%",
+    maxWidth: "1200px",
+    marginTop: "6rem",
     display: "flex",
     flexDirection: "column",
+    alignItems: "flex-end",
     gap: "1.2rem",
-    justifyContent: "center",
     color: "#aaa",
     position: "relative",
     zIndex: 1,
+    paddingRight: "1rem",
+  },
+
+  footerLinksRow: {
+    display: "flex",
+    gap: "1rem",
+    flexWrap: "wrap",
+    justifyContent: "flex-end",
+  },
+
+  footerLink: {
+    color: "#aaa",
+    textDecoration: "none",
+    fontSize: "0.85rem",
+    opacity: 0.75,
   },
 };

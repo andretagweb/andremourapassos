@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../../shared/locales/i18n";
+import './styles/index.css';
 
 import SEO from "../../shared/components/common/SEO";
 import { FaChevronUp } from "react-icons/fa";
@@ -65,24 +66,20 @@ export default function SpotifyLandingPage() {
         twitterImage={ogImage}
       />
 
+      {/* ✅ TOPBAR FORA DO CONTAINER PRINCIPAL (fix real no viewport no mobile) */}
+      <div style={styles.topBar}>
+        <button onClick={goTop} style={styles.homeButton} title="Home" aria-label="Home">
+          <FaChevronUp />
+        </button>
+
+        <LanguageSwitcher onChange={changeLanguage} />
+      </div>
+
       <div style={styles.page}>
-        <div style={styles.topBar}>
-          <button
-            onClick={goTop}
-            style={styles.homeButton}
-            title="Home"
-            aria-label="Home"
-          >
-            <FaChevronUp />
-          </button>
-
-          <LanguageSwitcher onChange={changeLanguage} />
-        </div>
-
         {/* 🔥 HERO COM VIEWPORT REAL */}
         <div style={styles.heroWrapper}>
           <div style={styles.heroStage}>
-            <div style={styles.heroText}>
+            <div className="heroText" style={styles.heroText}>
               <TextManifest t={t} />
             </div>
 

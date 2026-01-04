@@ -53,3 +53,43 @@
   color: #1db954;
   font-size: 1.3rem;
 }
+
+/* ajustes específicos do hotsite (complementa inline styles) */
+
+@media (max-width: 768px) {
+
+  footer {
+    min-height: 600px;
+  }
+
+   .heroText {
+    position: fixed !important;
+
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: 0 !important;
+
+    width: 100vw !important;
+    height: 100svh !important;
+
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 2.5rem 1.5rem;
+
+    display: flex;
+    align-items: flex-end;
+
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.55) 15%,
+      rgba(0, 0, 0, 0.25) 35%,
+      rgba(0, 0, 0, 0.05) 55%,
+      rgba(0, 0, 0, 0) 100%
+    );
+
+    z-index: 4;
+  }
+}

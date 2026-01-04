@@ -8,6 +8,15 @@ export default function CocktailBackground({ children }) {
   const cupTopOffset = isMobile ? 64 : 72;
   const scale = isMobile ? 1.15 : 1.25;
 
+  const scaledCupWidth = cupWidth * scale;
+  const halfScaledCup = scaledCupWidth / 2;
+
+  // 🔥 eixo X central do copo (mobile, sem transform)
+  const mobileCupCenterOffset = cupWidth / 2;
+
+  // 🔥 onde o copo termina (mobile)
+  const mobileStemTop = cupTopOffset + cupHeight;
+
   return (
     <div
       aria-hidden
@@ -15,8 +24,8 @@ export default function CocktailBackground({ children }) {
         position: "absolute",
         top: 0,
         right: isMobile ? "50%" : 0,
-        transform: isMobile ? "translateX(50%)" : "none",
-        width: `${cupWidth * scale + 80}px`,
+        marginRight: isMobile ? `-${halfScaledCup}px` : 0,
+        width: `${scaledCupWidth + 80}px`,
         height: "100%",
         pointerEvents: "none",
         zIndex: 2,
@@ -29,9 +38,8 @@ export default function CocktailBackground({ children }) {
           position: "absolute",
           top: `${cupTopOffset}px`,
           right: isMobile ? "50%" : "40px",
-          transform: isMobile
-            ? `translateX(50%) scale(${scale})`
-            : `scale(${scale})`,
+          marginRight: isMobile ? `-${halfScaledCup}px` : 0,
+          transform: isMobile ? "none" : `scale(${scale})`,
           transformOrigin: "top center",
           width: `${cupWidth}px`,
           height: `${cupHeight}px`,
@@ -80,11 +88,22 @@ export default function CocktailBackground({ children }) {
       <div
         style={{
           position: "absolute",
-          top: `${cupTopOffset + cupHeight * scale - 5}px`,
+
+          // 🔥 começa exatamente onde o copo termina (mobile)
+          top: isMobile
+            ? `${mobileStemTop}px`
+            : `${cupTopOffset + cupHeight * scale - 5}px`,
+
+          // 🔥 alinhada ao centro do copo
           right: isMobile
-            ? "50%"
-            : `${-10 + (cupWidth * scale) / 2 - 4}px`,
-          transform: isMobile ? "translateX(50%)" : "none",
+            ? "80%"
+            : `${-10 + scaledCupWidth / 2 - 4}px`,
+          marginRight: isMobile
+            ? `-${mobileCupCenterOffset}px`
+            : 0,
+
+          transform: "none",
+
           width: "8px",
           height: "120vh",
           background: `
