@@ -60,6 +60,16 @@ export const styles = {
     maxWidth: "640px",
   },
 
+  flagBtn: {
+    marginLeft: "0.5rem",
+    background: "none",
+    border: "none",
+    color: "#fff",
+    fontSize: 28,
+    cursor: "pointer",
+    pointerEvents: "auto",
+  },
+
   scrollSpacer: {
     height: "50vh",
     width: "100%",
@@ -123,7 +133,6 @@ export const styles = {
   footer: {
     width: "100%",
     maxWidth: "1200px",
-    marginTop: "6rem",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-end",
@@ -141,10 +150,14 @@ export const styles = {
     justifyContent: "flex-end",
   },
 
-  footerLink: {
-    color: "#aaa",
-    textDecoration: "none",
-    fontSize: "0.85rem",
-    opacity: 0.75,
-  },
+footerLink: {
+  display: "flex",
+  alignItems: "center",
+  gap: "0.4rem",
+  color: "#aaa",
+  textDecoration: "none",
+  fontSize: "0.85rem",
+  opacity: 0.75,
+},
+
 };

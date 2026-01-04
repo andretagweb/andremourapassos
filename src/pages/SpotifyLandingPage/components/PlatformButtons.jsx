@@ -83,7 +83,7 @@ export default function PlatformButtons() {
               justifyContent: "center",
               gap: "0.45rem",
               padding: isMobile ? "0.55rem 1rem" : "0.7rem 1.2rem",
-              minWidth: isMobile ? 120 : 130,   // 🔥 cabem no copo
+              minWidth: isMobile ? 120 : 130, 
               borderRadius: "999px",
               backgroundColor: "#000",
               border: `1.5px solid ${color}`,

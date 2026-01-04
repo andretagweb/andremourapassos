@@ -3,8 +3,8 @@ import React from "react";
 export default function CocktailBackground({ children }) {
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-  const cupWidth = isMobile ? 320 : 420;
-  const cupHeight = isMobile ? 260 : 320;
+  const cupWidth = isMobile ? 340 : 420;
+  const cupHeight = isMobile ? 280 : 320;
   const cupTopOffset = isMobile ? 64 : 72;
   const scale = isMobile ? 1.15 : 1.25;
 
@@ -23,7 +23,7 @@ export default function CocktailBackground({ children }) {
       style={{
         position: "absolute",
         top: 0,
-        right: isMobile ? "50%" : 0,
+        right: isMobile ? "48%" : 0,
         marginRight: isMobile ? `-${halfScaledCup}px` : 0,
         width: `${scaledCupWidth + 80}px`,
         height: "100%",
@@ -96,7 +96,7 @@ export default function CocktailBackground({ children }) {
 
           // 🔥 alinhada ao centro do copo
           right: isMobile
-            ? "80%"
+            ? "78%"
             : `${-10 + scaledCupWidth / 2 - 4}px`,
           marginRight: isMobile
             ? `-${mobileCupCenterOffset}px`
