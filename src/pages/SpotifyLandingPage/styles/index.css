@@ -53,7 +53,7 @@ body {
    =========================== */
 
 @media (max-width: 768px) {
-  footer {
+  .hotsiteFooter {
     min-height: 500px;
   }
 

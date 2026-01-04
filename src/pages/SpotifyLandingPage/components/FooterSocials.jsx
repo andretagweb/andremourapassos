@@ -7,7 +7,7 @@ export default function FooterSocials({ t }) {
   const items = socialMedia.filter((m) => m.type === "social");
 
   return (
-    <footer className="footer" style={styles.footer}>
+    <footer className="hotsiteFooter" style={styles.footer}>
       {/* Social links */}
       <div style={styles.footerLinksRow}>
         {items.map((m) => (
