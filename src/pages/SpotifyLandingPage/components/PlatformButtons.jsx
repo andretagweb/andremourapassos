@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import socialMedia from "../../../shared/components/common/Social";
+import { trackMusicConversion } from "../shared/utils/googleAdsConversion";
 
 const PLATFORM_COLORS = {
   Spotify: "#1DB954",
@@ -37,21 +38,7 @@ export default function PlatformButtons() {
   };
 
   const handleMusicClick = (platform, url) => {
-    hasOpenedRef.current = false;
-
-    if (!window.gtag) {
-      openOnce(url);
-      return;
-    }
-
-    window.gtag("event", "conversion", {
-      send_to: "AW-993081860/pVCgCOaq3NgbEIT0xNkD",
-      event_category: "music_platform",
-      event_label: platform,
-      event_callback: () => openOnce(url),
-    });
-
-    setTimeout(() => openOnce(url), 800);
+    trackMusicConversion({ platform, url });
   };
 
   return (

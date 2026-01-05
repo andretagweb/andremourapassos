@@ -160,4 +160,31 @@ export const styles = {
     fontSize: "0.85rem",
     opacity: 0.75,
   },
+
+  footerMusicLink: {
+    display: "flex",
+    alignItems: "center",
+    gap: "0.4rem",
+    color: "#ff2020",
+    textDecoration: "none",
+    fontSize: "0.85rem",
+    opacity: 0.75,
+  },
+  footerDivider: {
+    width: "100%",
+    maxWidth: "420px",
+    height: "1px",
+    alignSelf: "flex-end",
+    margin: "0.5rem 0 0.75rem",
+    background: "linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255,0.25), rgba(255,255,255,0))",
+    opacity: 0.8,
+  },
+  copyrightText: {
+    marginTop: "1rem",
+    fontSize: "0.75rem",
+    color: "#777",
+    textAlign: "right",
+    letterSpacing: "0.3px",
+  }
+
 };

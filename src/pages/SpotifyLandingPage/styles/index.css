@@ -54,7 +54,7 @@ body {
 
 @media (max-width: 768px) {
   .hotsiteFooter {
-    min-height: 500px;
+    min-height: 650px;
   }
 
   .heroText {
@@ -82,10 +82,12 @@ body {
 
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.85) 0%,
-      rgba(0, 0, 0, 0.55) 15%,
-      rgba(0, 0, 0, 0.25) 35%,
-      rgba(0, 0, 0, 0.05) 55%,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.85) 25%,
+      rgba(0, 0, 0, 0.40) 40%,
+      rgba(0, 0, 0, 0.30) 50%,
+      rgba(0, 0, 0, 0.10) 60%,
+      rgba(0, 0, 0, 0.05) 70%,
       rgba(0, 0, 0, 0) 100%
     );
 
@@ -111,4 +113,5 @@ body {
   .heroParagraph {
     font-size: 0.98rem;
   }
+  
 }

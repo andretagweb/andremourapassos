@@ -2,15 +2,45 @@ import React from "react";
 import socialMedia from "../../../shared/components/common/Social";
 import { styles } from "../styles/layout";
 import { FaHome } from "react-icons/fa";
+import { trackMusicConversion } from "../shared/utils/googleAdsConversion";
 
 export default function FooterSocials({ t }) {
-  const items = socialMedia.filter((m) => m.type === "social");
+  const socialItems = socialMedia.filter((m) => m.type === "social");
+  const musicItems = socialMedia.filter((m) => m.type === "music");
 
   return (
     <footer className="hotsiteFooter" style={styles.footer}>
+      {/* Music platforms */}
+      <div style={{ ...styles.footerLinksRow, marginBottom: "0.75rem" }}>
+        {musicItems.map((m) => (
+          <button
+            key={m.label}
+            type="button"
+            aria-label={m.label}
+            onClick={() =>
+              trackMusicConversion({
+                platform: m.label,
+                url: m.href,
+              })
+            }
+            style={{
+              ...styles.footerMusicLink,
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            {m.icon} {m.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Divider */}
+      <div style={styles.footerDivider} />
+
       {/* Social links */}
       <div style={styles.footerLinksRow}>
-        {items.map((m) => (
+        {socialItems.map((m) => (
           <a
             key={m.label}
             href={m.href}
@@ -36,14 +66,8 @@ export default function FooterSocials({ t }) {
 
       {/* Copyright */}
       <p
-        className="special-elite-regular"
-        style={{
-          marginTop: "1rem",
-          fontSize: "0.75rem",
-          color: "#777",
-          textAlign: "right",
-          letterSpacing: "0.3px",
-        }}
+        className="copyrightText special-elite-regular"
+        style={styles.copyrightText}
       >
         {t("footer.rights", { year: new Date().getFullYear() })}
       </p>
