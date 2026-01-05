@@ -78,7 +78,6 @@ export const styles = {
 
   sectionWrap: {
     width: "100%",
-    maxWidth: "1200px",
     margin: "0 auto",
     padding: "4.5rem 1rem",
   },
@@ -133,7 +132,6 @@ export const styles = {
 
   footer: {
     width: "100%",
-    maxWidth: "1200px",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-end",
