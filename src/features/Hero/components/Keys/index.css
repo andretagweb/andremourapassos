@@ -21,6 +21,15 @@
 
     --color-hoverPlay: #656261;
     --color-hoverPlay-mobile: white;
+
+    --color-red: #eb2626;
+    --color-wine: #a80b0b;
+}
+
+#bloodscocktail a {
+    color: inherit;
+    text-decoration: underline;
+    color: var(--color-wine);
 }
 
 .key-natural {
@@ -423,5 +432,8 @@
 
     .keys .subtitle {
         font-size: 12px;
+    }
+    #bloodscocktail a {
+        color: var(--color-red);
     }
 }

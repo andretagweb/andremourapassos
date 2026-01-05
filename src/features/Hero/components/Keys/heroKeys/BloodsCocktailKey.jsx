@@ -20,7 +20,7 @@ function BloodsCocktailKey({
     >
       <div className="hover-text hover-play text">
         <p className="text-gray-800">
-          <strong>{t("same_bloods_title")}</strong> {t("same_bloods_1")}
+          <a href="https://samebloodscocktail.com">{t("same_bloods_title")}</a> {t("same_bloods_1")}
           <br />
           {t("same_bloods_2")}
           <br />
