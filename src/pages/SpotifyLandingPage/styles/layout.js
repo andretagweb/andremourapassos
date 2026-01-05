@@ -40,7 +40,7 @@ export const styles = {
   homeButton: {
     background: "none",
     border: "none",
-    color: "#fff",
+    color: "#a80b0b",
     fontSize: 28,
     cursor: "pointer",
     pointerEvents: "auto",

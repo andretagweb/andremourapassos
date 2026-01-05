@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../../shared/locales/i18n";
@@ -20,6 +20,8 @@ export default function SpotifyLandingPage() {
   const { t, i18n } = useTranslation("hotsite");
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [showTopButton, setShowTopButton] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -47,6 +49,16 @@ export default function SpotifyLandingPage() {
 
   const canonical = `${window.location.origin}${location.pathname}${location.search}`;
   const ogImage = `${window.location.origin}/images/adslogo-min.png`;
+
+  // 👇 MOSTRAR APENAS O BOTÃO APÓS SCROLL
+  useEffect(() => {
+    const onScroll = () => {
+      setShowTopButton(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // ✅ FIX DEFINITIVO DO BUG DA BARRA DO NAVEGADOR (MOBILE)
   useEffect(() => {
@@ -88,9 +100,20 @@ export default function SpotifyLandingPage() {
       />
 
       <div style={styles.topBar}>
-        <button onClick={goTop} style={styles.homeButton} aria-label="Home">
+        <button
+          onClick={goTop}
+          aria-label="Home"
+          style={{
+            ...styles.homeButton,
+            opacity: showTopButton ? 1 : 0,
+            transform: showTopButton ? "translateY(0)" : "translateY(-8px)",
+            transition: "opacity 0.70s ease, transform 0.80s ease",
+            pointerEvents: showTopButton ? "auto" : "none",
+          }}
+        >
           <FaChevronUp />
         </button>
+
         <LanguageSwitcher onChange={changeLanguage} />
       </div>
 
