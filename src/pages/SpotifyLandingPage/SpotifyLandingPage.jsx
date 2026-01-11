@@ -48,7 +48,7 @@ export default function SpotifyLandingPage() {
   };
 
   const canonical = `${window.location.origin}${location.pathname}${location.search}`;
-  const ogImage = `${window.location.origin}/images/adslogo-min.png`;
+  const ogImage = `${window.location.origin}/images/adslogo-min.webp`;
 
   // 👇 MOSTRAR APENAS O BOTÃO APÓS SCROLL
   useEffect(() => {
