@@ -48,6 +48,15 @@ body {
   overflow: hidden;
 }
 
+.album-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+
 /* ===========================
    MOBILE (FIX DEFINITIVO)
    =========================== */

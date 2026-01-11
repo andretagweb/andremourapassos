@@ -9,11 +9,17 @@ export default function AlbumsSection({ t }) {
 
       <div style={styles.verticalListRight}>
         {albums.map((album) => (
-          <div key={album.id} style={styles.albumItem}>
+          <div
+            key={album.id}
+            style={styles.albumItem}
+            className="album-card"
+          >
             <img
               src={album.cover}
               alt={album.title}
               style={styles.cardImage}
+              loading="lazy"
+              decoding="async"
             />
 
             <h3

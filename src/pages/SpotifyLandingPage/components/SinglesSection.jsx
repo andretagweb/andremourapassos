@@ -9,11 +9,17 @@ export default function SinglesSection({ t }) {
 
       <div style={styles.verticalListRight}>
         {singles.map((single) => (
-          <div key={single.id} style={styles.singleItem}>
+          <div
+            key={single.id}
+            style={styles.singleItem}
+            className="album-card"
+          >
             <img
               src={single.cover}
               alt={single.title}
               style={styles.cardImage}
+              loading="lazy"
+              decoding="async"
             />
 
             <h3
