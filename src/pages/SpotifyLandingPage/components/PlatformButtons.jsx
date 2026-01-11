@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import socialMedia from "../../../shared/components/common/Social";
 import { trackMusicConversion } from "../shared/utils/googleAdsConversion";
 
@@ -29,13 +29,6 @@ const CHAOS = [
 export default function PlatformButtons() {
   const isMobile = window.innerWidth <= 768;
   const socialMediaItems = socialMedia.filter((m) => m.type === "music");
-  const hasOpenedRef = useRef(false);
-
-  const openOnce = (url) => {
-    if (hasOpenedRef.current) return;
-    hasOpenedRef.current = true;
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
 
   const handleMusicClick = (platform, url) => {
     trackMusicConversion({ platform, url });
@@ -70,7 +63,7 @@ export default function PlatformButtons() {
               justifyContent: "center",
               gap: "0.45rem",
               padding: isMobile ? "0.55rem 1rem" : "0.7rem 1.2rem",
-              minWidth: isMobile ? 120 : 130, 
+              minWidth: isMobile ? 120 : 130,
               borderRadius: "999px",
               backgroundColor: "#000",
               border: `1.5px solid ${color}`,
