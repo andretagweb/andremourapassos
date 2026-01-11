@@ -37,6 +37,13 @@ export const styles = {
     pointerEvents: "none",
   },
 
+  flags: {
+    padding: "0.25rem 0.5rem",
+    display: "flex",
+    alignItems: "center",
+    pointerEvents: "auto",
+  },
+
   homeButton: {
     background: "none",
     border: "none",
