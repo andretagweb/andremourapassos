@@ -1,6 +1,6 @@
-import CocktailN1 from "../images/Cocktailn1.png";
-import CocktailN2 from "../images/Cocktailn2.png";
-import TTMM from "../images/Tasty_Themes_for_Mono_Myths.jpg";
+import CocktailN1 from "../images/Cocktailn1.webp";
+import CocktailN2 from "../images/Cocktailn2.webp";
+import TTMM from "../images/Tasty_Themes_for_Mono_Myths.webp";
 
 export const albums = [
   {

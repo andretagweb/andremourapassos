@@ -1,6 +1,6 @@
-import SometimesRock from "../images/Sometimes_Rock.png";
-import SuburbanRide from "../images/Suburban_Ride.png";
-import StrangeWay from "../images/Strange_Way_To_Know_Me.png";
+import SometimesRock from "../images/Sometimes_Rock.webp";
+import SuburbanRide from "../images/Suburban_Ride.webp";
+import StrangeWay from "../images/Strange_Way_To_Know_Me.webp";
 
 export const singles = [
   {
