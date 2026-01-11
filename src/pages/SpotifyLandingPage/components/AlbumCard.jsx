@@ -9,7 +9,12 @@ import {
 export default function AlbumCard({ album }) {
   return (
     <div className="album-card">
-      <img src={album.cover} alt={album.title} />
+      <img
+        src={album.cover}
+        alt={album.title}
+        loading="lazy"
+        decoding="async"
+      />
 
       <h3>{album.title}</h3>
       <p>
